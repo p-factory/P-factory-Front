@@ -14,6 +14,8 @@
     "pretest": "node ./check-pnpm.js",
     "start": "echo '❌ ERROR!!: This is a workspace root. Use one of the following commands instead:' && echo '  pnpm run start:front' && echo '  pnpm run start:app' && echo '  pnpm run start:mocking' && exit 1",
     "start:front": "pnpm --filter front run dev",
+    "build:front": "pnpm --filter front run build",
+    "preview:front": "pnpm --filter front run preview",
     "start:app": "pnpm --filter app run start",
     "start:mocking": "echo \"⚠️ WARNING!!:Not READY to Mocking\" && exit 1",
     "test": "echo \"Error: no test specified\" && exit 1"
