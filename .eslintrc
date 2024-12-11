@@ -2,8 +2,7 @@
   "env": {
     "browser": true,
     "es6": true,
-
-    "node": true,
+    "node": true
   },
   "parser": "@typescript-eslint/parser",
   "plugins": [
@@ -11,25 +10,25 @@
     "react-hooks",
     "@typescript-eslint",
     "import",
-    "prefer-arrow",
+    "prefer-arrow"
   ],
   "extends": [
     // "airbnb",
     // "airbnb/hooks",
     "prettier",
     "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended",
+    "plugin:prettier/recommended"
   ],
   "globals": {
     "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly",
+    "SharedArrayBuffer": "readonly"
   },
   "parserOptions": {
     "ecmaVersion": 2020,
     "sourceType": "module",
     "ecmaFeatures": {
-      "jsx": true,
-    },
+      "jsx": true
+    }
   },
   "rules": {
     "react/function-component-definition": "off",
@@ -58,7 +57,7 @@
 
     "react/jsx-filename-extension": [
       2,
-      { "extensions": [".js", ".jsx", ".ts", ".tsx"] },
+      { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
     ], // JSX를 포함하는 파일에서 사용할 수 있는 확장자를 설정. `.js`, `.jsx`, `.ts`, `.tsx` 파일에서 JSX를 사용할 수 있도록 허용.
 
     "import/extensions": 0, // 파일 확장자에 대한 규칙을 비활성화. `import` 문에서 확장자를 명시할지 여부에 대한 경고를 하지 않음.
@@ -81,7 +80,7 @@
 
     "react-hooks/exhaustive-deps": 0, // React Hooks의 `useEffect` 훅에 대한 의존성 배열 검사를 비활성화.
 
-    "prefer-arrow/prefer-arrow-functions": "error", // 함수 선언 대신 화살표 함수를 사용하도록 강제. 함수 선언을 화살표 함수로 변환하라는 경고.
+    "prefer-arrow/prefer-arrow-functions": "error" // 함수 선언 대신 화살표 함수를 사용하도록 강제. 함수 선언을 화살표 함수로 변환하라는 경고.
 
     // "react/function-component-definition": ["error", {
     //   "named": "function-declaration",
@@ -91,10 +90,10 @@
   },
   "settings": {
     "import/parsers": {
-      "@typescript-eslint/parser": [".ts", ".tsx", ".js"],
+      "@typescript-eslint/parser": [".ts", ".tsx", ".js"]
     },
     "import/resolver": {
-      "typescript": {},
-    },
-  },
+      "typescript": {}
+    }
+  }
 }
