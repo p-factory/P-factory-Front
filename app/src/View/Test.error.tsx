@@ -18,6 +18,3 @@
 // }
 
 // export default Test;
-
-// --isolatedModules 설정으로 위 주석을 해제할 시 아래 코드는 주석
-export {};
