@@ -1,0 +1,100 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+
+    "node": true,
+  },
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "react",
+    "react-hooks",
+    "@typescript-eslint",
+    "import",
+    "prefer-arrow",
+  ],
+  "extends": [
+    // "airbnb",
+    // "airbnb/hooks",
+    "prettier",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly",
+  },
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+    },
+  },
+  "rules": {
+    "react/function-component-definition": "off",
+    // 이 함수형 컴포넌트를 어떤 함수 유형으로 사용할지 미리 정하고 rules에 명시해 두어야 에러가 발생하지 않는다. 따라서 그라운드 룰이 명확하지 않으면 사용하지 않는게 좋다.
+    "react/react-in-jsx-scope": "off", // JSX를 사용하기 위해 React를 임포트할 필요가 없다고 ESLint에게 알림. React 17부터 JSX 변환이 자동으로 처리되므로 이 규칙을 끔.
+
+    "react/jsx-uses-react": "off", // JSX에서 React를 사용하지 않더라도 "React" 변수가 정의되지 않았다고 경고하지 않도록 설정. React 17 이후로는 JSX에 React를 직접 사용하지 않아도 됨.
+
+    "linebreak-style": 0, // 줄 바꿈 스타일에 대한 규칙을 비활성화. 플랫폼에 따라 줄 바꿈 스타일을 다르게 강제할 수 있는데, 이 규칙을 끄는 것으로 설정.
+
+    "import/no-dynamic-require": 0, // `require()`를 동적으로 사용하는 것에 대한 경고를 비활성화. 런타임에서 동적으로 모듈을 불러오는 것을 허용.
+
+    "import/no-unresolved": 0, // 모듈 경로가 올바르게 설정되어 있는지 확인하는 규칙을 비활성화. 경로가 잘못되어도 경고하지 않음.
+
+    "import/prefer-default-export": 0, // 단일 `export`를 할 때 `export default`를 사용하도록 강제하는 규칙을 비활성화. 명시적 `export`를 사용할 수 있음.
+
+    "global-require": 0, // 모듈을 동적으로 로드할 때 `require()`를 사용하더라도 경고를 표시하지 않도록 설정.
+
+    "import/no-extraneous-dependencies": 0, // `package.json`에 명시되지 않은 의존성에 대한 경고를 비활성화. 종속성으로 `devDependencies`에 포함되지 않은 것을 사용할 때 경고하지 않음.
+
+    "jsx-quotes": ["error", "prefer-single"], // JSX 속성 값에서 항상 싱글 쿼트(`'`)를 사용하도록 강제. 더블 쿼트(`"`) 대신 싱글 쿼트를 사용하라는 규칙.
+
+    "react/jsx-props-no-spreading": 0, // JSX에서 프로퍼티 전파(`{...props}`) 사용을 경고하지 않도록 설정.
+
+    "react/forbid-prop-types": 0, // `prop-types` 사용을 금지하는 규칙을 비활성화. React 컴포넌트의 props에 대한 타입 검사를 위해 `prop-types`를 사용할 수 있도록 허용.
+
+    "react/jsx-filename-extension": [
+      2,
+      { "extensions": [".js", ".jsx", ".ts", ".tsx"] },
+    ], // JSX를 포함하는 파일에서 사용할 수 있는 확장자를 설정. `.js`, `.jsx`, `.ts`, `.tsx` 파일에서 JSX를 사용할 수 있도록 허용.
+
+    "import/extensions": 0, // 파일 확장자에 대한 규칙을 비활성화. `import` 문에서 확장자를 명시할지 여부에 대한 경고를 하지 않음.
+
+    "no-use-before-define": 0, // 변수나 함수 선언 전에 사용되는 것을 경고하지 않음. 코드에서 선언 전에 사용된 변수에 대한 경고를 하지 않음.
+
+    "@typescript-eslint/no-empty-interface": 0, // 비어있는 인터페이스를 사용하는 것에 대한 경고를 비활성화. TypeScript에서 인터페이스가 비어있어도 경고하지 않음.
+
+    "@typescript-eslint/no-explicit-any": 0, // `any` 타입 사용에 대한 경고를 비활성화. TypeScript에서 `any` 타입을 사용할 때 경고하지 않음.
+
+    "@typescript-eslint/no-var-requires": 0, // TypeScript에서 `require()`를 사용하는 것에 대한 경고를 비활성화.
+
+    "no-shadow": "off", // 변수 이름이 다른 스코프에서 이미 선언된 변수를 덮어쓰는 것을 경고하지 않도록 설정.
+
+    "react/prop-types": 0, // `prop-types` 검사를 비활성화. React 컴포넌트에서 prop의 타입 검사를 강제하지 않음.
+
+    "no-empty-pattern": 0, // 비어있는 패턴을 사용할 때 경고를 표시하지 않음. 예: `const {}`와 같은 빈 객체 구조 분해 할당을 허용.
+
+    "no-alert": 0, // `alert()` 사용에 대한 경고를 비활성화. `alert()`을 사용해도 경고가 표시되지 않음.
+
+    "react-hooks/exhaustive-deps": 0, // React Hooks의 `useEffect` 훅에 대한 의존성 배열 검사를 비활성화.
+
+    "prefer-arrow/prefer-arrow-functions": "error", // 함수 선언 대신 화살표 함수를 사용하도록 강제. 함수 선언을 화살표 함수로 변환하라는 경고.
+
+    // "react/function-component-definition": ["error", {
+    //   "named": "function-declaration",
+    //   "unnamed": "arrow-function"
+    // }]
+    //"prefer-arrow/prefer-arrow-functions"으로 대체
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx", ".js"],
+    },
+    "import/resolver": {
+      "typescript": {},
+    },
+  },
+}
