@@ -1,9 +1,12 @@
+import { useRecoilState } from 'recoil';
+import { countState } from './Model/Atoms/atoms';
 import { useState } from 'react';
 import reactLogo from './assets/react.svg';
-import './App.css';
+import './App.scss';
 
 const App = () => {
-  const [count, setCount] = useState(0);
+  // Recoil 상태로 관리
+  const [count, setCount] = useRecoilState(countState);
 
   return (
     <div className='App'>
