@@ -3,10 +3,15 @@
   "compilerOptions": {
     // 소스 파일의 루트 경로
     // "rootDir": "./src",
+    // shared를 인식하기 위한 루트 설정
     "rootDir": "../",
     // 컴파일 출력 경로
     "outDir": "./dist",
-
+    // vite에 설정된 alias를 동기화
+    "baseUrl": "./",
+    "paths": {
+      "@shared/*": ["../shared/*"] // '@shared' 별칭 설정
+    }
   },
   // front 프로젝트에서 컴파일할 파일 경로
   "include": ["src/**/*","../shared/**/*"],

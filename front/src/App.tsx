@@ -3,7 +3,9 @@ import { countState } from './Model/Atoms/atoms';
 import { useState } from 'react';
 import './App.scss';
 import assets from './assets/assets';
-import Button from '../../shared/components/Button';
+// import Button from '../../shared/components/Button';
+import Button from '@shared/components/Button';
+
 const App = () => {
   // Recoil 상태로 관리
   const [count, setCount] = useRecoilState(countState);
