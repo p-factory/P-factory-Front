@@ -1,12 +1,15 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import reactNativeWeb from 'vite-plugin-react-native-web';
 import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), reactNativeWeb()],
+  // alias 설정
   // resolve: {
   //   alias: {
+  //     'react-native$': 'react-native-web', // React Native를 React Native Web로 매핑
   //     '@shared': path.resolve(__dirname, '../shared'),
   //   },
   // },

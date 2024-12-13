@@ -9,7 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-native-web": "^0.19.13",
+    "vite-plugin-react-native-web": "^1.1.2"
   },
   "devDependencies": {
     "@types/react-dom": "^19.0.2",
