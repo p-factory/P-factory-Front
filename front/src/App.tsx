@@ -3,7 +3,7 @@ import { countState } from './Model/Atoms/atoms';
 import { useState } from 'react';
 import './App.scss';
 import assets from './assets/assets';
-
+import Button from '../../shared/components/Button';
 const App = () => {
   // Recoil 상태로 관리
   const [count, setCount] = useRecoilState(countState);
@@ -30,6 +30,7 @@ const App = () => {
       <p className='read-the-docs'>
         Click on the Vite and React logos to learn more
       </p>
+      <Button label='Press Me' onPress={() => alert('Pressed!')} />
     </div>
   );
 };

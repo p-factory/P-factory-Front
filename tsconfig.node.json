@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "composite": true, // 프로젝트 간 참조를 위해 필요
     "module": "ESNext", // Vite 설정 파일에서 ES 모듈 사용
     "moduleResolution": "Node", // Node.js 방식의 모듈 해석
     "allowSyntheticDefaultImports": true, // import default를 허용
