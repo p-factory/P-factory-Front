@@ -13,6 +13,7 @@
     "prestart": "node ./check-pnpm.js",
     "pretest": "node ./check-pnpm.js",
     "start": "echo '❌ ERROR!!: This is a workspace root. Use one of the following commands instead:' && echo '  pnpm run start:front' && echo '  pnpm run start:app' && echo '  pnpm run start:mocking' && exit 1",
+    "dev": "echo '❌ ERROR!!: 'dev' Comment is Empty. Use one of the following commands instead:' && echo '  pnpm run start:front' && echo '  pnpm run start:app' && echo '  pnpm run start:mocking' && exit 1",
     "start:front": "pnpm --filter front run dev",
     "build:front": "pnpm --filter front run build",
     "preview:front": "pnpm --filter front run preview",
