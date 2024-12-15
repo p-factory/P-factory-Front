@@ -4,6 +4,10 @@ type Props = {
   title: string;
 };
 
+const test = () => {
+  console.log('test');
+};
+
 const TestComponent: React.FC<Props> = ({ title }) => {
   const [count, setCount] = useState<number>(0);
 
