@@ -1,4 +1,5 @@
 {
+  "root": true,
   "env": {
     "browser": true,
     "es6": true,
@@ -31,6 +32,7 @@
     }
   },
   "rules": {
+    // "camelcase": ["error", { "properties": "always" }],
     "react/function-component-definition": "off",
     "react/react-in-jsx-scope": "off", 
     "react/jsx-uses-react": "off", 
@@ -47,12 +49,45 @@
       2,
       { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
     ], 
-    "import/extensions": 0, 
+    "import/extensions": ["error", "always", {
+      "ts": "always",
+      "tsx": "always",
+      "js": "always",
+      "jsx": "always"
+    }], 
     "no-use-before-define": 0, 
-    "@typescript-eslint/no-empty-interface": 0,
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "variable",
+        "format": ["camelCase"]
+      },
+      {
+        "selector": "variable",
+        "format": ["PascalCase"], // 컴포넌트 이름은 PascalCase 허용
+        "modifiers": ["exported"] // 내보내진 변수(컴포넌트)에만 적용
+      },
+      {
+        "selector": "function",
+        "format": ["camelCase"]
+      },
+      {
+        "selector": "property",
+        "format": ["camelCase"]
+      },
+      {
+        "selector": "class",
+        "format": ["PascalCase"]
+      },
+      {
+        "selector": "typeLike",
+        "format": ["camelCase"] // React 컴포넌트 포함
+      }
+    ],
+    "@typescript-eslint/no-empty-interface": "error",
     "@typescript-eslint/no-explicit-any": 0, 
     "@typescript-eslint/no-var-requires": 0, 
-    "no-shadow": "off", 
+    "no-shadow": "error", 
     "react/prop-types": 0, 
     "no-empty-pattern": 0, 
     "no-alert": 0, 

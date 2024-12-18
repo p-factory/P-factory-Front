@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import Button from './View/Button';
-import ButtonChain from '../../shared/components/Button';
+import Button from './View/Button.tsx';
+import ButtonChain from '../../shared/components/Button.tsx';
 
 const App = () => {
   return (
