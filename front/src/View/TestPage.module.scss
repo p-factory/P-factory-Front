@@ -1,11 +1,23 @@
-.background{
-  background-color: #909090;
-  height: 100dvh;
-}
-
 /* 디버깅용 스타일 */
 .debug {
-  border: 2px dashed red; /* max-width 한계점 */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
   background-color: #909090;
-  height: 100dvh;
+  // height: 100dvh;
+}
+.debugContents{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  
+  .debugDiv{
+    width: 100px;
+    display: flex;
+    padding: 10px;
+    color: white;
+    background-color: tomato;
+  }
 }

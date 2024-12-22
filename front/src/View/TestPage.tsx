@@ -2,15 +2,11 @@ import styles from './TestPage.module.scss';
 
 const TestPage = () => {
   return (
-    <div
-      className={styles.debug}
-      style={{
-        width: '100%',
-        // maxWidth: '800px',
-        // minWidth: '400px',
-      }}
-    >
-      <span>test</span>
+    <div className={styles.debug}>
+      <div className={styles.debugContents}>
+        <div className={styles.debugDiv}>test</div>
+        <div className={styles.debugDiv}>test</div>
+      </div>
     </div>
   );
 };
