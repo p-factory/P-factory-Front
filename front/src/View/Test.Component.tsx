@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-type Props = {
+type testProps = {
   title: string;
 };
 
@@ -8,7 +8,7 @@ const test = () => {
   console.log('test');
 };
 
-const TestComponent: React.FC<Props> = ({ title }) => {
+const TestComponent: React.FC<testProps> = ({ title }) => {
   const [count, setCount] = useState<number>(0);
 
   return (
