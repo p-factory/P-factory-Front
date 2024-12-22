@@ -1,4 +1,5 @@
 import styles from './TestPage.module.scss';
+import Button from '@shared/components/Button.tsx';
 
 const TestPage = () => {
   return (
@@ -27,6 +28,7 @@ const TestPage = () => {
         <div className={styles.debugDiv}>test</div>
         <div className={styles.debugDiv}>test</div>
       </div>
+      <Button label='Press Me' onPress={() => alert('Pressed!')} />
     </div>
   );
 };
