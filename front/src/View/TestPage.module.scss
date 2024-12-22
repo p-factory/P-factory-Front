@@ -2,6 +2,7 @@
 .debug {
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   justify-content: center;
@@ -12,11 +13,30 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 100px;
+  background-color: wheat;
+
+  .debugDiv{
+    width: 100px;
+    display: flex;
+    padding: 10px;
+    color: white;
+    background-color: tomato;
+  }
+}
+
+.debugContentsEl{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 50px auto;
+  background-color: yellowgreen;
   
   .debugDiv{
     width: 100px;
     display: flex;
     padding: 10px;
+    // height: 60px;
     color: white;
     background-color: tomato;
   }
