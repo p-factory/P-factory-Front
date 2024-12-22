@@ -16,15 +16,17 @@ body {
   // min-width: 650px;
   max-width: 430px;
   min-width: 366px;
+  // height: 100vh;
   margin: 0 auto;
   padding: 0 32px; //padding을 통해서 여백을 만들어낼 수 있다.
 }
 
-// 반응형 유틸리티
-// .container {
-//   width: 100%;
-//   max-width: 1200px;
-//   margin: 0 auto;
-//   padding: 0 16px;
+// 웹에서 최소 일때 꽉찬 화면으로 수정
+// @media (max-width: 500px) {
+//   body {
+//     padding: 0; /* 특정 구간에서 padding 제거 */
+//     max-width: 500px;
+//   }
 // }
+
 
