@@ -49,16 +49,16 @@
       2,
       { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
     ], 
-    "import/extensions": [
-      "error", 
-      "always", 
-      {
-        "ts": "always",
-        "tsx": "always",
-        "js": "always",
-        "jsx": "always"
-      }
-    ], 
+    // "import/extensions": [
+    //   "error", 
+    //   "always", 
+    //   {
+    //     "ts": "always",
+    //     "tsx": "always",
+    //     "js": "always",
+    //     "jsx": "always"
+    //   }
+    // ], 
     "no-use-before-define": 0, 
     "@typescript-eslint/naming-convention": [
       "error",
@@ -100,29 +100,31 @@
     
   },
   //로컬 파일에는 확장자를 강제하고, 패키지 모듈에서는 확장자를 생략
-  "overrides": [
-    {
-      "files": ["*.ts", "*.tsx"], // TypeScript 파일에만 적용
-      "rules": {
-        "import/extensions": [
-          "error",
-          "ignorePackages", // 패키지 모듈에 확장자 검사 생략
-          {
-            "ts": "always",
-            "tsx": "always",
-            "js": "always",
-            "jsx": "always"
-          }
-        ]
-      }
-    }
-  ],
+  // "overrides": [
+  //   {
+  //     "files": ["*.ts", "*.tsx"], // TypeScript 파일에만 적용
+  //     "rules": {
+  //       "import/extensions": [
+  //         "error",
+  //         "ignorePackages", // 패키지 모듈에 확장자 검사 생략
+  //         {
+  //           "ts": "always",
+  //           "tsx": "always",
+  //           "js": "always",
+  //           "jsx": "always"
+  //         }
+  //       ]
+  //     }
+  //   }
+  // ],
   "settings": {
     "import/parsers": {
       "@typescript-eslint/parser": [".ts", ".tsx", ".js"]
     },
     "import/resolver": {
-      "typescript": {}
+      "typescript": {
+        "project": "./tsconfig.json"
+      }
     }
   }
 }
