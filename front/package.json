@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "react-dom": "^18.2.0",
+    "react-router-dom": "^7.1.1",
     "react-native-web": "^0.19.13",
     "vite-plugin-react-native-web": "^1.1.2"
   },
