@@ -1,0 +1,9 @@
+@use 'sass:math'; // math 모듈을 가져옴
+
+@function px-to-percent($px, $parent-width) {
+  @return math.div($px, $parent-width) * 100%; // 나눗셈을 math.div로 변경
+}
+
+@function px-to-rem($px, $parent-font-size) {
+  @return math.div($px, $parent-font-size) * 1rem;
+}

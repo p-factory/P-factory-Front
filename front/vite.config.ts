@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import reactNativeWeb from 'vite-plugin-react-native-web';
@@ -6,6 +7,15 @@ import path from 'path';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), reactNativeWeb()],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        // additionalData: `@use "src/View/style/function.scss" as *;`,
+        api: 'modern', // 'modern-compiler' or "modern"
+        silenceDeprecations: ['legacy-js-api'],
+      },
+    },
+  },
   // alias 설정
   resolve: {
     alias: {
