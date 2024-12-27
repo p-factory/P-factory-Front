@@ -1,8 +1,13 @@
+@use './helpers' as fn;
+
 /* 전역 변수 선언 */
 :root {
+  --standard-font-size : 16px;
   // 색상
   --primary-color: #97EB0D;
   --black-color : #1B1B1B;
+  --black-shadow1-color : #00000033;
+  --black-shadow2-color : #00000024;
   --gray5-color : #3D3D3D;
   --gray4-color : #636363;
   --gray3-color : #A1A1A1;
@@ -12,7 +17,7 @@
   --negative-error-cancel : #E5797B;
   --positive-success : #61C987;
 
-  // 그림자
+  // 그림자 blur
   --effects-style-shadow1 : 12px;
   --effects-style-shadow2 : 10px;
 
@@ -25,18 +30,18 @@
   --letter-spacing: -4%; /* letter-spacing */
 
   // 폰트 사이즈
-  --font-size-large: 30px;
-  --font-size-medium: 24px;
-  --font-size-regular: 20px;
-  --font-size-small: 16px;
-  --font-size-xsmall: 14px;
-  --font-size-xxsmall: 12px;
+  --font-size-large: fn.px-to-rem(30,var(--standard-font-size));
+  --font-size-medium: fn.px-to-rem(24,var(--standard-font-size));
+  --font-size-regular: fn.px-to-rem(20,var(--standard-font-size));
+  --font-size-small: fn.px-to-rem(16,var(--standard-font-size));
+  --font-size-xsmall: fn.px-to-rem(14,var(--standard-font-size));
+  --font-size-xxsmall: fn.px-to-rem(12,var(--standard-font-size));
 
   // corner-radius
-  --corner-radius-large: 80px;
-  --corner-radius-medium: 20px;
-  --corner-radius-regular: 16px;
-  --corner-radius-small: 8px;
+  --corner-radius-large: fn.px-to-rem(80,var(--standard-font-size));
+  --corner-radius-medium: fn.px-to-rem(20,var(--standard-font-size));
+  --corner-radius-regular: fn.px-to-rem(16,var(--standard-font-size));
+  --corner-radius-small: fn.px-to-rem(8,var(--standard-font-size));
 }
 
 // 기본 리셋
