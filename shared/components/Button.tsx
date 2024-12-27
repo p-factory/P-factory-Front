@@ -1,7 +1,7 @@
 import React from 'react';
 import { Platform, Text, TouchableOpacity, View } from 'react-native';
 import { z } from 'zod';
-import { buttonProps } from '../type.ts';
+import { buttonProps } from '../type';
 
 /**
  * Zod 스키마 정의
