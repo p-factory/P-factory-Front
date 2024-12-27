@@ -1,3 +1,44 @@
+/* 전역 변수 선언 */
+:root {
+  // 색상
+  --primary-color: #97EB0D;
+  --black-color : #1B1B1B;
+  --gray5-color : #3D3D3D;
+  --gray4-color : #636363;
+  --gray3-color : #A1A1A1;
+  --gray2-color : #D6D6D6;
+  --gray1-color : #F1F1F1;
+  --white-color : #FFFFFF;
+  --negative-error-cancel : #E5797B;
+  --positive-success : #61C987;
+
+  // 그림자
+  --effects-style-shadow1 : 12px;
+  --effects-style-shadow2 : 10px;
+
+  // 폰트 스타일
+  --font-family: 'Pretendard', sans-serif; /* 폰트 설정 */
+  --font-weight-bold: 700; /* Bold */
+  --font-weight-semibold: 600; /* Semibold */
+  --font-weight-medium: 500; /* Medium */
+  --font-weight-light: 300; /* Light */
+  --letter-spacing: -4%; /* letter-spacing */
+
+  // 폰트 사이즈
+  --font-size-large: 30px;
+  --font-size-medium: 24px;
+  --font-size-regular: 20px;
+  --font-size-small: 16px;
+  --font-size-xsmall: 14px;
+  --font-size-xxsmall: 12px;
+
+  // corner-radius
+  --corner-radius-large: 80px;
+  --corner-radius-medium: 20px;
+  --corner-radius-regular: 16px;
+  --corner-radius-small: 8px;
+}
+
 // 기본 리셋
 * {
   margin: 0;
