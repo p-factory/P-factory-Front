@@ -1,4 +1,4 @@
-@use './style/function.scss' as fn;
+@use '../helpers' as fn;
 
 .debug{
   background-color: aqua;
@@ -10,10 +10,11 @@
   #content{
     background-color: tomato;
     color: white;
-    $px-to-width : fn.px-to-percent(500, 1200);
+    $px-to-width : fn.px-to-percent(700, 1200);
     width: $px-to-width;
     $px-to-padding : fn.px-to-percent(16, 500);
     padding: $px-to-padding;
     font-size: fn.px-to-rem(20, 16);
+    box-shadow: 0 0 var(--effects-style-shadow1) var(--black-shadow1-color);
   }
 }
