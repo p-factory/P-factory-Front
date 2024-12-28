@@ -1,10 +1,10 @@
 import { useRecoilState } from 'recoil';
-import { countState } from './Model/Atoms/atoms.ts';
+import { countState } from './Model/Atoms/atoms';
 import { useState } from 'react';
 import './App.scss';
-import assets from './assets/assets.ts';
+import assets from './assets/assets';
 // import Button from '../../shared/components/Button';
-import Button from '@shared/components/Button.tsx';
+import Button from '@shared/components/Button';
 
 const App = () => {
   // Recoil 상태로 관리

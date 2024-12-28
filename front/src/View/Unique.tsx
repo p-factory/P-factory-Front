@@ -8,7 +8,7 @@ const test = () => {
   console.log('test');
 };
 
-const TestComponent: React.FC<testProps> = ({ title }) => {
+const Unique: React.FC<testProps> = ({ title }) => {
   const [count, setCount] = useState<number>(0);
 
   return (
@@ -21,4 +21,4 @@ const TestComponent: React.FC<testProps> = ({ title }) => {
   );
 };
 
-export default TestComponent;
+export default Unique;
