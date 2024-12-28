@@ -22,6 +22,7 @@ export default defineConfig({
       'react-native$': 'react-native-web', // React Native를 React Native Web로 매핑
       '@shared': path.resolve(__dirname, '../shared'),
     },
+    // extensions: ['.ts', '.tsx', '.js', '.jsx'], // 확장자 우선 처리
   },
   build: {
     outDir: 'dist', // 빌드 결과물이 생성될 디렉토리
