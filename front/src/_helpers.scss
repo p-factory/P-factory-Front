@@ -1,11 +1,21 @@
 @use 'sass:math';
 
+$base-width-large: 1920;
+$base-width-medium: 1440;
+$base-width-small: 1024;
+
+:root {
+  --base-width-large: #{$base-width-large};
+  --base-width-medium: #{$base-width-medium};
+  --base-width-small: #{$base-width-small};
+}
+
 // px을 %로 변환하는 함수
-@function px-to-percent($px, $parent-width) {
-  @return math.div($px, $parent-width) * 100%;
+@function px-to-percent($px, $base-width) {
+  @return math.div($px, $base-width) * 100%;
 }
 
 // px을 rem으로 변환하는 함수
-@function px-to-rem($px, $parent-font-size) {
-  @return math.div($px, $parent-font-size) * 1rem;
+@function px-to-rem($px, $base-font-size) {
+  @return math.div($px, $base-font-size) * 1rem;
 }

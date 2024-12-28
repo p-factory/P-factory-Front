@@ -10,7 +10,7 @@
   #content{
     background-color: tomato;
     color: white;
-    $px-to-width : fn.px-to-percent(700, 1200);
+    $px-to-width : fn.px-to-percent(700, fn.$base-width-large);
     width: $px-to-width;
     $px-to-padding : fn.px-to-percent(16, 500);
     padding: $px-to-padding;

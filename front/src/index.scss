@@ -110,7 +110,7 @@ body {
 }
 
 // 웹에서 최소 일때 꽉찬 화면으로 수정
-@media (max-width: 370px) { //iphone 370px에서 반응하게 할지
+@media (max-width: 380px) { //iphone 375px에서 반응하게 할지
   body {
     padding: 0; /* 특정 구간에서 padding 제거 */
     // max-width: 500px;
