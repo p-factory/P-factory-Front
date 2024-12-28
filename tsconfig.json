@@ -18,7 +18,7 @@
     "jsx": "react-jsx"
   },
   
-  "include": ["src"],
+  // "include": ["app/**/*", "front/**/*", "shared/**/*"],
   "references": [
     { "path": "./app" },
     { "path": "./front" },

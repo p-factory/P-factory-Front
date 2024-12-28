@@ -38,7 +38,6 @@
     "react/jsx-uses-react": "off", 
     "linebreak-style": 0, 
     "import/no-dynamic-require": 0, 
-    "import/no-unresolved": 0, 
     "import/prefer-default-export": 0, 
     "global-require": 0, 
     "import/no-extraneous-dependencies": 0, 
@@ -58,7 +57,13 @@
     //     "js": "always",
     //     "jsx": "always"
     //   }
-    // ], 
+    // ],
+    // "import/no-unresolved": [
+    //   "error",
+    //   {
+    //     "ignorePackages": true
+    //   }
+    // ],
     "no-use-before-define": 0, 
     "@typescript-eslint/naming-convention": [
       "error",
