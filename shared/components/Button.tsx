@@ -1,7 +1,7 @@
 import React from 'react';
-import { Platform, Text, TouchableOpacity, View } from 'react-native';
+import { Platform, Text, TouchableOpacity } from 'react-native';
 import { z } from 'zod';
-import { buttonProps } from '../type';
+import { ButtonProps } from '../type';
 
 /**
  * Zod 스키마 정의
@@ -11,7 +11,7 @@ const buttonPropsSchema = z.object({
   label: z.string(), // label은 문자열 타입
 });
 
-const Button = ({ onPress, label }: buttonProps) => {
+const Button = ({ onPress, label }: ButtonProps) => {
   // Zod 타입 검증
   buttonPropsSchema.parse({ onPress, label });
 

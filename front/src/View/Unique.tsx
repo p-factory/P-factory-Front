@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 
-type testProps = {
+type TestProps = {
   title: string;
 };
 
-const test = () => {
-  console.log('test');
-};
+// const test = () => {
+//   console.log('test');
+// };
 
-const Unique: React.FC<testProps> = ({ title }) => {
+const Unique: React.FC<TestProps> = ({ title }) => {
   const [count, setCount] = useState<number>(0);
 
   return (

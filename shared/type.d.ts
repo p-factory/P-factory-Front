@@ -1,9 +1,9 @@
-export interface buttonProps {
+export interface ButtonProps {
   onPress: () => void;
   label: string;
 }
 
-export interface testFlexProps {
+export interface TestFlexProps {
   name: string;
   age: number;
   isActive?: boolean;
