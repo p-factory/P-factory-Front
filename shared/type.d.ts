@@ -8,3 +8,10 @@ export interface TestFlexProps {
   age: number;
   isActive?: boolean;
 }
+
+export interface StylesProps {
+  footer: string;
+  contents: string;
+  image: string;
+  title: string;
+}
