@@ -90,13 +90,14 @@
       },
       {
         "selector": "typeLike",
-        "format": ["camelCase"] // React 컴포넌트 포함
+        "format": ["PascalCase"] // React 컴포넌트 포함
       }
     ],
     "@typescript-eslint/no-empty-interface": "error",
     "@typescript-eslint/no-explicit-any": 0, 
     "@typescript-eslint/no-var-requires": 0, 
     "no-shadow": "error", 
+    "no-unused-vars": ["error"],
     "react/prop-types": 0, 
     "no-empty-pattern": 0, 
     "no-alert": 0, 
