@@ -3,7 +3,7 @@ import styled from './TestFlex.module.scss';
 import { TestFlexProps } from '@shared/type';
 import Button from '@shared/components/Button';
 import Footer from '@shared/components/Footer';
-import FooterStyled from './Footer.module.scss';
+import FooterStyled from '../Footer.module.scss';
 import { StylesProps } from '@shared/type';
 
 //객체 매핑(Object Mapping)
