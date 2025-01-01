@@ -1,6 +1,6 @@
 import styles from './TestPage.module.scss';
 // import Button from '@shared/components/Button.tsx';
-import Button from '@shared/components/Button';
+import Button from '@shared/components/Test.Button';
 // import TestFlex from './Test.flex';
 
 const TestPage = () => {

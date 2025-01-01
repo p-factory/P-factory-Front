@@ -1,21 +1,41 @@
 import { Platform, Text } from 'react-native';
-import { StylesProps } from '../type';
+import { FooterStyles } from '../type';
 import Assets from '../../front/src/assets/assets';
+import { useState } from 'react';
 
-const Footer = ({ styles }: { styles: StylesProps }) => {
-  console.log('Footer styles:', styles); // styles.footer 값 확인
+const Footer = ({ styles }: { styles: FooterStyles }) => {
   if (Platform.OS === 'web') {
+    // Hover 상태 관리
+    const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+
+    const handleMouseEnter = (item: string) => setHoveredItem(item);
+    const handleMouseLeave = () => setHoveredItem(null);
     return (
       <div id={styles.footer}>
-        <div className={styles.contents}>
+        <div
+          className={styles.contents}
+          onMouseEnter={() => handleMouseEnter('innerFactory')}
+          onMouseLeave={handleMouseLeave}
+        >
           <div className={styles.image}>
             <img src={Assets.innerFactoryIcon} alt='' />
           </div>
           <span className={styles.title}>내부공장</span>
         </div>
-        <div className={styles.contents}>
+        <div
+          className={styles.contents}
+          onMouseEnter={() => handleMouseEnter('outerFactory')}
+          onMouseLeave={handleMouseLeave}
+        >
           <div className={styles.image}>
-            <img src={Assets.outerFactoryIcon} alt='' />
+            <img
+              src={
+                hoveredItem === 'outerFactory'
+                  ? Assets.outerFactoryIconHover // Hover 이미지
+                  : Assets.outerFactoryIcon // 기본 이미지
+              }
+              alt=''
+            />
           </div>
           <span className={styles.title}>외부공장</span>
         </div>
