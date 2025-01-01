@@ -20,8 +20,8 @@
   
   // "include": ["app/**/*", "front/**/*", "shared/**/*"],
   "references": [
-    { "path": "./app" },
-    { "path": "./front" },
+    // { "path": "./app" },
+    // { "path": "./front" },
     { "path": "./tsconfig.node.json" }
   ]
 }

@@ -1,0 +1,23 @@
+#footer{
+  display: flex;
+  justify-content: space-between;
+  background-color: tomato;
+  // width: calc(100% + 80px); /* 루트 padding 고려한 너비 */
+  margin: 0 -40px; /* 루트 padding 무효화 */
+
+  padding: 0;
+  .contents {
+
+    .image {
+    }
+    
+    .title {
+    }
+  }
+}
+
+@media (max-width: 380px) { //iphone 375px에서 반응하게 할지
+  #footer {
+    margin: 0;
+  }
+}

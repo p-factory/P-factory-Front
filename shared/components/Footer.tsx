@@ -2,6 +2,7 @@ import { Platform, Text } from 'react-native';
 import { StylesProps } from '../type';
 
 const Footer = ({ styles }: { styles: StylesProps }) => {
+  console.log('Footer styles:', styles); // styles.footer 값 확인
   if (Platform.OS === 'web') {
     return (
       <div id={styles.footer}>
