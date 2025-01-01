@@ -1,17 +1,25 @@
 #footer{
+  // background-color: tomato;
   display: flex;
   justify-content: space-between;
-  background-color: tomato;
+  align-items: center;
   // width: calc(100% + 80px); /* 루트 padding 고려한 너비 */
-  margin: 0 -40px; /* 루트 padding 무효화 */
+  margin: 0 -40px; /* 루트 padding 무효화 하기 위한 margin */
+  padding: 16px 49px;
+  font-size: var(--font-size-xxsmall);
 
-  padding: 0;
   .contents {
-
-    .image {
-    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     
-    .title {
+    .image {
+      display: flex;
+      justify-content: center;  
+    }
+
+    .title{
+      // font-size: var(--font-size-xxsmall);
     }
   }
 }
