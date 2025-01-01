@@ -1,6 +1,9 @@
-@use './helpers' as fn;
-
+// @use './helpers' as fn;
+@use './variable' as var;
 /* 전역 변수 선언 */
+
+// $font-size-large: fn.px-to-rem(30, var.$standard-font-size);
+
 :root {
   --standard-font-size : 16px;
   // 색상
@@ -30,18 +33,18 @@
   --letter-spacing: -4%; /* letter-spacing */
 
   // 폰트 사이즈
-  --font-size-large: fn.px-to-rem(30,var(--standard-font-size));
-  --font-size-medium: fn.px-to-rem(24,var(--standard-font-size));
-  --font-size-regular: fn.px-to-rem(20,var(--standard-font-size));
-  --font-size-small: fn.px-to-rem(16,var(--standard-font-size));
-  --font-size-xsmall: fn.px-to-rem(14,var(--standard-font-size));
-  --font-size-xxsmall: fn.px-to-rem(12,var(--standard-font-size));
+  --font-size-large: #{var.$font-size-large};
+  --font-size-medium: #{var.$font-size-medium};
+  --font-size-regular: #{var.$font-size-regular};
+  --font-size-small: #{var.$font-size-small};
+  --font-size-xsmall: #{var.$font-size-xsmall};
+  --font-size-xxsmall: #{var.$font-size-xxsmall};
 
   // corner-radius
-  --corner-radius-large: fn.px-to-rem(80,var(--standard-font-size));
-  --corner-radius-medium: fn.px-to-rem(20,var(--standard-font-size));
-  --corner-radius-regular: fn.px-to-rem(16,var(--standard-font-size));
-  --corner-radius-small: fn.px-to-rem(8,var(--standard-font-size));
+  --corner-radius-large: #{var.$corner-radius-large};
+  --corner-radius-medium: #{var.$corner-radius-medium};
+  --corner-radius-regular: #{var.$corner-radius-regular};
+  --corner-radius-small: #{var.$corner-radius-small};
 }
 
 // 기본 리셋
@@ -104,7 +107,7 @@ body {
   background-color: #f9f9f9;
   width: 100%;
   max-width: 430px;
-  // min-width: 366px;
+  min-width: 366px;
   margin: 0 auto;
   padding: 0 40px; //padding을 통해서 여백을 만들어낼 수 있다.
 }

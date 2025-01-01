@@ -1,0 +1,31 @@
+@use './helpers' as fn;
+
+// SCSS 변수 정의
+$standard-font-size: 16;
+
+$font-size-large: fn.px-to-rem(30, $standard-font-size);
+$font-size-medium: fn.px-to-rem(24, $standard-font-size);
+$font-size-regular: fn.px-to-rem(20, $standard-font-size);
+$font-size-small: fn.px-to-rem(16, $standard-font-size);
+$font-size-xsmall: fn.px-to-rem(14, $standard-font-size);
+$font-size-xxsmall: fn.px-to-rem(12, $standard-font-size);
+
+$corner-radius-large: fn.px-to-rem(80, $standard-font-size);
+$corner-radius-medium: fn.px-to-rem(20, $standard-font-size);
+$corner-radius-regular: fn.px-to-rem(16, $standard-font-size);
+$corner-radius-small: fn.px-to-rem(8, $standard-font-size);
+
+// CSS 변수 정의
+// :root {
+//   --font-size-large: #{$font-size-large};
+//   --font-size-medium: #{$font-size-medium};
+//   --font-size-regular: #{$font-size-regular};
+//   --font-size-small: #{$font-size-small};
+//   --font-size-xsmall: #{$font-size-xsmall};
+//   --font-size-xxsmall: #{$font-size-xxsmall};
+
+//   --corner-radius-large: #{$corner-radius-large};
+//   --corner-radius-medium: #{$corner-radius-medium};
+//   --corner-radius-regular: #{$corner-radius-regular};
+//   --corner-radius-small: #{$corner-radius-small};
+// }
