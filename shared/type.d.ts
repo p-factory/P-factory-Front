@@ -14,16 +14,13 @@ export interface TestFlexProps {
 export namespace Styles {
   export interface Common {
     title: string;
-  }
-
-  export interface Footer {
-    footer: string;
+    container: string;
     contents: string;
   }
 
   export interface Button {
     button: string;
-    contents: string;
+    buttonContents: string;
   }
 
   export interface Image {
@@ -32,5 +29,11 @@ export namespace Styles {
 }
 
 // Custom type
-type FooterStyles = Styles.Common & Styles.Footer & Styles.Image;
+type FooterStyles = Styles.Common & Styles.Image;
 type ButtonStyles = Styles.Common & Styles.Button & Styles.Image;
+type AlarmStyles = Styles.Common & Styles.Button & Styles.Image;
+
+export interface AlarmStylesLocal extends AlarmStyles {
+  buttonCancel: string; // '아니요' 버튼 id
+  buttonApprove: string; // '네' 버튼 id
+}

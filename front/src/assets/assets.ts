@@ -6,6 +6,9 @@ import outerFactoryIcon from './img/outer-factory-icon.svg';
 import outerFactoryIconHover from './img/outer-factory-icon-hover.svg';
 import mypageIcon from './img/mypage-icon.svg';
 import spannerIcon from './img/spanner-icon.svg';
+import cancelIcon from './img/cancel-icon.svg';
+import ptoryMainIcon from './img/ptory-main-logo.svg';
+import ptorySubIcon from './img/ptory-sub-logo.svg';
 
 const Assets = {
   reactLogo,
@@ -16,6 +19,9 @@ const Assets = {
   mypageIcon,
   spannerIcon,
   outerFactoryIconHover,
+  cancelIcon,
+  ptoryMainIcon,
+  ptorySubIcon,
 };
 
 export default Assets;

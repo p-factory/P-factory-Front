@@ -21,16 +21,17 @@
   --positive-success : #61C987;
 
   // 그림자 blur
-  --effects-style-shadow1 : 12px;
+  --effects-style-shadow1 : 16px;
   --effects-style-shadow2 : 10px;
-
+  --effects-blur-shadow1 : 0.25;
+  --effects-blur-shadow2 : 14;
   // 폰트 스타일
   --font-family: 'Pretendard', sans-serif; /* 폰트 설정 */
   --font-weight-bold: 700; /* Bold */
   --font-weight-semibold: 600; /* Semibold */
   --font-weight-medium: 500; /* Medium */
   --font-weight-light: 300; /* Light */
-  --letter-spacing: -4%; /* letter-spacing */
+  --letter-spacing: -0.04em; /* letter-spacing */
 
   // 폰트 사이즈
   --font-size-large: #{var.$font-size-large};

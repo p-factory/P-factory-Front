@@ -11,7 +11,7 @@ const Footer = ({ styles }: { styles: FooterStyles }) => {
     const handleMouseEnter = (item: string) => setHoveredItem(item);
     const handleMouseLeave = () => setHoveredItem(null);
     return (
-      <div id={styles.footer}>
+      <div id={styles.container}>
         <div
           className={styles.contents}
           onMouseEnter={() => handleMouseEnter('innerFactory')}
