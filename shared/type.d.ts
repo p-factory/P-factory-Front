@@ -28,12 +28,27 @@ export namespace Styles {
   }
 }
 
+// functions => multi args >> object
+export interface Functions {
+  defaultFunction: () => void;
+  transitionFunction<Cell, Organism>(args: Cell): Organism;
+}
+
 // Custom type
 type FooterStyles = Styles.Common & Styles.Image;
 type ButtonStyles = Styles.Common & Styles.Button & Styles.Image;
 type AlarmStyles = Styles.Common & Styles.Button & Styles.Image;
+type SignUpCheckListStyles = Styles.Common;
 
 export interface AlarmStylesLocal extends AlarmStyles {
   buttonCancel: string; // '아니요' 버튼 id
   buttonApprove: string; // '네' 버튼 id
+}
+
+export interface SignUpCheckListStylesLocal extends SignUpCheckListStyles {
+  checkbox: string;
+  required: string;
+  conditions: string;
+  selected: string;
+  all: string;
 }
