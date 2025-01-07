@@ -6,9 +6,16 @@ import Footer from '@shared/components/Footer';
 import FooterStyled from '../Footer.module.scss';
 import ButtonStyled from '../Button.module.scss';
 import AlarmStyled from '../Alarm.module.scss';
+import SignUpCheckListStyled from '../SignUpCheckList.module.scss';
 import Button from '@shared/components/Button';
-import Alarm from '@shared/components/alarm';
-import { FooterStyles, ButtonStyles, AlarmStylesLocal } from '@shared/type';
+import Alarm from '@shared/components/Alarm';
+import SignUpCheckList from '@shared/components/SignUpCheckList';
+import {
+  FooterStyles,
+  ButtonStyles,
+  AlarmStylesLocal,
+  SignUpCheckListStylesLocal,
+} from '@shared/type';
 import Assets from '../../assets/assets';
 
 //객체 매핑(Object Mapping)
@@ -39,6 +46,17 @@ const alarmStyles: AlarmStylesLocal = {
   image: AlarmStyled.image,
 };
 
+const signUpCheckListStyles: SignUpCheckListStylesLocal = {
+  title: SignUpCheckListStyled.container,
+  container: SignUpCheckListStyled.container,
+  contents: SignUpCheckListStyled.contents,
+  checkbox: SignUpCheckListStyled.checkbox,
+  required: SignUpCheckListStyled.required,
+  conditions: SignUpCheckListStyled.conditions,
+  selected: SignUpCheckListStyled.selected,
+  all: SignUpCheckListStyled.all,
+};
+
 const applyTestFlexProps = ({ name, age, isActive = true }: TestFlexProps) => {
   return {
     displayName: `${name} (${age})`,
@@ -62,15 +80,25 @@ const TestFlex = () => {
       <div id={styled.test}>test</div>
       <div id={styled.content}>Contents</div>
       <TestButton label='Press Me' onPress={() => alert('Pressed!')} />
+      <div style={{ padding: '18px' }}></div>
+
       <Button styles={buttonStyles} title='로그인' image={Assets.spannerIcon} />
+      <div style={{ padding: '18px' }}></div>
+
       <Button styles={buttonStyles} title='버튼' image='' />
       <div style={{ padding: '18px' }}></div>
+
       <Alarm
         styles={alarmStyles}
         title={'토익공부'}
         alarm={'공장을 삭제하시겠습니까?'}
         image={Assets.cancelIcon}
       />
+      <div style={{ padding: '18px' }}></div>
+
+      <SignUpCheckList styles={signUpCheckListStyles} />
+      <div style={{ padding: '18px' }}></div>
+
       <Footer styles={footerStyles} />
     </div>
   );
