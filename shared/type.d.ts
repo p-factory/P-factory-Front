@@ -39,6 +39,7 @@ type FooterStyles = Styles.Common & Styles.Image;
 type ButtonStyles = Styles.Common & Styles.Button & Styles.Image;
 type AlarmStyles = Styles.Common & Styles.Button & Styles.Image;
 type SignUpCheckListStyles = Styles.Common;
+type SirenStyles = Styles.Common & Styles.Image;
 
 export interface AlarmStylesLocal extends AlarmStyles {
   buttonCancel: string; // '아니요' 버튼 id
@@ -51,4 +52,8 @@ export interface SignUpCheckListStylesLocal extends SignUpCheckListStyles {
   conditions: string;
   selected: string;
   all: string;
+}
+
+export interface SirenStylesLocal extends SirenStyles {
+  alarm: string;
 }

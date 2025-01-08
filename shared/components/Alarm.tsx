@@ -19,7 +19,7 @@ const Alarm = ({
           <img src={image} alt='X' />
         </div>
         <div className={styles.contents}>
-          <div id={styles.title}>{title}</div>
+          <div id={styles.title}>{`‘${title}’`}</div>
           <div>{alarm}</div>
         </div>
         <div className={styles.buttonContents}>
