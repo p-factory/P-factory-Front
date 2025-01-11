@@ -9,12 +9,14 @@ import SignUpCheckListStyled from '../SignUpCheckList.module.scss';
 import SirenStyled from '../Siren.module.scss';
 import SearchStyled from '../Search.module.scss';
 import ToolStyled from '../Tool.module.scss';
+import SortButtonStyled from '../Sort.Button.module.scss';
 import Button from '@shared/components/Button';
 import Alarm from '@shared/components/Alarm';
 import SignUpCheckList from '@shared/components/SignUpCheckList';
 import Siren from '@shared/components/Siren';
 import Search from '@shared/components/Search';
 import Tool from '@shared/components/Tool';
+import SortButton from '@shared/components/Sort.Button';
 import {
   TestFlexProps,
   FooterStyles,
@@ -24,6 +26,7 @@ import {
   SirenStylesLocal,
   SearchStylesLocal,
   ToolStyles,
+  SortButtonStyles,
 } from '@shared/type';
 import Assets from '../../assets/assets';
 
@@ -91,6 +94,15 @@ const toolStyles: ToolStyles = {
   title: ToolStyled.title,
 };
 
+const sortButtonStyles: SortButtonStyles = {
+  button: SortButtonStyled.button,
+  container: SortButtonStyled.container,
+  contents: SortButtonStyled.contents,
+  buttonContents: AlarmStyled.contents,
+  title: SortButtonStyled.title,
+  image: SortButtonStyled.image,
+};
+
 const applyTestFlexProps = ({ name, age, isActive = true }: TestFlexProps) => {
   return {
     displayName: `${name} (${age})`,
@@ -145,6 +157,10 @@ const TestFlex = () => {
       <Footer styles={footerStyles} />
       <div style={{ padding: '18px' }}></div>
       <Tool styles={toolStyles} />
+      <div style={{ padding: '18px' }}></div>
+      <SortButton styles={sortButtonStyles} title='최신순' image={Assets.downIcon} />
+      <div style={{ padding: '18px' }}></div>
+      <SortButton styles={sortButtonStyles} title='최신순' image={Assets.upIcon} />
     </div>
   );
 };
