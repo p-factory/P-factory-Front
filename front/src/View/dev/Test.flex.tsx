@@ -10,6 +10,7 @@ import SirenStyled from '../Siren.module.scss';
 import SearchStyled from '../Search.module.scss';
 import ToolStyled from '../Tool.module.scss';
 import SortButtonStyled from '../Sort.Button.module.scss';
+import SortOptionStyled from '../SortOption.module.scss';
 import Button from '@shared/components/Button';
 import Alarm from '@shared/components/Alarm';
 import SignUpCheckList from '@shared/components/SignUpCheckList';
@@ -17,6 +18,7 @@ import Siren from '@shared/components/Siren';
 import Search from '@shared/components/Search';
 import Tool from '@shared/components/Tool';
 import SortButton from '@shared/components/Sort.Button';
+import SortOption from '@shared/components/SortOption';
 import {
   TestFlexProps,
   FooterStyles,
@@ -27,6 +29,7 @@ import {
   SearchStylesLocal,
   ToolStyles,
   SortButtonStyles,
+  SortOptionStyles,
 } from '@shared/type';
 import Assets from '../../assets/assets';
 // Redux 사용시 필요한 구성
@@ -101,9 +104,15 @@ const sortButtonStyles: SortButtonStyles = {
   button: SortButtonStyled.button,
   container: SortButtonStyled.container,
   contents: SortButtonStyled.contents,
-  buttonContents: AlarmStyled.contents,
+  buttonContents: SortButtonStyled.contents,
   title: SortButtonStyled.title,
   image: SortButtonStyled.image,
+};
+
+const sortOptionStyles: SortOptionStyles = {
+  container: SortOptionStyled.container,
+  contents: SortOptionStyled.contents,
+  title: SortOptionStyled.title,
 };
 
 const applyTestFlexProps = ({ name, age, isActive = true }: TestFlexProps) => {
@@ -175,8 +184,10 @@ const TestFlex = () => {
       <Footer styles={footerStyles} />
       <div style={{ padding: '18px' }}></div>
       <SortButton styles={sortButtonStyles} title='최신순' image={Assets.downIcon} />
-      <div style={{ padding: '18px' }}></div>
+      <div style={{ padding: '10px' }}></div>
       <SortButton styles={sortButtonStyles} title='최신순' image={Assets.upIcon} />
+      <div style={{ padding: '4px' }}></div>
+      <SortOption styles={sortOptionStyles} />
     </div>
   );
 };
