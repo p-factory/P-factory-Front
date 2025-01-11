@@ -181,13 +181,13 @@ const TestFlex = () => {
       <div style={{ padding: '18px' }}></div>
       <Tool styles={toolStyles} />
       <div style={{ padding: '18px' }}></div>
-      <Footer styles={footerStyles} />
-      <div style={{ padding: '18px' }}></div>
       <SortButton styles={sortButtonStyles} title='최신순' image={Assets.downIcon} />
       <div style={{ padding: '10px' }}></div>
       <SortButton styles={sortButtonStyles} title='최신순' image={Assets.upIcon} />
       <div style={{ padding: '4px' }}></div>
       <SortOption styles={sortOptionStyles} />
+      <div style={{ padding: '18px' }}></div>
+      <Footer styles={footerStyles} />
     </div>
   );
 };
