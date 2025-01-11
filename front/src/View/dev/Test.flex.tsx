@@ -7,10 +7,12 @@ import ButtonStyled from '../Button.module.scss';
 import AlarmStyled from '../Alarm.module.scss';
 import SignUpCheckListStyled from '../SignUpCheckList.module.scss';
 import SirenStyled from '../Siren.module.scss';
+import SearchStyled from '../Search.module.scss';
 import Button from '@shared/components/Button';
 import Alarm from '@shared/components/Alarm';
 import SignUpCheckList from '@shared/components/SignUpCheckList';
 import Siren from '@shared/components/Siren';
+import Search from '@shared/components/Search';
 import {
   TestFlexProps,
   FooterStyles,
@@ -18,6 +20,7 @@ import {
   AlarmStylesLocal,
   SignUpCheckListStylesLocal,
   SirenStylesLocal,
+  SearchStylesLocal,
 } from '@shared/type';
 import Assets from '../../assets/assets';
 
@@ -68,6 +71,16 @@ const sirenStyles: SirenStylesLocal = {
   alarm: SirenStyled.alarm,
 };
 
+const searchStyles: SearchStylesLocal = {
+  title: SearchStyled.title,
+  container: SearchStyled.container,
+  contents: SearchStyled.contents,
+  button: SearchStyled.button,
+  buttonContents: SearchStyled.buttonContents,
+  image: SearchStyled.image,
+  group: SearchStyled.group,
+};
+
 const applyTestFlexProps = ({ name, age, isActive = true }: TestFlexProps) => {
   return {
     displayName: `${name} (${age})`,
@@ -84,6 +97,13 @@ const TestFlex = () => {
 
   return (
     <div className={styled.debug}>
+      <Search
+        styles={searchStyles}
+        searchImage={Assets.searchIcon}
+        createImage={Assets.createIcon}
+      />
+      <div style={{ padding: '18px' }}></div>
+
       <div>
         <h1>{displayName}</h1>
         <p>Status: {status}</p>
