@@ -26,6 +26,9 @@ import {
   ToolStyles,
 } from '@shared/type';
 import Assets from '../../assets/assets';
+// Redux 사용시 필요한 구성
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState, Increment, Decrement } from '@shared/store';
 
 //객체 매핑(Object Mapping)
 const footerStyles: FooterStyles = {
@@ -105,6 +108,9 @@ const TestFlex = () => {
     isActive: false,
   });
 
+  const count = useSelector((state: RootState) => state.counter.count);
+  const dispatch = useDispatch();
+
   return (
     <div className={styled.debug}>
       <Search
@@ -113,6 +119,16 @@ const TestFlex = () => {
         createImage={Assets.createIcon}
       />
       <div style={{ padding: '18px' }}></div>
+
+      <div>
+        <h3>Count: {count}</h3>
+        <div>
+          <button onClick={() => dispatch(Increment())}>increment</button>
+        </div>
+        <div>
+          <button onClick={() => dispatch(Decrement())}>decrement</button>
+        </div>
+      </div>
 
       <div>
         <h1>{displayName}</h1>
