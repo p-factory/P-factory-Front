@@ -9,6 +9,8 @@ import spannerIcon from './img/spanner-icon.svg';
 import cancelIcon from './img/cancel-icon.svg';
 import ptoryMainIcon from './img/ptory-main-logo.svg';
 import ptorySubIcon from './img/ptory-sub-logo.svg';
+import searchIcon from './img/search-icon.svg';
+import createIcon from './img/factory-icon.svg';
 /* Tool-Icons */
 import englishIcon from './img/english-icon.svg';
 import englishIconHover from './img/english-icon-hover.svg';
@@ -31,6 +33,8 @@ const Assets = {
   cancelIcon,
   ptoryMainIcon,
   ptorySubIcon,
+  searchIcon,
+  createIcon,
   englishIcon,
   englishIconHover,
   koreanIcon,

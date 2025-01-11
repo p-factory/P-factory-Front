@@ -40,6 +40,7 @@ type ButtonStyles = Styles.Common & Styles.Button & Styles.Image;
 type AlarmStyles = Styles.Common & Styles.Button & Styles.Image;
 type SignUpCheckListStyles = Styles.Common;
 type SirenStyles = Styles.Common & Styles.Image;
+type SearchStyles = Styles.Common & Styles.Button & Styles.Image;
 type ToolStyles = Styles.Common & Styles.Image;
 
 export interface AlarmStylesLocal extends AlarmStyles {
@@ -57,4 +58,8 @@ export interface SignUpCheckListStylesLocal extends SignUpCheckListStyles {
 
 export interface SirenStylesLocal extends SirenStyles {
   alarm: string;
+}
+
+export interface SearchStylesLocal extends SearchStyles {
+  group: string;
 }
