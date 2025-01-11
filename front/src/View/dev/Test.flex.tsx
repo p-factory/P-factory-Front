@@ -142,9 +142,9 @@ const TestFlex = () => {
         alarm={'공장 삭제 완료!'}
       />
       <div style={{ padding: '18px' }}></div>
-      <Footer styles={footerStyles} />
-      <div style={{ padding: '18px' }}></div>
       <Tool styles={toolStyles} />
+      <div style={{ padding: '18px' }}></div>
+      <Footer styles={footerStyles} />
     </div>
   );
 };
