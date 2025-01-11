@@ -40,6 +40,7 @@ type ButtonStyles = Styles.Common & Styles.Button & Styles.Image;
 type AlarmStyles = Styles.Common & Styles.Button & Styles.Image;
 type SignUpCheckListStyles = Styles.Common;
 type SirenStyles = Styles.Common & Styles.Image;
+type ToolStyles = Styles.Common & Styles.Image;
 
 export interface AlarmStylesLocal extends AlarmStyles {
   buttonCancel: string; // '아니요' 버튼 id
