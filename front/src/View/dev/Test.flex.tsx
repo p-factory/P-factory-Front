@@ -8,11 +8,13 @@ import AlarmStyled from '../Alarm.module.scss';
 import SignUpCheckListStyled from '../SignUpCheckList.module.scss';
 import SirenStyled from '../Siren.module.scss';
 import SearchStyled from '../Search.module.scss';
+import ToolStyled from '../Tool.module.scss';
 import Button from '@shared/components/Button';
 import Alarm from '@shared/components/Alarm';
 import SignUpCheckList from '@shared/components/SignUpCheckList';
 import Siren from '@shared/components/Siren';
 import Search from '@shared/components/Search';
+import Tool from '@shared/components/Tool';
 import {
   TestFlexProps,
   FooterStyles,
@@ -21,6 +23,7 @@ import {
   SignUpCheckListStylesLocal,
   SirenStylesLocal,
   SearchStylesLocal,
+  ToolStyles,
 } from '@shared/type';
 import Assets from '../../assets/assets';
 
@@ -81,6 +84,13 @@ const searchStyles: SearchStylesLocal = {
   group: SearchStyled.group,
 };
 
+const toolStyles: ToolStyles = {
+  container: ToolStyled.container,
+  contents: ToolStyled.contents,
+  image: ToolStyled.image,
+  title: ToolStyled.title,
+};
+
 const applyTestFlexProps = ({ name, age, isActive = true }: TestFlexProps) => {
   return {
     displayName: `${name} (${age})`,
@@ -133,6 +143,8 @@ const TestFlex = () => {
       />
       <div style={{ padding: '18px' }}></div>
       <Footer styles={footerStyles} />
+      <div style={{ padding: '18px' }}></div>
+      <Tool styles={toolStyles} />
     </div>
   );
 };
