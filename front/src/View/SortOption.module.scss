@@ -1,0 +1,23 @@
+#container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--white-color);
+    margin-right: 262px;
+    border: 1px solid var(--gray2-color);
+    border-radius: var(--corner-radius-small);
+    font-size: var(--font-size-xsmall);
+    font-weight: var(--font-weight-medium);
+    white-space: nowrap; /* 줄바꿈 방지 */
+    color: var(--gray4-color);
+    .contents {
+        display: flex;
+        justify-content: center;
+        padding: 4px 0;
+        cursor: pointer;
+      }
+    .contents:not(:nth-child(5)) {
+        border-bottom: 1px solid var(--gray2-color);
+      }
+      
+  }
