@@ -18,7 +18,14 @@ const Footer = ({ styles }: { styles: FooterStyles }) => {
           onMouseLeave={handleMouseLeave}
         >
           <div className={styles.image}>
-            <img src={Assets.innerFactoryIcon} alt='' />
+            <img
+              src={
+                hoveredItem === 'innerFactory'
+                  ? Assets.innerFactoryIconHover // Hover 이미지
+                  : Assets.innerFactoryIcon // 기본 이미지
+              }
+              alt=''
+            />
           </div>
           <span className={styles.title}>내부공장</span>
         </div>
@@ -39,15 +46,37 @@ const Footer = ({ styles }: { styles: FooterStyles }) => {
           </div>
           <span className={styles.title}>외부공장</span>
         </div>
-        <div className={styles.contents}>
+        <div
+          className={styles.contents}
+          onMouseEnter={() => handleMouseEnter('escapeGame')}
+          onMouseLeave={handleMouseLeave}
+        >
           <div className={styles.image}>
-            <img src={Assets.escapeGameIcon} alt='' />
+            <img
+              src={
+                hoveredItem === 'escapeGame'
+                  ? Assets.escapeGameIconHover // Hover 이미지
+                  : Assets.escapeGameIcon // 기본 이미지
+              }
+              alt=''
+            />
           </div>
           <span className={styles.title}>대탈출</span>
         </div>
-        <div className={styles.contents}>
+        <div
+          className={styles.contents}
+          onMouseEnter={() => handleMouseEnter('myPage')}
+          onMouseLeave={handleMouseLeave}
+        >
           <div className={styles.image}>
-            <img src={Assets.mypageIcon} alt='' />
+            <img
+              src={
+                hoveredItem === 'myPage'
+                  ? Assets.mypageIconHover // Hover 이미지
+                  : Assets.mypageIcon // 기본 이미지
+              }
+              alt=''
+            />
           </div>
           <span className={styles.title}>마이페이지</span>
         </div>

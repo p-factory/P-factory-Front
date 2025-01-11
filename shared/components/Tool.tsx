@@ -19,14 +19,14 @@ const Tool = ({ styles }: { styles: ToolStyles }) => {
         >
           <div className={styles.image}>
             <img
-                src={
-                    hoveredItem === 'englishMode'
-                    ? Assets.englishIconHover // Hover 이미지
-                    : Assets.englishIcon // 기본 이미지
-                }
-                alt=''
-                />         
-            </div>
+              src={
+                hoveredItem === 'englishMode'
+                  ? Assets.englishIconHover // Hover 이미지
+                  : Assets.englishIcon // 기본 이미지
+              }
+              alt=''
+            />
+          </div>
         </div>
         <div
           className={styles.contents}
@@ -50,7 +50,7 @@ const Tool = ({ styles }: { styles: ToolStyles }) => {
           onMouseLeave={handleMouseLeave}
         >
           <div className={styles.image}>
-          <img
+            <img
               src={
                 hoveredItem === 'highlightMode'
                   ? Assets.highlightIconHover // Hover 이미지
@@ -66,7 +66,7 @@ const Tool = ({ styles }: { styles: ToolStyles }) => {
           onMouseLeave={handleMouseLeave}
         >
           <div className={styles.image}>
-          <img
+            <img
               src={
                 hoveredItem === 'deleteMode'
                   ? Assets.deleteIconHover // Hover 이미지
