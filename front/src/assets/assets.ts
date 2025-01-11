@@ -20,6 +20,9 @@ import deleteIcon from './img/delete-icon.svg';
 import deleteIconHover from './img/delete-icon-hover.svg';
 import highlightIcon from './img/highlight-icon.svg';
 import highlightIconHover from './img/highlight-icon-hover.svg';
+/* SortButton-Icons */
+import upIcon from './img/up-icon.svg';
+import downIcon from './img/down-icon.svg';
 
 const Assets = {
   reactLogo,
@@ -43,6 +46,8 @@ const Assets = {
   deleteIconHover,
   highlightIcon,
   highlightIconHover,
+  upIcon,
+  downIcon,
 };
 
 export default Assets;
