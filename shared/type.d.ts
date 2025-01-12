@@ -46,7 +46,7 @@ type ScrewStyles = Styles.Common & Styles.Button;
 type SortButtonStyles = Styles.Common & Styles.Button & Styles.Image;
 type SortOptionStyles = Styles.Common;
 
-type FactoryStyles = Styles.Common & Styles.Image;
+type FactoryStyles = Styles.Common & Styles.Image & Styles.Button;
 z;
 
 export interface AlarmStylesLocal extends AlarmStyles {

@@ -123,6 +123,8 @@ const factoryStyles: FactoryStylesLocal = {
   contents: FactoryStyled.contents,
   title: FactoryStyled.title,
   image: FactoryStyled.image,
+  button: FactoryStyled.button,
+  buttonContents: FactoryStyled.buttonContents,
   name: FactoryStyled.name,
   count: FactoryStyled.count,
 };
