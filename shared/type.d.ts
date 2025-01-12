@@ -42,6 +42,7 @@ type SignUpCheckListStyles = Styles.Common;
 type SirenStyles = Styles.Common & Styles.Image;
 type SearchStyles = Styles.Common & Styles.Button & Styles.Image;
 type ToolStyles = Styles.Common & Styles.Image;
+type ScrewStyles = Styles.Common & Styles.Button;
 
 export interface AlarmStylesLocal extends AlarmStyles {
   buttonCancel: string; // '아니요' 버튼 id
@@ -62,4 +63,11 @@ export interface SirenStylesLocal extends SirenStyles {
 
 export interface SearchStylesLocal extends SearchStyles {
   group: string;
+}
+
+export interface ScrewStylesLocal extends ScrewStyles {
+  screwSound: string;
+  bolt: string;
+  nuts: string;
+  screwShape: string;
 }
