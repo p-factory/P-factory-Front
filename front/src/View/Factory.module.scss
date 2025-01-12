@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   background-color: var(--white-color);
-  padding: 22px 12px 22px 24px;
+  padding: 12px 12px 22px 24px;
   font-size: var(--font-size-xsmall);
   border-radius: var(--corner-radius-medium);
   border: 2px solid var(--gray2-color);
@@ -14,17 +14,17 @@
     left: 90px;
   }
 
-  .image{
+  .image {
     display: flex;
     justify-content: flex-end;
     padding-right: 7px;
+    padding-top: 10px;
     cursor: pointer;
   }
   #buttonContents{
     display: flex;
     justify-content: space-between;
     #contents{
-      cursor: pointer;
       #name{
         font-size: var(--font-size-medium);
         font-weight: var(--font-weight-bold);
@@ -37,3 +37,11 @@
     }
   }
 }
+
+// @media (max-width: 380px) {
+//   #container {
+//     .managerBar {
+//       left: 110px; /* ✅ 화면이 380px 이하일 때 left 값을 50px로 변경 */
+//     }
+//   }
+// }
