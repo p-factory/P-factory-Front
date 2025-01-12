@@ -72,7 +72,10 @@ export interface ScrewStylesLocal extends ScrewStyles {
   screwSound: string;
   bolt: string;
   nuts: string;
+  nut: string;
   screwShape: string;
+  checked: string;
+  unchecked: string;
 }
 
 export interface SortStylesLocal extends SortStyles {

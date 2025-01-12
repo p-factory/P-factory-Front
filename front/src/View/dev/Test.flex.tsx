@@ -11,6 +11,7 @@ import SearchStyled from '../Search.module.scss';
 import ToolStyled from '../Tool.module.scss';
 import FactoryStyled from '../Factory.module.scss';
 import SortStyled from '../Sort.module.scss';
+import ScrewStyled from '../Screw.module.scss';
 import Button from '@shared/components/Button';
 import Alarm from '@shared/components/Alarm';
 import SignUpCheckList from '@shared/components/SignUpCheckList';
@@ -19,6 +20,7 @@ import Search from '@shared/components/Search';
 import Tool from '@shared/components/Tool';
 import Factory from '@shared/components/Factory';
 import Sort from '@shared/components/Sort';
+import Screw from '@shared/components/Screw';
 import {
   TestFlexProps,
   FooterStyles,
@@ -30,6 +32,7 @@ import {
   ToolStyles,
   FactoryStylesLocal,
   SortStylesLocal,
+  ScrewStylesLocal,
 } from '@shared/type';
 import Assets from '../../assets/assets';
 // Redux 사용시 필요한 구성
@@ -123,6 +126,21 @@ const factoryStyles: FactoryStylesLocal = {
   managerBar: FactoryStyled.managerBar,
 };
 
+const screwStyles: ScrewStylesLocal = {
+  container: ScrewStyled.container,
+  contents: ScrewStyled.contents,
+  title: ScrewStyled.title,
+  button: ScrewStyled.button,
+  buttonContents: ScrewStyled.buttonContents,
+  screwSound: ScrewStyled.screwSound,
+  bolt: ScrewStyled.bolt,
+  nuts: ScrewStyled.nuts,
+  nut: ScrewStyled.nut,
+  screwShape: ScrewStyled.screwShape,
+  checked: ScrewStyled.checked,
+  unchecked: ScrewStyled.unchecked,
+};
+
 const applyTestFlexProps = ({ name, age, isActive = true }: TestFlexProps) => {
   return {
     displayName: `${name} (${age})`,
@@ -191,13 +209,13 @@ const TestFlex = () => {
         alarm={'공장 삭제 완료!'}
       />
       <div style={{ padding: '18px' }}></div>
-      {/* <Screw
+      <Screw
         styles={screwStyles}
         screwSound={'라보르'}
         bolt={'labor'}
-        nuts={'노동'}
+        nuts={'노동, 일, 출산'}
         screwShape={'명사'}
-      /> */}
+      />
       <div style={{ padding: '18px' }}></div>
       <Tool styles={toolStyles} />
       <div style={{ padding: '18px' }}></div>
