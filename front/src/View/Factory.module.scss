@@ -38,10 +38,10 @@
   }
 }
 
-// @media (max-width: 380px) {
-//   #container {
-//     .managerBar {
-//       left: 110px; /* ✅ 화면이 380px 이하일 때 left 값을 50px로 변경 */
-//     }
-//   }
-// }
+@media (max-width: 480px) {
+  #container {
+    .managerBar {
+      left: 70px;
+    }
+  }
+}
