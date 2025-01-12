@@ -25,18 +25,22 @@ const Screw = ({
       bolt: false,
       nuts: Array(nutArray.length).fill(false),
     });
-    const onCheckboxChange = () => {setIsChecked(!isChecked)};
-    const onClick = () => {setIsSelected(!isSelected)};
+    const onCheckboxChange = () => {
+      setIsChecked(!isChecked);
+    };
+    const onClick = () => {
+      setIsSelected(!isSelected);
+    };
     const onHighlight = (index: number) => {
       setHighlighted((prevState) => ({
         bolt: index === -1 ? !prevState.bolt : prevState.bolt,
         nuts: prevState.nuts.map((highlighted, i) =>
-          i === index ? !highlighted : highlighted
+          i === index ? !highlighted : highlighted,
         ),
       }));
-    }
+    };
     return (
-      <div 
+      <div
         id={styles.container}
         className={isSelected ? styles.checked : styles.unchecked}
         onClick={onClick}
@@ -44,11 +48,14 @@ const Screw = ({
         <div id={styles.contents}>
           <span id={styles.screwSound}>{screwSound}</span>
           <div>
-            <span 
-              id={styles.bolt} 
+            <span
+              id={styles.bolt}
               className={isHighlighted.bolt ? styles.checked : ''}
-              onClick={(e) => { onHighlight(-1); e.stopPropagation(); }} // 이벤트 전파 중단 (부모로 이벤트 전파 방지)
-              >
+              onClick={(e) => {
+                onHighlight(-1);
+                e.stopPropagation();
+              }} // 이벤트 전파 중단 (부모로 이벤트 전파 방지)
+            >
               {bolt}
             </span>
           </div>
@@ -56,9 +63,12 @@ const Screw = ({
             {/* nutArray를 map으로 반복 */}
             {nutArray.map((nut, index) => (
               <span
-              key={index}
-              className={`${styles.nut} ${isHighlighted.nuts[index] ? styles.checked : ''}`} 
-              onClick={(e) => { onHighlight(index); e.stopPropagation(); }} // 이벤트 전파 중단 (부모로 이벤트 전파 방지)
+                key={index}
+                className={`${styles.nut} ${isHighlighted.nuts[index] ? styles.checked : ''}`}
+                onClick={(e) => {
+                  onHighlight(index);
+                  e.stopPropagation();
+                }} // 이벤트 전파 중단 (부모로 이벤트 전파 방지)
               >
                 {nut}
               </span>
@@ -67,14 +77,14 @@ const Screw = ({
           <span id={styles.screwShape}>{screwShape}</span>
         </div>
         <div id={styles.buttonContents}>
-        <input
-          id={styles.button}
-          className={isChecked ? styles.checked : styles.unchecked}
-          type="checkbox"
-          checked={isChecked}
-          onChange={onCheckboxChange}
-          onClick={(e) => e.stopPropagation()} // 이벤트 전파 중단 (부모로 이벤트 전파 방지)
-        />
+          <input
+            id={styles.button}
+            className={isChecked ? styles.checked : styles.unchecked}
+            type='checkbox'
+            checked={isChecked}
+            onChange={onCheckboxChange}
+            onClick={(e) => e.stopPropagation()} // 이벤트 전파 중단 (부모로 이벤트 전파 방지)
+          />
         </div>
       </div>
     );
