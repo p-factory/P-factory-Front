@@ -9,14 +9,16 @@ import SignUpCheckListStyled from '../SignUpCheckList.module.scss';
 import SirenStyled from '../Siren.module.scss';
 import SearchStyled from '../Search.module.scss';
 import ToolStyled from '../Tool.module.scss';
-import ScrewStyled from '../Screw.module.scss';
+import SortButtonStyled from '../Sort.Button.module.scss';
+import SortOptionStyled from '../SortOption.module.scss';
 import Button from '@shared/components/Button';
 import Alarm from '@shared/components/Alarm';
 import SignUpCheckList from '@shared/components/SignUpCheckList';
 import Siren from '@shared/components/Siren';
 import Search from '@shared/components/Search';
 import Tool from '@shared/components/Tool';
-import Screw from '@shared/components/Screw';
+import SortOption from '@shared/components/SortOption';
+import SortButton from '@shared/components/Sort.Button';
 import {
   TestFlexProps,
   FooterStyles,
@@ -26,7 +28,8 @@ import {
   SirenStylesLocal,
   SearchStylesLocal,
   ToolStyles,
-  ScrewStylesLocal,
+  SortButtonStyles,
+  SortOptionStyles,
 } from '@shared/type';
 import Assets from '../../assets/assets';
 // Redux 사용시 필요한 구성
@@ -97,16 +100,19 @@ const toolStyles: ToolStyles = {
   title: ToolStyled.title,
 };
 
-const screwStyles: ScrewStylesLocal = {
-  container: ScrewStyled.container,
-  contents: ScrewStyled.contents,
-  title: ScrewStyled.title,
-  button: ScrewStyled.button,
-  buttonContents: ScrewStyled.buttonContents,
-  screwSound: ScrewStyled.screwSound,
-  bolt: ScrewStyled.bolt,
-  nuts: ScrewStyled.nuts,
-  screwShape: ScrewStyled.screwShape,
+const sortButtonStyles: SortButtonStyles = {
+  button: SortButtonStyled.button,
+  container: SortButtonStyled.container,
+  contents: SortButtonStyled.contents,
+  buttonContents: SortButtonStyled.contents,
+  title: SortButtonStyled.title,
+  image: SortButtonStyled.image,
+};
+
+const sortOptionStyles: SortOptionStyles = {
+  container: SortOptionStyled.container,
+  contents: SortOptionStyled.contents,
+  title: SortOptionStyled.title,
 };
 
 const applyTestFlexProps = ({ name, age, isActive = true }: TestFlexProps) => {
@@ -173,15 +179,29 @@ const TestFlex = () => {
         alarm={'공장 삭제 완료!'}
       />
       <div style={{ padding: '18px' }}></div>
-      <Screw
+      {/* <Screw
         styles={screwStyles}
         screwSound={'라보르'}
         bolt={'labor'}
         nuts={'노동'}
         screwShape={'명사'}
-      />
+      /> */}
       <div style={{ padding: '18px' }}></div>
       <Tool styles={toolStyles} />
+      <div style={{ padding: '18px' }}></div>
+      <SortButton
+        styles={sortButtonStyles}
+        title='최신순'
+        image={Assets.downIcon}
+      />
+      <div style={{ padding: '10px' }}></div>
+      <SortButton
+        styles={sortButtonStyles}
+        title='최신순'
+        image={Assets.upIcon}
+      />
+      <div style={{ padding: '4px' }}></div>
+      <SortOption styles={sortOptionStyles} />
       <div style={{ padding: '18px' }}></div>
       <Footer styles={footerStyles} />
     </div>
