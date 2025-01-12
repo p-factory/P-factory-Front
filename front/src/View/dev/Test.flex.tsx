@@ -12,6 +12,7 @@ import ToolStyled from '../Tool.module.scss';
 import FactoryStyled from '../Factory.module.scss';
 import SortStyled from '../Sort.module.scss';
 import ScrewStyled from '../Screw.module.scss';
+import BuildFactoryStyled from '../BuildFactory.module.scss';
 import Button from '@shared/components/Button';
 import Alarm from '@shared/components/Alarm';
 import SignUpCheckList from '@shared/components/SignUpCheckList';
@@ -21,6 +22,7 @@ import Tool from '@shared/components/Tool';
 import Factory from '@shared/components/Factory';
 import Sort from '@shared/components/Sort';
 import Screw from '@shared/components/Screw';
+import BuildFactory from '@shared/components/BuildFactory';
 import {
   TestFlexProps,
   FooterStyles,
@@ -33,6 +35,7 @@ import {
   FactoryStylesLocal,
   SortStylesLocal,
   ScrewStylesLocal,
+  BuildFactoryStylesLocal,
 } from '@shared/type';
 import Assets from '../../assets/assets';
 // Redux 사용시 필요한 구성
@@ -141,6 +144,16 @@ const screwStyles: ScrewStylesLocal = {
   unchecked: ScrewStyled.unchecked,
 };
 
+const buildFactoryStyles: BuildFactoryStylesLocal = {
+  container: BuildFactoryStyled.container,
+  contents: BuildFactoryStyled.contents,
+  title: BuildFactoryStyled.title,
+  image: BuildFactoryStyled.image,
+  titleBar: BuildFactoryStyled.titleBar,
+  input: BuildFactoryStyled.input,
+  charCounter: BuildFactoryStyled.charCounter,
+};
+
 const applyTestFlexProps = ({ name, age, isActive = true }: TestFlexProps) => {
   return {
     displayName: `${name} (${age})`,
@@ -215,6 +228,14 @@ const TestFlex = () => {
         bolt={'labor'}
         nuts={'노동, 일, 출산'}
         screwShape={'명사'}
+      />
+      <div style={{ padding: '18px' }}></div>
+      <BuildFactory
+        styles={buildFactoryStyles}
+        title={'새로운 공장'}
+        image={Assets.cancelIconGray}
+        input={'공장 제목을 입력하세요.'}
+        charCounter={12}
       />
       <div style={{ padding: '18px' }}></div>
       <Tool styles={toolStyles} />
