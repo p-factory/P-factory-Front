@@ -43,8 +43,7 @@ type SirenStyles = Styles.Common & Styles.Image;
 type SearchStyles = Styles.Common & Styles.Button & Styles.Image;
 type ToolStyles = Styles.Common & Styles.Image;
 type ScrewStyles = Styles.Common & Styles.Button;
-type SortButtonStyles = Styles.Common & Styles.Button & Styles.Image;
-type SortOptionStyles = Styles.Common;
+type SortStyles = Styles.Common & Styles.Button & Styles.Image;
 
 export interface AlarmStylesLocal extends AlarmStyles {
   buttonCancel: string; // '아니요' 버튼 id
@@ -72,4 +71,9 @@ export interface ScrewStylesLocal extends ScrewStyles {
   bolt: string;
   nuts: string;
   screwShape: string;
+}
+
+export interface SortStylesLocal extends SortStyles {
+  sortOptions: string;
+  sortOption: string;
 }

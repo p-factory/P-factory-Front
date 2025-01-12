@@ -9,16 +9,14 @@ import SignUpCheckListStyled from '../SignUpCheckList.module.scss';
 import SirenStyled from '../Siren.module.scss';
 import SearchStyled from '../Search.module.scss';
 import ToolStyled from '../Tool.module.scss';
-import SortButtonStyled from '../Sort.Button.module.scss';
-import SortOptionStyled from '../SortOption.module.scss';
+import SortStyled from '../Sort.module.scss';
 import Button from '@shared/components/Button';
 import Alarm from '@shared/components/Alarm';
 import SignUpCheckList from '@shared/components/SignUpCheckList';
 import Siren from '@shared/components/Siren';
 import Search from '@shared/components/Search';
 import Tool from '@shared/components/Tool';
-import SortOption from '@shared/components/SortOption';
-import SortButton from '@shared/components/Sort.Button';
+import Sort from '@shared/components/Sort';
 import {
   TestFlexProps,
   FooterStyles,
@@ -28,8 +26,7 @@ import {
   SirenStylesLocal,
   SearchStylesLocal,
   ToolStyles,
-  SortButtonStyles,
-  SortOptionStyles,
+  SortStylesLocal,
 } from '@shared/type';
 import Assets from '../../assets/assets';
 // Redux 사용시 필요한 구성
@@ -100,19 +97,15 @@ const toolStyles: ToolStyles = {
   title: ToolStyled.title,
 };
 
-const sortButtonStyles: SortButtonStyles = {
-  button: SortButtonStyled.button,
-  container: SortButtonStyled.container,
-  contents: SortButtonStyled.contents,
-  buttonContents: SortButtonStyled.contents,
-  title: SortButtonStyled.title,
-  image: SortButtonStyled.image,
-};
-
-const sortOptionStyles: SortOptionStyles = {
-  container: SortOptionStyled.container,
-  contents: SortOptionStyled.contents,
-  title: SortOptionStyled.title,
+const sortStyles: SortStylesLocal = {
+  button: SortStyled.button,
+  buttonContents: SortStyled.contents,
+  container: SortStyled.container,
+  contents: SortStyled.contents,
+  sortOptions: SortStyled.sortOptions,
+  sortOption: SortStyled.sortOption,
+  title: SortStyled.title,
+  image: SortStyled.image,
 };
 
 const applyTestFlexProps = ({ name, age, isActive = true }: TestFlexProps) => {
@@ -189,19 +182,7 @@ const TestFlex = () => {
       <div style={{ padding: '18px' }}></div>
       <Tool styles={toolStyles} />
       <div style={{ padding: '18px' }}></div>
-      <SortButton
-        styles={sortButtonStyles}
-        title='최신순'
-        image={Assets.downIcon}
-      />
-      <div style={{ padding: '10px' }}></div>
-      <SortButton
-        styles={sortButtonStyles}
-        title='최신순'
-        image={Assets.upIcon}
-      />
-      <div style={{ padding: '4px' }}></div>
-      <SortOption styles={sortOptionStyles} />
+      <Sort styles={sortStyles} />
       <div style={{ padding: '18px' }}></div>
       <Footer styles={footerStyles} />
     </div>
