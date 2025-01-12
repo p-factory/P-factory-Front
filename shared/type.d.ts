@@ -47,7 +47,8 @@ type SortButtonStyles = Styles.Common & Styles.Button & Styles.Image;
 type SortOptionStyles = Styles.Common;
 
 type FactoryStyles = Styles.Common & Styles.Image & Styles.Button;
-z;
+
+type ManagerBarStyles = Styles.Common & Styles.Image & Styles.Button;
 
 export interface AlarmStylesLocal extends AlarmStyles {
   buttonCancel: string; // '아니요' 버튼 id
@@ -80,4 +81,5 @@ export interface ScrewStylesLocal extends ScrewStyles {
 export interface FactoryStylesLocal extends FactoryStyles {
   name: string;
   count: string;
+  managerBar: string;
 }

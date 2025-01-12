@@ -127,6 +127,7 @@ const factoryStyles: FactoryStylesLocal = {
   buttonContents: FactoryStyled.buttonContents,
   name: FactoryStyled.name,
   count: FactoryStyled.count,
+  managerBar: FactoryStyled.managerBar,
 };
 
 const applyTestFlexProps = ({ name, age, isActive = true }: TestFlexProps) => {
@@ -178,7 +179,9 @@ const TestFlex = () => {
       <Button styles={buttonStyles} title='버튼' image='' />
       <div style={{ padding: '18px' }}></div>
       <Factory styles={factoryStyles} name={'토익공부'} count={'0'} />
-      <div style={{ padding: '18px' }}></div>
+      <div style={{ padding: '8px' }}></div>
+      <Factory styles={factoryStyles} name={'토익공부'} count={'0'} />
+      <div style={{ padding: '8px' }}></div>
       <Alarm
         styles={alarmStyles}
         title={'토익공부'}

@@ -1,4 +1,5 @@
 #container{
+  position: relative;
   display: flex;
   flex-direction: column;
   background-color: var(--white-color);
@@ -6,6 +7,13 @@
   font-size: var(--font-size-xsmall);
   border-radius: var(--corner-radius-medium);
   border: 2px solid var(--gray2-color);
+
+  .managerBar {
+    position: absolute;
+    top: -24px; /* 위로 13px */
+    left: 90px;
+  }
+
   .image{
     display: flex;
     justify-content: flex-end;

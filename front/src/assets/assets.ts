@@ -29,6 +29,11 @@ import downIcon from './img/down-icon.svg';
 import starIcon from './img/star-icon.svg';
 import starIconChecked from './img/star-icon-checked.svg';
 import moreIcon from './img/more-icon.svg';
+import deleteBarIcon from './img/delete-bar-icon.svg';
+import duplicateBarIcon from './img/duplicate-bar-icon.svg';
+import editBarIcon from './img/edit-bar-icon.svg';
+import shareBarIcon from './img/share-bar-icon.svg';
+
 const Assets = {
   reactLogo,
   viteLogo,
@@ -59,6 +64,10 @@ const Assets = {
   starIcon,
   starIconChecked,
   moreIcon,
+  deleteBarIcon,
+  duplicateBarIcon,
+  editBarIcon,
+  shareBarIcon,
 };
 
 export default Assets;
