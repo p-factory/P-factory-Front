@@ -33,14 +33,12 @@
       font-weight: var(--font-weight-bold);
       color: var(--black-color);
       margin-bottom: 8px;
-
     }
   }
   .buttonContents{
     background-color: var(--white-color);
     display: flex;
     justify-content: space-between;
-    color: var(--gray3-color);
     border-bottom-left-radius: var(--corner-radius-medium);
     border-bottom-right-radius: var(--corner-radius-medium);
     #buttonApprove, #buttonCancel{
@@ -50,11 +48,13 @@
       padding: 8px 0px 8px 0px;
       font-weight: var(--font-weight-semibold);
     }
-    #buttonCancel{
-    border-right: 1px solid var(--gray2-color);
+    #buttonApprove{
+      color: var(--gray5-color);
+      cursor: pointer;
     }
-    #buttonApprove:hover, #buttonCancel:hover{
-      color: var(--black-color);
+    #buttonCancel{
+      border-right: 1px solid var(--gray2-color);
+      color: var(--gray3-color);
       cursor: pointer;
     }
   }
