@@ -145,7 +145,7 @@ const TestFlex = () => {
       <Search
         styles={searchStyles}
         searchImage={Assets.searchIcon}
-        createImage={Assets.createIcon}
+        image={Assets.createIcon}
       />
       <div style={{ padding: '18px' }}></div>
 
