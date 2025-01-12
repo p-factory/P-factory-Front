@@ -6,7 +6,7 @@ import { useState } from 'react';
 const Footer = ({ styles }: { styles: FooterStyles }) => {
   if (Platform.OS === 'web') {
     // Hover 상태 관리
-    const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+    const [isHoveredItem, setHoveredItem] = useState<string | null>(null);
 
     const handleMouseEnter = (item: string) => setHoveredItem(item);
     const handleMouseLeave = () => setHoveredItem(null);
@@ -20,7 +20,7 @@ const Footer = ({ styles }: { styles: FooterStyles }) => {
           <div className={styles.image}>
             <img
               src={
-                hoveredItem === 'innerFactory'
+                isHoveredItem === 'innerFactory'
                   ? Assets.innerFactoryIconHover // Hover 이미지
                   : Assets.innerFactoryIcon // 기본 이미지
               }
@@ -37,7 +37,7 @@ const Footer = ({ styles }: { styles: FooterStyles }) => {
           <div className={styles.image}>
             <img
               src={
-                hoveredItem === 'outerFactory'
+                isHoveredItem === 'outerFactory'
                   ? Assets.outerFactoryIconHover // Hover 이미지
                   : Assets.outerFactoryIcon // 기본 이미지
               }
@@ -54,7 +54,7 @@ const Footer = ({ styles }: { styles: FooterStyles }) => {
           <div className={styles.image}>
             <img
               src={
-                hoveredItem === 'escapeGame'
+                isHoveredItem === 'escapeGame'
                   ? Assets.escapeGameIconHover // Hover 이미지
                   : Assets.escapeGameIcon // 기본 이미지
               }
@@ -71,7 +71,7 @@ const Footer = ({ styles }: { styles: FooterStyles }) => {
           <div className={styles.image}>
             <img
               src={
-                hoveredItem === 'myPage'
+                isHoveredItem === 'myPage'
                   ? Assets.mypageIconHover // Hover 이미지
                   : Assets.mypageIcon // 기본 이미지
               }

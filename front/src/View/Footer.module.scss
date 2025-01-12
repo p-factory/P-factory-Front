@@ -27,7 +27,7 @@
     font-weight: var(--font-weight-bold);
   }
 }
-
+// (원인2)
 @media (max-width: 380px) { //iphone 375px에서 반응하게 할지
   #footer {
     margin: 0;
