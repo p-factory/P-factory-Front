@@ -11,6 +11,7 @@ import SearchStyled from '../Search.module.scss';
 import ToolStyled from '../Tool.module.scss';
 import SortButtonStyled from '../Sort.Button.module.scss';
 import SortOptionStyled from '../SortOption.module.scss';
+import FactoryStyled from '../Factory.module.scss';
 import Button from '@shared/components/Button';
 import Alarm from '@shared/components/Alarm';
 import SignUpCheckList from '@shared/components/SignUpCheckList';
@@ -19,6 +20,7 @@ import Search from '@shared/components/Search';
 import Tool from '@shared/components/Tool';
 import SortOption from '@shared/components/SortOption';
 import SortButton from '@shared/components/Sort.Button';
+import Factory from '@shared/components/Factory';
 import {
   TestFlexProps,
   FooterStyles,
@@ -30,6 +32,7 @@ import {
   ToolStyles,
   SortButtonStyles,
   SortOptionStyles,
+  FactoryStylesLocal,
 } from '@shared/type';
 import Assets from '../../assets/assets';
 // Redux 사용시 필요한 구성
@@ -115,6 +118,15 @@ const sortOptionStyles: SortOptionStyles = {
   title: SortOptionStyled.title,
 };
 
+const factoryStyles: FactoryStylesLocal = {
+  container: FactoryStyled.container,
+  contents: FactoryStyled.contents,
+  title: FactoryStyled.title,
+  image: FactoryStyled.image,
+  name: FactoryStyled.name,
+  count: FactoryStyled.count,
+};
+
 const applyTestFlexProps = ({ name, age, isActive = true }: TestFlexProps) => {
   return {
     displayName: `${name} (${age})`,
@@ -162,6 +174,8 @@ const TestFlex = () => {
       <Button styles={buttonStyles} title='로그인' image={Assets.spannerIcon} />
       <div style={{ padding: '18px' }}></div>
       <Button styles={buttonStyles} title='버튼' image='' />
+      <div style={{ padding: '18px' }}></div>
+      <Factory styles={factoryStyles} name={'토익공부'} count={'0'} />
       <div style={{ padding: '18px' }}></div>
       <Alarm
         styles={alarmStyles}
