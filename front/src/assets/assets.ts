@@ -10,6 +10,7 @@ import mypageIcon from './img/mypage-icon.svg';
 import mypageIconHover from './img/mypage-icon-hover.svg';
 import spannerIcon from './img/spanner-icon.svg';
 import cancelIcon from './img/cancel-icon.svg';
+import cancelIconGray from './img/cancel-icon-gray.svg';
 import ptoryMainIcon from './img/ptory-main-logo.svg';
 import ptorySubIcon from './img/ptory-sub-logo.svg';
 import searchIcon from './img/search-icon.svg';
@@ -68,6 +69,7 @@ const Assets = {
   duplicateBarIcon,
   editBarIcon,
   shareBarIcon,
+  cancelIconGray,
 };
 
 export default Assets;
