@@ -1,10 +1,13 @@
 import reactLogo from './img/react.svg';
 import viteLogo from '/vite.svg'; // public 폴더 파일은 루트 경로로 접근 가능
 import escapeGameIcon from './img/escape-game-icon.svg';
+import escapeGameIconHover from './img/escape-game-icon-hover.svg';
 import innerFactoryIcon from './img/inner-factory-icon.svg';
+import innerFactoryIconHover from './img/inner-factory-icon-hover.svg';
 import outerFactoryIcon from './img/outer-factory-icon.svg';
 import outerFactoryIconHover from './img/outer-factory-icon-hover.svg';
 import mypageIcon from './img/mypage-icon.svg';
+import mypageIconHover from './img/mypage-icon-hover.svg';
 import spannerIcon from './img/spanner-icon.svg';
 import cancelIcon from './img/cancel-icon.svg';
 import ptoryMainIcon from './img/ptory-main-logo.svg';
@@ -23,6 +26,13 @@ import highlightIconHover from './img/highlight-icon-hover.svg';
 /* SortButton-Icons */
 import upIcon from './img/up-icon.svg';
 import downIcon from './img/down-icon.svg';
+import starIcon from './img/star-icon.svg';
+import starIconChecked from './img/star-icon-checked.svg';
+import moreIcon from './img/more-icon.svg';
+import deleteBarIcon from './img/delete-bar-icon.svg';
+import duplicateBarIcon from './img/duplicate-bar-icon.svg';
+import editBarIcon from './img/edit-bar-icon.svg';
+import shareBarIcon from './img/share-bar-icon.svg';
 
 const Assets = {
   reactLogo,
@@ -31,8 +41,11 @@ const Assets = {
   innerFactoryIcon,
   outerFactoryIcon,
   mypageIcon,
-  spannerIcon,
+  escapeGameIconHover,
+  innerFactoryIconHover,
   outerFactoryIconHover,
+  mypageIconHover,
+  spannerIcon,
   cancelIcon,
   ptoryMainIcon,
   ptorySubIcon,
@@ -48,6 +61,13 @@ const Assets = {
   highlightIconHover,
   upIcon,
   downIcon,
+  starIcon,
+  starIconChecked,
+  moreIcon,
+  deleteBarIcon,
+  duplicateBarIcon,
+  editBarIcon,
+  shareBarIcon,
 };
 
 export default Assets;

@@ -9,6 +9,7 @@ import SignUpCheckListStyled from '../SignUpCheckList.module.scss';
 import SirenStyled from '../Siren.module.scss';
 import SearchStyled from '../Search.module.scss';
 import ToolStyled from '../Tool.module.scss';
+import FactoryStyled from '../Factory.module.scss';
 import SortStyled from '../Sort.module.scss';
 import Button from '@shared/components/Button';
 import Alarm from '@shared/components/Alarm';
@@ -16,6 +17,7 @@ import SignUpCheckList from '@shared/components/SignUpCheckList';
 import Siren from '@shared/components/Siren';
 import Search from '@shared/components/Search';
 import Tool from '@shared/components/Tool';
+import Factory from '@shared/components/Factory';
 import Sort from '@shared/components/Sort';
 import {
   TestFlexProps,
@@ -26,6 +28,7 @@ import {
   SirenStylesLocal,
   SearchStylesLocal,
   ToolStyles,
+  FactoryStylesLocal,
   SortStylesLocal,
 } from '@shared/type';
 import Assets from '../../assets/assets';
@@ -108,6 +111,18 @@ const sortStyles: SortStylesLocal = {
   image: SortStyled.image,
 };
 
+const factoryStyles: FactoryStylesLocal = {
+  container: FactoryStyled.container,
+  contents: FactoryStyled.contents,
+  title: FactoryStyled.title,
+  image: FactoryStyled.image,
+  button: FactoryStyled.button,
+  buttonContents: FactoryStyled.buttonContents,
+  name: FactoryStyled.name,
+  count: FactoryStyled.count,
+  managerBar: FactoryStyled.managerBar,
+};
+
 const applyTestFlexProps = ({ name, age, isActive = true }: TestFlexProps) => {
   return {
     displayName: `${name} (${age})`,
@@ -156,6 +171,10 @@ const TestFlex = () => {
       <div style={{ padding: '18px' }}></div>
       <Button styles={buttonStyles} title='버튼' image='' />
       <div style={{ padding: '18px' }}></div>
+      <Factory styles={factoryStyles} name={'토익공부'} count={'0'} />
+      <div style={{ padding: '8px' }}></div>
+      <Factory styles={factoryStyles} name={'토익공부'} count={'0'} />
+      <div style={{ padding: '8px' }}></div>
       <Alarm
         styles={alarmStyles}
         title={'토익공부'}

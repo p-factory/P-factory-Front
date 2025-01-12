@@ -44,6 +44,8 @@ type SearchStyles = Styles.Common & Styles.Button & Styles.Image;
 type ToolStyles = Styles.Common & Styles.Image;
 type ScrewStyles = Styles.Common & Styles.Button;
 type SortStyles = Styles.Common & Styles.Button & Styles.Image;
+type FactoryStyles = Styles.Common & Styles.Image & Styles.Button;
+type ManagerBarStyles = Styles.Common & Styles.Image & Styles.Button;
 
 export interface AlarmStylesLocal extends AlarmStyles {
   buttonCancel: string; // '아니요' 버튼 id
@@ -76,4 +78,10 @@ export interface ScrewStylesLocal extends ScrewStyles {
 export interface SortStylesLocal extends SortStyles {
   sortOptions: string;
   sortOption: string;
+}
+
+export interface FactoryStylesLocal extends FactoryStyles {
+  name: string;
+  count: string;
+  managerBar: string;
 }

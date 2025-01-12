@@ -1,0 +1,39 @@
+#container{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white-color);
+  padding: 22px 12px 22px 24px;
+  font-size: var(--font-size-xsmall);
+  border-radius: var(--corner-radius-medium);
+  border: 2px solid var(--gray2-color);
+
+  .managerBar {
+    position: absolute;
+    top: -24px; /* 위로 13px */
+    left: 90px;
+  }
+
+  .image{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 7px;
+    cursor: pointer;
+  }
+  #buttonContents{
+    display: flex;
+    justify-content: space-between;
+    #contents{
+      cursor: pointer;
+      #name{
+        font-size: var(--font-size-medium);
+        font-weight: var(--font-weight-bold);
+        margin-bottom: 3px;
+      }
+      .image{
+        margin-top: 19px;
+        padding: 0;
+      }
+    }
+  }
+}
