@@ -47,6 +47,7 @@ type SortStyles = Styles.Common & Styles.Button & Styles.Image;
 type FactoryStyles = Styles.Common & Styles.Image & Styles.Button;
 type ManagerBarStyles = Styles.Common & Styles.Image & Styles.Button;
 type BuildFactoryStyles = Styles.Common & Styles.Image;
+type DriverStyles = Styles.Common & Styles.Image & Styles.Button;
 
 export interface AlarmStylesLocal extends AlarmStyles {
   buttonCancel: string; // '아니요' 버튼 id
@@ -94,4 +95,8 @@ export interface BuildFactoryStylesLocal extends BuildFactoryStyles {
   titleBar: string;
   input: string;
   charCounter: string;
+}
+
+export interface DriverStylesLocal extends DriverStyles {
+  inputContents: string;
 }

@@ -13,6 +13,7 @@ import FactoryStyled from '../Factory.module.scss';
 import SortStyled from '../Sort.module.scss';
 import ScrewStyled from '../Screw.module.scss';
 import BuildFactoryStyled from '../BuildFactory.module.scss';
+import DriverStyled from '../Driver.module.scss';
 import Button from '@shared/components/Button';
 import Alarm from '@shared/components/Alarm';
 import SignUpCheckList from '@shared/components/SignUpCheckList';
@@ -23,6 +24,7 @@ import Factory from '@shared/components/Factory';
 import Sort from '@shared/components/Sort';
 import Screw from '@shared/components/Screw';
 import BuildFactory from '@shared/components/BuildFactory';
+import Driver from '@shared/components/Driver';
 import {
   TestFlexProps,
   FooterStyles,
@@ -36,6 +38,7 @@ import {
   SortStylesLocal,
   ScrewStylesLocal,
   BuildFactoryStylesLocal,
+  DriverStylesLocal,
 } from '@shared/type';
 import Assets from '../../assets/assets';
 // Redux 사용시 필요한 구성
@@ -154,6 +157,16 @@ const buildFactoryStyles: BuildFactoryStylesLocal = {
   charCounter: BuildFactoryStyled.charCounter,
 };
 
+const driverStyles: DriverStylesLocal = {
+  title: DriverStyled.title,
+  container: DriverStyled.container,
+  contents: DriverStyled.contents,
+  inputContents: DriverStyled.inputContents,
+  buttonContents: DriverStyled.buttonContents,
+  button: DriverStyled.button,
+  image: DriverStyled.image,
+};
+
 const applyTestFlexProps = ({ name, age, isActive = true }: TestFlexProps) => {
   return {
     displayName: `${name} (${age})`,
@@ -237,6 +250,8 @@ const TestFlex = () => {
         input={'공장 제목을 입력하세요.'}
         charCounter={12}
       />
+      <div style={{ padding: '8px' }}></div>
+      <Driver styles={driverStyles} />
       <div style={{ padding: '18px' }}></div>
       <Tool styles={toolStyles} />
       <div style={{ padding: '18px' }}></div>

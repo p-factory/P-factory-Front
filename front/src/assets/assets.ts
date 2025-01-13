@@ -34,6 +34,7 @@ import deleteBarIcon from './img/delete-bar-icon.svg';
 import duplicateBarIcon from './img/duplicate-bar-icon.svg';
 import editBarIcon from './img/edit-bar-icon.svg';
 import shareBarIcon from './img/share-bar-icon.svg';
+import addIcon from './img/add-icon.svg';
 
 const Assets = {
   reactLogo,
@@ -70,6 +71,7 @@ const Assets = {
   editBarIcon,
   shareBarIcon,
   cancelIconGray,
+  addIcon,
 };
 
 export default Assets;
