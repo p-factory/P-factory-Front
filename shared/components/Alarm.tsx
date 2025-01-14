@@ -24,7 +24,7 @@ const Alarm = ({
         </div>
         <div className={styles.buttonContents}>
           <div id={styles.buttonCancel}>아니요</div>
-          <div id={styles.buttonApprove}>네</div>
+          <div id={styles.buttonApprove}>예</div>
         </div>
       </div>
     );
