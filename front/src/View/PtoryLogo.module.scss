@@ -1,0 +1,28 @@
+@font-face {
+    font-family: 'Jejudoldam';
+    src: url('../assets/font/jejuDoldam.woff') format('woff');
+  }
+#container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'jejudoldam';
+    line-height: 1;
+
+    #contents{
+        display: flex;
+        font-size: 21px;
+        color: #7c7c7c;
+        font-weight: var(--font-weight-medium);
+        letter-spacing: -0.02em;
+        margin-bottom: 17px;
+    }
+    #title{
+        display: flex;
+        font-size: 80px;
+        color: var(--black-color);
+        font-weight: var(--font-weight-medium);
+        letter-spacing: 0;
+    }
+}
