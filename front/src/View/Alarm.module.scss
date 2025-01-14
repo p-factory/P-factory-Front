@@ -34,6 +34,9 @@
       color: var(--black-color);
       margin-bottom: 8px;
     }
+    div{
+      white-space: nowrap; /* 줄바꿈 방지 */
+    }
   }
   .buttonContents{
     background-color: var(--white-color);

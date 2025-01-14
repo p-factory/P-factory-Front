@@ -54,10 +54,15 @@
       display: flex;
       justify-content: center;
       border: 2px solid var(--gray2-color);
-      padding: 12px 147px;
       margin-top: 8px;
       border-radius: var(--corner-radius-regular);
-      cursor: pointer;
+
+      #button{
+        display: flex;
+        justify-content: center;
+        padding: 12px 147px;   
+        cursor: pointer;
+      }
     }
   }
 }

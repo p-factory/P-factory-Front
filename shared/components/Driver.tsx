@@ -22,8 +22,11 @@ const Alarm = ({ styles }: { styles: DriverStylesLocal }) => {
             <input placeholder='의미를 입력하세요.(필수)' type='text' />
           </div>
           <div id={styles.buttonContents} onClick={() => console.log('test')}>
-            <img src={Assets.addIcon} alt='' />
+            <div id={styles.button}>
+              <img src={Assets.addIcon} alt='' />
+            </div>
           </div>
+
           <div className={styles.inputContents}>
             <span>발음</span>
             <input placeholder='발음을 입력하세요.' type='text' />
