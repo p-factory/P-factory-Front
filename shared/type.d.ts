@@ -48,6 +48,7 @@ type FactoryStyles = Styles.Common & Styles.Image & Styles.Button;
 type ManagerBarStyles = Styles.Common & Styles.Image & Styles.Button;
 type BuildFactoryStyles = Styles.Common & Styles.Image;
 type DriverStyles = Styles.Common & Styles.Image & Styles.Button;
+type PtoryLogoStyles = Styles.Common;
 
 export interface AlarmStylesLocal extends AlarmStyles {
   buttonCancel: string; // '아니요' 버튼 id

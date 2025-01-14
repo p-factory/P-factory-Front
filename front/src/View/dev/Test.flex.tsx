@@ -14,6 +14,7 @@ import SortStyled from '../Sort.module.scss';
 import ScrewStyled from '../Screw.module.scss';
 import BuildFactoryStyled from '../BuildFactory.module.scss';
 import DriverStyled from '../Driver.module.scss';
+import PtoryLogoStyled from '../PtoryLogo.module.scss';
 import Button from '@shared/components/Button';
 import Alarm from '@shared/components/Alarm';
 import SignUpCheckList from '@shared/components/SignUpCheckList';
@@ -25,6 +26,7 @@ import Sort from '@shared/components/Sort';
 import Screw from '@shared/components/Screw';
 import BuildFactory from '@shared/components/BuildFactory';
 import Driver from '@shared/components/Driver';
+import PtoryLogo from '@shared/components/PtoryLogo';
 import {
   TestFlexProps,
   FooterStyles,
@@ -39,6 +41,7 @@ import {
   ScrewStylesLocal,
   BuildFactoryStylesLocal,
   DriverStylesLocal,
+  PtoryLogoStyles,
 } from '@shared/type';
 import Assets from '../../assets/assets';
 // Redux 사용시 필요한 구성
@@ -167,6 +170,12 @@ const driverStyles: DriverStylesLocal = {
   image: DriverStyled.image,
 };
 
+const ptoryLogoStyles: PtoryLogoStyles = {
+  container: PtoryLogoStyled.container,
+  contents: PtoryLogoStyled.contents,
+  title: PtoryLogoStyled.title,
+};
+
 const applyTestFlexProps = ({ name, age, isActive = true }: TestFlexProps) => {
   return {
     displayName: `${name} (${age})`,
@@ -210,6 +219,8 @@ const TestFlex = () => {
       <div id={styled.test}>test</div>
       <div id={styled.content}>Contents</div>
       <TestButton label='Press Me' onPress={() => alert('Pressed!')} />
+      <div style={{ padding: '18px' }}></div>
+      <PtoryLogo styles={ptoryLogoStyles} />
       <div style={{ padding: '18px' }}></div>
       <Button styles={buttonStyles} title='로그인' image={Assets.spannerIcon} />
       <div style={{ padding: '18px' }}></div>
