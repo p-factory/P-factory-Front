@@ -49,6 +49,7 @@ type ManagerBarStyles = Styles.Common & Styles.Image & Styles.Button;
 type BuildFactoryStyles = Styles.Common & Styles.Image;
 type DriverStyles = Styles.Common & Styles.Image & Styles.Button;
 type PtoryLogoStyles = Styles.Common;
+type SortOptionStyles = Styles.Button;
 
 export interface ToolStylesLocal extends ToolStyles {
   tools: string;
