@@ -2,6 +2,7 @@ import { Platform, Text } from 'react-native';
 import { useState } from 'react';
 import Assets from '../../front/src/assets/assets';
 import SortOptionStyled from '../SortOption.module.scss';
+import { SortOptionStyles, SortStylesLocal } from '../type';
 
 export const SortOption = ({
   styles,
@@ -37,17 +38,7 @@ export const SortOption = ({
   );
 };
 
-const Sort = ({
-  styles,
-}: {
-  styles: {
-    container: string;
-    button: string;
-    contents: string;
-    title: string;
-    image: string;
-  };
-}) => {
+const Sort = ({ styles }: { styles: SortStylesLocal }) => {
   const [isButtonClicked, setButtonClicked] = useState(false);
   const [isClickedItem, setClickedItem] = useState<string | null>('최신순');
   const title = isClickedItem;
@@ -58,7 +49,7 @@ const Sort = ({
     setButtonClicked(false);
   };
 
-  const sortOptionStyles = {
+  const sortOptionStyles: SortOptionStyles = {
     button: SortOptionStyled.button,
     buttonContents: SortOptionStyled.buttonContents,
   };
@@ -77,9 +68,11 @@ const Sort = ({
             </div>
           </div>
         </div>
-        {isButtonClicked && (
-          <SortOption styles={sortOptionStyles} onClick={onClick} />
-        )}
+        <div id={styles.sortOption}>
+          {isButtonClicked && (
+            <SortOption styles={sortOptionStyles} onClick={onClick} />
+          )}
+        </div>
       </div>
     );
   }

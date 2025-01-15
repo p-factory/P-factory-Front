@@ -87,7 +87,6 @@ export interface ScrewStylesLocal extends ScrewStyles {
 }
 
 export interface SortStylesLocal extends SortStyles {
-  sortOptions: string;
   sortOption: string;
 }
 

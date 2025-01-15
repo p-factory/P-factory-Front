@@ -118,7 +118,6 @@ const sortStyles: SortStylesLocal = {
   buttonContents: SortStyled.contents,
   container: SortStyled.container,
   contents: SortStyled.contents,
-  sortOptions: SortStyled.sortOptions,
   sortOption: SortStyled.sortOption,
   title: SortStyled.title,
   image: SortStyled.image,
@@ -202,7 +201,8 @@ const TestFlex = () => {
         image={Assets.createIcon}
       />
       <div style={{ padding: '18px' }}></div>
-
+      <Sort styles={sortStyles} />
+      <div style={{ padding: '18px' }}></div>
       <div>
         <h3>Count: {count}</h3>
         <div>
@@ -265,8 +265,6 @@ const TestFlex = () => {
       />
       <div style={{ padding: '18px' }}></div>
       <Driver styles={driverStyles} />
-      <div style={{ padding: '18px' }}></div>
-      <Sort styles={sortStyles} />
       <div style={{ padding: '18px' }}></div>
       <Tool styles={toolStyles} />
       {/* <div style={{ padding: '18px' }}></div> */}

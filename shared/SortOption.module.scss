@@ -9,6 +9,8 @@
     font-weight: var(--font-weight-medium);
     white-space: nowrap; /* 줄바꿈 방지 */
     color: var(--gray4-color);
+    position: absolute;
+    width: 100%;
 
     .buttonContents {
         display: flex;
