@@ -50,6 +50,10 @@ type BuildFactoryStyles = Styles.Common & Styles.Image;
 type DriverStyles = Styles.Common & Styles.Image & Styles.Button;
 type PtoryLogoStyles = Styles.Common;
 
+export interface ToolStylesLocal extends ToolStyles {
+  tools: string;
+}
+
 export interface AlarmStylesLocal extends AlarmStyles {
   buttonCancel: string; // '아니요' 버튼 id
   buttonApprove: string; // '네' 버튼 id

@@ -35,7 +35,7 @@ import {
   SignUpCheckListStylesLocal,
   SirenStylesLocal,
   SearchStylesLocal,
-  ToolStyles,
+  ToolStylesLocal,
   FactoryStylesLocal,
   SortStylesLocal,
   ScrewStylesLocal,
@@ -105,11 +105,12 @@ const searchStyles: SearchStylesLocal = {
   group: SearchStyled.group,
 };
 
-const toolStyles: ToolStyles = {
+const toolStyles: ToolStylesLocal = {
   container: ToolStyled.container,
   contents: ToolStyled.contents,
   image: ToolStyled.image,
   title: ToolStyled.title,
+  tools: ToolStyled.tools,
 };
 
 const sortStyles: SortStylesLocal = {
@@ -265,10 +266,10 @@ const TestFlex = () => {
       <div style={{ padding: '18px' }}></div>
       <Driver styles={driverStyles} />
       <div style={{ padding: '18px' }}></div>
-      <Tool styles={toolStyles} />
-      <div style={{ padding: '18px' }}></div>
       <Sort styles={sortStyles} />
       <div style={{ padding: '18px' }}></div>
+      <Tool styles={toolStyles} />
+      {/* <div style={{ padding: '18px' }}></div> */}
       <Footer styles={footerStyles} />
     </div>
   );

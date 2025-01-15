@@ -1,4 +1,9 @@
-#container{
+#container {
+  // sticky 추가
+  position: sticky;
+  bottom: 110px;
+
+  #tools{
     background-color: var(--white-color);
     display: flex;
     justify-content: space-between;
@@ -22,9 +27,9 @@
   
     }
   }
-  
-  @media (max-width: 380px) { //iphone 375px에서 반응하게 할지
-    #footer {
-      margin: 0;
-    }
-  }
+}  
+  // @media (max-width: 380px) { //iphone 375px에서 반응하게 할지
+  //   #footer {
+  //     margin: 0;
+  //   }
+  // }
