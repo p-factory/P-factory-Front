@@ -13,13 +13,26 @@
     top: -24px; /* 위로 13px */
     left: 90px;
   }
-
+  #clickArea{
+    position: absolute;
+    top: 12%;
+    right: 4%;
+    opacity: 0;
+    width: 27px;
+    height: 20px;
+    z-index: 2;
+    cursor: pointer;
+  }
+  #clickArea:hover{
+    background-color: tomato;
+    opacity: 0.5;
+  }
   .image {
+    position: relative;
     display: flex;
     justify-content: flex-end;
     padding-right: 7px;
     padding-top: 10px;
-    cursor: pointer;
   }
   #buttonContents{
     display: flex;
@@ -33,6 +46,7 @@
       .image{
         margin-top: 19px;
         padding: 0;
+        cursor: pointer;
       }
     }
   }

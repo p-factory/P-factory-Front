@@ -133,6 +133,7 @@ const factoryStyles: FactoryStylesLocal = {
   name: FactoryStyled.name,
   count: FactoryStyled.count,
   managerBar: FactoryStyled.managerBar,
+  clickArea: FactoryStyled.clickArea,
 };
 
 const screwStyles: ScrewStylesLocal = {

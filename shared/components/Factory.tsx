@@ -70,9 +70,10 @@ const Factory = ({
           <div className={styles.managerBar}>
             {isMoreActive && <ManagerBar styles={managerBarStyles} />}
           </div>
-          <div className={styles.image} onClick={handleMoreActive}>
+          <div className={styles.image}>
             <img src={Assets.moreIcon} alt='' />
           </div>
+          <div id={styles.clickArea} onClick={handleMoreActive}></div>
           <div id={styles.buttonContents}>
             <div id={styles.contents}>
               <div id={styles.name}>{name}</div>

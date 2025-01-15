@@ -94,6 +94,7 @@ export interface FactoryStylesLocal extends FactoryStyles {
   name: string;
   count: string;
   managerBar: string;
+  clickArea: string;
 }
 
 export interface BuildFactoryStylesLocal extends BuildFactoryStyles {
