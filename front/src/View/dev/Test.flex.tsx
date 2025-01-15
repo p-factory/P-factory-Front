@@ -260,8 +260,9 @@ const TestFlex = () => {
         image={Assets.cancelIconGray}
         input={'공장 제목을 입력하세요.'}
         charCounter={12}
+        buttonTitle={'공장 만들기'}
       />
-      <div style={{ padding: '8px' }}></div>
+      <div style={{ padding: '18px' }}></div>
       <Driver styles={driverStyles} />
       <div style={{ padding: '18px' }}></div>
       <Tool styles={toolStyles} />
