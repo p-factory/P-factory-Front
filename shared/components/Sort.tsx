@@ -19,11 +19,12 @@ const Sort = ({ styles }: { styles: SortStylesLocal }) => {
         <div id={styles.button} onClick={handleButtonClicked}>
           <div id={styles.contents}>
             <span id={styles.title}>{title}</span>
-            <img
-              id={styles.image}
-              src={isButtonClicked ? Assets.upIcon : Assets.downIcon}
-              alt=''
-            />
+            <div id={styles.image}>
+              <img
+                src={isButtonClicked ? Assets.upIcon : Assets.downIcon}
+                alt=''
+              />
+            </div>
           </div>
         </div>
         {isButtonClicked && (
