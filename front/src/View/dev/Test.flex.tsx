@@ -169,6 +169,7 @@ const driverStyles: DriverStylesLocal = {
   buttonContents: DriverStyled.buttonContents,
   button: DriverStyled.button,
   image: DriverStyled.image,
+  submit: DriverStyled.submit,
 };
 
 const ptoryLogoStyles: PtoryLogoStyles = {

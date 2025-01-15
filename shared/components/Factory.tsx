@@ -14,34 +14,36 @@ const managerBarStyles: ManagerBarStyles = {
 };
 
 export const ManagerBar = ({ styles }: { styles: ManagerBarStyles }) => {
-  return (
-    <div id={styles.container}>
-      <div id={styles.contents}>
-        <div id={styles.button}>
-          <img src={Assets.shareBarIcon} alt='shareIcon' />
+  if (Platform.OS === 'web') {
+    return (
+      <div id={styles.container}>
+        <div id={styles.contents}>
+          <div id={styles.button}>
+            <img src={Assets.shareBarIcon} alt='shareIcon' />
+          </div>
+          <span>공유</span>
         </div>
-        <span>공유</span>
-      </div>
-      <div id={styles.contents}>
-        <div id={styles.button}>
-          <img src={Assets.editBarIcon} alt='editIcon' />
+        <div id={styles.contents}>
+          <div id={styles.button}>
+            <img src={Assets.editBarIcon} alt='editIcon' />
+          </div>
+          <span>수정</span>
         </div>
-        <span>수정</span>
-      </div>
-      <div id={styles.contents}>
-        <div id={styles.button}>
-          <img src={Assets.duplicateBarIcon} alt='duplicateIcon' />
+        <div id={styles.contents}>
+          <div id={styles.button}>
+            <img src={Assets.duplicateBarIcon} alt='duplicateIcon' />
+          </div>
+          <span>복제</span>
         </div>
-        <span>복제</span>
-      </div>
-      <div id={styles.contents}>
-        <div id={styles.button}>
-          <img src={Assets.deleteBarIcon} alt='deleteIcon' />
+        <div id={styles.contents}>
+          <div id={styles.button}>
+            <img src={Assets.deleteBarIcon} alt='deleteIcon' />
+          </div>
+          <span>삭제</span>
         </div>
-        <span>삭제</span>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 const Factory = ({

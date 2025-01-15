@@ -69,3 +69,21 @@
     }
   }
 }
+
+.button, .submit{
+  background-color: var(--gray2-color);
+  border-radius: var(--corner-radius-large);
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  margin-top: 24px;
+  cursor: pointer;
+  button{
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-medium);
+  }
+}
+
+.submit{
+  background-color: var(--primary-color);
+}
