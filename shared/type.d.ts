@@ -46,7 +46,7 @@ type ScrewStyles = Styles.Common & Styles.Button;
 type SortStyles = Styles.Common & Styles.Button & Styles.Image;
 type FactoryStyles = Styles.Common & Styles.Image & Styles.Button;
 type ManagerBarStyles = Styles.Common & Styles.Image & Styles.Button;
-type BuildFactoryStyles = Styles.Common & Styles.Image;
+type BuildFactoryStyles = Styles.Common & Styles.Image & Styles.Button;
 type DriverStyles = Styles.Common & Styles.Image & Styles.Button;
 type PtoryLogoStyles = Styles.Common;
 type SortOptionStyles = Styles.Button;
@@ -101,6 +101,7 @@ export interface BuildFactoryStylesLocal extends BuildFactoryStyles {
   titleBar: string;
   input: string;
   charCounter: string;
+  submit: string;
 }
 
 export interface DriverStylesLocal extends DriverStyles {

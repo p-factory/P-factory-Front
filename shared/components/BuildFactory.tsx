@@ -1,16 +1,6 @@
 import { Platform, Text } from 'react-native';
-import { BuildFactoryStylesLocal, ButtonStyles } from '../type';
-import Button from './Button';
-import ButtonStyled from '../../front/src/View/Button.module.scss';
-
-const buttonStyles: ButtonStyles = {
-  button: ButtonStyled.button,
-  container: ButtonStyled.container,
-  contents: ButtonStyled.contents,
-  buttonContents: ButtonStyled.contents,
-  title: ButtonStyled.title,
-  image: ButtonStyled.image,
-};
+import { BuildFactoryStylesLocal } from '../type';
+import { useState, useEffect } from 'react';
 
 const BuildFactory = ({
   styles,
@@ -18,16 +8,20 @@ const BuildFactory = ({
   image,
   input,
   charCounter,
-  buttonTitle,
 }: {
   styles: BuildFactoryStylesLocal;
   title: string;
   image: string;
   input: string;
   charCounter: number;
-  buttonTitle: string;
 }) => {
   if (Platform.OS === 'web') {
+    const [isState, setState] = useState<boolean>(false);
+
+    useEffect(() => {
+      setState(false);
+    }, []);
+
     return (
       <div>
         <div id={styles.container}>
@@ -42,7 +36,9 @@ const BuildFactory = ({
             <div id={styles.charCounter}>{`(0/${charCounter})`}</div>
           </div>
         </div>
-        <Button styles={buttonStyles} title={`${buttonTitle}`} image='' />
+        <div className={isState ? styles.submit : styles.button}>
+          <div>공장 만들기</div>
+        </div>
       </div>
     );
   }

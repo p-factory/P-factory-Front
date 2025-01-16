@@ -159,6 +159,9 @@ const buildFactoryStyles: BuildFactoryStylesLocal = {
   titleBar: BuildFactoryStyled.titleBar,
   input: BuildFactoryStyled.input,
   charCounter: BuildFactoryStyled.charCounter,
+  submit: BuildFactoryStyled.submit,
+  button: BuildFactoryStyled.button,
+  buttonContents: BuildFactoryStyled.buttonContents,
 };
 
 const driverStyles: DriverStylesLocal = {
@@ -263,7 +266,6 @@ const TestFlex = () => {
         image={Assets.cancelIconGray}
         input={'공장 제목을 입력하세요.'}
         charCounter={12}
-        buttonTitle={'공장 만들기'}
       />
       <div style={{ padding: '18px' }}></div>
       <Driver styles={driverStyles} />
