@@ -7,13 +7,13 @@ const BuildFactory = ({
   title,
   image,
   input,
-  charCounter,
+  buttonTitle,
 }: {
   styles: BuildFactoryStylesLocal;
   title: string;
   image: string;
   input: string;
-  charCounter: number;
+  buttonTitle: string;
 }) => {
   if (Platform.OS === 'web') {
     const [isState, setState] = useState<boolean>(false);
@@ -33,11 +33,11 @@ const BuildFactory = ({
           </div>
           <div id={styles.contents}>
             <input id={styles.input} placeholder={`${input}`} />
-            <div id={styles.charCounter}>{`(0/${charCounter})`}</div>
+            <div id={styles.charCounter}>(0/12)</div>
           </div>
         </div>
         <div className={isState ? styles.submit : styles.button}>
-          <div>공장 만들기</div>
+          <div>{`${buttonTitle}`}</div>
         </div>
       </div>
     );

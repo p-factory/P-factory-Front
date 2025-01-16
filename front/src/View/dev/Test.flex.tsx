@@ -265,7 +265,15 @@ const TestFlex = () => {
         title={'새로운 공장'}
         image={Assets.cancelIconGray}
         input={'공장 제목을 입력하세요.'}
-        charCounter={12}
+        buttonTitle='공장 만들기'
+      />
+      <div style={{ padding: '18px' }}></div>
+      <BuildFactory
+        styles={buildFactoryStyles}
+        title={'공장 이름 수정'}
+        image={Assets.cancelIconGray}
+        input={'토익 영어 단어장'}
+        buttonTitle='수정하기'
       />
       <div style={{ padding: '18px' }}></div>
       <Driver styles={driverStyles} />
