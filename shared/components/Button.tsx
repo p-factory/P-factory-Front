@@ -1,18 +1,27 @@
 import { Platform, Text } from 'react-native';
-import { ButtonStyles } from '../type';
+import { ButtonStyles, Functions } from '../type';
 
 const Button = ({
   styles,
   title,
   image,
+  functions,
 }: {
   styles: ButtonStyles;
   title: string;
   image: string;
+  functions: Functions.GeneralArg;
 }) => {
   if (Platform.OS === 'web') {
+    const handleClick = () => {
+      // 타입 가드 추가: 함수인지 객체인지 구분
+      if (typeof functions === 'function') {
+        functions(); // 함수인 경우 실행
+      }
+    };
+
     return (
-      <div id={styles.button}>
+      <div id={styles.button} onClick={handleClick}>
         <div id={styles.contents}>
           <span id={styles.title}>{title}</span>
           <img id={styles.image} src={image} alt='' />

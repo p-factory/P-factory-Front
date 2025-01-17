@@ -36,7 +36,10 @@ import { searchIcon, createIcon } from '../../assets';
 // Redux 사용시 필요한 구성
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState, Increment, Decrement } from '@shared/store';
-
+import {
+  TestSingleFunction,
+  TestMultiFunction,
+} from '../../Controller/Test.function';
 // const applyTestFlexProps = ({ name, age, isActive = true }: TestFlexProps) => {
 //   return {
 //     displayName: `${name} (${age})`,
@@ -73,7 +76,6 @@ const TestFlex = () => {
           <button onClick={() => dispatch(Decrement())}>decrement</button>
         </div>
       </div>
-
       {/* <div>
         <h1>{displayName}</h1>
         <p>Status: {status}</p>
@@ -88,9 +90,19 @@ const TestFlex = () => {
         styles={ButtonTypeStyles}
         title='로그인'
         image={Assets.spannerIcon}
+        functions={() => {
+          console.log(TestSingleFunction('test'));
+        }}
       />
       <div style={{ padding: '18px' }}></div>
-      <Button styles={ButtonTypeStyles} title='버튼' image='' />
+      <Button
+        styles={ButtonTypeStyles}
+        title='버튼'
+        image=''
+        functions={() => {
+          console.log(TestMultiFunction(5, 'test'));
+        }}
+      />
       <div style={{ padding: '18px' }}></div>
       <Factory styles={FactoryTypeStyles} name={'토익공부'} count={'0'} />
       <div style={{ padding: '8px' }}></div>
