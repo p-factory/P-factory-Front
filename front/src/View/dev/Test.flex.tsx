@@ -44,6 +44,7 @@ import {
   PtoryLogoStyles,
 } from '@shared/type';
 import Assets from '../../assets/assets';
+import { searchIcon, createIcon } from '../../assets';
 // Redux 사용시 필요한 구성
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState, Increment, Decrement } from '@shared/store';
@@ -202,8 +203,8 @@ const TestFlex = () => {
     <div className={styled.debug}>
       <Search
         styles={searchStyles}
-        searchImage={Assets.searchIcon}
-        image={Assets.createIcon}
+        searchImage={searchIcon}
+        image={createIcon}
       />
       <div style={{ padding: '18px' }}></div>
       <Sort styles={sortStyles} />
