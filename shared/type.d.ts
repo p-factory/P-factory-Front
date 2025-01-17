@@ -28,10 +28,21 @@ export namespace Styles {
   }
 }
 
-// functions => multi args >> object
-export interface Functions {
-  defaultFunction: () => void;
-  transitionFunction<Cell, Organism>(args: Cell): Organism;
+//functions => multi args >> object
+export namespace Functions {
+  export interface GeneralArg {
+    (): void;
+  }
+
+  export interface DefaultArg<ReturnType> {
+    (): ReturnType;
+  }
+  export interface SingleArg<Arg, ReturnType> {
+    (arg: Arg): ReturnType;
+  }
+  export interface MultiArg<Args extends any[], ReturnType> {
+    (...args: Args): ReturnType;
+  }
 }
 
 // Custom type
