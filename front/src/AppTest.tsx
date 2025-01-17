@@ -1,6 +1,6 @@
-import { useRecoilState } from 'recoil';
-import { countState } from './Model/Atoms/atoms';
-import { useState } from 'react';
+// import { useRecoilState } from 'recoil';
+// import { countState } from './Model/Atoms/atoms';
+// import { useState } from 'react';
 import './App.scss';
 import assets from './assets/assets';
 // import Button from '../../shared/components/Button';
@@ -8,7 +8,7 @@ import Button from '@shared/components/Test.Button';
 
 const App = () => {
   // Recoil 상태로 관리
-  const [isCount, setCount] = useRecoilState(countState);
+  // const [isCount, setCount] = useRecoilState(countState);
 
   return (
     <div className='App'>
@@ -22,9 +22,9 @@ const App = () => {
       </div>
       <h1>Vite + React</h1>
       <div className='card'>
-        <button onClick={() => setCount((prevCount) => prevCount + 1)}>
+        {/* <button onClick={() => setCount((prevCount) => prevCount + 1)}>
           count is {isCount}
-        </button>
+        </button> */}
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
