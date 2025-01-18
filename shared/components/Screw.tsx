@@ -18,18 +18,18 @@ const Screw = ({
   if (Platform.OS === 'web') {
     // nuts를 단어별로 나눠서 배열로 변환
     const nutArray = nuts.split(','); // 쉼표 기준으로 단어 분리(추후 백에서 받아오는 데이터에 따라 수정 필요)
-    const [isChecked, setIsChecked] = useState<boolean>(false);
-    const [isSelected, setIsSelected] = useState<boolean>(false);
+    const [isChecked, setChecked] = useState<boolean>(false);
+    const [isSelected, setSelected] = useState<boolean>(false);
     // bolt와 각 nut의 highlight 상태 관리
     const [isHighlighted, setHighlighted] = useState({
       bolt: false,
       nuts: Array(nutArray.length).fill(false),
     });
     const onCheckboxChange = () => {
-      setIsChecked(!isChecked);
+      setChecked(!isChecked);
     };
-    const onClick = () => {
-      setIsSelected(!isSelected);
+    const onScrewSelected = () => {
+      setSelected(!isSelected);
     };
     const onHighlight = (index: number) => {
       setHighlighted((prevState) => ({
@@ -43,7 +43,7 @@ const Screw = ({
       <div
         id={styles.container}
         className={isSelected ? styles.checked : styles.unchecked}
-        onClick={onClick}
+        onClick={onScrewSelected}
       >
         <div id={styles.contents}>
           <span id={styles.screwSound}>{screwSound}</span>
