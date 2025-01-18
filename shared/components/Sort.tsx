@@ -2,7 +2,7 @@ import { Platform, Text } from 'react-native';
 import { useState } from 'react';
 import Assets from '../../front/src/assets/assets';
 import SortOptionStyled from '../SortOption.module.scss';
-import { SortOptionStyles, SortStylesLocal } from '../type';
+import { SortOptionStyles, SortStylesLocal } from '../style';
 
 export const SortOption = ({
   styles,

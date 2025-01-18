@@ -1,5 +1,5 @@
 import { Platform, Text } from 'react-native';
-import { BuildFactoryStylesLocal } from '../type';
+import { BuildFactoryStylesLocal } from '../style';
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 

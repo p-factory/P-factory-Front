@@ -1,5 +1,5 @@
 import { Platform, Text } from 'react-native';
-import { FooterStyles } from '../type';
+import { FooterStyles } from '../style';
 import Assets from '../../front/src/assets/assets';
 import { useState } from 'react';
 

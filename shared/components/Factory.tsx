@@ -1,7 +1,7 @@
 import { Platform, Text } from 'react-native';
 import Assets from '../../front/src/assets/assets';
 import ManagerBarStyled from '../ManagerBar.module.scss';
-import { FactoryStylesLocal, ManagerBarStyles } from '../type';
+import { FactoryStylesLocal, ManagerBarStyles } from '../style';
 import { useState } from 'react';
 
 const managerBarStyles: ManagerBarStyles = {

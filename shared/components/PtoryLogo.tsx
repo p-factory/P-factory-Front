@@ -1,5 +1,5 @@
 import { Platform, Text } from 'react-native';
-import { PtoryLogoStyles } from '../type';
+import { PtoryLogoStyles } from '../style';
 
 const PtoryLogo = ({ styles }: { styles: PtoryLogoStyles }) => {
   if (Platform.OS === 'web') {
