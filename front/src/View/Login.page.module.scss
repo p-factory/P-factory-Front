@@ -1,0 +1,54 @@
+@use '../helpers' as fn;
+#container{
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    #contents{
+        width: 100%;
+        #logo{
+            margin-bottom: fn.px-to-percent(88, 512);
+        }
+        form{
+            #inputContainer{
+                display: flex;
+                flex-direction: column;
+                :first-child{
+                    margin-bottom: fn.px-to-percent(36, 512);
+                }
+                .inputContents{
+                    display: flex;
+                    flex-direction: column;
+
+                        .input{
+                        display: flex;
+                        align-items: center;
+                        background-color: var(--gray1-color);
+                        border-radius: var(--corner-radius-regular);
+                        padding: 16px 24px;
+                        margin: 0;
+                        input{
+                            width: 100%;
+                            font-size: var(--font-size-small);
+                            color: var(--gray4-color);
+                            font-weight: var(--font-weight-medium);
+                            background: none;
+                            margin: 0;
+                            &::placeholder{
+                                color: var(--gray3-color);
+                                font-size: var(--font-size-small);
+                                font-weight: var(--font-weight-light);
+                            }
+                        }
+                    }
+                    p{
+                        color: red;
+                    }
+                }
+            }
+            button{
+                margin-top: fn.px-to-percent(104, 512);
+                width: 100%;
+            }
+        }
+    }
+}
