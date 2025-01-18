@@ -9,8 +9,8 @@ export namespace Functions {
   export interface SingleArg<Cell, Organism> {
     (arg: Cell): Organism;
   }
-  export interface MultiArg<Cell extends any[], Organism> {
-    (...args: Cell): Organism;
+  export interface MultiArg<Cells extends any[], Organism> {
+    (...args: Cells): Organism;
   }
 }
 
