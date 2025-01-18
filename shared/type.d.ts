@@ -28,23 +28,6 @@ export namespace Styles {
   }
 }
 
-//functions => multi args >> object
-export namespace Functions {
-  export interface GeneralArg {
-    (): void;
-  }
-
-  export interface DefaultArg<ReturnType> {
-    (): ReturnType;
-  }
-  export interface SingleArg<Arg, ReturnType> {
-    (arg: Arg): ReturnType;
-  }
-  export interface MultiArg<Args extends any[], ReturnType> {
-    (...args: Args): ReturnType;
-  }
-}
-
 // Custom type
 type FooterStyles = Styles.Common & Styles.Image;
 type ButtonStyles = Styles.Common & Styles.Button & Styles.Image;
