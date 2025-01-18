@@ -29,15 +29,15 @@ const LoginPage = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div id={styles.inputContainer}>
             <div className={styles.inputContents}>
-              <div className={styles.input}>
+              <div className={errors.id ? styles.inputError : styles.input}>
                 <input
                   type='text'
                   placeholder='아이디를 입력하세요.'
                   {...register('id', {
-                    required: '아이디는 필수입니다.',
+                    required: '*아이디는 필수입니다.',
                     pattern: {
                       value: /^[a-zA-Z]{1,8}$/,
-                      message: '영문 8자 이내',
+                      message: '*영문 8자 이내',
                     },
                   })}
                 />
@@ -45,15 +45,17 @@ const LoginPage = () => {
               {errors.id && <p>{errors.id.message}</p>}
             </div>
             <div className={styles.inputContents}>
-              <div className={styles.input}>
+              <div
+                className={errors.password ? styles.inputError : styles.input}
+              >
                 <input
                   type='password'
                   placeholder='비밀번호를 입력하세요.'
                   {...register('password', {
-                    required: '비밀번호는 필수입니다.',
+                    required: '*비밀번호는 필수입니다.',
                     pattern: {
                       value: /^[a-zA-Z0-9]{8,20}$/,
-                      message: '영문, 숫자를 포함한 8~20자리 이내',
+                      message: '*영문, 숫자를 포함한 8~20자리 이내',
                     },
                   })}
                 />
