@@ -12,3 +12,5 @@ dist
 
 # 특정 파일
 check-pnpm.js
+front/src/Model/axiosInstance.ts
+front/src/Model/Hook/*.ts
