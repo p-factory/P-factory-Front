@@ -56,3 +56,25 @@
     padding-top: 16px;
   }
 }
+
+.button, .submit{
+  background-color: var(--gray2-color);
+  border-radius: var(--corner-radius-large);
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  margin-top: 24px;
+  cursor: pointer;
+  button{
+    color: var(--gray4-color);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-medium);
+  }
+}
+
+.submit{
+  background-color: var(--primary-color);
+  button{
+    color: var(--black-color);
+  }
+}
