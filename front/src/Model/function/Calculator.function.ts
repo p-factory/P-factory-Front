@@ -9,9 +9,9 @@ export const AdditionFunction: Functions.MultiArg<[number, number], number> = (
 
 export const SubtractionFunction: Functions.MultiArg<
   [number, number],
-  number
+  string
 > = (a, b) => {
-  return a - b;
+  return `${a - b} 결과 입니다.`;
 };
 
 export const MultiplicationFunction: Functions.MultiArg<
