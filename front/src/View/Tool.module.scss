@@ -1,0 +1,35 @@
+#container {
+  // sticky 추가 - 확인
+  position: sticky;
+  bottom: 110px;
+
+  #tools{
+    background-color: var(--white-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // width: calc(100% + 80px); /* 루트 padding 고려한 너비 */
+    margin: 0 -20px; /* 루트 padding 무효화 하기 위한 margin */
+    padding: 8px 31px;
+    border: 2px solid var(--gray2-color);
+    border-radius: var(--corner-radius-regular);
+  
+    .contents {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      cursor: pointer;
+      
+      .image {
+        display: flex;
+        justify-content: center;  
+      }
+  
+    }
+  }
+}  
+  // @media (max-width: 380px) { //iphone 375px에서 반응하게 할지
+  //   #footer {
+  //     margin: 0;
+  //   }
+  // }

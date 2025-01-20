@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
-import TestPage from './View/TestPage';
-import TestFlex from './View/Test.flex';
+import TestPage from './View/dev/TestPage';
+import TestFlex from './View/dev/Test.flex';
 // import './App.scss';
 
 const App = () => {

@@ -1,0 +1,67 @@
+#container{
+  background-color: var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0px 0px 0px;
+  border-radius: var(--corner-radius-medium);
+  box-shadow: 0 0 var(--effects-style-shadow1) rgba(0, 0, 0, var(--effects-blur-shadow1));
+
+  #image{
+    display: flex;
+    justify-content: end;
+    margin: 0px 12px 6px 0px;
+    
+    img{
+      cursor: pointer;
+    }
+
+    // padding: 12px;
+    // background-color: tomato;
+  }
+  .contents{
+    background-color: var(--white-color);
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-medium);
+    color: var(--gray5-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 77px 24px 77px;
+    border-top-left-radius: var(--corner-radius-medium);
+    border-top-right-radius: var(--corner-radius-medium);
+    border-bottom: 1px solid var(--gray2-color);
+    #title{
+      font-size: var(--font-size-medium);
+      font-weight: var(--font-weight-bold);
+      color: var(--black-color);
+      margin-bottom: 8px;
+    }
+    div{
+      white-space: nowrap; /* 줄바꿈 방지 */
+    }
+  }
+  .buttonContents{
+    background-color: var(--white-color);
+    display: flex;
+    justify-content: space-between;
+    border-bottom-left-radius: var(--corner-radius-medium);
+    border-bottom-right-radius: var(--corner-radius-medium);
+    #buttonApprove, #buttonCancel{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 8px 0px 8px 0px;
+      font-weight: var(--font-weight-semibold);
+    }
+    #buttonApprove{
+      color: var(--gray5-color);
+      cursor: pointer;
+    }
+    #buttonCancel{
+      border-right: 1px solid var(--gray2-color);
+      color: var(--gray3-color);
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,34 @@
+#container{
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font-size-medium);
+  #contents{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    .group:first-child{
+      background-color: var(--gray1-color);
+      border-radius: var(--corner-radius-large);
+      display: flex;
+      // width: 298px;
+      padding: 16px 16px 16px 24px;
+      input{
+        width: 100%;
+      }
+      #image{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+    }
+    .group:last-child{
+      display: flex;
+      #button{
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+    }
+  }
+}

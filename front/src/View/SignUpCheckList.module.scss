@@ -1,0 +1,58 @@
+#container{
+  background-color: var(--gray1-color);
+  border-radius: var(--corner-radius-regular);
+  color: var(--gray3-color);
+  padding: 16px 0px;
+  .contents{
+    display: flex;
+    padding-left: 20px;
+    padding-bottom: 16px;
+
+    .checkbox{
+      width: 24px;
+      height: 24px;
+      border: 1px solid var(--gray2-color);
+      border-radius: 8px;
+      background-color: var(--white-color);
+      cursor: pointer;
+      appearance: none; /* 기본 체크 모양 제거 */
+      -webkit-appearance: none; /* Safari 지원 */
+      margin-right: 16px;
+      /* 클릭되었을 때 색상 변경 */
+      &:active,
+      &:focus {
+        outline: none;
+        background-color: var(--primary-color);
+        border: 1px solid var(--gray2-color);
+      }
+  
+      /* 클릭된 상태를 유지하기 위한 스타일 */
+      &.checked {
+        background-color: var(--primary-color);
+        border: 1px solid var(--gray2-color)
+      }
+    }
+    // .required, .conditions{
+    //   display: flex;
+    // }
+    .conditions{
+      font-weight: var(--font-weight-medium);
+    }
+    .required{
+      color: var(--negative-error-cancel);
+      margin-right: 4px;
+    }
+    #selected{
+      margin-right: 4px;
+    }
+    #all{
+      color: var(--black-color);
+      font-weight: var(--font-weight-semibold);
+    }
+  }
+  .contents:last-child{
+    border-top: 1px solid var(--gray2-color);
+    padding-bottom: 0px;
+    padding-top: 16px;
+  }
+}

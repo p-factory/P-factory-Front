@@ -1,36 +1,37 @@
-import React from 'react';
-import { Platform, Text, TouchableOpacity } from 'react-native';
-import { z } from 'zod';
-import { ButtonProps } from '../type';
+import { Platform, Text } from 'react-native';
+import { Functions } from '../function';
+import { ButtonStyles } from '../style';
 
-/**
- * Zod 스키마 정의
- */
-const buttonPropsSchema = z.object({
-  onPress: z.function().args().returns(z.void()), // onPress는 함수 타입
-  label: z.string(), // label은 문자열 타입
-});
-
-const Button = ({ onPress, label }: ButtonProps) => {
-  // Zod 타입 검증
-  buttonPropsSchema.parse({ onPress, label });
-
+const Button = ({
+  styles,
+  title,
+  image,
+  functions,
+}: {
+  styles: ButtonStyles;
+  title: string;
+  image: string;
+  functions: Functions.GeneralArg;
+}) => {
   if (Platform.OS === 'web') {
+    const handleClick = () => {
+      // 타입 가드 추가: 함수인지 객체인지 구분
+      if (typeof functions === 'function') {
+        functions(); // 함수인 경우 실행
+      }
+    };
+
     return (
-      <button onClick={onPress} style={{ padding: '10px', cursor: 'pointer' }}>
-        {label}
-      </button>
+      <div id={styles.button} onClick={handleClick}>
+        <div id={styles.contents}>
+          <span id={styles.title}>{title}</span>
+          <img id={styles.image} src={image} alt='' />
+        </div>
+      </div>
     );
   }
 
-  return (
-    <TouchableOpacity
-      onPress={onPress}
-      style={{ padding: 10, backgroundColor: 'tomato' }}
-    >
-      <Text style={{ color: '#fff' }}>{label}</Text>
-    </TouchableOpacity>
-  );
+  return <Text style={{ color: '#fff' }}>This is None!</Text>;
 };
 
 export default Button;
