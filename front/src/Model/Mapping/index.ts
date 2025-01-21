@@ -26,7 +26,7 @@ import {
   BuildFactoryStylesLocal,
   DriverStylesLocal,
   PtoryLogoStyles,
-} from '@shared/type';
+} from '@shared/style';
 
 //객체 매핑(Object Mapping)
 

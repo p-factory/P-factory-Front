@@ -1,4 +1,4 @@
-import { Functions } from '@shared/type';
+import { Functions } from '@shared/function';
 
 export const TestSingleFunction: Functions.SingleArg<string, string> = (
   arg,

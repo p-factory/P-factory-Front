@@ -1,5 +1,5 @@
 import { Platform, Text } from 'react-native';
-import { ScrewStylesLocal } from '../type';
+import { ScrewStylesLocal } from '../style';
 import { useState } from 'react';
 
 const Screw = ({

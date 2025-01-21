@@ -1,6 +1,6 @@
 import { Platform, Text } from 'react-native';
 import Assets from '../../front/src/assets/assets';
-import { DriverStylesLocal } from '../type';
+import { DriverStylesLocal } from '../style';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 

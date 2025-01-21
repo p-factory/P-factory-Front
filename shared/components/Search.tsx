@@ -1,6 +1,6 @@
 import { Platform, Text } from 'react-native';
 import { useForm } from 'react-hook-form';
-import { SearchStylesLocal } from '../type';
+import { SearchStylesLocal } from '../style';
 
 interface SearchFormData {
   searchQuery: string;

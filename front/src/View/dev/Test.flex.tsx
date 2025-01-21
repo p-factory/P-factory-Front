@@ -36,10 +36,11 @@ import { searchIcon, createIcon } from '../../assets';
 // Redux 사용시 필요한 구성
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState, Increment, Decrement } from '@shared/store';
+import { CalculatorOperation } from '../../Controller/Strategy.function';
 import {
-  TestSingleFunction,
-  TestMultiFunction,
-} from '../../Controller/Test.function';
+  AdditionFunction,
+  MultiplicationFunction,
+} from '../../Model/function/Calculator.function';
 // const applyTestFlexProps = ({ name, age, isActive = true }: TestFlexProps) => {
 //   return {
 //     displayName: `${name} (${age})`,
@@ -91,7 +92,7 @@ const TestFlex = () => {
         title='로그인'
         image={Assets.spannerIcon}
         functions={() => {
-          console.log(TestSingleFunction('test'));
+          console.log(CalculatorOperation(AdditionFunction, 1, 6));
         }}
       />
       <div style={{ padding: '18px' }}></div>
@@ -100,7 +101,7 @@ const TestFlex = () => {
         title='버튼'
         image=''
         functions={() => {
-          console.log(TestMultiFunction(5, 'test'));
+          console.log(CalculatorOperation(MultiplicationFunction, 10, 9));
         }}
       />
       <div style={{ padding: '18px' }}></div>

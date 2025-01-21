@@ -1,5 +1,5 @@
 import { Platform, Text } from 'react-native';
-import { SirenStylesLocal } from '../type';
+import { SirenStylesLocal } from '../style';
 
 const Siren = ({
   styles,

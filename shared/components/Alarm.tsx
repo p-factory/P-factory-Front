@@ -1,5 +1,5 @@
 import { Platform, Text } from 'react-native';
-import { AlarmStylesLocal } from '../type';
+import { AlarmStylesLocal } from '../style';
 
 const Alarm = ({
   styles,

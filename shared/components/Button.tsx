@@ -1,5 +1,6 @@
 import { Platform, Text } from 'react-native';
-import { ButtonStyles, Functions } from '../type';
+import { Functions } from '../function';
+import { ButtonStyles } from '../style';
 
 const Button = ({
   styles,
