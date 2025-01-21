@@ -2,18 +2,18 @@ import { useMutation } from '@tanstack/react-query';
 import AxiosInstance from '../axiosInstance';
 
 // remove interface definition
-// interface UseFetchQueryAPIProps {
+// interface UseApiQueryAPIProps {
 //   url: string;
 //   postData?: any;
 // }
 
 // onSuccess, on~ and isSuccess, is~ syntax obviously different.
-export const useFetchMutation = <TPostData = any, TResponseData = any>(
+export const useApiMutation = <TPostData = any, TResponseData = any>(
   method: 'POST' | 'PUT' | 'DELETE',
   url: string,
   postData: TPostData,
 ) => {
-  const fetchMutation = async (
+  const ApiMutation = async (
     params?: {
       url?: string;
       postData?: TPostData;
@@ -47,8 +47,15 @@ export const useFetchMutation = <TPostData = any, TResponseData = any>(
   };
 
   const mutation = useMutation({
-    mutationFn: fetchMutation,
+    mutationFn: ApiMutation,
   });
+
+  //simple use to useMutation
+  /*
+  const mutation = useMutation(fetchMutation);
+
+  return mutation;
+  */
 
   // The return value definition is used as a status property.
   // reactQuery ver 5.62.7 doesn't support isLoading.
@@ -56,7 +63,7 @@ export const useFetchMutation = <TPostData = any, TResponseData = any>(
   const isError = mutation.status === 'error';
   const isSuccess = mutation.status === 'success';
   const responseData = mutation.data;
-
+  // Don't confused `useQuery`, useQuery is always search the data from API but, 'useMutation' must be changed to API data
   return {
     mutation,
     isLoading,
