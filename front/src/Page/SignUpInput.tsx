@@ -3,7 +3,6 @@ import Button from '@shared/components/Button';
 import PtoryLogo from '@shared/components/PtoryLogo';
 import { ButtonTypeStyles, PtoryLogoTypeStyles } from '../Model/Mapping';
 import { spannerIcon } from '../assets';
-import { TestSingleFunction } from '../Controller/Test.function';
 import { useForm } from 'react-hook-form';
 import { useEffect } from 'react';
 
@@ -142,7 +141,7 @@ const LoginPage = () => {
               title='가입하기'
               image={spannerIcon}
               functions={() => {
-                console.log(TestSingleFunction('test'));
+                console.log('test');
               }}
             />
           </button>

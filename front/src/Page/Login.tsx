@@ -3,7 +3,6 @@ import Button from '@shared/components/Button';
 import PtoryLogo from '@shared/components/PtoryLogo';
 import { ButtonTypeStyles, PtoryLogoTypeStyles } from '../Model/Mapping';
 import { spannerIcon } from '../assets';
-import { TestSingleFunction } from '../Controller/Test.function';
 import { useForm } from 'react-hook-form';
 
 interface FormData {
@@ -69,7 +68,7 @@ const LoginPage = () => {
               title='로그인'
               image={spannerIcon}
               functions={() => {
-                console.log(TestSingleFunction('test'));
+                console.log('test');
               }}
             />
           </button>

@@ -1,5 +1,5 @@
 import { Platform, Text } from 'react-native';
-import { SignUpCheckListStylesLocal } from '../type';
+import { SignUpCheckListStylesLocal } from '../style';
 import { useState, useEffect } from 'react';
 
 const SignUpCheckList = ({
