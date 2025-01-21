@@ -63,7 +63,7 @@ const SignUpCheckList = ({
           </div>
         </div>
         <div className={isState ? styles.submit : styles.button}>
-          <button type='submit'>완료</button>
+          <button type='submit'>다음으로</button>
         </div>
       </form>
     );

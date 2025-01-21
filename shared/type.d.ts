@@ -49,7 +49,7 @@ export namespace Functions {
 type FooterStyles = Styles.Common & Styles.Image;
 type ButtonStyles = Styles.Common & Styles.Button & Styles.Image;
 type AlarmStyles = Styles.Common & Styles.Button & Styles.Image;
-type SignUpCheckListStyles = Styles.Common;
+type SignUpCheckListStyles = Styles.Common & Styles.Button;
 type SirenStyles = Styles.Common & Styles.Image;
 type SearchStyles = Styles.Common & Styles.Button & Styles.Image;
 type ToolStyles = Styles.Common & Styles.Image;
@@ -77,6 +77,7 @@ export interface SignUpCheckListStylesLocal extends SignUpCheckListStyles {
   conditions: string;
   selected: string;
   all: string;
+  submit: string;
 }
 
 export interface SirenStylesLocal extends SirenStyles {

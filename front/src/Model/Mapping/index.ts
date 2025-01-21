@@ -66,6 +66,9 @@ export const SignUpCheckListTypeStyles: SignUpCheckListStylesLocal = {
   conditions: SignUpCheckListStyled.conditions,
   selected: SignUpCheckListStyled.selected,
   all: SignUpCheckListStyled.all,
+  button: SignUpCheckListStyled.button,
+  buttonContents: SignUpCheckListStyled.buttonContents,
+  submit: SignUpCheckListStyled.submit,
 };
 
 export const SirenTypeStyles: SirenStylesLocal = {
