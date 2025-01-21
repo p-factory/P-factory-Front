@@ -30,7 +30,6 @@ export const useApiQuery = <Organism>(url: string, params?: string) => {
   };
 };
 
-// Required POST
 // export const useApiMutation = <T>(endpoint: string) => {
 //   return useMutation<T, unknown, any>((payload) =>
 //     axiosInstance.post(endpoint, payload),
