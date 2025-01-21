@@ -103,6 +103,7 @@ const LoginPage = () => {
                   type='password'
                   placeholder='비밀번호 확인'
                   {...register('passwordCheck', {
+                    // required: '*비밀번호 확인은 필수입니다.',
                     validate: {
                       matchPassword: (value) =>
                         value === getValues('password') ||
