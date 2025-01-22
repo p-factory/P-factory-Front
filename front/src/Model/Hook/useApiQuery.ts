@@ -9,6 +9,8 @@ import axiosInstance from '../axiosInstance';
 
 // Required GET
 // queryKey needs to be defined dynamically. So, Use the functions or Hooks Parameters for this purpose.
+// here is `params` parameter indicate QueryParams
+
 export const useApiQuery = <Organism>(url: string, params?: string) => {
   // Organism's Generics is not pointed `isLoading, isError, data, isSuccess` state, that arrow the return's data. Don't confused what it is indicated.
 

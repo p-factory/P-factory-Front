@@ -4,45 +4,78 @@ import AxiosInstance from '../axiosInstance';
 // remove interface definition
 // interface UseApiQueryAPIProps {
 //   url: string;
-//   postData?: any;
+//   nucleus?: any;
 // }
 
-// onSuccess, on~ and isSuccess, is~ syntax obviously different.
-export const useApiMutation = <TPostData = any, TResponseData = any>(
+// `onSuccess` or `on~` and `isSuccess` or `is~` syntax obviously different.
+// here generics types definitions default any.
+// Important, first generic represent Parameter type, second generic is returns value type. However, the order of generics is not fixed and can vary depending on the context and use case.
+export const useApiMutation = <InjectNucleus = any, CulturedNucleus = any>(
   method: 'POST' | 'PUT' | 'DELETE',
   url: string,
-  postData: TPostData,
+  nucleus: InjectNucleus,
 ) => {
   const ApiMutation = async (
+    //params naming not enough, needs be change.
     params?: {
       url?: string;
-      postData?: TPostData;
+      nucleus?: InjectNucleus;
     },
     // Remove this type
     //  : {
-    //   mutation: UseMutationResult<any, Error, { url?: string; postData?: T }>;
+    //   mutation: UseMutationResult<any, Error, { url?: string; nucleus?: T }>;
     //   isLoading: boolean;
     //   isError: boolean;
     //   isSuccess: boolean;
     //   responseData: any;
     // }
-  ): Promise<TResponseData> => {
-    const finalUrl = params?.url || url;
-    const finalData = params?.postData || postData;
+  ): Promise<CulturedNucleus> => {
+    const codeUrl = params?.url || url;
+    const codeData = params?.nucleus || nucleus;
 
-    // if (!finalUrl) throw new Error('URL is required for the API request.');
+    // Remove this code
+    // if (!codeUrl) throw new Error('URL is required for the API request.');
     // if (!method)
     //   throw new Error('HTTP method is required for the API request.');
 
     switch (method) {
-      case 'POST':
-        return (await AxiosInstance.post(finalUrl, finalData)).data;
-      case 'PUT':
-        return (await AxiosInstance.put(finalUrl, finalData)).data;
-      case 'DELETE':
-        return (await AxiosInstance.delete(finalUrl, { data: finalData })).data;
+      case 'POST': {
+        const dna = await AxiosInstance.post(codeUrl, codeData);
+        if (dna.data === true) {
+          console.log('Success: The mutation experiment was successful.');
+        } else {
+          console.log(
+            `Error: Failed to Implement the mutation, Doesn't exit in the type list.`,
+          );
+        }
+        return dna.data;
+      }
+      case 'PUT': {
+        const dna = await AxiosInstance.put(codeUrl, codeData);
+        if (dna.data === true) {
+          console.log('Success: The mutation experiment was successful.');
+        } else {
+          console.log(
+            `Error: Failed to Implement the mutation, Doesn't exit in the type list.`,
+          );
+        }
+        return dna.data;
+      }
+      case 'DELETE': {
+        const dna = await AxiosInstance.delete(codeUrl, {
+          data: codeData,
+        });
+        if (dna.data === true) {
+          console.log('Success: The mutation experiment was successful.');
+        } else {
+          console.log(
+            `Error: Failed to Implement the mutation, Doesn't exit in the type list.`,
+          );
+        }
+        return dna.data;
+      }
       default:
-        throw new Error(`Unsupported request method: ${method}`);
+        throw new Error(`Unsupported mutation experiment Types: ${method}`);
     }
   };
 
