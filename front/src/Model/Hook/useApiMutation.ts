@@ -12,15 +12,15 @@ import AxiosInstance from '../axiosInstance';
 // Important, first generic represent Parameter type, second generic is returns value type. However, the order of generics is not fixed and can vary depending on the context and use case.
 export const useApiMutation = <InjectNucleus = any, CulturedNucleus = any>(
   method: 'POST' | 'PUT' | 'DELETE',
-  url: string,
-  nucleus: InjectNucleus,
+  url: string = 'api/test',
+  nucleus: InjectNucleus = {
+    nucleus: 'DNA number',
+  } as InjectNucleus,
 ) => {
   const ApiMutation = async (
-    //params naming not enough, needs be change.
-    params?: {
-      url?: string;
-      nucleus?: InjectNucleus;
-    },
+    // The `mutate` function of React Query references these parameters. If called directly outside of `mutate`, this will reference the respective object.
+    mutateUrl?: string,
+    mutateNucleus?: InjectNucleus,
     // Remove this type
     //  : {
     //   mutation: UseMutationResult<any, Error, { url?: string; nucleus?: T }>;
@@ -30,8 +30,8 @@ export const useApiMutation = <InjectNucleus = any, CulturedNucleus = any>(
     //   responseData: any;
     // }
   ): Promise<CulturedNucleus> => {
-    const codeUrl = params?.url || url;
-    const codeData = params?.nucleus || nucleus;
+    const codeUrl = mutateUrl || url;
+    const codeData = mutateNucleus || nucleus;
 
     // Remove this code
     // if (!codeUrl) throw new Error('URL is required for the API request.');
@@ -75,7 +75,9 @@ export const useApiMutation = <InjectNucleus = any, CulturedNucleus = any>(
         return dna.data;
       }
       default:
-        throw new Error(`Unsupported mutation experiment Types: ${method}`);
+        throw new Error(
+          `Unsupported mutation experiment Types: ${method}, Please, check 'useApiMutation.ts' file`,
+        );
     }
   };
 
@@ -98,7 +100,7 @@ export const useApiMutation = <InjectNucleus = any, CulturedNucleus = any>(
   const responseData = mutation.data;
   // Don't confused `useQuery`, useQuery is always search the data from API but, 'useMutation' must be changed to API data
   return {
-    mutation,
+    mutation, // They includes `mutate, mutateAsync, reset`.
     isLoading,
     isError,
     isSuccess,
