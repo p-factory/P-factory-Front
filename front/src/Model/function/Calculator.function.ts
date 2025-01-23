@@ -12,7 +12,6 @@ export const SubtractionFunction: Functions.MultiArg<
   string
 > = (a, b) => {
   return `${a - b} 결과 입니다.`;
-};
 
 export const MultiplicationFunction: Functions.MultiArg<
   [number, number],
