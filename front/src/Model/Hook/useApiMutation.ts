@@ -37,54 +37,46 @@ export const useApiMutation = <InjectNucleus = any, CulturedNucleus = any>(
     // if (!codeUrl) throw new Error('URL is required for the API request.');
     // if (!method)
     //   throw new Error('HTTP method is required for the API request.');
-
-    switch (method) {
-      case 'POST': {
-        const dna = await AxiosInstance.post(codeUrl, codeData);
-        if (dna.data === true) {
-          console.log('Success: The mutation experiment was successful.');
-        } else {
-          console.log(
-            `Error: Failed to Implement the mutation, Doesn't exit in the type list.`,
-          );
+    try {
+      let dna;
+      switch (method) {
+        case 'POST': {
+          dna = await AxiosInstance.post(codeUrl, codeData);
+          break;
         }
-        return dna.data;
-      }
-      case 'PUT': {
-        const dna = await AxiosInstance.put(codeUrl, codeData);
-        if (dna.data === true) {
-          console.log('Success: The mutation experiment was successful.');
-        } else {
-          console.log(
-            `Error: Failed to Implement the mutation, Doesn't exit in the type list.`,
-          );
+        case 'PUT': {
+          dna = await AxiosInstance.put(codeUrl, codeData);
+          break;
         }
-        return dna.data;
-      }
-      case 'DELETE': {
-        const dna = await AxiosInstance.delete(codeUrl, {
-          data: codeData,
-        });
-        if (dna.data === true) {
-          console.log('Success: The mutation experiment was successful.');
-        } else {
-          console.log(
-            `Error: Failed to Implement the mutation, Doesn't exit in the type list.`,
-          );
+        case 'DELETE': {
+          dna = await AxiosInstance.delete(codeUrl, {
+            data: codeData,
+          });
+          break;
         }
-        return dna.data;
+        default:
+          throw new Error(
+            `Unsupported mutation experiment Types: ${method}, Please, check 'useApiMutation.ts' file`,
+          );
       }
-      default:
-        throw new Error(
-          `Unsupported mutation experiment Types: ${method}, Please, check 'useApiMutation.ts' file`,
+      if (dna.data === true) {
+        console.log('Success: The mutation experiment was successful.');
+      } else {
+        console.log(
+          `Error: Failed to Implement the mutation, Doesn't exit in the type list.`,
         );
+      }
+      return dna.data;
+    } catch (error: any) {
+      console.error(
+        `Error!: Mutant has escaped from the System.\nErrorMessage:${error.message || error}`,
+      );
+      throw error;
     }
   };
-
   const mutation = useMutation({
     mutationFn: ApiMutation,
   });
-
   //simple use to useMutation
   /*
   const mutation = useMutation(fetchMutation);

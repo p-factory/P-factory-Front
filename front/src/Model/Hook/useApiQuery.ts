@@ -14,13 +14,27 @@ import axiosInstance from '../axiosInstance';
 export const useApiQuery = <Organism>(url: string, params?: string) => {
   // Organism's Generics is not pointed `isLoading, isError, data, isSuccess` state, that arrow the return's data. Don't confused what it is indicated.
 
+  const ApiQuery = async () => {
+    try {
+      const dna = await axiosInstance.get(url, { params }); // `params` variable type of object support from Axios library So, can't change the name.
+      if (dna.data === true) {
+        console.log(`Success: Analysis Complete, check DNA data.`);
+      } else {
+        console.log(`Error: Failed to Analysis, DNA data. Retry to Analysis.`);
+      }
+      return dna.data;
+    } catch (error) {
+      console.error(`Error: Failed to Analysis System. Need inspect System.`);
+      console.error(error);
+      throw error;
+    }
+  };
+
   const { isLoading, isError, data, isSuccess } = useQuery<Organism>({
     // queryKey and queryFn is supported from ReactQuery library. That's the Core in the ReactQuery Syntax. please, Remember. the feature of the queryKey and queryFn.
     queryKey: [url, params], // queryKey must be an array. Its structure depends on the client's requirements.
-    queryFn: async () => {
-      const { data } = await axiosInstance.get(url, { params }); // `params` variable type of object support from Axios library So, can't change the name.
-      return data;
-    },
+
+    queryFn: ApiQuery,
   });
 
   //`isLoading, isError, data, isSuccess` states are decided what type that are. that's the Big point the ReactQuery
@@ -31,9 +45,3 @@ export const useApiQuery = <Organism>(url: string, params?: string) => {
     isSuccess,
   };
 };
-
-// export const useApiMutation = <T>(endpoint: string) => {
-//   return useMutation<T, unknown, any>((payload) =>
-//     axiosInstance.post(endpoint, payload),
-//   );
-// };
