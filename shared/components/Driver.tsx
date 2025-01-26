@@ -17,20 +17,21 @@ export const InputElement = ({
   register,
   remove,
   point,
-  index,
+  fieldName,
 }: {
   styles: string;
   register: UseFormRegister<FormData>;
   remove: () => void;
   point: string;
   index?: number;
+  fieldName: string;
 }) => {
   return (
     <div id={styles}>
       <input
         placeholder='의미를 입력하세요.(필수)'
         type='text'
-        {...register(`description_${index}` as keyof FormData)}
+        {...register(`description_${fieldName}` as keyof FormData)}
       />
       {point === 'check' ? null : (
         <div>
@@ -54,6 +55,7 @@ const Driver = ({ styles }: { styles: DriverStylesLocal }) => {
       reset,
       setValue,
       getValues,
+      unregister,
     } = useForm<FormData>();
 
     const onSubmit = (data: FormData) => {
@@ -63,7 +65,8 @@ const Driver = ({ styles }: { styles: DriverStylesLocal }) => {
     };
 
     const createInputElement = () => {
-      const newField = `description_${isInputElements.length + 1}`; // 유일한 이름 생성
+      // 고유 값을 지정하기 위한 변수 선언
+      const newField = `${Date.now()}_${isInputElements.length + 1}`; // 유일한 이름 생성
       setInputElements((prev) => [...prev, newField]);
 
       // 필드 초기화
@@ -75,8 +78,14 @@ const Driver = ({ styles }: { styles: DriverStylesLocal }) => {
       setInputElements((prev) => prev.filter((name) => name !== fieldName));
 
       // React Hook Form에서 해당 필드 값도 삭제
+      // 복제 된 input 값
       const currentValues = getValues();
+      // 복제 된 input 값 리셋
       delete currentValues[fieldName as keyof FormData]; // 값 삭제
+      // React Hook Form에서 필드 값도 제거
+      unregister(fieldName as keyof FormData);
+      // 해당 필드를 초기값으로 명시적으로 설정
+      setValue(fieldName as keyof FormData, '');
     };
 
     useEffect(() => {
@@ -108,6 +117,7 @@ const Driver = ({ styles }: { styles: DriverStylesLocal }) => {
                 register={register}
                 remove={() => removeInputElement('meaning')}
                 point={'check'}
+                fieldName='meaning'
               />
               {isInputElements.map((fieldName, index) => (
                 <InputElement
@@ -116,7 +126,7 @@ const Driver = ({ styles }: { styles: DriverStylesLocal }) => {
                   register={register}
                   remove={() => removeInputElement(fieldName)}
                   point={''}
-                  index={index}
+                  fieldName={fieldName}
                 />
               ))}
             </div>
