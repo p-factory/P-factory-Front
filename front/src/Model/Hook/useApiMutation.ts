@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 import AxiosInstance from '../axiosInstance';
 
-export const useApiMutation = <InjectNucleus = any, CulturedNucleus = any>(
+const useApiMutation = <InjectNucleus = any, CulturedNucleus = any>(
   method: 'POST' | 'PUT' | 'DELETE',
   url: string = 'api/test',
   nucleus: InjectNucleus = {
@@ -68,3 +68,5 @@ export const useApiMutation = <InjectNucleus = any, CulturedNucleus = any>(
     responseData,
   };
 };
+
+export default useApiMutation;

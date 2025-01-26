@@ -2,7 +2,7 @@
 import { useQuery, useMutation } from '@tanstack/react-query';
 import axiosInstance from '../axiosInstance';
 
-export const useApiQuery = <Organism>(url: string, params?: string) => {
+const useApiQuery = <Organism>(url: string, params?: string) => {
   const ApiQuery = async () => {
     try {
       const dna = await axiosInstance.get(url, { params });
@@ -31,3 +31,5 @@ export const useApiQuery = <Organism>(url: string, params?: string) => {
     isSuccess,
   };
 };
+
+export default useApiQuery;
