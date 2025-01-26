@@ -101,4 +101,5 @@ export interface BuildFactoryStylesLocal extends BuildFactoryStyles {
 export interface DriverStylesLocal extends DriverStyles {
   inputContents: string;
   submit: string;
+  createInput: string;
 }
