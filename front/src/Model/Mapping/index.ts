@@ -154,6 +154,7 @@ export const DriverTypeStyles: DriverStylesLocal = {
   button: DriverStyled.button,
   image: DriverStyled.image,
   submit: DriverStyled.submit,
+  createInput: DriverStyled.createInput,
 };
 
 export const PtoryLogoTypeStyles: PtoryLogoStyles = {

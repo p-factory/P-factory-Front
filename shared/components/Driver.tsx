@@ -1,8 +1,8 @@
 import { Platform, Text } from 'react-native';
-import Assets from '../../front/src/assets/assets';
+import { removeIcon, cancelIcon, addIcon } from '../../front/src/assets';
 import { DriverStylesLocal } from '../style';
 import { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, UseFormRegister } from 'react-hook-form';
 
 interface FormData {
   word: string;
@@ -11,8 +11,40 @@ interface FormData {
   description?: string;
 }
 
+//props는 항상 객체 형태로 전달
+export const InputElement = ({
+  styles,
+  register,
+  remove,
+  point,
+  index,
+}: {
+  styles: string;
+  register: UseFormRegister<FormData>;
+  remove: () => void;
+  point: string;
+  index?: number;
+}) => {
+  return (
+    <div id={styles}>
+      <input
+        placeholder='의미를 입력하세요.(필수)'
+        type='text'
+        {...register(`description_${index}` as keyof FormData)}
+      />
+      {point === 'check' ? null : (
+        <div>
+          <img src={removeIcon} alt='' onClick={remove} />
+        </div>
+      )}
+    </div>
+  );
+};
+
 const Driver = ({ styles }: { styles: DriverStylesLocal }) => {
   if (Platform.OS === 'web') {
+    const [isInputElements, setInputElements] = useState<string[]>([]); // 동적 Input 관리
+
     const [isState, setState] = useState<boolean>(false);
 
     const {
@@ -20,11 +52,31 @@ const Driver = ({ styles }: { styles: DriverStylesLocal }) => {
       handleSubmit,
       // formState: { errors }, // -> errors는 placeholder에서 생성할 수 있도록
       reset,
+      setValue,
+      getValues,
     } = useForm<FormData>();
 
     const onSubmit = (data: FormData) => {
       console.log('제출된 데이터:', data);
       reset();
+      setInputElements([]);
+    };
+
+    const createInputElement = () => {
+      const newField = `description_${isInputElements.length + 1}`; // 유일한 이름 생성
+      setInputElements((prev) => [...prev, newField]);
+
+      // 필드 초기화
+      setValue(newField as keyof FormData, ''); // 초기값 설정
+    };
+
+    const removeInputElement = (fieldName: string) => {
+      // 특정 필드를 제거
+      setInputElements((prev) => prev.filter((name) => name !== fieldName));
+
+      // React Hook Form에서 해당 필드 값도 삭제
+      const currentValues = getValues();
+      delete currentValues[fieldName as keyof FormData]; // 값 삭제
     };
 
     useEffect(() => {
@@ -37,7 +89,7 @@ const Driver = ({ styles }: { styles: DriverStylesLocal }) => {
           <div id={styles.title}>
             <div>단어생성</div>
             <div id={styles.image}>
-              <img src={Assets.cancelIcon} alt='X' height={'24px'} />
+              <img src={cancelIcon} alt='X' height={'24px'} />
             </div>
           </div>
           <div id={styles.contents}>
@@ -51,15 +103,26 @@ const Driver = ({ styles }: { styles: DriverStylesLocal }) => {
             </div>
             <div className={styles.inputContents}>
               <span>의미</span>
-              <input
-                placeholder='의미를 입력하세요.(필수)'
-                type='text'
-                {...register('meaning', { required: '의미는 필수입니다.' })}
+              <InputElement
+                styles={styles.createInput}
+                register={register}
+                remove={() => removeInputElement('meaning')}
+                point={'check'}
               />
+              {isInputElements.map((fieldName, index) => (
+                <InputElement
+                  key={index}
+                  styles={styles.createInput}
+                  register={register}
+                  remove={() => removeInputElement(fieldName)}
+                  point={''}
+                  index={index}
+                />
+              ))}
             </div>
-            <div id={styles.buttonContents} onClick={() => console.log('test')}>
+            <div id={styles.buttonContents} onClick={createInputElement}>
               <div id={styles.button}>
-                <img src={Assets.addIcon} alt='' />
+                <img src={addIcon} alt='' />
               </div>
             </div>
             <div className={styles.inputContents}>
