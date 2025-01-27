@@ -3,6 +3,7 @@ import { removeIcon, cancelIcon, addIcon } from '../../front/src/assets';
 import { DriverStylesLocal } from '../style';
 import { useEffect, useState } from 'react';
 import { useForm, UseFormRegister } from 'react-hook-form';
+import { CreateDriver, RemoveDriver } from '../../front/src/Controller';
 
 interface FormData {
   word: string;
@@ -21,7 +22,7 @@ export const InputElement = ({
 }: {
   styles: string;
   register: UseFormRegister<FormData>;
-  remove: () => void;
+  remove?: () => void;
   point: string;
   index?: number;
   fieldName: string;
@@ -53,39 +54,15 @@ const Driver = ({ styles }: { styles: DriverStylesLocal }) => {
       handleSubmit,
       // formState: { errors }, // -> errors는 placeholder에서 생성할 수 있도록
       reset,
-      setValue,
-      getValues,
-      unregister,
+      // setValue,
+      // getValues,
+      // unregister,
     } = useForm<FormData>();
 
     const onSubmit = (data: FormData) => {
       console.log('제출된 데이터:', data);
       reset();
       setInputElements([]);
-    };
-
-    const createInputElement = () => {
-      // 고유 값을 지정하기 위한 변수 선언
-      const newField = `${Date.now()}_${isInputElements.length + 1}`; // 유일한 이름 생성
-      setInputElements((prev) => [...prev, newField]);
-
-      // 필드 초기화
-      setValue(newField as keyof FormData, ''); // 초기값 설정
-    };
-
-    const removeInputElement = (fieldName: string) => {
-      // 특정 필드를 제거
-      setInputElements((prev) => prev.filter((name) => name !== fieldName));
-
-      // React Hook Form에서 해당 필드 값도 삭제
-      // 복제 된 input 값
-      const currentValues = getValues();
-      // 복제 된 input 값 리셋
-      delete currentValues[fieldName as keyof FormData]; // 값 삭제
-      // React Hook Form에서 필드 값도 제거
-      unregister(fieldName as keyof FormData);
-      // 해당 필드를 초기값으로 명시적으로 설정
-      setValue(fieldName as keyof FormData, '');
     };
 
     useEffect(() => {
@@ -115,7 +92,7 @@ const Driver = ({ styles }: { styles: DriverStylesLocal }) => {
               <InputElement
                 styles={styles.createInput}
                 register={register}
-                remove={() => removeInputElement('meaning')}
+                // remove={() => removeInputElement('meaning')}
                 point={'check'}
                 fieldName='meaning'
               />
@@ -124,13 +101,20 @@ const Driver = ({ styles }: { styles: DriverStylesLocal }) => {
                   key={index}
                   styles={styles.createInput}
                   register={register}
-                  remove={() => removeInputElement(fieldName)}
+                  remove={() => {
+                    RemoveDriver(fieldName, isInputElements, setInputElements);
+                  }}
                   point={''}
                   fieldName={fieldName}
                 />
               ))}
             </div>
-            <div id={styles.buttonContents} onClick={createInputElement}>
+            <div
+              id={styles.buttonContents}
+              onClick={() => {
+                CreateDriver(isInputElements, setInputElements);
+              }}
+            >
               <div id={styles.button}>
                 <img src={addIcon} alt='' />
               </div>
