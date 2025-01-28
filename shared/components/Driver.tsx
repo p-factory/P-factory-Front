@@ -1,8 +1,9 @@
 import { Platform, Text } from 'react-native';
-import Assets from '../../front/src/assets/assets';
+import { removeIcon, cancelIcon, addIcon } from '../../front/src/assets';
 import { DriverStylesLocal } from '../style';
 import { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, UseFormRegister } from 'react-hook-form';
+import { CreateDriver, RemoveDriver } from '../../front/src/Controller';
 
 interface FormData {
   word: string;
@@ -11,8 +12,41 @@ interface FormData {
   description?: string;
 }
 
+//props는 항상 객체 형태로 전달
+export const InputElement = ({
+  styles,
+  register,
+  remove,
+  point,
+  fieldName,
+}: {
+  styles: string;
+  register: UseFormRegister<FormData>;
+  remove?: () => void;
+  point: string;
+  index?: number;
+  fieldName: string;
+}) => {
+  return (
+    <div id={styles}>
+      <input
+        placeholder='의미를 입력하세요.(필수)'
+        type='text'
+        {...register(`description_${fieldName}` as keyof FormData)}
+      />
+      {point === 'check' ? null : (
+        <div>
+          <img src={removeIcon} alt='' onClick={remove} />
+        </div>
+      )}
+    </div>
+  );
+};
+
 const Driver = ({ styles }: { styles: DriverStylesLocal }) => {
   if (Platform.OS === 'web') {
+    const [isInputElements, setInputElements] = useState<string[]>([]); // 동적 Input 관리
+
     const [isState, setState] = useState<boolean>(false);
 
     const {
@@ -20,11 +54,15 @@ const Driver = ({ styles }: { styles: DriverStylesLocal }) => {
       handleSubmit,
       // formState: { errors }, // -> errors는 placeholder에서 생성할 수 있도록
       reset,
+      // setValue,
+      // getValues,
+      // unregister,
     } = useForm<FormData>();
 
     const onSubmit = (data: FormData) => {
       console.log('제출된 데이터:', data);
       reset();
+      setInputElements([]);
     };
 
     useEffect(() => {
@@ -37,7 +75,7 @@ const Driver = ({ styles }: { styles: DriverStylesLocal }) => {
           <div id={styles.title}>
             <div>단어생성</div>
             <div id={styles.image}>
-              <img src={Assets.cancelIcon} alt='X' height={'24px'} />
+              <img src={cancelIcon} alt='X' height={'24px'} />
             </div>
           </div>
           <div id={styles.contents}>
@@ -51,15 +89,34 @@ const Driver = ({ styles }: { styles: DriverStylesLocal }) => {
             </div>
             <div className={styles.inputContents}>
               <span>의미</span>
-              <input
-                placeholder='의미를 입력하세요.(필수)'
-                type='text'
-                {...register('meaning', { required: '의미는 필수입니다.' })}
+              <InputElement
+                styles={styles.createInput}
+                register={register}
+                // remove={() => removeInputElement('meaning')}
+                point={'check'}
+                fieldName='meaning'
               />
+              {isInputElements.map((el, index) => (
+                <InputElement
+                  key={index}
+                  styles={styles.createInput}
+                  register={register}
+                  remove={() => {
+                    RemoveDriver(el, isInputElements, setInputElements);
+                  }}
+                  point={''}
+                  fieldName={el}
+                />
+              ))}
             </div>
-            <div id={styles.buttonContents} onClick={() => console.log('test')}>
+            <div
+              id={styles.buttonContents}
+              onClick={() => {
+                CreateDriver(isInputElements, setInputElements);
+              }}
+            >
               <div id={styles.button}>
-                <img src={Assets.addIcon} alt='' />
+                <img src={addIcon} alt='' />
               </div>
             </div>
             <div className={styles.inputContents}>

@@ -40,7 +40,7 @@ import { CalculatorOperation } from '../../Controller/Strategy.function';
 import {
   AdditionFunction,
   MultiplicationFunction,
-} from '../../Model/function/Calculator.function';
+} from '../../Model/Calculator.function';
 // const applyTestFlexProps = ({ name, age, isActive = true }: TestFlexProps) => {
 //   return {
 //     displayName: `${name} (${age})`,
