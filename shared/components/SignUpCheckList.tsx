@@ -1,6 +1,7 @@
 import { Platform, Text } from 'react-native';
 import { SignUpCheckListStylesLocal } from '../style';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const SignUpCheckList = ({
   styles,
@@ -13,7 +14,11 @@ const SignUpCheckList = ({
     useEffect(() => {
       setState(false);
     }, []);
+    const navigate = useNavigate();
 
+    const onClickButton = () => {
+      navigate('/signup/input');
+    };
     return (
       <form action=''>
         <div id={styles.container}>
@@ -63,7 +68,9 @@ const SignUpCheckList = ({
           </div>
         </div>
         <div className={isState ? styles.submit : styles.button}>
-          <button type='submit'>다음으로</button>
+          <button type='submit' onClick={onClickButton}>
+            다음으로
+          </button>
         </div>
       </form>
     );

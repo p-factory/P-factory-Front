@@ -2,7 +2,6 @@ import styles from '../View/SignUpInput.page.module.scss';
 import Button from '@shared/components/Button';
 import PtoryLogo from '@shared/components/PtoryLogo';
 import { ButtonTypeStyles, PtoryLogoTypeStyles } from '../Model/Mapping';
-import { spannerIcon } from '../assets';
 import { useForm } from 'react-hook-form';
 import { useEffect } from 'react';
 
@@ -60,7 +59,7 @@ const LoginPage = () => {
                   type='text'
                   placeholder='영문 8자 이내'
                   {...register('id', {
-                    // required: '*아이디는 필수입니다.',
+                    required: '*아이디는 필수입니다.',
                     pattern: {
                       value: /^[a-zA-Z]{1,8}$/,
                       message: '*올바르게 작성해주세요.',
@@ -81,7 +80,7 @@ const LoginPage = () => {
                   type='password'
                   placeholder='영문, 숫자를 포함한 8~20자리 이내'
                   {...register('password', {
-                    // required: '*비밀번호는 필수입니다.',
+                    required: '*비밀번호는 필수입니다.',
                     pattern: {
                       value: /^[a-zA-Z0-9]{8,20}$/,
                       message:
@@ -103,7 +102,7 @@ const LoginPage = () => {
                   type='password'
                   placeholder='비밀번호 확인'
                   {...register('passwordCheck', {
-                    // required: '*비밀번호 확인은 필수입니다.',
+                    required: '*비밀번호 확인은 필수입니다.',
                     validate: {
                       matchPassword: (value) =>
                         value === getValues('password') ||
@@ -125,7 +124,7 @@ const LoginPage = () => {
                   type='text'
                   placeholder='8자 이내'
                   {...register('nickname', {
-                    // required: '*닉네임은 필수입니다.',
+                    required: '*닉네임은 필수입니다.',
                     pattern: {
                       value: /^[a-zA-Z0-9]{1,8}$/,
                       message: '*올바르게 작성해주세요.',
@@ -140,7 +139,7 @@ const LoginPage = () => {
             <Button
               styles={ButtonTypeStyles}
               title='가입하기'
-              image={spannerIcon}
+              image=''
               functions={() => {
                 console.log('test');
               }}
