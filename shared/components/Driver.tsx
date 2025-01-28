@@ -96,16 +96,16 @@ const Driver = ({ styles }: { styles: DriverStylesLocal }) => {
                 point={'check'}
                 fieldName='meaning'
               />
-              {isInputElements.map((fieldName, index) => (
+              {isInputElements.map((el, index) => (
                 <InputElement
                   key={index}
                   styles={styles.createInput}
                   register={register}
                   remove={() => {
-                    RemoveDriver(fieldName, isInputElements, setInputElements);
+                    RemoveDriver(el, isInputElements, setInputElements);
                   }}
                   point={''}
-                  fieldName={fieldName}
+                  fieldName={el}
                 />
               ))}
             </div>

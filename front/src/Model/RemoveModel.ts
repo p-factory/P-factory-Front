@@ -4,7 +4,7 @@ const RemoveModel = <Cell>(
   setItems: React.Dispatch<React.SetStateAction<Cell[]>>,
   callBack?: (item: Cell) => void,
 ): void => {
-  setItems((prev) => prev.filter((i) => i !== removeItem));
+  setItems((prev) => prev.filter((el) => el !== removeItem));
   if (callBack) callBack(removeItem);
 };
 
