@@ -10,10 +10,12 @@ const Search = ({
   styles,
   searchImage,
   image,
+  onOpenModal,
 }: {
   styles: SearchStylesLocal;
   searchImage: string;
   image: string;
+  onOpenModal: () => void;
 }) => {
   const { register, handleSubmit, setValue } = useForm<SearchFormData>();
 
@@ -37,7 +39,7 @@ const Search = ({
             </div>
           </div>
           <div className={styles.group}>
-            <button type='button' id={styles.button}>
+            <button type='button' id={styles.button} onClick={onOpenModal}>
               <img src={image} alt='build' />
             </button>
           </div>

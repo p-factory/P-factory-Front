@@ -2,7 +2,6 @@ import styled from './TestFlex.module.scss';
 // import { testFlexProps } from '@shared/type';
 import TestButton from '@shared/components/Test.Button';
 import Footer from '@shared/components/Footer';
-
 import Button from '@shared/components/Button';
 import Alarm from '@shared/components/Alarm';
 import SignUpCheckList from '@shared/components/SignUpCheckList';
