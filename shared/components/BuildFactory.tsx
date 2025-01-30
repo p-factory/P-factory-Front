@@ -13,12 +13,14 @@ const BuildFactory = ({
   image,
   input,
   buttonTitle,
+  onClose,
 }: {
   styles: BuildFactoryStylesLocal;
   title: string;
   image: string;
   input: string;
   buttonTitle: string;
+  onClose: () => void;
 }) => {
   if (Platform.OS === 'web') {
     const [isState, setState] = useState<boolean>(false);
@@ -37,7 +39,7 @@ const BuildFactory = ({
         <div id={styles.container}>
           <div id={styles.titleBar}>
             <div id={styles.title}>{`${title}`}</div>
-            <div id={styles.image}>
+            <div id={styles.image} onClick={onClose}>
               <img src={image} alt='X' />
             </div>
           </div>
