@@ -4,7 +4,7 @@ import App from './App';
 import './index.scss';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { Store } from '@shared/store';
+import { Store } from '@shared/store/store';
 import Modal from 'react-modal';
 Modal.setAppElement('#root');
 
