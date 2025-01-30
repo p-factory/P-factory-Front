@@ -45,6 +45,7 @@ const MyFactory = () => {
       </Modal>
 
       <div className={styled.Factory}>
+        {/* Create가 될 때 Factory props로 값을 전달해서 ManagerBar로 연결해야한다.*/}
         <Factory styles={FactoryTypeStyles} name={'토익공부'} count={'0'} />
       </div>
     </div>
