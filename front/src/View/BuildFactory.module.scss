@@ -54,6 +54,7 @@
   }
 }
 .button, .submit{
+  width: 100%;
   background-color: var(--gray2-color);
   border-radius: var(--corner-radius-large);
   display: flex;
@@ -62,10 +63,8 @@
   margin-top: 24px;
   cursor: pointer;
   color: var(--gray4-color);
-  div{
-    font-weight: var(--font-weight-bold);
-    font-size: var(--font-size-medium);
-  }
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-medium);
 }
 
 .submit{
