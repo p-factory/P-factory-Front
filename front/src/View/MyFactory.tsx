@@ -17,8 +17,8 @@ const MyFactory = () => {
   const closeModal = () => setModalOpen(false);
 
   return (
-    <div className={styled.debug}>
-      <div>
+    <div id={styled.debug}>
+      <div id={styled.Search}>
         <Search
           styles={SearchTypeStyles}
           searchImage={searchIcon}
@@ -44,14 +44,9 @@ const MyFactory = () => {
         />
       </Modal>
 
-      <Factory styles={FactoryTypeStyles} name={'토익공부'} count={'0'} />
-      <Factory styles={FactoryTypeStyles} name={'토익공부'} count={'0'} />
-      <Factory styles={FactoryTypeStyles} name={'토익공부'} count={'0'} />
-      <Factory styles={FactoryTypeStyles} name={'토익공부'} count={'0'} />
-      <Factory styles={FactoryTypeStyles} name={'토익공부'} count={'0'} />
-      <Factory styles={FactoryTypeStyles} name={'토익공부'} count={'0'} />
-      <Factory styles={FactoryTypeStyles} name={'토익공부'} count={'0'} />
-      <Factory styles={FactoryTypeStyles} name={'토익공부'} count={'0'} />
+      <div className={styled.Factory}>
+        <Factory styles={FactoryTypeStyles} name={'토익공부'} count={'0'} />
+      </div>
     </div>
   );
 };
