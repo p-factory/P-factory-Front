@@ -34,7 +34,8 @@ import {
 import { searchIcon, createIcon } from '../../assets';
 // Redux 사용시 필요한 구성
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState, Increment, Decrement } from '@shared/store';
+import { RootState } from '@shared/store/store';
+import { Increment, Decrement } from '@shared/store/slice/testSlice';
 import { CalculatorOperation } from '../../Controller/Strategy.function';
 import {
   AdditionFunction,

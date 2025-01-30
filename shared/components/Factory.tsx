@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { RootState } from '../store';
+import { RootState } from '../store/store';
 import { useDispatch, useSelector } from 'react-redux';
-import { SetMode } from '../store/factoryModeSlice';
+import { SetMode } from '../store/slice/factoryModeSlice';
 import { Platform, Text } from 'react-native';
 import Assets from '../../front/src/assets/assets';
 import ManagerBarStyled from '../ManagerBar.module.scss';
