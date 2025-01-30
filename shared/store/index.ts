@@ -1,4 +1,5 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
+import modeReducer from './factoryModeSlice';
 
 // 전역 상태 Slice 생성
 const counterSlice = createSlice({
@@ -18,6 +19,7 @@ const counterSlice = createSlice({
 export const Store = configureStore({
   reducer: {
     counter: counterSlice.reducer,
+    setMode: modeReducer,
   },
 });
 

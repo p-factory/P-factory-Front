@@ -1,8 +1,11 @@
+import { useEffect, useState } from 'react';
+import { RootState } from '../store';
+import { useDispatch, useSelector } from 'react-redux';
+import { SetMode } from '../store/factoryModeSlice';
 import { Platform, Text } from 'react-native';
 import Assets from '../../front/src/assets/assets';
 import ManagerBarStyled from '../ManagerBar.module.scss';
 import { FactoryStylesLocal, ManagerBarStyles } from '../style';
-import { useState } from 'react';
 
 const managerBarStyles: ManagerBarStyles = {
   container: ManagerBarStyled.container,
@@ -14,28 +17,56 @@ const managerBarStyles: ManagerBarStyles = {
 };
 
 export const ManagerBar = ({ styles }: { styles: ManagerBarStyles }) => {
+  const dispatch = useDispatch();
+  const mode = useSelector((state: RootState) => state.setMode.mode);
+  // const [isMode, setMode] = useState<string>('');
+
+  useEffect(() => {
+    console.log('현재 모드:', mode);
+  }, [mode]);
+
   if (Platform.OS === 'web') {
     return (
       <div id={styles.container}>
-        <div id={styles.contents}>
+        <div
+          id={styles.contents}
+          onClick={() => {
+            dispatch(SetMode('shared'));
+          }}
+        >
           <div id={styles.button}>
             <img src={Assets.shareBarIcon} alt='shareIcon' />
           </div>
           <span>공유</span>
         </div>
-        <div id={styles.contents}>
+        <div
+          id={styles.contents}
+          onClick={() => {
+            dispatch(SetMode('edit'));
+          }}
+        >
           <div id={styles.button}>
             <img src={Assets.editBarIcon} alt='editIcon' />
           </div>
           <span>수정</span>
         </div>
-        <div id={styles.contents}>
+        <div
+          id={styles.contents}
+          onClick={() => {
+            dispatch(SetMode('duplicated'));
+          }}
+        >
           <div id={styles.button}>
             <img src={Assets.duplicateBarIcon} alt='duplicateIcon' />
           </div>
           <span>복제</span>
         </div>
-        <div id={styles.contents}>
+        <div
+          id={styles.contents}
+          onClick={() => {
+            dispatch(SetMode('deleted'));
+          }}
+        >
           <div id={styles.button}>
             <img src={Assets.deleteBarIcon} alt='deleteIcon' />
           </div>
