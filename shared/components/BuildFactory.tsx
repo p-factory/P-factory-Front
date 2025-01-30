@@ -53,9 +53,12 @@ const BuildFactory = ({
             <div id={styles.charCounter}>(0/12)</div>
           </div>
         </div>
-        <div className={isState ? styles.submit : styles.button}>
-          <div onClick={handleSubmit(onSubmit)}>{`${buttonTitle}`}</div>
-        </div>
+        <button
+          type='submit'
+          className={isState ? styles.submit : styles.button}
+        >
+          {`${buttonTitle}`}
+        </button>
       </form>
     );
   }

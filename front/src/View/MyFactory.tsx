@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Modal from 'react-modal';
 import { Search, Factory, BuildFactory } from '@shared/components';
 import styled from './MyFactory.Layout.module.scss';
 import { searchIcon, createIcon, cancelIconGray } from '../assets';
@@ -7,15 +8,13 @@ import {
   FactoryTypeStyles,
   BuildFactoryTypeStyles,
 } from '../Model/Mapping';
-import Modal from 'react-modal';
+
 const MyFactory = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setModalOpen] = useState(false);
 
-  // 모달 열기 함수
-  const openModal = () => setIsModalOpen(true);
+  const openModal = () => setModalOpen(true);
 
-  // 모달 닫기 함수
-  const closeModal = () => setIsModalOpen(false);
+  const closeModal = () => setModalOpen(false);
 
   return (
     <div className={styled.debug}>
@@ -33,9 +32,8 @@ const MyFactory = () => {
           상단의 추가버튼을 눌러 공장을 만들고, 공장 안에서 단어를 생성하도록!
         </span>
       </div> */}
-      <Factory styles={FactoryTypeStyles} name={'토익공부'} count={'0'} />
 
-      <Modal isOpen={isModalOpen} onRequestClose={closeModal}>
+      <Modal isOpen={isModalOpen} onRequestClose={closeModal} preventScroll>
         <BuildFactory
           styles={BuildFactoryTypeStyles}
           title={'새로운 공장'}
@@ -45,6 +43,15 @@ const MyFactory = () => {
           onClose={closeModal}
         />
       </Modal>
+
+      <Factory styles={FactoryTypeStyles} name={'토익공부'} count={'0'} />
+      <Factory styles={FactoryTypeStyles} name={'토익공부'} count={'0'} />
+      <Factory styles={FactoryTypeStyles} name={'토익공부'} count={'0'} />
+      <Factory styles={FactoryTypeStyles} name={'토익공부'} count={'0'} />
+      <Factory styles={FactoryTypeStyles} name={'토익공부'} count={'0'} />
+      <Factory styles={FactoryTypeStyles} name={'토익공부'} count={'0'} />
+      <Factory styles={FactoryTypeStyles} name={'토익공부'} count={'0'} />
+      <Factory styles={FactoryTypeStyles} name={'토익공부'} count={'0'} />
     </div>
   );
 };
