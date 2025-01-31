@@ -1,6 +1,6 @@
 import { Platform, Text } from 'react-native';
 import { useState } from 'react';
-import Assets from '../../front/src/assets/assets';
+import { upIcon, downIcon } from '../../front/src/assets';
 import SortOptionStyled from '../SortOption.module.scss';
 import { SortOptionStyles, SortStylesLocal } from '../style';
 
@@ -60,10 +60,7 @@ const Sort = ({ styles }: { styles: SortStylesLocal }) => {
         <div id={styles.contents} onClick={handleButtonClicked}>
           <span id={styles.title}>{title}</span>
           <div id={styles.image}>
-            <img
-              src={isButtonClicked ? Assets.upIcon : Assets.downIcon}
-              alt=''
-            />
+            <img src={isButtonClicked ? upIcon : downIcon} alt='' />
           </div>
         </div>
         <div id={styles.sortOption}>

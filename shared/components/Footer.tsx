@@ -1,6 +1,15 @@
 import { Platform, Text } from 'react-native';
 import { FooterStyles } from '../style';
-import Assets from '../../front/src/assets/assets';
+import {
+  innerFactoryIconHover,
+  innerFactoryIcon,
+  outerFactoryIconHover,
+  outerFactoryIcon,
+  escapeGameIconHover,
+  escapeGameIcon,
+  mypageIconHover,
+  mypageIcon,
+} from '../../front/src/assets';
 import { useState } from 'react';
 
 const Footer = ({ styles }: { styles: FooterStyles }) => {
@@ -21,8 +30,8 @@ const Footer = ({ styles }: { styles: FooterStyles }) => {
             <img
               src={
                 isHoveredItem === 'innerFactory'
-                  ? Assets.innerFactoryIconHover // Hover 이미지
-                  : Assets.innerFactoryIcon // 기본 이미지
+                  ? innerFactoryIconHover // Hover 이미지
+                  : innerFactoryIcon // 기본 이미지
               }
               alt=''
             />
@@ -38,8 +47,8 @@ const Footer = ({ styles }: { styles: FooterStyles }) => {
             <img
               src={
                 isHoveredItem === 'outerFactory'
-                  ? Assets.outerFactoryIconHover // Hover 이미지
-                  : Assets.outerFactoryIcon // 기본 이미지
+                  ? outerFactoryIconHover // Hover 이미지
+                  : outerFactoryIcon // 기본 이미지
               }
               alt=''
             />
@@ -55,8 +64,8 @@ const Footer = ({ styles }: { styles: FooterStyles }) => {
             <img
               src={
                 isHoveredItem === 'escapeGame'
-                  ? Assets.escapeGameIconHover // Hover 이미지
-                  : Assets.escapeGameIcon // 기본 이미지
+                  ? escapeGameIconHover // Hover 이미지
+                  : escapeGameIcon // 기본 이미지
               }
               alt=''
             />
@@ -72,8 +81,8 @@ const Footer = ({ styles }: { styles: FooterStyles }) => {
             <img
               src={
                 isHoveredItem === 'myPage'
-                  ? Assets.mypageIconHover // Hover 이미지
-                  : Assets.mypageIcon // 기본 이미지
+                  ? mypageIconHover // Hover 이미지
+                  : mypageIcon // 기본 이미지
               }
               alt=''
             />
