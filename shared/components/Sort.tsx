@@ -22,8 +22,8 @@ export const SortOption = ({
       >
         오래된순
       </div>
-      <div className={styles.buttonContents} onClick={() => onClick('랜덤')}>
-        랜덤
+      <div className={styles.buttonContents} onClick={() => onClick('랜 덤')}>
+        랜 덤
       </div>
       <div className={styles.buttonContents} onClick={() => onClick('체크만')}>
         체크만
@@ -57,15 +57,13 @@ const Sort = ({ styles }: { styles: SortStylesLocal }) => {
   if (Platform.OS === 'web') {
     return (
       <div id={styles.container}>
-        <div id={styles.button} onClick={handleButtonClicked}>
-          <div id={styles.contents}>
-            <span id={styles.title}>{title}</span>
-            <div id={styles.image}>
-              <img
-                src={isButtonClicked ? Assets.upIcon : Assets.downIcon}
-                alt=''
-              />
-            </div>
+        <div id={styles.contents} onClick={handleButtonClicked}>
+          <span id={styles.title}>{title}</span>
+          <div id={styles.image}>
+            <img
+              src={isButtonClicked ? Assets.upIcon : Assets.downIcon}
+              alt=''
+            />
           </div>
         </div>
         <div id={styles.sortOption}>
