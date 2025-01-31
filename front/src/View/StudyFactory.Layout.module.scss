@@ -1,0 +1,22 @@
+#debug{
+  img{
+    cursor: pointer;
+  }
+  #header{
+    display: flex;
+    width: 100%;
+    justify-content: space-between
+  }
+  #count{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 12px;
+    margin-bottom: 33px;
+  }
+  #menu{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
