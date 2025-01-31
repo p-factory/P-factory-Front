@@ -30,3 +30,6 @@ export { default as editBarIcon } from './img/edit-bar-icon.svg';
 export { default as shareBarIcon } from './img/share-bar-icon.svg';
 export { default as addIcon } from './img/add-icon.svg';
 export { default as removeIcon } from './img/remove-icon.svg';
+export { default as starIconChecked } from './img/star-icon-checked.svg';
+export { default as starIcon } from './img/star-icon.svg';
+export { default as spannerIcon } from './img/spanner-icon.svg';
