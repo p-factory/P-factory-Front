@@ -1,12 +1,20 @@
 import { useState } from 'react';
 import Modal from 'react-modal';
-import { Search, Factory, BuildFactory } from '@shared/components';
+import {
+  Search,
+  Factory,
+  BuildFactory,
+  Footer,
+  Tool,
+} from '@shared/components';
 import styled from './MyFactory.Layout.module.scss';
 import { searchIcon, createIcon, cancelIconGray } from '../assets';
 import {
   SearchTypeStyles,
   FactoryTypeStyles,
   BuildFactoryTypeStyles,
+  FooterTypeStyles,
+  ToolTypeStyles,
 } from '../Model/Mapping';
 
 const MyFactory = () => {
@@ -48,6 +56,20 @@ const MyFactory = () => {
         {/* Create가 될 때 Factory props로 값을 전달해서 ManagerBar로 연결해야한다.*/}
         <Factory styles={FactoryTypeStyles} name={'토익공부'} count={'0'} />
       </div>
+      {/* <div className={styled.Factory}>
+        <Factory styles={FactoryTypeStyles} name={'토익공부'} count={'0'} />
+      </div>
+      <div className={styled.Factory}>
+        <Factory styles={FactoryTypeStyles} name={'토익공부'} count={'0'} />
+      </div>
+      <div className={styled.Factory}>
+        <Factory styles={FactoryTypeStyles} name={'토익공부'} count={'0'} />
+      </div>
+      <div className={styled.Factory}>
+        <Factory styles={FactoryTypeStyles} name={'토익공부'} count={'0'} />
+      </div> */}
+      <Tool styles={ToolTypeStyles} />
+      <Footer styles={FooterTypeStyles} />
     </div>
   );
 };
