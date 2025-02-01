@@ -33,3 +33,5 @@ export { default as removeIcon } from './img/remove-icon.svg';
 export { default as starIconChecked } from './img/star-icon-checked.svg';
 export { default as starIcon } from './img/star-icon.svg';
 export { default as spannerIcon } from './img/spanner-icon.svg';
+export { default as backIcon } from './img/back-icon.svg';
+export { default as downloadIcon } from './img/download-icon.svg';
