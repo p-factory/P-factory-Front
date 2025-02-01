@@ -1,26 +1,38 @@
-import { Sort } from '@shared/components';
-import { SortTypeStyles } from '../Model/Mapping';
+import { Sort, Screw } from '@shared/components';
+import { SortTypeStyles, ScrewTypeStyles } from '../Model/Mapping';
 import styled from './StudyFactory.Layout.module.scss';
+import { starIconChecked, backIcon, downloadIcon } from '../assets';
 const StudyFactory = () => {
   return (
     <div id={styled.debug}>
       <div id={styled.header}>
-        <div>
-          <img src='' alt='backIcon' />
+        <div id={styled.navigate}>
+          <div className={styled.imageGroup}>
+            <img src={backIcon} alt='backIcon' />
+          </div>
+          <span id={styled.title}>토익 공부</span>
+          <div className={styled.imageGroup}>
+            <img src={starIconChecked} alt='starIcon' />
+          </div>
         </div>
-        <span>토익 공부</span>
-        <div>
-          <img src='' alt='starIcon' />
+        <div id={styled.count}>단어 0개</div>
+        <div id={styled.menu}>
+          <div>
+            <Sort styles={SortTypeStyles} />
+          </div>
+          <div className={styled.imageGroup}>
+            <img src={downloadIcon} alt='downLoadIcon' />
+          </div>
         </div>
       </div>
-      <div id={styled.count}>단어 0개</div>
-      <div id={styled.menu}>
-        <div>
-          <Sort styles={SortTypeStyles} />
-        </div>
-        <div>
-          <img src='' alt='downLoadIcon' />
-        </div>
+      <div id={styled.screws}>
+        <Screw
+          styles={ScrewTypeStyles}
+          screwSound={'라보르'}
+          bolt={'labor'}
+          nuts={'노동, 일, 출산'}
+          screwShape={'명사'}
+        />
       </div>
     </div>
   );
