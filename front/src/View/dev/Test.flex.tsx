@@ -90,13 +90,15 @@ const TestFlex = () => {
       <Button
         styles={ButtonTypeStyles}
         title='로그인'
-        image={Assets.spannerIcon}
+        state={false}
+        image={Assets.spannerIconGray}
         functions={() => {
           console.log(CalculatorOperation(AdditionFunction, 1, 6));
         }}
       />
       <div style={{ padding: '18px' }}></div>
       <Button
+        state={true}
         styles={ButtonTypeStyles}
         title='버튼'
         image=''

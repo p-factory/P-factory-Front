@@ -40,6 +40,7 @@ export const FooterTypeStyles: FooterStyles = {
 export const ButtonTypeStyles: ButtonStyles = {
   button: ButtonStyled.button,
   container: ButtonStyled.container,
+  submit: ButtonStyled.submit,
   contents: ButtonStyled.contents,
   buttonContents: AlarmStyled.contents,
   title: ButtonStyled.title,
@@ -49,6 +50,7 @@ export const ButtonTypeStyles: ButtonStyles = {
 export const AlarmTypeStyles: AlarmStylesLocal = {
   title: AlarmStyled.title,
   container: AlarmStyled.container,
+  submit: ButtonStyled.submit,
   contents: AlarmStyled.contents,
   buttonContents: AlarmStyled.buttonContents,
   button: AlarmStyled.button,
@@ -83,6 +85,7 @@ export const SirenTypeStyles: SirenStylesLocal = {
 
 export const SearchTypeStyles: SearchStylesLocal = {
   title: SearchStyled.title,
+  submit: ButtonStyled.submit,
   container: SearchStyled.container,
   contents: SearchStyled.contents,
   button: SearchStyled.button,
@@ -101,6 +104,7 @@ export const ToolTypeStyles: ToolStylesLocal = {
 
 export const SortTypeStyles: SortStylesLocal = {
   button: SortStyled.button,
+  submit: ButtonStyled.submit,
   buttonContents: SortStyled.contents,
   container: SortStyled.container,
   contents: SortStyled.contents,
@@ -111,6 +115,7 @@ export const SortTypeStyles: SortStylesLocal = {
 
 export const FactoryTypeStyles: FactoryStylesLocal = {
   container: FactoryStyled.container,
+  submit: ButtonStyled.submit,
   contents: FactoryStyled.contents,
   title: FactoryStyled.title,
   image: FactoryStyled.image,
@@ -124,6 +129,7 @@ export const FactoryTypeStyles: FactoryStylesLocal = {
 
 export const ScrewTypeStyles: ScrewStylesLocal = {
   container: ScrewStyled.container,
+  submit: ButtonStyled.submit,
   contents: ScrewStyled.contents,
   title: ScrewStyled.title,
   button: ScrewStyled.button,

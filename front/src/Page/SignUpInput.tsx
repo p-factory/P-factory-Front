@@ -22,6 +22,7 @@ const LoginPage = () => {
     getValues,
     formState: { errors },
   } = useForm<FormData>();
+
   const onSubmit = (data: FormData) => {
     console.log('제출된 데이터:', data);
   };
@@ -34,13 +35,26 @@ const LoginPage = () => {
     ) {
       setError('passwordCheck', {
         type: 'password-mismatch',
-        message: '비밀번호가 일치하지 않습니다',
+        message: '*비밀번호가 일치하지 않아요.',
       });
     } else {
       // 비밀번호 일치시 오류 제거
       clearErrors('passwordCheck');
     }
   }, [watch('password'), watch('passwordCheck')]);
+
+  // id와 password 필드의 값을 감시
+  const idValue = watch('id', '');
+  const passwordValue = watch('password', '');
+  const passwordCheckValue = watch('passwordCheck', '');
+  const nicknameValue = watch('nickname', '');
+
+  // 두 입력 필드에 값이 존재하면 true, 아니면 false
+  const isButtonActive =
+    idValue.trim() !== '' &&
+    passwordValue.trim() !== '' &&
+    passwordCheckValue.trim() !== '' &&
+    nicknameValue.trim() !== '';
 
   return (
     <div id={styles.container}>
@@ -106,7 +120,7 @@ const LoginPage = () => {
                     validate: {
                       matchPassword: (value) =>
                         value === getValues('password') ||
-                        '비밀번호가 일치하지 않습니다',
+                        '비밀번호가 일치하지 않아요.',
                     },
                   })}
                 />
@@ -140,6 +154,7 @@ const LoginPage = () => {
               styles={ButtonTypeStyles}
               title='가입하기'
               image=''
+              state={isButtonActive}
               functions={() => {
                 console.log('test');
               }}

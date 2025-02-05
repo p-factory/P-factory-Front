@@ -6,11 +6,13 @@ const Button = ({
   styles,
   title,
   image,
+  state,
   functions,
 }: {
   styles: ButtonStyles;
   title: string;
   image: string;
+  state: boolean;
   functions: Functions.GeneralArg;
 }) => {
   if (Platform.OS === 'web') {
@@ -22,7 +24,7 @@ const Button = ({
     };
 
     return (
-      <div id={styles.button} onClick={handleClick}>
+      <div id={state ? styles.button : styles.submit} onClick={handleClick}>
         <div id={styles.contents}>
           <span id={styles.title}>{title}</span>
           <img id={styles.image} src={image} alt='' />

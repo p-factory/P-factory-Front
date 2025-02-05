@@ -21,6 +21,7 @@ export namespace Styles {
   export interface Button {
     button: string;
     buttonContents: string;
+    submit: string;
   }
 
   export interface Image {

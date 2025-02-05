@@ -2,8 +2,10 @@ import styles from '../View/Login.page.module.scss';
 import Button from '@shared/components/Button';
 import PtoryLogo from '@shared/components/PtoryLogo';
 import { ButtonTypeStyles, PtoryLogoTypeStyles } from '../Model/Mapping';
-import { spannerIcon } from '../assets';
+import { spannerIcon, spannerIconGray } from '../assets';
 import { useForm } from 'react-hook-form';
+import { useState } from 'react';
+import Assets from '../assets/assets';
 
 interface FormData {
   id: string;
@@ -14,11 +16,22 @@ const LoginPage = () => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm<FormData>();
+
+  // id와 password 필드의 값을 감시
+  const idValue = watch('id', '');
+  const passwordValue = watch('password', '');
+
   const onSubmit = (data: FormData) => {
     console.log('제출된 데이터:', data);
   };
+
+  const [showPassword, setShowPassword] = useState(false);
+  // 두 입력 필드에 값이 존재하면 true, 아니면 false
+  const isButtonActive = idValue.trim() !== '' && passwordValue.trim() !== '';
+
   return (
     <div id={styles.container}>
       <div id={styles.contents}>
@@ -48,7 +61,7 @@ const LoginPage = () => {
                 className={errors.password ? styles.inputError : styles.input}
               >
                 <input
-                  type='password'
+                  type={showPassword ? 'text' : 'password'}
                   placeholder='비밀번호를 입력하세요.'
                   {...register('password', {
                     required: '*비밀번호는 필수입니다.',
@@ -58,6 +71,11 @@ const LoginPage = () => {
                     },
                   })}
                 />
+                <img
+                  id={styles.eyeIcon}
+                  src={showPassword ? Assets.spannerIcon : Assets.closeEyeIcon} // 임시로 spannerIcon으로 대체
+                  onClick={() => setShowPassword((prev) => !prev)}
+                />
               </div>
               {errors.password && <p>{errors.password.message}</p>}
             </div>
@@ -66,7 +84,8 @@ const LoginPage = () => {
             <Button
               styles={ButtonTypeStyles}
               title='로그인'
-              image={spannerIcon}
+              image={isButtonActive ? spannerIcon : spannerIconGray}
+              state={isButtonActive}
               functions={() => {
                 console.log('test');
               }}

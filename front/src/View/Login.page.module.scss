@@ -18,6 +18,7 @@
                 .inputContents{
                     display: flex;
                     flex-direction: column;
+                    position: relative;
                         .input{
                         display: flex;
                         align-items: center;
@@ -33,6 +34,7 @@
                                 font-weight: var(--font-weight-medium);
                                 background: none;
                                 margin: 0;
+                                height: 24px;
                                 &::placeholder{
                                     color: var(--gray3-color);
                                     font-size: var(--font-size-small);
@@ -55,6 +57,7 @@
                                 font-weight: var(--font-weight-medium);
                                 background: none;
                                 margin: 0;
+                                height: 24px;
                                 &::placeholder{
                                     color: var(--gray3-color);
                                     font-size: var(--font-size-small);
@@ -62,10 +65,21 @@
                                 }
                             }
                         }
-                    p{
-                        color: var(--negative-error-cancel);
-                        font-size: var(--font-size-xsmall);
-                    }
+                        #eyeIcon{
+                            margin: 0px;
+                            cursor: pointer;
+                            color: var(--gray5-color)
+                        }
+                        p{
+                            display: flex;
+                            position: absolute;
+                            text-align: end;
+                            bottom: -20px;
+                            right: 0;
+                            color: var(--negative-error-cancel);
+                            font-size: var(--font-size-xxsmall);
+                            font-weight: var(--font-weight-medium);
+                        }
                 }
             }
             button{
