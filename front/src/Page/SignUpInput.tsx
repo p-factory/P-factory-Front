@@ -1,9 +1,15 @@
 import styles from '../View/SignUpInput.page.module.scss';
 import Button from '@shared/components/Button';
+import Siren from '@shared/components/Siren';
 import PtoryLogo from '@shared/components/PtoryLogo';
-import { ButtonTypeStyles, PtoryLogoTypeStyles } from '../Model/Mapping';
+import Assets from '../assets/assets';
+import {
+  ButtonTypeStyles,
+  PtoryLogoTypeStyles,
+  SirenTypeStyles,
+} from '../Model/Mapping';
 import { useForm } from 'react-hook-form';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 interface FormData {
   id: string;
@@ -23,8 +29,11 @@ const LoginPage = () => {
     formState: { errors },
   } = useForm<FormData>();
 
+  const [showSiren, setShowSiren] = useState(false);
+
   const onSubmit = (data: FormData) => {
     console.log('제출된 데이터:', data);
+    setShowSiren(true);
   };
 
   // [비밀번호] value 수정 시 이미 입력된 [비밀번호 확인] value 도 같이 유효성 체크
@@ -120,7 +129,7 @@ const LoginPage = () => {
                     validate: {
                       matchPassword: (value) =>
                         value === getValues('password') ||
-                        '비밀번호가 일치하지 않아요.',
+                        '*비밀번호가 일치하지 않아요.',
                     },
                   })}
                 />
@@ -162,6 +171,16 @@ const LoginPage = () => {
           </button>
         </form>
       </div>
+      {showSiren && (
+        <div id={styles.siren}>
+          <Siren
+            styles={SirenTypeStyles}
+            image={Assets.cancelIcon}
+            title={'토리님'}
+            alarm={'환영합니다!'}
+          />{' '}
+        </div>
+      )}
     </div>
   );
 };
