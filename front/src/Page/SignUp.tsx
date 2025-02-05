@@ -1,5 +1,5 @@
 import styles from '../View/SignUp.page.module.scss';
-import SignUpCheckList from '@shared/components/SignUpCheckList';
+import SignUpCheckList from '@shared/components/SignUpCheckList.test';
 import PtoryLogo from '@shared/components/PtoryLogo';
 import {
   SignUpCheckListTypeStyles,

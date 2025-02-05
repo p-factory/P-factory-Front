@@ -58,7 +58,9 @@ export interface SignUpCheckListStylesLocal extends SignUpCheckListStyles {
   checkbox: string;
   required: string;
   conditions: string;
+  conditionsChecked: string;
   selected: string;
+  selectedChecked: string;
   all: string;
   submit: string;
 }
