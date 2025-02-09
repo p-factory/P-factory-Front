@@ -73,7 +73,7 @@ const LoginPage = () => {
                 />
                 <img
                   id={styles.eyeIcon}
-                  src={showPassword ? Assets.spannerIcon : Assets.closeEyeIcon} // 임시로 spannerIcon으로 대체
+                  src={showPassword ? Assets.openEyeIcon : Assets.closeEyeIcon}
                   onClick={() => setShowPassword((prev) => !prev)}
                 />
               </div>

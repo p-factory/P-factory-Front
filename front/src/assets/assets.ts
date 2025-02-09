@@ -17,6 +17,7 @@ import ptorySubIcon from './img/ptory-sub-logo.svg';
 import searchIcon from './img/search-icon.svg';
 import createIcon from './img/factory-icon.svg';
 import closeEyeIcon from './img/close-eye-icon.svg';
+import openEyeIcon from './img/open-eye-icon.svg';
 /* Tool-Icons */
 import englishIcon from './img/english-icon.svg';
 import englishIconHover from './img/english-icon-hover.svg';
@@ -76,6 +77,7 @@ const Assets = {
   shareBarIcon,
   cancelIconGray,
   addIcon,
+  openEyeIcon,
 };
 
 export default Assets;
