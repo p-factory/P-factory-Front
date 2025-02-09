@@ -20,15 +20,9 @@ importers:
       react:
         specifier: ^18.2.0
         version: 18.3.1
-      react-hook-form:
-        specifier: ^7.54.2
-        version: 7.54.2(react@18.3.1)
-      react-redux:
-        specifier: ^9.2.0
-        version: 9.2.0(@types/react@18.3.18)(react@18.3.1)(redux@5.0.1)
-      redux:
-        specifier: ^5.0.1
-        version: 5.0.1
+      recoil:
+        specifier: ^0.7.7
+        version: 0.7.7(react@18.3.1)
       sass:
         specifier: ^1.83.0
         version: 1.83.0
@@ -36,6 +30,9 @@ importers:
       '@types/react':
         specifier: ^18.0.22
         version: 18.3.18
+      '@types/react-modal':
+        specifier: ^3.16.3
+        version: 3.16.3
       '@typescript-eslint/eslint-plugin':
         specifier: ^5.18.0
         version: 5.62.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@4.9.5))(eslint@8.57.1)(typescript@4.9.5)
@@ -1287,6 +1284,9 @@ packages:
     peerDependencies:
       '@types/react': ^19.0.0
 
+  '@types/react-modal@3.16.3':
+    resolution: {integrity: sha512-xXuGavyEGaFQDgBv4UVm8/ZsG+qxeQ7f77yNrW3n+1J6XAstUy5rYHeIHPh1KzsGc6IkCIdu6lQ2xWzu1jBTLg==}
+
   '@types/react-native@0.73.0':
     resolution: {integrity: sha512-6ZRPQrYM72qYKGWidEttRe6M5DZBEV5F+MHMHqd4TTYx0tfkcdrUFGdef6CCxY0jXU7wldvd/zA/b0A/kTeJmA==}
     deprecated: This is a stub types definition. react-native provides its own type definitions, so you do not need this installed.
@@ -2375,6 +2375,9 @@ packages:
   execa@5.1.1:
     resolution: {integrity: sha512-8uSpZZocAZRBAPIEINJj3Lo9HyGitllczc27Eh5YYojjMFMn8yHMDMaUHE2Jqfq05D/wucwI4JGURyXt1vchyg==}
     engines: {node: '>=10'}
+
+  exenv@1.2.2:
+    resolution: {integrity: sha512-Z+ktTxTwv9ILfgKCk32OX3n/doe+OcLTRtqK9pcL+JsP3J1/VW8Uvl4ZjLlKqeW4rzK4oesDOGMEMRIZqtP4Iw==}
 
   expo-asset@11.0.1:
     resolution: {integrity: sha512-WatvD7JVC89EsllXFYcS/rji3ajVzE2B/USo0TqedsETixwyVCQfrrvCdCPQyuKghrxVNEj8bQ/Qbea/RZLYjg==}
@@ -3783,6 +3786,15 @@ packages:
   react-is@18.3.1:
     resolution: {integrity: sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==}
 
+  react-lifecycles-compat@3.0.4:
+    resolution: {integrity: sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==}
+
+  react-modal@3.16.3:
+    resolution: {integrity: sha512-yCYRJB5YkeQDQlTt17WGAgFJ7jr2QYcWa1SHqZ3PluDmnKJ/7+tVU+E6uKyZ0nODaeEj+xCpK4LcSnKXLMC0Nw==}
+    peerDependencies:
+      react: ^0.14.0 || ^15.0.0 || ^16 || ^17 || ^18 || ^19
+      react-dom: ^0.14.0 || ^15.0.0 || ^16 || ^17 || ^18 || ^19
+
   react-native-web@0.19.13:
     resolution: {integrity: sha512-etv3bN8rJglrRCp/uL4p7l8QvUNUC++QwDbdZ8CB7BvZiMvsxfFIRM1j04vxNldG3uo2puRd6OSWR3ibtmc29A==}
     peerDependencies:
@@ -4544,6 +4556,9 @@ packages:
 
   walker@1.0.8:
     resolution: {integrity: sha512-ts/8E8l5b7kY0vlWLewOkDXMmPdLcVV4GmOQLyxuSswIJsweeFZtAsMF7k1Nszz+TYBQrlYRmzOnr398y1JemQ==}
+
+  warning@4.0.3:
+    resolution: {integrity: sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w==}
 
   wcwidth@1.0.1:
     resolution: {integrity: sha512-XHPEwS0q6TaxcvG85+8EYkbiCux2XtWG2mkc47Ng2A77BQu9+DqIOJldST4HgPkuea7dvKSj5VgX3P1d4rW8Tg==}
@@ -6343,6 +6358,10 @@ snapshots:
     dependencies:
       '@types/react': 18.3.18
 
+  '@types/react-modal@3.16.3':
+    dependencies:
+      '@types/react': 18.3.18
+
   '@types/react-native@0.73.0(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@types/react@18.3.18)(react@18.3.1)':
     dependencies:
       react-native: 0.76.5(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@types/react@18.3.18)(react@18.3.1)
@@ -7627,6 +7646,8 @@ snapshots:
       onetime: 5.1.2
       signal-exit: 3.0.7
       strip-final-newline: 2.0.0
+
+  exenv@1.2.2: {}
 
   expo-asset@11.0.1(expo@52.0.23(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(react-native@0.76.5(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@types/react@18.3.18)(react@18.3.1))(react@18.3.1))(react-native@0.76.5(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@types/react@18.3.18)(react@18.3.1))(react@18.3.1):
     dependencies:
@@ -9166,6 +9187,17 @@ snapshots:
 
   react-is@18.3.1: {}
 
+  react-lifecycles-compat@3.0.4: {}
+
+  react-modal@3.16.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    dependencies:
+      exenv: 1.2.2
+      prop-types: 15.8.1
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      react-lifecycles-compat: 3.0.4
+      warning: 4.0.3
+
   react-native-web@0.19.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@babel/runtime': 7.26.0
@@ -9990,6 +10022,10 @@ snapshots:
   walker@1.0.8:
     dependencies:
       makeerror: 1.0.12
+
+  warning@4.0.3:
+    dependencies:
+      loose-envify: 1.4.0
 
   wcwidth@1.0.1:
     dependencies:

@@ -13,15 +13,18 @@ const BuildFactory = ({
   image,
   input,
   buttonTitle,
+  onClose,
 }: {
   styles: BuildFactoryStylesLocal;
   title: string;
   image: string;
   input: string;
   buttonTitle: string;
+  onClose: () => void;
 }) => {
   if (Platform.OS === 'web') {
     const [isState, setState] = useState<boolean>(false);
+    const [inInputLength, setInputLength] = useState<number>(0);
     const { register, handleSubmit, setValue } = useForm<BuildFormData>();
 
     const onSubmit = (data: BuildFormData) => {
@@ -37,7 +40,7 @@ const BuildFactory = ({
         <div id={styles.container}>
           <div id={styles.titleBar}>
             <div id={styles.title}>{`${title}`}</div>
-            <div id={styles.image}>
+            <div id={styles.image} onClick={onClose}>
               <img src={image} alt='X' />
             </div>
           </div>
@@ -45,15 +48,22 @@ const BuildFactory = ({
             <input
               id={styles.input}
               placeholder={`${input}`}
-              {...register('buildQuery', { required: true })}
-              onChange={(e) => setValue('buildQuery', e.target.value)}
+              maxLength={12}
+              {...register('buildQuery', { required: true, maxLength: 12 })}
+              onChange={(e) => {
+                setValue('buildQuery', e.target.value);
+                setInputLength(e.target.value.length);
+              }}
             />
-            <div id={styles.charCounter}>(0/12)</div>
+            <div id={styles.charCounter}>{`(${inInputLength}/12)`}</div>
           </div>
         </div>
-        <div className={isState ? styles.submit : styles.button}>
-          <div onClick={handleSubmit(onSubmit)}>{`${buttonTitle}`}</div>
-        </div>
+        <button
+          type='submit'
+          className={isState ? styles.submit : styles.button}
+        >
+          {`${buttonTitle}`}
+        </button>
       </form>
     );
   }

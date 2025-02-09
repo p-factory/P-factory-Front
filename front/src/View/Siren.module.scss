@@ -6,9 +6,7 @@
   font-weight: var(--font-weight-medium);
   border-radius: var(--corner-radius-medium);
   box-shadow: 0 0 var(--effects-style-shadow1) rgba(0, 0, 0, var(--effects-blur-shadow1));
-  max-width: 430px;
-  min-width: 320px;
-
+  
   #image{
     display: flex;
     justify-content: flex-end;

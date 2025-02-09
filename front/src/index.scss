@@ -114,6 +114,28 @@ body {
   padding: 0 40px; //padding을 통해서 여백을 만들어낼 수 있다.
 }
 
+// modal scss
+.ReactModal__Overlay {
+  width: 100%;
+  display: flex; /* 🔥 부모 요소에서 flex 적용 */
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5) !important; /* 반투명 배경 */
+}
+
+.ReactModal__Content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  max-width: 430px;
+  min-height: 200px;
+  border: none !important;
+  background: none !important;
+  margin: 0 auto;
+}
+
+
 // 웹에서 최소 일때 꽉찬 화면으로 수정(원인1)
 // @media (max-width: 380px) { //iphone 375px에서 반응하게 할지
 //   body {

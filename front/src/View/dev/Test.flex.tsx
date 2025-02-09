@@ -2,7 +2,6 @@ import styled from './TestFlex.module.scss';
 // import { testFlexProps } from '@shared/type';
 import TestButton from '@shared/components/Test.Button';
 import Footer from '@shared/components/Footer';
-
 import Button from '@shared/components/Button';
 import Alarm from '@shared/components/Alarm';
 import SignUpCheckList from '@shared/components/SignUpCheckList';
@@ -15,7 +14,6 @@ import Screw from '@shared/components/Screw';
 import BuildFactory from '@shared/components/BuildFactory';
 import Driver from '@shared/components/Driver';
 import PtoryLogo from '@shared/components/PtoryLogo';
-
 import Assets from '../../assets/assets';
 import {
   FooterTypeStyles,
@@ -32,15 +30,15 @@ import {
   DriverTypeStyles,
   PtoryLogoTypeStyles,
 } from '../../Model/Mapping';
-import { searchIcon, createIcon } from '../../assets';
 // Redux 사용시 필요한 구성
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState, Increment, Decrement } from '@shared/store';
+import { RootState } from '@shared/store/store';
+import { Increment, Decrement } from '@shared/store/slice/testSlice';
 import { CalculatorOperation } from '../../Controller/Strategy.function';
 import {
   AdditionFunction,
   MultiplicationFunction,
-} from '../../Model/function/Calculator.function';
+} from '../../Model/Calculator.function';
 // const applyTestFlexProps = ({ name, age, isActive = true }: TestFlexProps) => {
 //   return {
 //     displayName: `${name} (${age})`,
@@ -62,8 +60,8 @@ const TestFlex = () => {
     <div className={styled.debug}>
       <Search
         styles={SearchTypeStyles}
-        searchImage={searchIcon}
-        image={createIcon}
+        searchImage={Assets.searchIcon}
+        image={Assets.createIcon}
       />
       <div style={{ padding: '18px' }}></div>
       <Sort styles={SortTypeStyles} />
