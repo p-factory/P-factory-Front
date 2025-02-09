@@ -8,6 +8,7 @@ export { default as outerFactoryIconHover } from './img/outer-factory-icon-hover
 export { default as mypageIcon } from './img/mypage-icon.svg';
 export { default as mypageIconHover } from './img/mypage-icon-hover.svg';
 export { default as closeEyeIcon } from './img/close-eye-icon.svg';
+export { default as openEyeIcon } from './img/open-eye-icon.svg';
 export { default as cancelIcon } from './img/cancel-icon.svg';
 export { default as cancelIconGray } from './img/cancel-icon-gray.svg';
 export { default as ptoryMainIcon } from './img/ptory-main-logo.svg';

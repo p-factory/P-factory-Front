@@ -20,9 +20,18 @@ importers:
       react:
         specifier: ^18.2.0
         version: 18.3.1
-      recoil:
-        specifier: ^0.7.7
-        version: 0.7.7(react@18.3.1)
+      react-hook-form:
+        specifier: ^7.54.2
+        version: 7.54.2(react@18.3.1)
+      react-modal:
+        specifier: ^3.16.3
+        version: 3.16.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react-redux:
+        specifier: ^9.2.0
+        version: 9.2.0(@types/react@18.3.18)(react@18.3.1)(redux@5.0.1)
+      redux:
+        specifier: ^5.0.1
+        version: 5.0.1
       sass:
         specifier: ^1.83.0
         version: 1.83.0

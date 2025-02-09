@@ -2,7 +2,8 @@ import styles from '../View/SignUpInput.page.module.scss';
 import Button from '@shared/components/Button';
 import Siren from '@shared/components/Siren';
 import PtoryLogo from '@shared/components/PtoryLogo';
-import Assets from '../assets/assets';
+import { cancelIcon } from '../assets';
+
 import {
   ButtonTypeStyles,
   PtoryLogoTypeStyles,
@@ -175,7 +176,7 @@ const LoginPage = () => {
         <div id={styles.siren}>
           <Siren
             styles={SirenTypeStyles}
-            image={Assets.cancelIcon}
+            image={cancelIcon}
             title={'토리님'}
             alarm={'환영합니다!'}
           />{' '}

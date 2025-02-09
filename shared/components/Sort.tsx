@@ -1,8 +1,8 @@
 import { Platform, Text } from 'react-native';
 import { useState } from 'react';
-import Assets from '../../front/src/assets/assets';
 import SortOptionStyled from '../SortOption.module.scss';
 import { SortOptionStyles, SortStylesLocal } from '../style';
+import { upIcon, downIcon } from '../../front/src/assets';
 
 export const SortOption = ({
   styles,
@@ -52,6 +52,7 @@ const Sort = ({ styles }: { styles: SortStylesLocal }) => {
   const sortOptionStyles: SortOptionStyles = {
     button: SortOptionStyled.button,
     buttonContents: SortOptionStyled.buttonContents,
+    submit: SortOptionStyled.submit,
   };
 
   if (Platform.OS === 'web') {
@@ -61,10 +62,7 @@ const Sort = ({ styles }: { styles: SortStylesLocal }) => {
           <div id={styles.contents}>
             <span id={styles.title}>{title}</span>
             <div id={styles.image}>
-              <img
-                src={isButtonClicked ? Assets.upIcon : Assets.downIcon}
-                alt=''
-              />
+              <img src={isButtonClicked ? upIcon : downIcon} alt='' />
             </div>
           </div>
         </div>

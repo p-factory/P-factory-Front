@@ -1,4 +1,3 @@
-import Assets from '../../front/src/assets/assets';
 import { useEffect, useState } from 'react';
 import { RootState } from '../store/store';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,6 +5,15 @@ import { SetMode } from '../store/slice/factoryModeSlice';
 import { Platform, Text } from 'react-native';
 import ManagerBarStyled from '../ManagerBar.module.scss';
 import { FactoryStylesLocal, ManagerBarStyles } from '../style';
+import {
+  shareBarIcon,
+  editBarIcon,
+  duplicateBarIcon,
+  deleteBarIcon,
+  moreIcon,
+  starIconChecked,
+  starIcon,
+} from '../../front/src/assets';
 
 const managerBarStyles: ManagerBarStyles = {
   container: ManagerBarStyled.container,
@@ -36,7 +44,7 @@ export const ManagerBar = ({ styles }: { styles: ManagerBarStyles }) => {
           }}
         >
           <div id={styles.button}>
-            <img src={Assets.shareBarIcon} alt='shareIcon' />
+            <img src={shareBarIcon} alt='shareIcon' />
           </div>
           <span>공유</span>
         </div>
@@ -47,7 +55,7 @@ export const ManagerBar = ({ styles }: { styles: ManagerBarStyles }) => {
           }}
         >
           <div id={styles.button}>
-            <img src={Assets.editBarIcon} alt='editIcon' />
+            <img src={editBarIcon} alt='editIcon' />
           </div>
           <span>수정</span>
         </div>
@@ -58,7 +66,7 @@ export const ManagerBar = ({ styles }: { styles: ManagerBarStyles }) => {
           }}
         >
           <div id={styles.button}>
-            <img src={Assets.duplicateBarIcon} alt='duplicateIcon' />
+            <img src={duplicateBarIcon} alt='duplicateIcon' />
           </div>
           <span>복제</span>
         </div>
@@ -69,7 +77,7 @@ export const ManagerBar = ({ styles }: { styles: ManagerBarStyles }) => {
           }}
         >
           <div id={styles.button}>
-            <img src={Assets.deleteBarIcon} alt='deleteIcon' />
+            <img src={deleteBarIcon} alt='deleteIcon' />
           </div>
           <span>삭제</span>
         </div>
@@ -105,7 +113,7 @@ const Factory = ({
             {isMoreActive && <ManagerBar styles={managerBarStyles} />}
           </div>
           <div className={styles.image}>
-            <img src={Assets.moreIcon} alt='' />
+            <img src={moreIcon} alt='' />
           </div>
           <div id={styles.clickArea} onClick={handleMoreActive}></div>
           <div id={styles.buttonContents}>
@@ -116,7 +124,7 @@ const Factory = ({
             <div id={styles.contents}>
               <div className={styles.image} onClick={handleIconClick}>
                 <img
-                  src={isClickedItem ? Assets.starIconChecked : Assets.starIcon}
+                  src={isClickedItem ? starIconChecked : starIcon}
                   alt='StarIcon'
                 />
               </div>

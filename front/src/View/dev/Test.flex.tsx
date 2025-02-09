@@ -14,7 +14,14 @@ import Screw from '@shared/components/Screw';
 import BuildFactory from '@shared/components/BuildFactory';
 import Driver from '@shared/components/Driver';
 import PtoryLogo from '@shared/components/PtoryLogo';
-import Assets from '../../assets/assets';
+import {
+  searchIcon,
+  createIcon,
+  spannerIconGray,
+  cancelIcon,
+  cancelIconGray,
+} from '../../assets';
+
 import {
   FooterTypeStyles,
   ButtonTypeStyles,
@@ -60,8 +67,8 @@ const TestFlex = () => {
     <div className={styled.debug}>
       <Search
         styles={SearchTypeStyles}
-        searchImage={Assets.searchIcon}
-        image={Assets.createIcon}
+        searchImage={searchIcon}
+        image={createIcon}
       />
       <div style={{ padding: '18px' }}></div>
       <Sort styles={SortTypeStyles} />
@@ -89,7 +96,7 @@ const TestFlex = () => {
         styles={ButtonTypeStyles}
         title='로그인'
         state={false}
-        image={Assets.spannerIconGray}
+        image={spannerIconGray}
         functions={() => {
           console.log(CalculatorOperation(AdditionFunction, 1, 6));
         }}
@@ -113,14 +120,14 @@ const TestFlex = () => {
         styles={AlarmTypeStyles}
         title={'토익공부'}
         alarm={'공장을 삭제하시겠습니까?'}
-        image={Assets.cancelIcon}
+        image={cancelIcon}
       />
       <div style={{ padding: '18px' }}></div>
       <SignUpCheckList styles={SignUpCheckListTypeStyles} />
       <div style={{ padding: '18px' }}></div>
       <Siren
         styles={SirenTypeStyles}
-        image={Assets.cancelIcon}
+        image={cancelIcon}
         title={'토익공부'}
         alarm={'공장 삭제 완료!'}
       />
@@ -136,7 +143,7 @@ const TestFlex = () => {
       <BuildFactory
         styles={BuildFactoryTypeStyles}
         title={'새로운 공장'}
-        image={Assets.cancelIconGray}
+        image={cancelIconGray}
         input={'공장 제목을 입력하세요.'}
         buttonTitle='공장 만들기'
       />
@@ -144,7 +151,7 @@ const TestFlex = () => {
       <BuildFactory
         styles={BuildFactoryTypeStyles}
         title={'공장 이름 수정'}
-        image={Assets.cancelIconGray}
+        image={cancelIconGray}
         input={'토익 영어 단어장'}
         buttonTitle='수정하기'
       />

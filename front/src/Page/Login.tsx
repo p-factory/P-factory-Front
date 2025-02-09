@@ -2,10 +2,14 @@ import styles from '../View/Login.page.module.scss';
 import Button from '@shared/components/Button';
 import PtoryLogo from '@shared/components/PtoryLogo';
 import { ButtonTypeStyles, PtoryLogoTypeStyles } from '../Model/Mapping';
-import { spannerIcon, spannerIconGray } from '../assets';
+import {
+  spannerIcon,
+  spannerIconGray,
+  openEyeIcon,
+  closeEyeIcon,
+} from '../assets';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
-import Assets from '../assets/assets';
 
 interface FormData {
   id: string;
@@ -73,7 +77,7 @@ const LoginPage = () => {
                 />
                 <img
                   id={styles.eyeIcon}
-                  src={showPassword ? Assets.openEyeIcon : Assets.closeEyeIcon}
+                  src={showPassword ? openEyeIcon : closeEyeIcon}
                   onClick={() => setShowPassword((prev) => !prev)}
                 />
               </div>

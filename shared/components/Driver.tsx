@@ -1,9 +1,9 @@
 import { Platform, Text } from 'react-native';
-import Assets from '../../front/src/assets/assets';
 import { DriverStylesLocal } from '../style';
 import { useEffect, useState } from 'react';
 import { useForm, UseFormRegister } from 'react-hook-form';
 import { CreateDriver, RemoveDriver } from '../../front/src/Controller';
+import { removeIcon, cancelIcon, addIcon } from '../../front/src/assets';
 
 interface FormData {
   word: string;
@@ -36,7 +36,7 @@ export const InputElement = ({
       />
       {point === 'check' ? null : (
         <div>
-          <img src={Assets.removeIcon} alt='' onClick={remove} />
+          <img src={removeIcon} alt='' onClick={remove} />
         </div>
       )}
     </div>
@@ -75,7 +75,7 @@ const Driver = ({ styles }: { styles: DriverStylesLocal }) => {
           <div id={styles.title}>
             <div>단어생성</div>
             <div id={styles.image}>
-              <img src={Assets.cancelIcon} alt='X' height={'24px'} />
+              <img src={cancelIcon} alt='X' height={'24px'} />
             </div>
           </div>
           <div id={styles.contents}>
@@ -116,7 +116,7 @@ const Driver = ({ styles }: { styles: DriverStylesLocal }) => {
               }}
             >
               <div id={styles.button}>
-                <img src={Assets.addIcon} alt='' />
+                <img src={addIcon} alt='' />
               </div>
             </div>
             <div className={styles.inputContents}>
