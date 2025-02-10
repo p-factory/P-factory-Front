@@ -1,9 +1,9 @@
 import { Platform, Text } from 'react-native';
-import { removeIcon, cancelIcon, addIcon } from '../../front/src/assets';
 import { DriverStylesLocal } from '../style';
 import { useEffect, useState } from 'react';
 import { useForm, UseFormRegister } from 'react-hook-form';
 import { CreateDriver, RemoveDriver } from '../../front/src/Controller';
+import { removeIcon, cancelIcon, addIcon } from '../../front/src/assets';
 
 interface FormData {
   word: string;

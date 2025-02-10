@@ -21,6 +21,7 @@ export namespace Styles {
   export interface Button {
     button: string;
     buttonContents: string;
+    submit: string;
   }
 
   export interface Image {
@@ -32,7 +33,7 @@ export namespace Styles {
 type FooterStyles = Styles.Common & Styles.Image;
 type ButtonStyles = Styles.Common & Styles.Button & Styles.Image;
 type AlarmStyles = Styles.Common & Styles.Button & Styles.Image;
-type SignUpCheckListStyles = Styles.Common;
+type SignUpCheckListStyles = Styles.Common & Styles.Button;
 type SirenStyles = Styles.Common & Styles.Image;
 type SearchStyles = Styles.Common & Styles.Button & Styles.Image;
 type ToolStyles = Styles.Common & Styles.Image;
@@ -58,8 +59,11 @@ export interface SignUpCheckListStylesLocal extends SignUpCheckListStyles {
   checkbox: string;
   required: string;
   conditions: string;
+  conditionsChecked: string;
   selected: string;
+  selectedChecked: string;
   all: string;
+  submit: string;
 }
 
 export interface SirenStylesLocal extends SirenStyles {

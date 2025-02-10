@@ -1,5 +1,6 @@
 import { Platform, Text } from 'react-native';
 import { FooterStyles } from '../style';
+import { useState } from 'react';
 import {
   innerFactoryIconHover,
   innerFactoryIcon,
@@ -10,7 +11,6 @@ import {
   mypageIconHover,
   mypageIcon,
 } from '../../front/src/assets';
-import { useState } from 'react';
 
 const Footer = ({ styles }: { styles: FooterStyles }) => {
   if (Platform.OS === 'web') {

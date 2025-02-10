@@ -14,8 +14,14 @@ import Screw from '@shared/components/Screw';
 import BuildFactory from '@shared/components/BuildFactory';
 import Driver from '@shared/components/Driver';
 import PtoryLogo from '@shared/components/PtoryLogo';
+import {
+  searchIcon,
+  createIcon,
+  spannerIconGray,
+  cancelIcon,
+  cancelIconGray,
+} from '../../assets';
 
-import { spannerIcon, cancelIcon, cancelIconGray } from '../../assets';
 import {
   FooterTypeStyles,
   ButtonTypeStyles,
@@ -31,7 +37,6 @@ import {
   DriverTypeStyles,
   PtoryLogoTypeStyles,
 } from '../../Model/Mapping';
-import { searchIcon, createIcon } from '../../assets';
 // Redux 사용시 필요한 구성
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@shared/store/store';
@@ -90,13 +95,15 @@ const TestFlex = () => {
       <Button
         styles={ButtonTypeStyles}
         title='로그인'
-        image={spannerIcon}
+        state={false}
+        image={spannerIconGray}
         functions={() => {
           console.log(CalculatorOperation(AdditionFunction, 1, 6));
         }}
       />
       <div style={{ padding: '18px' }}></div>
       <Button
+        state={true}
         styles={ButtonTypeStyles}
         title='버튼'
         image=''

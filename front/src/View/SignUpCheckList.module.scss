@@ -19,32 +19,47 @@
       -webkit-appearance: none; /* Safari 지원 */
       margin-right: 16px;
       /* 클릭되었을 때 색상 변경 */
-      &:active,
-      &:focus {
-        outline: none;
+      // &:active,
+      // &:focus {
+      //   outline: none;
+      //   background-color: var(--primary-color);
+      //   border: 1px solid var(--gray2-color);
+      // }
+  
+      /* 클릭된 상태를 유지하기 위한 스타일 */
+      &:checked {
         background-color: var(--primary-color);
         border: 1px solid var(--gray2-color);
       }
-  
-      /* 클릭된 상태를 유지하기 위한 스타일 */
-      &.checked {
-        background-color: var(--primary-color);
-        border: 1px solid var(--gray2-color)
+    }
+    label{
+      cursor: pointer;
+      .required{
+        color: var(--negative-error-cancel);
+        margin-right: 4px;
+        &:last-child{
+          color: var(--gray3-color);
+        }
+      }
+      #selected{
+        margin-right: 4px;
+      }
+      #selectedChecked{
+        margin-right: 4px;
+        color: var(--gray5-color);
+      }  
+      .conditions{
+        font-weight: var(--font-weight-medium);
+      }
+      .conditionsChecked{
+        color: var(--gray5-color);
+        font-weight: var(--font-weight-semibold);
       }
     }
+
     // .required, .conditions{
     //   display: flex;
     // }
-    .conditions{
-      font-weight: var(--font-weight-medium);
-    }
-    .required{
-      color: var(--negative-error-cancel);
-      margin-right: 4px;
-    }
-    #selected{
-      margin-right: 4px;
-    }
     #all{
       color: var(--black-color);
       font-weight: var(--font-weight-semibold);
@@ -54,5 +69,27 @@
     border-top: 1px solid var(--gray2-color);
     padding-bottom: 0px;
     padding-top: 16px;
+  }
+}
+
+.button, .submit{
+  background-color: var(--gray2-color);
+  border-radius: var(--corner-radius-large);
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  margin-top: 24px;
+  cursor: pointer;
+  button{
+    color: var(--gray4-color);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-medium);
+  }
+}
+
+.submit{
+  background-color: var(--primary-color);
+  button{
+    color: var(--black-color);
   }
 }

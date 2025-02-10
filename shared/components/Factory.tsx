@@ -3,6 +3,8 @@ import { RootState } from '../store/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { SetMode } from '../store/slice/factoryModeSlice';
 import { Platform, Text } from 'react-native';
+import ManagerBarStyled from '../ManagerBar.module.scss';
+import { FactoryStylesLocal, ManagerBarStyles } from '../style';
 import {
   shareBarIcon,
   editBarIcon,
@@ -12,8 +14,6 @@ import {
   starIconChecked,
   starIcon,
 } from '../../front/src/assets';
-import ManagerBarStyled from '../ManagerBar.module.scss';
-import { FactoryStylesLocal, ManagerBarStyles } from '../style';
 
 const managerBarStyles: ManagerBarStyles = {
   container: ManagerBarStyled.container,
@@ -22,6 +22,7 @@ const managerBarStyles: ManagerBarStyles = {
   image: ManagerBarStyled.image,
   button: ManagerBarStyled.button,
   buttonContents: ManagerBarStyled.buttonContents,
+  submit: ManagerBarStyled.submit,
 };
 
 export const ManagerBar = ({ styles }: { styles: ManagerBarStyles }) => {
