@@ -4,6 +4,14 @@
 
 // $font-size-large: fn.px-to-rem(30, var.$standard-font-size);
 
+@font-face {
+  font-family: 'Jejudoldam';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-EF@1.0/EF_jejudoldam.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --standard-font-size : 16px;
   // 색상
@@ -26,7 +34,7 @@
   --effects-blur-shadow1 : 0.25;
   --effects-blur-shadow2 : 14;
   // 폰트 스타일
-  --font-family: 'Pretendard', sans-serif; /* 폰트 설정 */
+  --font-logo: 'Jejudoldam','Pretendard', sans-serif; /* 폰트 설정 */
   --font-weight-bold: 700; /* Bold */
   --font-weight-semibold: 600; /* Semibold */
   --font-weight-medium: 500; /* Medium */
@@ -102,7 +110,7 @@ a {
 
 // 전체 레이아웃 기본 스타일
 body {
-  font-family: var(--font-family);
+  font-family: var(--font-family), var(--font-logo);
   line-height: 1.5;
   letter-spacing: var(--letter-spacing);
   // color: #333;
