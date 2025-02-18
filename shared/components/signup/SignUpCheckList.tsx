@@ -1,5 +1,5 @@
 import { Platform, Text } from 'react-native';
-import { SignUpCheckListStylesLocal } from '../style';
+import { SignUpCheckListStylesLocal } from '../../style';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 

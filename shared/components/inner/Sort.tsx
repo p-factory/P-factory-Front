@@ -1,8 +1,8 @@
 import { Platform, Text } from 'react-native';
 import { useState } from 'react';
-import SortOptionStyled from '../SortOption.module.scss';
-import { SortOptionStyles, SortStylesLocal } from '../style';
-import { upIcon, downIcon } from '../../front/src/assets';
+import SortOptionStyled from '../../SortOption.module.scss';
+import { SortOptionStyles, SortStylesLocal } from '../../style';
+import { upIcon, downIcon } from '../../../front/src/assets';
 
 export const SortOption = ({
   styles,
