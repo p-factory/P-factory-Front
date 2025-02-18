@@ -1,15 +1,20 @@
+import {
+  Screw as ScrewStyled,
+  Driver as DriverStyled,
+  Tool as ToolStyled,
+  Sort as SortStyled,
+} from '../../View/inner';
+
+import { SignUpCheckList as SignUpCheckListStyled } from '../../View/signup';
+
 import FooterStyled from '../../View/Footer.module.scss';
 import ButtonStyled from '../../View/Button.module.scss';
 import AlarmStyled from '../../View/Alarm.module.scss';
-import SignUpCheckListStyled from '../../View/SignUpCheckList.module.scss';
 import SirenStyled from '../../View/Siren.module.scss';
 import SearchStyled from '../../View/Search.module.scss';
-import ToolStyled from '../../View/Tool.module.scss';
 import FactoryStyled from '../../View/Factory.module.scss';
-import SortStyled from '../../View/Sort.module.scss';
-import ScrewStyled from '../../View/Screw.module.scss';
+
 import BuildFactoryStyled from '../../View/BuildFactory.module.scss';
-import DriverStyled from '../../View/Driver.module.scss';
 import PtoryLogoStyled from '../../View/PtoryLogo.module.scss';
 import {
   // TestFlexProps,

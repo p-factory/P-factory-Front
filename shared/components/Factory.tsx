@@ -84,6 +84,8 @@ export const ManagerBar = ({ styles }: { styles: ManagerBarStyles }) => {
       </div>
     );
   }
+
+  return <Text style={{ color: '#fff' }}>This is None!</Text>;
 };
 
 const Factory = ({
