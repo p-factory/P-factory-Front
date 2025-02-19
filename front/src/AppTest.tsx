@@ -2,7 +2,6 @@
 // import { countState } from './Model/Atoms/atoms';
 // import { useState } from 'react';
 import './App.scss';
-import assets from './assets/assets';
 // import Button from '../../shared/components/Button';
 import Button from '@shared/components/Test.Button';
 
@@ -14,7 +13,7 @@ const App = () => {
     <div className='App'>
       <div>
         <a href='https://vitejs.dev' target='_blank'>
-          <img src={assets.viteLogo} className='logo' alt='Vite logo' />
+          <img src='/vite' className='logo' alt='Vite logo' />
         </a>
         <a href='https://reactjs.org' target='_blank'>
           <img src='/react.svg' className='logo react' alt='React logo' />

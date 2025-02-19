@@ -1,24 +1,26 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 
-type TestProps = {
-  title: string;
-};
-
-// const test = () => {
-//   console.log('test');
+// type TestProps = {
+//   title: string;
 // };
 
-const Unique: React.FC<TestProps> = ({ title }) => {
-  const [count, setCount] = useState<number>(0);
+// // const test = () => {
+// //   console.log('test');
+// // };
 
-  return (
-    <div>
-      <h1>{title}</h1>
-      <button onClick={() => setCount((prev) => prev + 1)}>
-        Click Me: {count}
-      </button>
-    </div>
-  );
-};
+// const Unique: React.FC<TestProps> = ({ title }) => {
+//   const [count, setCount] = useState<number>(0);
 
-export default Unique;
+//   return (
+//     <div>
+//       <h1>{title}</h1>
+//       <button onClick={() => setCount((prev) => prev + 1)}>
+//         Click Me: {count}
+//       </button>
+//     </div>
+//   );
+// };
+
+// export default Unique;
+
+export {};

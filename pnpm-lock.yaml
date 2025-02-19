@@ -48,6 +48,9 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^5.18.0
         version: 5.62.0(eslint@8.57.1)(typescript@4.9.5)
+      cross-env:
+        specifier: ^7.0.3
+        version: 7.0.3
       eslint:
         specifier: ^8.22.0
         version: 8.57.1
@@ -128,6 +131,9 @@ importers:
       '@vitejs/plugin-react':
         specifier: ^2.2.0
         version: 2.2.0(vite@3.2.11(@types/node@22.10.2)(sass@1.83.0)(terser@5.37.0))
+      '@vitejs/plugin-react-swc':
+        specifier: ^3.8.0
+        version: 3.8.0(vite@3.2.11(@types/node@22.10.2)(sass@1.83.0)(terser@5.37.0))
       vite:
         specifier: ^3.2.0
         version: 3.2.11(@types/node@22.10.2)(sass@1.83.0)(terser@5.37.0)
@@ -1235,6 +1241,81 @@ packages:
   '@sinonjs/fake-timers@10.3.0':
     resolution: {integrity: sha512-V4BG07kuYSUkTCSBHG8G8TNhM+F19jXFWnQtzj+we8DrkpSBCee9Z3Ms8yiGer/dlmhe35/Xdgyo3/0rQKg7YA==}
 
+  '@swc/core-darwin-arm64@1.10.17':
+    resolution: {integrity: sha512-LSQhSjESleTc0c45BnVKRacp9Nl4zhJMlV/nmhpFCOv/CqHI5YBDX5c9bPk9jTRNHIf0QH92uTtswt8yN++TCQ==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@swc/core-darwin-x64@1.10.17':
+    resolution: {integrity: sha512-TTaZFS4jLuA3y6+D2HYv4yVGhmjkOGG6KyAwBiJEeoUaazX5MYOyQwaZBPhRGtzHZFrzi4t4jNix4kAkMajPkQ==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [darwin]
+
+  '@swc/core-linux-arm-gnueabihf@1.10.17':
+    resolution: {integrity: sha512-8P+ESJyGnVdJi0nUcQfxkbTiB/7hnu6N3U72KbvHFBcuroherwzW4DId1XD4RTU2Cjsh1dztZoCcOLY8W9RW1Q==}
+    engines: {node: '>=10'}
+    cpu: [arm]
+    os: [linux]
+
+  '@swc/core-linux-arm64-gnu@1.10.17':
+    resolution: {integrity: sha512-zT21jDQCe+IslzOtw+BD/9ElO/H4qU4fkkOeVQ68PcxuqYS2gwyDxWqa9IGwpzWexYM+Lzi1rAbl/1BM6nGW8Q==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [linux]
+
+  '@swc/core-linux-arm64-musl@1.10.17':
+    resolution: {integrity: sha512-C2jaW1X+93HscVcesKYgSuZ9GaKqKcQvwvD+q+4JZkaKF4Zopt/aguc6Tmn/nuavRk0WV8yVCpHXoP7lz/2akA==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [linux]
+
+  '@swc/core-linux-x64-gnu@1.10.17':
+    resolution: {integrity: sha512-vfyxqV5gddurG2NVJLemR/68s7GTe0QruozrZiDpNqr9V4VX9t3PadDKMDAvQz6jKrtiqMtshNXQTNRKAKlzFw==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [linux]
+
+  '@swc/core-linux-x64-musl@1.10.17':
+    resolution: {integrity: sha512-8M+nI5MHZGQUnXyfTLsGw85a3oQRXMsFjgMZuOEJO9ZGBIEnYVuWOxENfcP6MmlJmTOW+cJxHnMGhKY+fjcntw==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [linux]
+
+  '@swc/core-win32-arm64-msvc@1.10.17':
+    resolution: {integrity: sha512-iUeIBFM6c/NwsreLFSAH395Dahc+54mSi0Kq//IrZ2Y16VlqCV7VHdOIMrdAyDoBFUvh0jKuLJPWt+jlKGtSLg==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [win32]
+
+  '@swc/core-win32-ia32-msvc@1.10.17':
+    resolution: {integrity: sha512-lPXYFvkfYIN8HdNmG6dCnQqgA+rOSTgeAjIhGsYCEyLsYkkhF2FQw34OF6PnWawQ6hOdOE9v6Bw3T4enj3Lb6w==}
+    engines: {node: '>=10'}
+    cpu: [ia32]
+    os: [win32]
+
+  '@swc/core-win32-x64-msvc@1.10.17':
+    resolution: {integrity: sha512-KrnkFEWpBmxSe8LixhAZXeeUwTNDVukrPeXJ1PiG+pmb5nI989I9J9IQVIgBv+JXXaK+rmiWjlcIkphaDJJEAA==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [win32]
+
+  '@swc/core@1.10.17':
+    resolution: {integrity: sha512-FXZx7jHpiwz4fTuuueWwsvN7VFLSoeS3mcxCTPUNOHs/K2ecaBO+slh5T5Xvt/KGuD2I/2T8G6Zts0maPkt2lQ==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      '@swc/helpers': '*'
+    peerDependenciesMeta:
+      '@swc/helpers':
+        optional: true
+
+  '@swc/counter@0.1.3':
+    resolution: {integrity: sha512-e2BR4lsJkkRlKZ/qCHPw9ZaSxc0MVUd7gtbtaB7aMvHeJVYe8sOB8DBZkP2DtISHGSku9sCK6T6cnY0CtXrOCQ==}
+
+  '@swc/types@0.1.17':
+    resolution: {integrity: sha512-V5gRru+aD8YVyCOMAjMpWR1Ui577DD5KSJsHP8RAxopAH22jFz6GZd/qxqjO6MJHQhcsjvjOFXyDhyLQUnMveQ==}
+
   '@tanstack/query-core@5.62.9':
     resolution: {integrity: sha512-lwePd8hNYhyQ4nM/iRQ+Wz2cDtspGeZZHFZmCzHJ7mfKXt+9S301fULiY2IR2byJYY6Z03T427E5PoVfMexHjw==}
 
@@ -1392,6 +1473,11 @@ packages:
     resolution: {integrity: sha512-FLt+d81gP4oiHah4hWFDApimc+/xABWMU1AMYsZ1PVB0L0YPtrMCjbOp9WMM7hBzy4gbTDrG24sio0dCfSh/HQ==}
     peerDependencies:
       '@urql/core': ^5.0.0
+
+  '@vitejs/plugin-react-swc@3.8.0':
+    resolution: {integrity: sha512-T4sHPvS+DIqDP51ifPqa9XIRAz/kIvIi8oXcnOZZgHmMotgmmdxe/DD5tMFlt5nuIRzT0/QuiwmKlH0503Aapw==}
+    peerDependencies:
+      vite: ^4 || ^5 || ^6
 
   '@vitejs/plugin-react@2.2.0':
     resolution: {integrity: sha512-FFpefhvExd1toVRlokZgxgy2JtnBOdp4ZDsq7ldCWaqGSGn9UhWMAVm/1lxPL14JfNS5yGz+s9yFrQY6shoStA==}
@@ -1868,6 +1954,11 @@ packages:
   cosmiconfig@5.2.1:
     resolution: {integrity: sha512-H65gsXo1SKjf8zmrJ67eJk8aIRKV5ff2D4uKZIBZShbhGSpEmsQOPW/SKMKYhSTrqR7ufy6RP69rPogdaPh/kA==}
     engines: {node: '>=4'}
+
+  cross-env@7.0.3:
+    resolution: {integrity: sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==}
+    engines: {node: '>=10.14', npm: '>=6', yarn: '>=1'}
+    hasBin: true
 
   cross-fetch@3.2.0:
     resolution: {integrity: sha512-Q+xVJLoGOeIMXZmbUK4HYk+69cQH6LudR0Vu/pRm2YlU/hDV9CiS0gKUMaWY5f2NeUH9C1nV3bsTlCo0FsTV1Q==}
@@ -6303,6 +6394,58 @@ snapshots:
     dependencies:
       '@sinonjs/commons': 3.0.1
 
+  '@swc/core-darwin-arm64@1.10.17':
+    optional: true
+
+  '@swc/core-darwin-x64@1.10.17':
+    optional: true
+
+  '@swc/core-linux-arm-gnueabihf@1.10.17':
+    optional: true
+
+  '@swc/core-linux-arm64-gnu@1.10.17':
+    optional: true
+
+  '@swc/core-linux-arm64-musl@1.10.17':
+    optional: true
+
+  '@swc/core-linux-x64-gnu@1.10.17':
+    optional: true
+
+  '@swc/core-linux-x64-musl@1.10.17':
+    optional: true
+
+  '@swc/core-win32-arm64-msvc@1.10.17':
+    optional: true
+
+  '@swc/core-win32-ia32-msvc@1.10.17':
+    optional: true
+
+  '@swc/core-win32-x64-msvc@1.10.17':
+    optional: true
+
+  '@swc/core@1.10.17':
+    dependencies:
+      '@swc/counter': 0.1.3
+      '@swc/types': 0.1.17
+    optionalDependencies:
+      '@swc/core-darwin-arm64': 1.10.17
+      '@swc/core-darwin-x64': 1.10.17
+      '@swc/core-linux-arm-gnueabihf': 1.10.17
+      '@swc/core-linux-arm64-gnu': 1.10.17
+      '@swc/core-linux-arm64-musl': 1.10.17
+      '@swc/core-linux-x64-gnu': 1.10.17
+      '@swc/core-linux-x64-musl': 1.10.17
+      '@swc/core-win32-arm64-msvc': 1.10.17
+      '@swc/core-win32-ia32-msvc': 1.10.17
+      '@swc/core-win32-x64-msvc': 1.10.17
+
+  '@swc/counter@0.1.3': {}
+
+  '@swc/types@0.1.17':
+    dependencies:
+      '@swc/counter': 0.1.3
+
   '@tanstack/query-core@5.62.9': {}
 
   '@tanstack/react-query@5.62.10(react@18.3.1)':
@@ -6510,6 +6653,13 @@ snapshots:
     dependencies:
       '@urql/core': 5.1.0
       wonka: 6.3.4
+
+  '@vitejs/plugin-react-swc@3.8.0(vite@3.2.11(@types/node@22.10.2)(sass@1.83.0)(terser@5.37.0))':
+    dependencies:
+      '@swc/core': 1.10.17
+      vite: 3.2.11(@types/node@22.10.2)(sass@1.83.0)(terser@5.37.0)
+    transitivePeerDependencies:
+      - '@swc/helpers'
 
   '@vitejs/plugin-react@2.2.0(vite@3.2.11(@types/node@22.10.2)(sass@1.83.0)(terser@5.37.0))':
     dependencies:
@@ -7065,6 +7215,10 @@ snapshots:
       is-directory: 0.3.1
       js-yaml: 3.14.1
       parse-json: 4.0.0
+
+  cross-env@7.0.3:
+    dependencies:
+      cross-spawn: 7.0.6
 
   cross-fetch@3.2.0:
     dependencies:

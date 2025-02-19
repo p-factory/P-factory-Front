@@ -1,4 +1,4 @@
-import styles from '../View/Login.page.module.scss';
+import { Login as styles } from '../View/login';
 import Button from '@shared/components/Button';
 import PtoryLogo from '@shared/components/PtoryLogo';
 import { ButtonTypeStyles, PtoryLogoTypeStyles } from '../Model/Mapping';

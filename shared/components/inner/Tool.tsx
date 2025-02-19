@@ -1,5 +1,5 @@
 import { Platform, Text } from 'react-native';
-import { ToolStylesLocal } from '../style';
+import { ToolStylesLocal } from '../../style';
 import { useState } from 'react';
 import {
   englishIconHover,
@@ -10,7 +10,7 @@ import {
   highlightIcon,
   deleteIconHover,
   deleteIcon,
-} from '../../front/src/assets';
+} from '../../../front/src/assets';
 
 const Tool = ({ styles }: { styles: ToolStylesLocal }) => {
   if (Platform.OS === 'web') {

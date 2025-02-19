@@ -1,4 +1,4 @@
-@use '../helpers' as fn;
+@use '../../helpers' as fn;
 #container{
     display: flex;
     height: 100vh;
@@ -6,19 +6,30 @@
     #contents{
         width: 100%;
         #logo{
-            margin-bottom: fn.px-to-percent(88, 512);
+            margin-bottom: fn.px-to-percent(24, 512);
         }
         form{
             #inputContainer{
                 display: flex;
                 flex-direction: column;
-                :first-child{
-                    margin-bottom: fn.px-to-percent(36, 512);
-                }
+                margin-bottom: fn.px-to-percent(16, 512);
                 .inputContents{
                     display: flex;
                     flex-direction: column;
+                    margin-bottom: 16px;
                     position: relative;
+                    :last-child{
+                    margin-bottom: 0;
+                    }
+                    .inputText{
+                      color: var(--black-color);
+                      font-size: var(--font-weight-regular);
+                      font-weight: var(--font-weight-medium);
+                      margin-bottom: 4px;
+                      span{
+                        color: var(--negative-error-cancel);
+                      }
+                    }
                         .input{
                         display: flex;
                         align-items: center;
@@ -34,7 +45,6 @@
                                 font-weight: var(--font-weight-medium);
                                 background: none;
                                 margin: 0;
-                                height: 24px;
                                 &::placeholder{
                                     color: var(--gray3-color);
                                     font-size: var(--font-size-small);
@@ -57,7 +67,6 @@
                                 font-weight: var(--font-weight-medium);
                                 background: none;
                                 margin: 0;
-                                height: 24px;
                                 &::placeholder{
                                     color: var(--gray3-color);
                                     font-size: var(--font-size-small);
@@ -65,27 +74,34 @@
                                 }
                             }
                         }
-                        #eyeIcon{
-                            margin: 0px;
-                            cursor: pointer;
-                            color: var(--gray5-color)
-                        }
-                        p{
-                            display: flex;
-                            position: absolute;
-                            text-align: end;
-                            bottom: -20px;
-                            right: 0;
-                            color: var(--negative-error-cancel);
-                            font-size: var(--font-size-xxsmall);
-                            font-weight: var(--font-weight-medium);
-                        }
+                    p{
+                        display: flex;
+                        position: absolute;
+                        text-align: end;
+                        bottom: -20px;
+                        right: 0;
+                        color: var(--negative-error-cancel);
+                        font-size: var(--font-size-xxsmall);
+                        font-weight: var(--font-weight-medium);
+                    }
                 }
             }
             button{
-                margin-top: fn.px-to-percent(104, 512);
+                margin-top: fn.px-to-percent(32, 512);
                 width: 100%;
             }
         }
+    }
+    #siren{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.4);
+        z-index: 1000;
     }
 }
