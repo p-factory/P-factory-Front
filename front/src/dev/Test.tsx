@@ -15,7 +15,7 @@ const Test = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      console.log('Response:', responseData);
+      // console.log('Response:', responseData);
       console.log('Response Headers:', responseHeaders);
       // console.log('Refresh-Token:', Refresh - Token);
       if (responseHeaders) {

@@ -8,11 +8,11 @@ const AxiosInstance = axios.create({
   },
 });
 
+// Axios에서 responseHeaders를 조회할 수 있게 구현
 AxiosInstance.interceptors.response.use(
   (response) => {
-    console.log('🔥 Response Headers:', response.headers); // 모든 헤더 출력
+    console.log('🔥 Response Headers:', response.headers);
 
-    // 🔥 Refresh-Token 확인 (대소문자 구분 없이 처리)
     const refreshToken =
       response.headers['refresh-token'] || response.headers['Refresh-Token'];
     console.log('🔄 Refresh-Token:', refreshToken);
