@@ -6,6 +6,7 @@ import StudyFactory from './View/StudyFactory';
 import LoginPage from './Page/Login';
 import SignUpPage from './Page/SignUp';
 import SignUpInputPage from './Page/SignUpInput';
+import Test from './dev/Test';
 // import './App.scss';
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
       <Route path='/login' element={<LoginPage />} />
       <Route path='/signUp' element={<SignUpPage />} />
       <Route path='/signUp/input' element={<SignUpInputPage />} />
+      <Route path='/test' element={<Test />} />
     </Routes>
   );
 };
