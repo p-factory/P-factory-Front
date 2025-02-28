@@ -11,8 +11,7 @@ const useApiMutation = <InjectNucleus = any, CulturedNucleus = any>(
   const ApiMutation = async (
     mutateUrl?: string,
     mutateNucleus?: InjectNucleus,
-    mutateHeaders?: boolean,
-  ): Promise<{ cell: CulturedNucleus; headers?: any }> => {
+  ): Promise<CulturedNucleus> => {
     const codeUrl = mutateUrl || url;
     const codeData = mutateNucleus || nucleus;
     try {
@@ -44,9 +43,7 @@ const useApiMutation = <InjectNucleus = any, CulturedNucleus = any>(
           `Error: Failed to Implement the mutation, Doesn't exit in the type list.`,
         );
       }
-      return mutateHeaders
-        ? { cell: dna.data, headers: dna.headers }
-        : { cell: dna.data };
+      return dna.data;
     } catch (error: any) {
       console.error(
         `Error!: Mutant has escaped from the System.\nErrorMessage:${error.message || error}`,
@@ -55,22 +52,13 @@ const useApiMutation = <InjectNucleus = any, CulturedNucleus = any>(
     }
   };
   const mutation = useMutation({
-    mutationFn: ({
-      mutateUrl,
-      mutateNucleus,
-      includeHeaders,
-    }: {
-      mutateUrl?: string;
-      mutateNucleus?: InjectNucleus;
-      includeHeaders?: boolean;
-    }) => ApiMutation(mutateUrl, mutateNucleus, includeHeaders),
+    mutationFn: ApiMutation,
   });
 
   const isLoading = mutation.status === 'pending';
   const isError = mutation.status === 'error';
   const isSuccess = mutation.status === 'success';
-  const responseData = mutation.data?.cell;
-  const responseHeaders = mutation.data?.headers;
+  const responseData = mutation.data;
 
   return {
     mutation,
@@ -78,7 +66,6 @@ const useApiMutation = <InjectNucleus = any, CulturedNucleus = any>(
     isError,
     isSuccess,
     responseData,
-    responseHeaders,
   };
 };
 

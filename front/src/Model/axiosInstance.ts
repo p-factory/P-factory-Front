@@ -13,9 +13,9 @@ AxiosInstance.interceptors.response.use(
   (response) => {
     console.log('🔥 Response Headers:', response.headers);
 
-    const refreshToken =
-      response.headers['refresh-token'] || response.headers['Refresh-Token'];
-    console.log('🔄 Refresh-Token:', refreshToken);
+    const authorization =
+      response.headers['authorization'] || response.headers['Authorization'];
+    console.log('🔄 Refresh-Token:', authorization);
 
     return response;
   },

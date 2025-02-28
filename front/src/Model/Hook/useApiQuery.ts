@@ -1,8 +1,13 @@
 // src/hooks/useApiQuery.ts
 import { useQuery, useMutation } from '@tanstack/react-query';
 import axiosInstance from '../axiosInstance';
+import { boolean } from 'zod';
 
-const useApiQuery = <Organism>(url: string, params?: string) => {
+const useApiQuery = <Organism>(
+  url: string,
+  params?: string,
+  enabled: boolean = true,
+) => {
   const ApiQuery = async () => {
     try {
       const dna = await axiosInstance.get(url, { params });
@@ -19,9 +24,10 @@ const useApiQuery = <Organism>(url: string, params?: string) => {
     }
   };
 
-  const { isLoading, isError, data, isSuccess } = useQuery<Organism>({
+  const { isLoading, isError, data, isSuccess, refetch } = useQuery<Organism>({
     queryKey: [url, params],
     queryFn: ApiQuery,
+    enabled,
   });
 
   return {
@@ -29,6 +35,7 @@ const useApiQuery = <Organism>(url: string, params?: string) => {
     isError,
     data,
     isSuccess,
+    refetch,
   };
 };
 
