@@ -13,7 +13,7 @@ const Test = () => {
     data: isGetData,
     isSuccess: isGetSuccess,
     refetch,
-  } = useApiQuery('https://13.209.113.229.nip.io/api/login', 'false');
+  } = useApiQuery('https://13.209.113.229.nip.io/api/wordbook/all', '', false);
 
   useEffect(() => {
     if (isSuccess) {
