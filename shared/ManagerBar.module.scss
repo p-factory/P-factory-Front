@@ -1,0 +1,31 @@
+#container{
+  display: flex;
+  // width:400px;
+  justify-content: flex-end;
+  font-weight: var(--font-weight-medium);
+  color: var(--gray4-color);
+  background-color: var(--gray1-color);
+  border-radius: var(--corner-radius-medium);
+  padding: 4px;
+  gap: 4px;
+  border: 1px solid var(--gray2-color);
+
+  #contents{
+    display: flex;
+    // justify-content: center;
+    // align-items: center;
+    background-color: var(--white-color);
+    border-radius: var(--corner-radius-medium);
+    padding: 2px 8px;
+    cursor: pointer;
+    white-space: nowrap; /* 줄바꿈 방지 */
+
+    #button{
+      display: flex;
+      align-items: center;
+      img{
+        margin-right: 2px;
+      }
+    }
+  }
+}

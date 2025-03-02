@@ -1,0 +1,31 @@
+@use '../../helpers' as fn;
+#container{
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    #contents{
+        width: 100%;
+        #logo{
+            margin-bottom: fn.px-to-percent(23, 512);
+        }
+        #textContainer{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-bottom: 12px;
+          #textTitle{
+            font-weight: var(--font-weight-bold);
+            font-size: var(--font-size-regular);
+            color: var(--gray5-color);
+          }
+          #textContent{
+            font-weight: var(--font-weight-semibold);
+            font-size: var(--font-size-xsmall);
+            color: var(--gray3-color);
+          }
+        }
+        #signUpCheckList{
+
+        }
+    }
+}
