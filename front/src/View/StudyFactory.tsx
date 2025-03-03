@@ -1,6 +1,6 @@
 import { Sort, Screw } from '@shared/components';
 import { SortTypeStyles, ScrewTypeStyles } from '../Model/Mapping';
-import styled from './StudyFactory.Layout.module.scss';
+import { StudyFactory as styled } from './';
 import { starIconChecked, backIcon, downloadIcon } from '../assets';
 const StudyFactory = () => {
   return (

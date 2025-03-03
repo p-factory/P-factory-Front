@@ -1,4 +1,4 @@
-import { SignUpInput as styles } from '../View/signup';
+import { SignUpInput as styles } from '../View';
 import Button from '@shared/components/Button';
 import Siren from '@shared/components/Siren';
 import PtoryLogo from '@shared/components/PtoryLogo';

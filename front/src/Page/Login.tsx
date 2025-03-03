@@ -1,4 +1,5 @@
-import { Login as styles } from '../View/login';
+import { useState } from 'react';
+import { Login as styles } from '../View';
 import Button from '@shared/components/Button';
 import PtoryLogo from '@shared/components/PtoryLogo';
 import { ButtonTypeStyles, PtoryLogoTypeStyles } from '../Model/Mapping';
@@ -9,7 +10,6 @@ import {
   closeEyeIcon,
 } from '../assets';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
 
 interface FormData {
   id: string;

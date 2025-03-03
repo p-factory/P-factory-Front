@@ -1,4 +1,4 @@
-@use '../../helpers' as fn;
+@use '../../../helpers' as fn;
 // 해당 주석처리된 상태를 기준으로 run해보면 `container`는 전체 중앙 정렬이며 `tools`는 내부 이미지 정렬을 위한 영역이다.
 // 따라서 해당 HTML은 전체 넓이 설정, 박스 중앙정렬, tools 이미지 정렬 이렇게 세가지가 필요하다.
 #container {

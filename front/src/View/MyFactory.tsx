@@ -7,7 +7,7 @@ import {
   Footer,
   Tool,
 } from '@shared/components';
-import styled from './MyFactory.Layout.module.scss';
+import { MyFactory as styled } from './';
 import { searchIcon, createIcon, cancelIconGray } from '../assets';
 import {
   SearchTypeStyles,
