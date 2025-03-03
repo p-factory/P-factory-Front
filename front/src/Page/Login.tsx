@@ -12,11 +12,17 @@ import {
 import { useForm } from 'react-hook-form';
 import { useApiMutation } from '../Model';
 import { useNavigate } from 'react-router-dom';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { LoginSchema } from '../Model/Dto';
 
-interface FormData {
-  loginId: string;
-  password: string;
-}
+// interface FormData {
+//   loginId: string;
+//   password: string;
+// }
+
+// Zod 스키마 정의
+type FormData = z.infer<typeof LoginSchema>;
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -26,7 +32,9 @@ const LoginPage = () => {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<FormData>();
+  } = useForm<FormData>({
+    resolver: zodResolver(LoginSchema),
+  });
 
   // id와 password 필드의 값을 감시
   const idValue = watch('loginId', '');
@@ -75,13 +83,7 @@ const LoginPage = () => {
                 <input
                   type='text'
                   placeholder='아이디를 입력하세요.'
-                  {...register('loginId', {
-                    required: '*아이디는 필수입니다.',
-                    pattern: {
-                      value: /^[a-zA-Z]{1,12}$/,
-                      message: '*영문 12자 이내',
-                    },
-                  })}
+                  {...register('loginId')}
                 />
               </div>
               {errors.loginId && <p>{errors.loginId.message}</p>}
@@ -93,13 +95,7 @@ const LoginPage = () => {
                 <input
                   type={showPassword ? 'text' : 'password'}
                   placeholder='비밀번호를 입력하세요.'
-                  {...register('password', {
-                    required: '*비밀번호는 필수입니다.',
-                    pattern: {
-                      value: /^[a-zA-Z0-9]{8,20}$/,
-                      message: '*영문, 숫자를 포함한 8~20자리 이내',
-                    },
-                  })}
+                  {...register('password')}
                 />
                 <img
                   id={styles.eyeIcon}
