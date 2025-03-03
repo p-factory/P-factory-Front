@@ -11,12 +11,16 @@ import {
 } from '../assets';
 import { useForm } from 'react-hook-form';
 import { useApiMutation } from '../Model';
+import { useNavigate } from 'react-router-dom';
+
 interface FormData {
   loginId: string;
   password: string;
 }
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -46,11 +50,10 @@ const LoginPage = () => {
   useEffect(() => {
     if (isSuccess) {
       console.log('Response:', responseData);
-      // console.log('Refresh-Token:', Refresh - Token);
+      navigate('/');
     }
     if (isLoading) {
       console.log('Response:', responseData);
-      // console.log('Refresh-Token:', Refresh - Token);
     }
     if (isError) {
       console.error('Error occurred during mutation');

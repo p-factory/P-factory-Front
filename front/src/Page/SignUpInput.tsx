@@ -81,11 +81,11 @@ const LoginPage = () => {
               <div className={errors.id ? styles.inputError : styles.input}>
                 <input
                   type='text'
-                  placeholder='영문 8자 이내'
+                  placeholder='영문 12자 이내'
                   {...register('id', {
                     required: '*아이디는 필수입니다.',
                     pattern: {
-                      value: /^[a-zA-Z]{1,8}$/,
+                      value: /^[a-zA-Z]{1,12}$/,
                       message: '*올바르게 작성해주세요.',
                     },
                   })}
