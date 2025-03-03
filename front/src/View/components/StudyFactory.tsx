@@ -1,7 +1,7 @@
 import { Sort, Screw } from '@shared/components';
-import { SortTypeStyles, ScrewTypeStyles } from '../Model/Mapping';
-import { StudyFactory as styled } from './';
-import { starIconChecked, backIcon, downloadIcon } from '../assets';
+import { SortTypeStyles, ScrewTypeStyles } from '../../Model/Mapping';
+import { StudyFactory as styled } from '../stylesheet';
+import { starIconChecked, backIcon, downloadIcon } from '../../assets';
 const StudyFactory = () => {
   return (
     <div id={styled.debug}>

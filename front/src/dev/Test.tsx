@@ -40,7 +40,7 @@ const Test = () => {
         <button
           onClick={() => {
             console.log('test');
-            mutation.mutate('', {});
+            mutation.mutate({});
           }}
         >
           Signup

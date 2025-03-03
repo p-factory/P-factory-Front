@@ -12,7 +12,7 @@ import {
   DriverStyled,
   ToolStyled,
   SortStyled,
-} from '../../View';
+} from '../../View/stylesheet';
 
 import {
   // TestFlexProps,
