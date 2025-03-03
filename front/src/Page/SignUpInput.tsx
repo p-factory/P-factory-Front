@@ -11,13 +11,12 @@ import {
 } from '../Model/Mapping';
 import { useForm } from 'react-hook-form';
 import { useEffect, useState } from 'react';
+import { useApiMutation } from '../Model';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { SignUpSchema } from '../Model/Dto';
 
-interface FormData {
-  id: string;
-  password: string;
-  passwordCheck: string;
-  nickname: string;
-}
+type FormData = z.infer<typeof SignUpSchema>;
 
 const LoginPage = () => {
   const {
@@ -26,18 +25,25 @@ const LoginPage = () => {
     setError,
     watch,
     clearErrors,
-    getValues,
     formState: { errors },
-  } = useForm<FormData>();
+  } = useForm<FormData>({
+    resolver: zodResolver(SignUpSchema),
+  });
 
   const [showSiren, setShowSiren] = useState(false);
+
+  const { mutation, isLoading, isError, isSuccess, responseData } =
+    useApiMutation('POST');
 
   const onSubmit = (data: FormData) => {
     console.log('제출된 데이터:', data);
     setShowSiren(true);
+    mutation.mutate({
+      mutateUrl: 'https://13.209.113.229.nip.io/api/signup',
+      mutateNucleus: data,
+    });
   };
 
-  // [비밀번호] value 수정 시 이미 입력된 [비밀번호 확인] value 도 같이 유효성 체크
   useEffect(() => {
     if (
       watch('password') !== watch('passwordCheck') &&
@@ -48,23 +54,32 @@ const LoginPage = () => {
         message: '*비밀번호가 일치하지 않아요.',
       });
     } else {
-      // 비밀번호 일치시 오류 제거
       clearErrors('passwordCheck');
     }
   }, [watch('password'), watch('passwordCheck')]);
 
-  // id와 password 필드의 값을 감시
-  const idValue = watch('id', '');
+  const memberIdValue = watch('memberId', '');
   const passwordValue = watch('password', '');
   const passwordCheckValue = watch('passwordCheck', '');
-  const nicknameValue = watch('nickname', '');
+  const nameValue = watch('name', '');
 
-  // 두 입력 필드에 값이 존재하면 true, 아니면 false
   const isButtonActive =
-    idValue.trim() !== '' &&
+    memberIdValue.trim() !== '' &&
     passwordValue.trim() !== '' &&
     passwordCheckValue.trim() !== '' &&
-    nicknameValue.trim() !== '';
+    nameValue.trim() !== '';
+
+  useEffect(() => {
+    if (isSuccess) {
+      console.log('Response:', responseData);
+    }
+    if (isLoading) {
+      console.log('Response:', responseData);
+    }
+    if (isError) {
+      console.error('Error occurred during mutation');
+    }
+  }, [isSuccess, isLoading, isError, responseData]);
 
   return (
     <div id={styles.container}>
@@ -78,11 +93,13 @@ const LoginPage = () => {
               <div className={styles.inputText}>
                 아이디<span>*</span>
               </div>
-              <div className={errors.id ? styles.inputError : styles.input}>
+              <div
+                className={errors.memberId ? styles.inputError : styles.input}
+              >
                 <input
                   type='text'
                   placeholder='영문 12자 이내'
-                  {...register('id', {
+                  {...register('memberId', {
                     required: '*아이디는 필수입니다.',
                     pattern: {
                       value: /^[a-zA-Z]{1,12}$/,
@@ -91,7 +108,7 @@ const LoginPage = () => {
                   })}
                 />
               </div>
-              {errors.id && <p>{errors.id.message}</p>}
+              {errors.memberId && <p>{errors.memberId.message}</p>}
             </div>
             <div className={styles.inputContents}>
               <div className={styles.inputText}>
@@ -120,43 +137,30 @@ const LoginPage = () => {
                 비밀번호 확인<span>*</span>
               </div>
               <div
-                className={errors.password ? styles.inputError : styles.input}
+                className={
+                  errors.passwordCheck ? styles.inputError : styles.input
+                }
               >
                 <input
                   type='password'
                   placeholder='비밀번호 확인'
-                  {...register('passwordCheck', {
-                    required: '*비밀번호 확인은 필수입니다.',
-                    validate: {
-                      matchPassword: (value) =>
-                        value === getValues('password') ||
-                        '*비밀번호가 일치하지 않아요.',
-                    },
-                  })}
+                  {...register('passwordCheck')}
                 />
               </div>
               {errors.passwordCheck && <p>{errors.passwordCheck.message}</p>}
             </div>
             <div className={styles.inputContents}>
               <div className={styles.inputText}>
-                닉네임<span>*</span>
+                이름<span>*</span>
               </div>
-              <div
-                className={errors.nickname ? styles.inputError : styles.input}
-              >
+              <div className={errors.name ? styles.inputError : styles.input}>
                 <input
                   type='text'
                   placeholder='8자 이내'
-                  {...register('nickname', {
-                    required: '*닉네임은 필수입니다.',
-                    pattern: {
-                      value: /^[a-zA-Z0-9]{1,8}$/,
-                      message: '*올바르게 작성해주세요.',
-                    },
-                  })}
+                  {...register('name')}
                 />
               </div>
-              {errors.nickname && <p>{errors.nickname.message}</p>}
+              {errors.name && <p>{errors.name.message}</p>}
             </div>
           </div>
           <button type='submit'>
@@ -179,7 +183,7 @@ const LoginPage = () => {
             image={cancelIcon}
             title={'토리님'}
             alarm={'환영합니다!'}
-          />{' '}
+          />
         </div>
       )}
     </div>
