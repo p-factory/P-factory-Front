@@ -17,9 +17,9 @@ export { default as SortStyled } from './stylesheet/inner/Sort.module.scss';
 export { default as StudyFactory } from './stylesheet/StudyFactory.Layout.module.scss';
 export { default as MyFactory } from './stylesheet/MyFactory.Layout.module.scss';
 
-export { default as SignUp } from './stylesheet/SignUp.page.module.scss';
-export { default as SignUpCheckList } from './stylesheet/SignUpCheckList.module.scss';
-export { default as SignUpInput } from './stylesheet/SignUpInput.page.module.scss';
+export { default as SignUp } from './stylesheet/signup/SignUp.page.module.scss';
+export { default as SignUpCheckList } from './stylesheet/signup/SignUpCheckList.module.scss';
+export { default as SignUpInput } from './stylesheet/signup/SignUpInput.page.module.scss';
 export { default as Login } from './stylesheet/login/Login.page.module.scss';
 // components
 // export {default as }
