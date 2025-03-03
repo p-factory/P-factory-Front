@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Login as styles } from '../View';
+import { useEffect, useState } from 'react';
+import { Login as styles } from '../View/stylesheet';
 import Button from '@shared/components/Button';
 import PtoryLogo from '@shared/components/PtoryLogo';
 import { ButtonTypeStyles, PtoryLogoTypeStyles } from '../Model/Mapping';
@@ -10,9 +10,9 @@ import {
   closeEyeIcon,
 } from '../assets';
 import { useForm } from 'react-hook-form';
-
+import { useApiMutation } from '../Model';
 interface FormData {
-  id: string;
+  loginId: string;
   password: string;
 }
 
@@ -25,16 +25,37 @@ const LoginPage = () => {
   } = useForm<FormData>();
 
   // id와 password 필드의 값을 감시
-  const idValue = watch('id', '');
+  const idValue = watch('loginId', '');
   const passwordValue = watch('password', '');
+
+  const { mutation, isLoading, isError, isSuccess, responseData } =
+    useApiMutation('POST');
 
   const onSubmit = (data: FormData) => {
     console.log('제출된 데이터:', data);
+    mutation.mutate({
+      mutateUrl: 'https://13.209.113.229.nip.io/api/login',
+      mutateNucleus: data,
+    });
   };
 
   const [showPassword, setShowPassword] = useState(false);
   // 두 입력 필드에 값이 존재하면 true, 아니면 false
   const isButtonActive = idValue.trim() !== '' && passwordValue.trim() !== '';
+
+  useEffect(() => {
+    if (isSuccess) {
+      console.log('Response:', responseData);
+      // console.log('Refresh-Token:', Refresh - Token);
+    }
+    if (isLoading) {
+      console.log('Response:', responseData);
+      // console.log('Refresh-Token:', Refresh - Token);
+    }
+    if (isError) {
+      console.error('Error occurred during mutation');
+    }
+  }, [isSuccess, isLoading, isError, responseData]);
 
   return (
     <div id={styles.container}>
@@ -45,20 +66,22 @@ const LoginPage = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div id={styles.inputContainer}>
             <div className={styles.inputContents}>
-              <div className={errors.id ? styles.inputError : styles.input}>
+              <div
+                className={errors.loginId ? styles.inputError : styles.input}
+              >
                 <input
                   type='text'
                   placeholder='아이디를 입력하세요.'
-                  {...register('id', {
+                  {...register('loginId', {
                     required: '*아이디는 필수입니다.',
                     pattern: {
-                      value: /^[a-zA-Z]{1,8}$/,
-                      message: '*영문 8자 이내',
+                      value: /^[a-zA-Z]{1,12}$/,
+                      message: '*영문 12자 이내',
                     },
                   })}
                 />
               </div>
-              {errors.id && <p>{errors.id.message}</p>}
+              {errors.loginId && <p>{errors.loginId.message}</p>}
             </div>
             <div className={styles.inputContents}>
               <div
