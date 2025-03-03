@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import { useApiMutation, useApiQuery } from '../Model';
+import { Footer, Tool } from '@shared/components';
+import { FooterTypeStyles, ToolTypeStyles } from '../Model/Mapping';
 const Test = () => {
   const { mutation, isLoading, isError, isSuccess, responseData } =
     useApiMutation('POST', 'https://13.209.113.229.nip.io/api/login', {
@@ -32,7 +34,7 @@ const Test = () => {
   }, [isSuccess, isError, responseData, isGetSuccess, isGetError]);
 
   return (
-    <div>
+    <div style={{ backgroundColor: 'tomato', height: '100%' }}>
       <div>Test</div>
       <div>
         <button
@@ -63,6 +65,8 @@ const Test = () => {
         {isGetError && <p style={{ color: 'red' }}>Error occurred</p>}
         {isSuccess && <p>{JSON.stringify(isGetData)}</p>}
       </div>
+      <Tool styles={ToolTypeStyles} />
+      <Footer styles={FooterTypeStyles} />
     </div>
   );
 };

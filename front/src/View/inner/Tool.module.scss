@@ -1,13 +1,25 @@
+@use '../../helpers' as fn;
+// 해당 주석처리된 상태를 기준으로 run해보면 `container`는 전체 중앙 정렬이며 `tools`는 내부 이미지 정렬을 위한 영역이다.
+// 따라서 해당 HTML은 전체 넓이 설정, 박스 중앙정렬, tools 이미지 정렬 이렇게 세가지가 필요하다.
 #container {
-  // sticky 추가 - 확인
-  position: sticky;
+  // background-color: aqua;
+  display: flex;
+  justify-content: center;
+  
+  position: fixed;
+  $px-to-width : fn.px-to-percent(390, 430);
+  width: $px-to-width;
+  max-width: 390px;
   bottom: 110px;
-
+  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
   #tools{
-    background-color: var(--white-color);
+    // background-color: var(--white-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
     // width: calc(100% + 80px); /* 루트 padding 고려한 너비 */
     margin: 0 -20px; /* 루트 padding 무효화 하기 위한 margin */
     padding: 8px 31px;
@@ -28,8 +40,8 @@
     }
   }
 }  
-  // @media (max-width: 380px) { //iphone 375px에서 반응하게 할지
-  //   #footer {
-  //     margin: 0;
-  //   }
-  // }
+  @media (max-width: 380px) { //iphone 375px에서 반응하게 할지
+    #container {
+      width: 340px;
+    }
+  }
