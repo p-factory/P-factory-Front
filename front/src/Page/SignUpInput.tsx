@@ -3,7 +3,7 @@ import Button from '@shared/components/Button';
 import Siren from '@shared/components/Siren';
 import PtoryLogo from '@shared/components/PtoryLogo';
 import { cancelIcon } from '../assets';
-
+import Modal from 'react-modal';
 import {
   ButtonTypeStyles,
   PtoryLogoTypeStyles,
@@ -15,6 +15,7 @@ import { useApiMutation } from '../Model';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { SignUpSchema } from '../Model/Dto';
+import { useNavigate } from 'react-router-dom';
 
 type FormData = z.infer<typeof SignUpSchema>;
 
@@ -30,14 +31,25 @@ const LoginPage = () => {
     resolver: zodResolver(SignUpSchema),
   });
 
-  const [showSiren, setShowSiren] = useState(false);
+  // const [showSiren, setShowSiren] = useState(true);
+
+  const navigate = useNavigate();
+
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => setModalOpen(true);
+
+  // const closeModal = () => setModalOpen(false);
+  const reDirAction = () => {
+    navigate('/login');
+  };
 
   const { mutation, isLoading, isError, isSuccess, responseData } =
     useApiMutation('POST');
 
   const onSubmit = (data: FormData) => {
     console.log('제출된 데이터:', data);
-    setShowSiren(true);
+    openModal();
     mutation.mutate({
       mutateUrl: 'https://13.209.113.229.nip.io/api/signup',
       mutateNucleus: data,
@@ -176,16 +188,19 @@ const LoginPage = () => {
           </button>
         </form>
       </div>
-      {showSiren && (
-        <div id={styles.siren}>
-          <Siren
-            styles={SirenTypeStyles}
-            image={cancelIcon}
-            title={'토리님'}
-            alarm={'환영합니다!'}
-          />
-        </div>
-      )}
+      {
+        <Modal isOpen={isModalOpen} onRequestClose={reDirAction} preventScroll>
+          <div id={styles.siren}>
+            <Siren
+              styles={SirenTypeStyles}
+              image={cancelIcon}
+              title={'토리님'}
+              alarm={'환영합니다!'}
+              reDirAction={reDirAction}
+            />
+          </div>
+        </Modal>
+      }
     </div>
   );
 };

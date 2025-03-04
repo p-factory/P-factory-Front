@@ -6,17 +6,20 @@ const Siren = ({
   image,
   title,
   alarm,
+  reDirAction,
 }: {
   styles: SirenStylesLocal;
   image: string;
   title: string;
   alarm: string;
+  onClose?: () => void;
+  reDirAction?: () => void;
 }) => {
   if (Platform.OS === 'web') {
     return (
       <div id={styles.container}>
         <div id={styles.image}>
-          <img src={image} alt='X' />
+          <img src={image} alt='X' onClick={reDirAction} />
         </div>
         <div id={styles.contents}>
           <span id={styles.title}>{`‘${title}’`}</span>
