@@ -111,13 +111,7 @@ const LoginPage = () => {
                 <input
                   type='text'
                   placeholder='영문 12자 이내'
-                  {...register('memberId', {
-                    required: '*아이디는 필수입니다.',
-                    pattern: {
-                      value: /^[a-zA-Z]{1,12}$/,
-                      message: '*올바르게 작성해주세요.',
-                    },
-                  })}
+                  {...register('memberId')}
                 />
               </div>
               {errors.memberId && <p>{errors.memberId.message}</p>}
@@ -132,14 +126,7 @@ const LoginPage = () => {
                 <input
                   type='password'
                   placeholder='영문, 숫자를 포함한 8~20자리 이내'
-                  {...register('password', {
-                    required: '*비밀번호는 필수입니다.',
-                    pattern: {
-                      value: /^[a-zA-Z0-9]{8,20}$/,
-                      message:
-                        '*영문, 숫자를 포함한 8~20자리 이내로 입력해주세요.',
-                    },
-                  })}
+                  {...register('password')}
                 />
               </div>
               {errors.password && <p>{errors.password.message}</p>}
