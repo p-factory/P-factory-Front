@@ -7,15 +7,15 @@ import {
   Footer,
   Tool,
 } from '@shared/components';
-import styled from './MyFactory.Layout.module.scss';
-import { searchIcon, createIcon, cancelIconGray } from '../assets';
+import { MyFactory as styled } from '../stylesheet';
+import { searchIcon, createIcon, cancelIconGray } from '../../assets';
 import {
   SearchTypeStyles,
   FactoryTypeStyles,
   BuildFactoryTypeStyles,
   FooterTypeStyles,
   ToolTypeStyles,
-} from '../Model/Mapping';
+} from '../../Model/Mapping';
 
 const MyFactory = () => {
   const [isModalOpen, setModalOpen] = useState(false);
