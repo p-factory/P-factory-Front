@@ -51,8 +51,15 @@ const useApiMutation = <InjectNucleus = any, CulturedNucleus = any>(
       throw error;
     }
   };
+
   const mutation = useMutation({
-    mutationFn: ApiMutation,
+    mutationFn: ({
+      mutateUrl,
+      mutateNucleus,
+    }: {
+      mutateUrl?: string;
+      mutateNucleus?: InjectNucleus;
+    }) => ApiMutation(mutateUrl, mutateNucleus),
   });
 
   const isLoading = mutation.status === 'pending';
