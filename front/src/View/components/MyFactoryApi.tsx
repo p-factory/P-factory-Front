@@ -26,9 +26,8 @@ const MyFactoryApi = () => {
 
   useEffect(() => {
     refetch();
-    console.log('contect');
     if (isSuccess) {
-      console.log('Response:', data?.data);
+      console.log('✅Response:', data?.data);
     }
     if (isLoading) {
       console.log('isLoading..');

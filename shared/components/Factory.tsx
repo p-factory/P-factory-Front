@@ -112,7 +112,7 @@ const Factory = ({
     };
 
     return (
-      <div>
+      <div style={{ marginBottom: '16px' }}>
         <div id={styles.container}>
           <div className={styles.managerBar}>
             {isMoreActive && <ManagerBar styles={managerBarStyles} />}
