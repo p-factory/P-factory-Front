@@ -27,7 +27,7 @@ const managerBarStyles: ManagerBarStyles = {
 
 export const ManagerBar = ({ styles }: { styles: ManagerBarStyles }) => {
   const dispatch = useDispatch();
-  const mode = useSelector((state: RootState) => state.setMode.mode);
+  const mode = useSelector((state: RootState) => state.setFactoryMode.mode);
   // const [isMode, setMode] = useState<string>('');
 
   useEffect(() => {
