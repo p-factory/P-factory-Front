@@ -18,13 +18,15 @@ import {
 const Tool = ({ styles }: { styles: ToolStylesLocal }) => {
   if (Platform.OS === 'web') {
     // Hover 상태 관리
-    const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+    const [hoveredItem, setHoveredItem] = useState<string>('');
+    const [modeState, setModeState] = useState<boolean[]>([]);
     const dispatch = useDispatch();
     const mode = useSelector((state: RootState) => state.setToolMode.tool);
     const handleMouseEnter = (item: string) => {
       setHoveredItem(item);
     };
     const handleMode = (item: string) => {
+      const initModeState = [true, false, false, false];
       switch (item) {
         case 'englishMode':
           dispatch(SetMode('eng'));
@@ -39,12 +41,13 @@ const Tool = ({ styles }: { styles: ToolStylesLocal }) => {
           dispatch(SetMode('deleted'));
           break;
       }
+      setModeState(initModeState);
     };
-    const handleMouseLeave = () => setHoveredItem(null);
+    const handleMouseLeave = () => setHoveredItem('');
 
     useEffect(() => {
-      console.log('tool mode:', mode);
-    }, [mode]);
+      console.log('tool mode:', mode, 'boolean', modeState);
+    }, [mode, modeState]);
 
     return (
       <div id={styles.container}>
