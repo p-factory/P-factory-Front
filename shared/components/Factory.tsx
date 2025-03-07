@@ -90,18 +90,21 @@ export const ManagerBar = ({ styles }: { styles: ManagerBarStyles }) => {
 
 const Factory = ({
   styles,
-  name,
-  count,
+  name = 'untitle',
+  count = 'null',
+  favorite = false,
 }: {
   styles: FactoryStylesLocal;
   name: string;
   count: string;
+  favorite: boolean;
 }) => {
   if (Platform.OS === 'web') {
-    const [isClickedItem, setClickedItem] = useState<boolean>(false);
+    const [isClickedItem, setClickedItem] = useState<boolean>(favorite);
     const [isMoreActive, setMoreActive] = useState<boolean>(false);
     const handleIconClick = () => {
       setClickedItem((prev) => !prev);
+      console.log('즐겨찾기 post 준비중 MyFatoryApi');
     };
 
     const handleMoreActive = () => {
@@ -109,7 +112,7 @@ const Factory = ({
     };
 
     return (
-      <div>
+      <div style={{ marginBottom: '16px' }}>
         <div id={styles.container}>
           <div className={styles.managerBar}>
             {isMoreActive && <ManagerBar styles={managerBarStyles} />}

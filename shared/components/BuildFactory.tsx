@@ -2,9 +2,10 @@ import { Platform, Text } from 'react-native';
 import { BuildFactoryStylesLocal } from '../style';
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { useApiMutation } from '../../front/src/Model';
 
 interface BuildFormData {
-  buildQuery: string;
+  bookName: string;
 }
 
 const BuildFactory = ({
@@ -27,13 +28,30 @@ const BuildFactory = ({
     const [inInputLength, setInputLength] = useState<number>(0);
     const { register, handleSubmit, setValue } = useForm<BuildFormData>();
 
+    const { mutation, isLoading, isError, isSuccess, responseData } =
+      useApiMutation('POST');
+
     const onSubmit = (data: BuildFormData) => {
-      console.log('생성된 Factory:', data.buildQuery);
+      console.log('생성된 Factory:', data.bookName);
+      mutation.mutate({
+        mutateUrl: 'https://13.209.113.229.nip.io/api/wordbook/create',
+        mutateNucleus: data,
+      });
     };
 
     useEffect(() => {
       setState(false);
-    }, []);
+      if (isSuccess) {
+        console.log('Response:', responseData);
+        window.location.reload();
+      }
+      if (isLoading) {
+        console.log('Response:', responseData);
+      }
+      if (isError) {
+        console.error('Error occurred during mutation');
+      }
+    }, [isSuccess, isLoading, isError, responseData]);
 
     return (
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -49,9 +67,9 @@ const BuildFactory = ({
               id={styles.input}
               placeholder={`${input}`}
               maxLength={12}
-              {...register('buildQuery', { required: true, maxLength: 12 })}
+              {...register('bookName', { required: true, maxLength: 12 })}
               onChange={(e) => {
-                setValue('buildQuery', e.target.value);
+                setValue('bookName', e.target.value);
                 setInputLength(e.target.value.length);
               }}
             />
