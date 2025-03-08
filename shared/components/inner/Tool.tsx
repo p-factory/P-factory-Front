@@ -3,7 +3,7 @@ import { ToolStylesLocal } from '../../style';
 import { RootState } from '../../store/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { SetMode } from '../../store/slice/toolModeSlice';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {
   englishIconHover,
   englishIcon,
@@ -17,51 +17,59 @@ import {
 
 const Tool = ({ styles }: { styles: ToolStylesLocal }) => {
   if (Platform.OS === 'web') {
-    // Hover 상태 관리
-    const [hoveredItem, setHoveredItem] = useState<string>('');
-    const [modeState, setModeState] = useState<boolean[]>([]);
     const dispatch = useDispatch();
     const mode = useSelector((state: RootState) => state.setToolMode.tool);
-    const handleMouseEnter = (item: string) => {
-      setHoveredItem(item);
-    };
+
     const handleMode = (item: string) => {
-      const initModeState = [true, false, false, false];
       switch (item) {
-        case 'englishMode':
+        case 'eng':
           dispatch(SetMode('eng'));
           break;
-        case 'koreanMode':
+        case 'kor':
           dispatch(SetMode('kor'));
           break;
-        case 'highlightMode':
+        case 'highlight':
           dispatch(SetMode('highlight'));
           break;
-        case 'deleteMode':
+        case 'deleted':
           dispatch(SetMode('deleted'));
           break;
       }
-      setModeState(initModeState);
     };
-    const handleMouseLeave = () => setHoveredItem('');
+
+    const [hoveredMode, setHoveredMode] = useState<string | null>(null);
+
+    // const handleHoverMode = (item: 'eng' | 'kor' | 'highlight' | 'deleted') => {
+    //   dispatch(SetMode(item));
+    // };
+
+    // Hover 시
+    const handleMouseEnter = (item: string) => {
+      setHoveredMode(item); // Hover한 모드 상태 저장
+    };
+
+    // 마우스 떠날 때 (하지만 클릭한 상태는 유지해야 함)
+    const handleMouseLeave = () => {
+      setHoveredMode('');
+    };
 
     useEffect(() => {
-      console.log('tool mode:', mode, 'boolean', modeState);
-    }, [mode, modeState]);
+      console.log('tool mode:', mode);
+    }, [mode]);
 
     return (
       <div id={styles.container}>
         <div id={styles.tools}>
           <div
             className={styles.contents}
-            onMouseEnter={() => handleMouseEnter('englishMode')}
-            onMouseLeave={handleMouseLeave}
-            onClick={() => handleMode('englishMode')}
+            onMouseEnter={() => handleMouseEnter('eng')}
+            onMouseLeave={() => handleMouseLeave()}
+            onClick={() => handleMode('eng')}
           >
             <div className={styles.image}>
               <img
                 src={
-                  hoveredItem === 'englishMode'
+                  hoveredMode === 'eng' || mode.includes('eng')
                     ? englishIconHover // Hover 이미지
                     : englishIcon // 기본 이미지
                 }
@@ -71,14 +79,14 @@ const Tool = ({ styles }: { styles: ToolStylesLocal }) => {
           </div>
           <div
             className={styles.contents}
-            onMouseEnter={() => handleMouseEnter('koreanMode')}
-            onMouseLeave={handleMouseLeave}
-            onClick={() => handleMode('koreanMode')}
+            onMouseEnter={() => handleMouseEnter('kor')}
+            onMouseLeave={() => handleMouseLeave()}
+            onClick={() => handleMode('kor')}
           >
             <div className={styles.image}>
               <img
                 src={
-                  hoveredItem === 'koreanMode'
+                  hoveredMode === 'kor' || mode.includes('kor')
                     ? koreanIconHover // Hover 이미지
                     : koreanIcon // 기본 이미지
                 }
@@ -88,14 +96,14 @@ const Tool = ({ styles }: { styles: ToolStylesLocal }) => {
           </div>
           <div
             className={styles.contents}
-            onMouseEnter={() => handleMouseEnter('highlightMode')}
-            onMouseLeave={handleMouseLeave}
-            onClick={() => handleMode('highlightMode')}
+            onMouseEnter={() => handleMouseEnter('highlight')}
+            onMouseLeave={() => handleMouseLeave()}
+            onClick={() => handleMode('highlight')}
           >
             <div className={styles.image}>
               <img
                 src={
-                  hoveredItem === 'highlightMode'
+                  hoveredMode === 'highlight' || mode.includes('highlight')
                     ? highlightIconHover // Hover 이미지
                     : highlightIcon // 기본 이미지
                 }
@@ -105,14 +113,14 @@ const Tool = ({ styles }: { styles: ToolStylesLocal }) => {
           </div>
           <div
             className={styles.contents}
-            onMouseEnter={() => handleMouseEnter('deleteMode')}
-            onMouseLeave={handleMouseLeave}
-            onClick={() => handleMode('deleteMode')}
+            onMouseEnter={() => handleMouseEnter('deleted')}
+            onMouseLeave={() => handleMouseLeave()}
+            onClick={() => handleMode('deleted')}
           >
             <div className={styles.image}>
               <img
                 src={
-                  hoveredItem === 'deleteMode'
+                  hoveredMode === 'deleted' || mode.includes('deleted')
                     ? deleteIconHover // Hover 이미지
                     : deleteIcon // 기본 이미지
                 }
