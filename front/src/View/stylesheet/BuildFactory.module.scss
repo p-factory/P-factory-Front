@@ -44,12 +44,17 @@
     }
     #charCounter{
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
       font-size: var(--font-size-xxsmall);
       font-weight: var(--font-weight-medium);
       color: var(--gray4-color);
       $px-to-margin : fn.px-to-percent(3, 322);
       margin-right: $px-to-margin;
+      #error{
+        color: red;
+        font-size: 12px;
+        margin-left: 3px;
+      }
     }
   }
 }
