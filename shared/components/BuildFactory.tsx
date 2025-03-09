@@ -1,12 +1,13 @@
 import { Platform, Text } from 'react-native';
 import { BuildFactoryStylesLocal } from '../style';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useApiMutation } from '../../front/src/Model';
+import { z } from 'zod';
+import { BuildFactorySchema } from '../../front/src/Model/Dto';
+import { zodResolver } from '@hookform/resolvers/zod';
 
-interface BuildFormData {
-  bookName: string;
-}
+type FormData = z.infer<typeof BuildFactorySchema>;
 
 const BuildFactory = ({
   styles,
@@ -24,14 +25,25 @@ const BuildFactory = ({
   onClose: () => void;
 }) => {
   if (Platform.OS === 'web') {
-    const [isState, setState] = useState<boolean>(false);
-    const [inInputLength, setInputLength] = useState<number>(0);
-    const { register, handleSubmit, setValue } = useForm<BuildFormData>();
+    // const [isState, setState] = useState<boolean>(false);
+    const {
+      register,
+      handleSubmit,
+      watch,
+      formState: { errors },
+    } = useForm<FormData>({
+      resolver: zodResolver(BuildFactorySchema),
+      mode: 'onChange',
+    });
+
+    const inInputLength = watch('bookName', '');
+
+    const isButtonActive = inInputLength.trim() !== '';
 
     const { mutation, isLoading, isError, isSuccess, responseData } =
       useApiMutation('POST');
 
-    const onSubmit = (data: BuildFormData) => {
+    const onSubmit = (data: FormData) => {
       console.log('생성된 Factory:', data.bookName);
       mutation.mutate({
         mutateUrl: 'https://13.209.113.229.nip.io/api/wordbook/create',
@@ -40,7 +52,7 @@ const BuildFactory = ({
     };
 
     useEffect(() => {
-      setState(false);
+      // setState(false);
       if (isSuccess) {
         console.log('Response:', responseData);
         window.location.reload();
@@ -67,18 +79,33 @@ const BuildFactory = ({
               id={styles.input}
               placeholder={`${input}`}
               maxLength={12}
-              {...register('bookName', { required: true, maxLength: 12 })}
-              onChange={(e) => {
-                setValue('bookName', e.target.value);
-                setInputLength(e.target.value.length);
-              }}
+              {...register('bookName')}
             />
-            <div id={styles.charCounter}>{`(${inInputLength}/12)`}</div>
+
+            <div id={styles.charCounter}>
+              <div>
+                {errors.bookName && (
+                  <p
+                    id='error'
+                    style={{
+                      color: 'red',
+                      fontSize: '12px',
+                      display: 'flex',
+                      justifyContent: 'flex-start',
+                    }}
+                  >
+                    {errors.bookName.message}
+                  </p>
+                )}
+              </div>
+              <p>{`(${inInputLength.length}/12)`}</p>
+            </div>
           </div>
         </div>
         <button
           type='submit'
-          className={isState ? styles.submit : styles.button}
+          className={isButtonActive ? styles.submit : styles.button}
+          disabled={isLoading}
         >
           {`${buttonTitle}`}
         </button>

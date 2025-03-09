@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { RootState } from '../store/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { SetMode } from '../store/slice/factoryModeSlice';
@@ -27,8 +27,7 @@ const managerBarStyles: ManagerBarStyles = {
 
 export const ManagerBar = ({ styles }: { styles: ManagerBarStyles }) => {
   const dispatch = useDispatch();
-  const mode = useSelector((state: RootState) => state.setMode.mode);
-  // const [isMode, setMode] = useState<string>('');
+  const mode = useSelector((state: RootState) => state.setFactoryMode.mode);
 
   useEffect(() => {
     console.log('현재 모드:', mode);
@@ -102,6 +101,9 @@ const Factory = ({
   if (Platform.OS === 'web') {
     const [isClickedItem, setClickedItem] = useState<boolean>(favorite);
     const [isMoreActive, setMoreActive] = useState<boolean>(false);
+
+    const managerBarRef = useRef<HTMLDivElement>(null);
+
     const handleIconClick = () => {
       setClickedItem((prev) => !prev);
       console.log('즐겨찾기 post 준비중 MyFatoryApi');
@@ -111,11 +113,28 @@ const Factory = ({
       setMoreActive((prev) => !prev);
     };
 
+    useEffect(() => {
+      const handleClcikOutSide = (event: MouseEvent) => {
+        if (
+          managerBarRef.current &&
+          !managerBarRef.current.contains(event.target as Node)
+        ) {
+          setMoreActive(false);
+        }
+      };
+      document.addEventListener('mousedown', handleClcikOutSide);
+      return () => {
+        document.removeEventListener('mousedown', handleClcikOutSide);
+      };
+    }, []);
+
     return (
       <div style={{ marginBottom: '16px' }}>
         <div id={styles.container}>
           <div className={styles.managerBar}>
-            {isMoreActive && <ManagerBar styles={managerBarStyles} />}
+            <div ref={managerBarRef}>
+              {isMoreActive && <ManagerBar styles={managerBarStyles} />}
+            </div>
           </div>
           <div className={styles.image}>
             <img src={moreIcon} alt='' />

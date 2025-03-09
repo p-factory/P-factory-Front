@@ -106,7 +106,7 @@ const LoginPage = () => {
               {errors.password && <p>{errors.password.message}</p>}
             </div>
           </div>
-          <button type='submit'>
+          <button type='submit' disabled={isLoading}>
             <Button
               styles={ButtonTypeStyles}
               title='로그인'

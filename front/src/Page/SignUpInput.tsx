@@ -162,7 +162,7 @@ const LoginPage = () => {
               {errors.name && <p>{errors.name.message}</p>}
             </div>
           </div>
-          <button type='submit'>
+          <button type='submit' disabled={isLoading}>
             <Button
               styles={ButtonTypeStyles}
               title='가입하기'
