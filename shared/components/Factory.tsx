@@ -14,7 +14,7 @@ import {
   starIconChecked,
   starIcon,
 } from '../../front/src/assets';
-
+import { useApiMutation } from '../../front/src/Model';
 const managerBarStyles: ManagerBarStyles = {
   container: ManagerBarStyled.container,
   title: ManagerBarStyled.title,
@@ -25,13 +25,49 @@ const managerBarStyles: ManagerBarStyles = {
   submit: ManagerBarStyled.submit,
 };
 
-export const ManagerBar = ({ styles }: { styles: ManagerBarStyles }) => {
+export const ManagerBar = ({
+  id,
+  styles,
+}: {
+  id: number;
+  styles: ManagerBarStyles;
+}) => {
   const dispatch = useDispatch();
   const mode = useSelector((state: RootState) => state.setFactoryMode.mode);
+  const { mutation, isSuccess } = useApiMutation('DELETE');
 
   useEffect(() => {
-    console.log('현재 모드:', mode);
-  }, [mode]);
+    if (!mode) return;
+    switch (mode) {
+      case 'deleted':
+        console.log(`${mode}: ${id}`);
+        if (id !== undefined) {
+          mutation.mutate({
+            mutateUrl: `https://13.209.113.229.nip.io/api/wordbook/delete/${id}`,
+          });
+        }
+        break;
+      case 'edit':
+        console.log(`${mode}: ${id}`);
+        break;
+      case 'shared':
+        console.log(`${mode}: ${id}`);
+        break;
+      case 'duplicated':
+        console.log(`${mode}: ${id}`);
+        break;
+      default:
+        console.log('default: ', mode);
+        break;
+    }
+  }, [mode, id]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      console.log('🟢 삭제 성공:', isSuccess);
+      window.location.reload();
+    }
+  }, [isSuccess]);
 
   if (Platform.OS === 'web') {
     return (
@@ -88,11 +124,13 @@ export const ManagerBar = ({ styles }: { styles: ManagerBarStyles }) => {
 };
 
 const Factory = ({
+  id,
   styles,
   name = 'untitle',
   count = 'null',
   favorite = false,
 }: {
+  id: number;
   styles: FactoryStylesLocal;
   name: string;
   count: string;
@@ -133,7 +171,7 @@ const Factory = ({
         <div id={styles.container}>
           <div className={styles.managerBar}>
             <div ref={managerBarRef}>
-              {isMoreActive && <ManagerBar styles={managerBarStyles} />}
+              {isMoreActive && <ManagerBar id={id} styles={managerBarStyles} />}
             </div>
           </div>
           <div className={styles.image}>

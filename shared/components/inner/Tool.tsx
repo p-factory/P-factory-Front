@@ -3,7 +3,7 @@ import { ToolStylesLocal } from '../../style';
 import { RootState } from '../../store/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { SetMode } from '../../store/slice/toolModeSlice';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
   englishIconHover,
   englishIcon,
@@ -24,24 +24,24 @@ const Tool = ({ styles }: { styles: ToolStylesLocal }) => {
       switch (item) {
         case 'eng':
           dispatch(SetMode('eng'));
+
           break;
         case 'kor':
           dispatch(SetMode('kor'));
+
           break;
         case 'highlight':
           dispatch(SetMode('highlight'));
+
           break;
         case 'deleted':
           dispatch(SetMode('deleted'));
+
           break;
       }
     };
 
     const [hoveredMode, setHoveredMode] = useState<string | null>(null);
-
-    // const handleHoverMode = (item: 'eng' | 'kor' | 'highlight' | 'deleted') => {
-    //   dispatch(SetMode(item));
-    // };
 
     // Hover 시
     const handleMouseEnter = (item: string) => {
@@ -53,9 +53,9 @@ const Tool = ({ styles }: { styles: ToolStylesLocal }) => {
       setHoveredMode('');
     };
 
-    useEffect(() => {
-      console.log('tool mode:', mode);
-    }, [mode]);
+    // useEffect(() => {
+    //   console.log('tool mode:', mode);
+    // }, [mode]);
 
     return (
       <div id={styles.container}>
