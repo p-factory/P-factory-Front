@@ -34,7 +34,7 @@ export const ManagerBar = ({
 }) => {
   const dispatch = useDispatch();
   const mode = useSelector((state: RootState) => state.setFactoryMode.mode);
-  const { mutation, isSuccess } = useApiMutation('DELETE');
+  const { mutation, isLoading, isSuccess } = useApiMutation('DELETE');
 
   useEffect(() => {
     if (!mode) return;
@@ -66,6 +66,9 @@ export const ManagerBar = ({
     if (isSuccess) {
       console.log('🟢 삭제 성공:', isSuccess);
       window.location.reload();
+    }
+    if (isLoading) {
+      console.log('isLoading');
     }
   }, [isSuccess]);
 
