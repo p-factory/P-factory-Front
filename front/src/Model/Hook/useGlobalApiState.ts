@@ -12,8 +12,9 @@ const useGlobalApiState = ({
 }) => {
   const { mutation, isLoading, isSuccess } = useApiMutation(method);
   const mode = useSelector((state: RootState) => state.setFactoryMode.mode);
-
+  const toolMode = useSelector((state: RootState) => state.setToolMode.tool);
   useEffect(() => {
+    // foactory mode
     if (!mode) return;
     switch (mode) {
       case 'deleted':
@@ -37,7 +38,19 @@ const useGlobalApiState = ({
         console.log('default: ', mode);
         break;
     }
-  }, [mode, id]);
+    // tool mode
+    if (!toolMode || toolMode.length === 0) return;
+    switch (toolMode[0]) {
+      case 'highlight':
+        console.log(`${toolMode}: ${id}`);
+      case 'deleted':
+        console.log(`${toolMode}: ${id}`);
+
+      default:
+        console.log('default: ', toolMode);
+        break;
+    }
+  }, [toolMode, mode, id]);
 
   useEffect(() => {
     if (isSuccess) {
