@@ -17,3 +17,4 @@ export { default as useApiMutation } from './Hook/useApiMutation';
 export { default as useApiQuery } from './Hook/useApiQuery';
 export { default as CreateModel } from './CreateModel';
 export { default as RemoveModel } from './RemoveModel';
+export { default as useGlobalApiState } from './Hook/useGlobalApiState';

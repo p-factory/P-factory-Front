@@ -36,7 +36,7 @@ const useApiMutation = <InjectNucleus = any, CulturedNucleus = any>(
             `Unsupported mutation experiment Types: ${method}, Please, check 'useApiMutation.ts' file`,
           );
       }
-      if (dna.data === true) {
+      if (dna.status === 200 || dna.status === 204) {
         console.log('Success: The mutation experiment was successful.');
       } else {
         console.log(

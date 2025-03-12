@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import { RootState } from '../store/store';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { SetMode } from '../store/slice/factoryModeSlice';
 import { Platform, Text } from 'react-native';
 import ManagerBarStyled from '../ManagerBar.module.scss';
@@ -14,6 +13,7 @@ import {
   starIconChecked,
   starIcon,
 } from '../../front/src/assets';
+import { useGlobalApiState } from '../../front/src/Model';
 
 const managerBarStyles: ManagerBarStyles = {
   container: ManagerBarStyled.container,
@@ -25,13 +25,28 @@ const managerBarStyles: ManagerBarStyles = {
   submit: ManagerBarStyled.submit,
 };
 
-export const ManagerBar = ({ styles }: { styles: ManagerBarStyles }) => {
+export const ManagerBar = ({
+  id,
+  styles,
+}: {
+  id: number;
+  styles: ManagerBarStyles;
+}) => {
   const dispatch = useDispatch();
-  const mode = useSelector((state: RootState) => state.setFactoryMode.mode);
+
+  const { isLoading, isSuccess } = useGlobalApiState({
+    id: id,
+    method: 'DELETE',
+  });
 
   useEffect(() => {
-    console.log('현재 모드:', mode);
-  }, [mode]);
+    if (isSuccess) {
+      console.log('🟢 삭제 성공:', isSuccess);
+    }
+    if (isLoading) {
+      console.log('🟢 삭제 성공:', isLoading);
+    }
+  }, [isLoading, isSuccess]);
 
   if (Platform.OS === 'web') {
     return (
@@ -88,11 +103,13 @@ export const ManagerBar = ({ styles }: { styles: ManagerBarStyles }) => {
 };
 
 const Factory = ({
+  id,
   styles,
   name = 'untitle',
   count = 'null',
   favorite = false,
 }: {
+  id: number;
   styles: FactoryStylesLocal;
   name: string;
   count: string;
@@ -133,7 +150,7 @@ const Factory = ({
         <div id={styles.container}>
           <div className={styles.managerBar}>
             <div ref={managerBarRef}>
-              {isMoreActive && <ManagerBar styles={managerBarStyles} />}
+              {isMoreActive && <ManagerBar id={id} styles={managerBarStyles} />}
             </div>
           </div>
           <div className={styles.image}>
