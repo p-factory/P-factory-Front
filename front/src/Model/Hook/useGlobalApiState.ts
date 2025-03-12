@@ -3,8 +3,14 @@ import useApiMutation from './useApiMutation';
 import { RootState } from '@shared/store/store';
 import { useSelector } from 'react-redux';
 
-const useGlobalApiState = ({ id }: { id?: number }) => {
-  const { mutation, isLoading, isSuccess } = useApiMutation('DELETE');
+const useGlobalApiState = ({
+  id,
+  method,
+}: {
+  id?: number;
+  method: 'POST' | 'PUT' | 'DELETE';
+}) => {
+  const { mutation, isLoading, isSuccess } = useApiMutation(method);
   const mode = useSelector((state: RootState) => state.setFactoryMode.mode);
 
   useEffect(() => {

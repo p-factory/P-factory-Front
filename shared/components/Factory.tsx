@@ -34,7 +34,10 @@ export const ManagerBar = ({
 }) => {
   const dispatch = useDispatch();
 
-  const { isLoading, isSuccess } = useGlobalApiState({ id: id });
+  const { isLoading, isSuccess } = useGlobalApiState({
+    id: id,
+    method: 'DELETE',
+  });
 
   useEffect(() => {
     if (isSuccess) {
