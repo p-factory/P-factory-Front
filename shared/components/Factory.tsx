@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import { RootState } from '../store/store';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { SetMode } from '../store/slice/factoryModeSlice';
 import { Platform, Text } from 'react-native';
 import ManagerBarStyled from '../ManagerBar.module.scss';
@@ -14,7 +13,8 @@ import {
   starIconChecked,
   starIcon,
 } from '../../front/src/assets';
-import { useApiMutation } from '../../front/src/Model';
+import { useGlobalApiState } from '../../front/src/Model';
+
 const managerBarStyles: ManagerBarStyles = {
   container: ManagerBarStyled.container,
   title: ManagerBarStyled.title,
@@ -33,44 +33,17 @@ export const ManagerBar = ({
   styles: ManagerBarStyles;
 }) => {
   const dispatch = useDispatch();
-  const mode = useSelector((state: RootState) => state.setFactoryMode.mode);
-  const { mutation, isLoading, isSuccess } = useApiMutation('DELETE');
 
-  useEffect(() => {
-    if (!mode) return;
-    switch (mode) {
-      case 'deleted':
-        console.log(`${mode}: ${id}`);
-        if (id !== undefined) {
-          mutation.mutate({
-            mutateUrl: `https://13.209.113.229.nip.io/api/wordbook/delete/${id}`,
-          });
-        }
-        break;
-      case 'edit':
-        console.log(`${mode}: ${id}`);
-        break;
-      case 'shared':
-        console.log(`${mode}: ${id}`);
-        break;
-      case 'duplicated':
-        console.log(`${mode}: ${id}`);
-        break;
-      default:
-        console.log('default: ', mode);
-        break;
-    }
-  }, [mode, id]);
+  const { isLoading, isSuccess } = useGlobalApiState({ id: id });
 
   useEffect(() => {
     if (isSuccess) {
       console.log('🟢 삭제 성공:', isSuccess);
-      window.location.reload();
     }
     if (isLoading) {
-      console.log('isLoading');
+      console.log('🟢 삭제 성공:', isLoading);
     }
-  }, [isSuccess]);
+  }, [isLoading, isSuccess]);
 
   if (Platform.OS === 'web') {
     return (
