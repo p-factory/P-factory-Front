@@ -1,5 +1,10 @@
-import { Sort, Screw } from '@shared/components';
-import { SortTypeStyles, ScrewTypeStyles } from '../../Model/Mapping';
+import { Sort, Screw, Tool, Footer } from '@shared/components';
+import {
+  SortTypeStyles,
+  ScrewTypeStyles,
+  ToolTypeStyles,
+  FooterTypeStyles,
+} from '../../Model/Mapping';
 import { StudyFactory as styled } from '../stylesheet';
 import { starIconChecked, backIcon, downloadIcon } from '../../assets';
 const StudyFactory = () => {
@@ -34,6 +39,8 @@ const StudyFactory = () => {
           screwShape={'명사'}
         />
       </div>
+      <Tool styles={ToolTypeStyles} />
+      <Footer styles={FooterTypeStyles} />
     </div>
   );
 };

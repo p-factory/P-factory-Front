@@ -5,7 +5,7 @@ import {
   // Factory,
   BuildFactory,
   Footer,
-  Tool,
+  // Tool,
 } from '@shared/components';
 import { MyFactory as styled } from '../stylesheet';
 import { searchIcon, createIcon, cancelIconGray } from '../../assets';
@@ -14,7 +14,7 @@ import {
   // FactoryTypeStyles,
   BuildFactoryTypeStyles,
   FooterTypeStyles,
-  ToolTypeStyles,
+  // ToolTypeStyles,
 } from '../../Model/Mapping';
 
 const MyFactory = ({ children }: { children: ReactNode }) => {
@@ -57,7 +57,7 @@ const MyFactory = ({ children }: { children: ReactNode }) => {
         {children}
         {/* <Factory styles={FactoryTypeStyles} name={'토익공부'} count={'0'} /> */}
       </div>
-      <Tool styles={ToolTypeStyles} />
+      {/* <Tool styles={ToolTypeStyles} /> */}
       <Footer styles={FooterTypeStyles} />
     </div>
   );
