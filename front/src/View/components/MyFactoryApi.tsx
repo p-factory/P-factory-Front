@@ -57,6 +57,7 @@ const MyFactoryApi = () => {
         data.data.map((el) => (
           <Factory
             key={el.wordbookId}
+            id={el.wordbookId}
             styles={FactoryTypeStyles}
             name={el.bookName}
             count={'0'}

@@ -11,15 +11,15 @@ const useApiQuery = <Organism>(
   const ApiQuery = async () => {
     try {
       const dna = await axiosInstance.get(url, { params });
-      if (dna.data === true) {
+      if (dna.status === 200 || dna.status === 204) {
         console.log(`Success: Analysis Complete, check DNA data.`);
       } else {
         console.log(`Error: Failed to Analysis, DNA data. Retry to Analysis.`);
       }
       return dna.data;
-    } catch (error) {
+    } catch (error: any) {
       console.error(`Error: Failed to Analysis System. Need inspect System.`);
-      console.error(error);
+      console.error(error.message);
       throw error;
     }
   };

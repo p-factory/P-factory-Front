@@ -11,7 +11,7 @@ const AxiosInstance = axios.create({
 // Axios에서 responseHeaders를 조회할 수 있게 구현
 AxiosInstance.interceptors.response.use(
   (response) => {
-    console.log('🔥 Response Headers:', response.headers);
+    // console.log('🔥 Response Headers:', response.headers);
 
     const authorization =
       response.headers['authorization'] || response.headers['Authorization'];
