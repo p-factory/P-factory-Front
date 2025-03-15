@@ -43,7 +43,13 @@ export const InputElement = ({
   );
 };
 
-const Driver = ({ styles }: { styles: DriverStylesLocal }) => {
+const Driver = ({
+  styles,
+  onClose,
+}: {
+  styles: DriverStylesLocal;
+  onClose: () => void;
+}) => {
   if (Platform.OS === 'web') {
     const [isInputElements, setInputElements] = useState<string[]>([]); // 동적 Input 관리
 
@@ -75,7 +81,7 @@ const Driver = ({ styles }: { styles: DriverStylesLocal }) => {
           <div id={styles.title}>
             <div>단어생성</div>
             <div id={styles.image}>
-              <img src={cancelIcon} alt='X' height={'24px'} />
+              <img src={cancelIcon} alt='X' height={'24px'} onClick={onClose} />
             </div>
           </div>
           <div id={styles.contents}>

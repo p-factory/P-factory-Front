@@ -1,13 +1,23 @@
-import { Sort, Screw, Tool, Footer } from '@shared/components';
+import { useState } from 'react';
+import { Sort, Screw, Tool, Footer, Driver } from '@shared/components';
 import {
   SortTypeStyles,
   ScrewTypeStyles,
   ToolTypeStyles,
   FooterTypeStyles,
+  DriverTypeStyles,
 } from '../../Model/Mapping';
 import { StudyFactory as styled } from '../stylesheet';
 import { starIconChecked, backIcon, downloadIcon } from '../../assets';
+import Modal from 'react-modal';
+
 const StudyFactory = () => {
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => setModalOpen(true);
+
+  const closeModal = () => setModalOpen(false);
+
   return (
     <div id={styled.debug}>
       <div id={styled.header}>
@@ -39,8 +49,11 @@ const StudyFactory = () => {
           screwShape={'명사'}
         />
       </div>
-      <Tool styles={ToolTypeStyles} />
+      <Tool styles={ToolTypeStyles} onOpenModal={openModal} />
       <Footer styles={FooterTypeStyles} />
+      <Modal isOpen={isModalOpen} onRequestClose={closeModal} preventScroll>
+        <Driver styles={DriverTypeStyles} onClose={closeModal} />
+      </Modal>
     </div>
   );
 };
