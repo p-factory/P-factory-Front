@@ -55,15 +55,7 @@ const Driver = ({
 
     const [isState, setState] = useState<boolean>(false);
 
-    const {
-      register,
-      handleSubmit,
-      // formState: { errors }, // -> errors는 placeholder에서 생성할 수 있도록
-      reset,
-      // setValue,
-      // getValues,
-      // unregister,
-    } = useForm<FormData>();
+    const { register, handleSubmit, reset } = useForm<FormData>();
 
     const onSubmit = (data: FormData) => {
       console.log('제출된 데이터:', data);
@@ -125,7 +117,8 @@ const Driver = ({
                 <img src={addIcon} alt='' />
               </div>
             </div>
-            <div className={styles.inputContents}>
+            // 현재 사용되지 않는 ui
+            {/* <div className={styles.inputContents}>
               <span>발음</span>
               <input
                 placeholder='발음을 입력하세요.'
@@ -140,7 +133,7 @@ const Driver = ({
                 type='text'
                 {...register('description')}
               />
-            </div>
+            </div> */}
           </div>
         </div>
         <div className={isState ? styles.submit : styles.button}>
