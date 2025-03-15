@@ -117,7 +117,7 @@ const Driver = ({
                 <img src={addIcon} alt='' />
               </div>
             </div>
-            // 현재 사용되지 않는 ui
+            {/* 현재 사용되지 않는 ui */}
             {/* <div className={styles.inputContents}>
               <span>발음</span>
               <input
