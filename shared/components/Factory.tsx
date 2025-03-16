@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { SetMode } from '../store/slice/factoryModeSlice';
 import { Platform, Text } from 'react-native';
 import ManagerBarStyled from '../ManagerBar.module.scss';
@@ -38,6 +39,7 @@ export const ManagerBar = ({
     id: id,
     method: 'DELETE',
   });
+  // const navigate = useNavigate();
 
   useEffect(() => {
     if (isSuccess) {
@@ -108,19 +110,21 @@ const Factory = ({
   name = 'untitle',
   count = 'null',
   favorite = false,
+  index,
 }: {
   id: number;
   styles: FactoryStylesLocal;
   name: string;
   count: string;
   favorite: boolean;
+  index: number;
 }) => {
   if (Platform.OS === 'web') {
     const [isClickedItem, setClickedItem] = useState<boolean>(favorite);
     const [isMoreActive, setMoreActive] = useState<boolean>(false);
 
     const managerBarRef = useRef<HTMLDivElement>(null);
-
+    const navigate = useNavigate();
     const handleIconClick = () => {
       setClickedItem((prev) => !prev);
       console.log('즐겨찾기 post 준비중 MyFatoryApi');
@@ -146,7 +150,10 @@ const Factory = ({
     }, []);
 
     return (
-      <div style={{ marginBottom: '16px' }}>
+      <div
+        style={{ marginBottom: '16px' }}
+        onClick={() => navigate(`/StudyFactory/${index}`)}
+      >
         <div id={styles.container}>
           <div className={styles.managerBar}>
             <div ref={managerBarRef}>

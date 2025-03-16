@@ -21,7 +21,7 @@ const App = () => {
           </MyFactory>
         }
       />
-      <Route path='/StudyFactory' element={<StudyFactory />} />
+      <Route path='/StudyFactory/:index' element={<StudyFactory />} />
       <Route path='/login' element={<LoginPage />} />
       <Route path='/signUp' element={<SignUpPage />} />
       <Route path='/signUp/input' element={<SignUpInputPage />} />

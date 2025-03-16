@@ -7,7 +7,7 @@
   font-size: var(--font-size-xsmall);
   border-radius: var(--corner-radius-medium);
   border: 2px solid var(--gray2-color);
-
+  cursor: pointer;
   .managerBar {
     position: absolute;
     top: -24px; /* 위로 13px */
