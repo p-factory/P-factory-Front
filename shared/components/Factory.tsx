@@ -110,14 +110,14 @@ const Factory = ({
   name = 'untitle',
   count = 'null',
   favorite = false,
-  index,
+  uri,
 }: {
   id: number;
   styles: FactoryStylesLocal;
   name: string;
   count: string;
   favorite: boolean;
-  index: number;
+  uri: number;
 }) => {
   if (Platform.OS === 'web') {
     const [isClickedItem, setClickedItem] = useState<boolean>(favorite);
@@ -152,7 +152,7 @@ const Factory = ({
     return (
       <div
         style={{ marginBottom: '16px' }}
-        onClick={() => navigate(`/StudyFactory/${index}`)}
+        onClick={() => navigate(`/StudyFactory/${uri}`)}
       >
         <div id={styles.container}>
           <div className={styles.managerBar}>

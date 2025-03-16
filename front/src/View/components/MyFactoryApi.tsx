@@ -62,7 +62,7 @@ const MyFactoryApi = () => {
             name={el.bookName}
             count={'0'}
             favorite={el.favorite}
-            index={el.wordbookId}
+            uri={el.wordbookId}
           />
         ))}
     </div>

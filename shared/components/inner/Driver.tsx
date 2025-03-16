@@ -2,12 +2,15 @@ import { Platform, Text } from 'react-native';
 import { DriverStylesLocal } from '../../style';
 import { useEffect, useState } from 'react';
 import { useForm, UseFormRegister } from 'react-hook-form';
+import { useParams } from 'react-router-dom';
 // import { CreateDriver, RemoveDriver } from '../../../front/src/Controller';
 import { removeIcon, cancelIcon, addIcon } from '../../../front/src/assets';
+import { useApiMutation } from '../../../front/src/Model';
 
 interface FormData {
+  id: string;
   word: string;
-  meaning: string[];
+  meanings: string[];
   pronunciation?: string;
   description?: string;
 }
@@ -31,7 +34,7 @@ export const InputElement = ({
       <input
         placeholder='의미를 입력하세요.(필수)'
         type='text'
-        {...register(`meaning.${index}` as keyof FormData)}
+        {...register(`meanings.${index}` as keyof FormData)}
       />
       {/* {point === 'check' ? null : ( */}
       <div>
@@ -57,34 +60,70 @@ const Driver = ({
     const { register, handleSubmit, reset, setValue, watch } =
       useForm<FormData>({
         defaultValues: {
-          meaning: [''],
+          id: '',
+          meanings: [''],
         },
       });
-    const meanings = watch('meaning');
+    const meanings = watch('meanings');
 
     const addMeaning = () => {
-      setValue('meaning', [...meanings, '']);
+      setValue('meanings', [...meanings, '']);
     };
 
     const removeMeaning = (index: number) => {
       setValue(
-        'meaning',
+        'meanings',
         meanings.filter((_, i) => i !== index),
       );
     };
+    const { uri } = useParams();
+    const { mutation, isLoading, isError, isSuccess, responseData } =
+      useApiMutation('POST');
 
     const onSubmit = (data: FormData) => {
-      console.log('제출된 데이터:', data);
+      const idValue = uri ?? 'error-id'; // id 값을 검증
+      setValue('id', idValue);
+      const meaningsValue = data.meanings.filter((item) => item.trim() !== ''); // 비어있는 meaning 제거하는 필터
       reset();
+
       // setInputElements([]);
+      const updatedData = {
+        ...data,
+        id: idValue,
+        meanings: meaningsValue,
+      };
+      mutation.mutate({
+        mutateUrl: 'https://13.209.113.229.nip.io/api/word/create',
+        mutateNucleus: updatedData,
+      });
+      console.log('제출된 데이터:', updatedData);
     };
 
     useEffect(() => {
       setState(false);
-    }, []);
+      if (uri) {
+        setValue('id', uri);
+        console.log(uri);
+      }
+    }, [uri, setValue]);
+
+    useEffect(() => {
+      // setState(false);
+      if (isSuccess) {
+        console.log('Response:', responseData);
+        window.location.reload();
+      }
+      if (isLoading) {
+        console.log('Response:', responseData);
+      }
+      if (isError) {
+        console.error('Error occurred during mutation');
+      }
+    }, [isSuccess, isLoading, isError, responseData]);
 
     return (
       <form onSubmit={handleSubmit(onSubmit)}>
+        <input type='hidden' {...register('id')} />
         <div id={styles.container}>
           <div id={styles.title}>
             <div>단어생성</div>
@@ -108,7 +147,7 @@ const Driver = ({
                 register={register}
                 point={'check'}
               /> */}
-              {meanings.map((el, index) => (
+              {meanings.map((_, index) => (
                 <InputElement
                   key={index}
                   styles={styles.createInput}
