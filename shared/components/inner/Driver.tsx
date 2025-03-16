@@ -2,12 +2,12 @@ import { Platform, Text } from 'react-native';
 import { DriverStylesLocal } from '../../style';
 import { useEffect, useState } from 'react';
 import { useForm, UseFormRegister } from 'react-hook-form';
-import { CreateDriver, RemoveDriver } from '../../../front/src/Controller';
+// import { CreateDriver, RemoveDriver } from '../../../front/src/Controller';
 import { removeIcon, cancelIcon, addIcon } from '../../../front/src/assets';
 
 interface FormData {
   word: string;
-  meaning: string;
+  meaning: string[];
   pronunciation?: string;
   description?: string;
 }
@@ -17,28 +17,27 @@ export const InputElement = ({
   styles,
   register,
   remove,
-  point,
-  fieldName,
+  // point,
+  index,
 }: {
   styles: string;
   register: UseFormRegister<FormData>;
   remove?: () => void;
-  point: string;
+  // point: string;
   index?: number;
-  fieldName: string;
 }) => {
   return (
     <div id={styles}>
       <input
         placeholder='의미를 입력하세요.(필수)'
         type='text'
-        {...register(`description_${fieldName}` as keyof FormData)}
+        {...register(`meaning.${index}` as keyof FormData)}
       />
-      {point === 'check' ? null : (
-        <div>
-          <img src={removeIcon} alt='' onClick={remove} />
-        </div>
-      )}
+      {/* {point === 'check' ? null : ( */}
+      <div>
+        <img src={removeIcon} alt='' onClick={remove} />
+      </div>
+      {/* )} */}
     </div>
   );
 };
@@ -51,16 +50,33 @@ const Driver = ({
   onClose: () => void;
 }) => {
   if (Platform.OS === 'web') {
-    const [isInputElements, setInputElements] = useState<string[]>([]); // 동적 Input 관리
+    // const [isInputElements, setInputElements] = useState<string[]>([]); // 동적 Input 관리
 
     const [isState, setState] = useState<boolean>(false);
 
-    const { register, handleSubmit, reset } = useForm<FormData>();
+    const { register, handleSubmit, reset, setValue, watch } =
+      useForm<FormData>({
+        defaultValues: {
+          meaning: [''],
+        },
+      });
+    const meanings = watch('meaning');
+
+    const addMeaning = () => {
+      setValue('meaning', [...meanings, '']);
+    };
+
+    const removeMeaning = (index: number) => {
+      setValue(
+        'meaning',
+        meanings.filter((_, i) => i !== index),
+      );
+    };
 
     const onSubmit = (data: FormData) => {
       console.log('제출된 데이터:', data);
       reset();
-      setInputElements([]);
+      // setInputElements([]);
     };
 
     useEffect(() => {
@@ -87,32 +103,23 @@ const Driver = ({
             </div>
             <div className={styles.inputContents}>
               <span>의미</span>
-              <InputElement
+              {/* <InputElement
                 styles={styles.createInput}
                 register={register}
-                // remove={() => removeInputElement('meaning')}
                 point={'check'}
-                fieldName='meaning'
-              />
-              {isInputElements.map((el, index) => (
+              /> */}
+              {meanings.map((el, index) => (
                 <InputElement
                   key={index}
                   styles={styles.createInput}
                   register={register}
-                  remove={() => {
-                    RemoveDriver(el, isInputElements, setInputElements);
-                  }}
-                  point={''}
-                  fieldName={el}
+                  remove={() => removeMeaning(index)}
+                  // point={''}
+                  index={index}
                 />
               ))}
             </div>
-            <div
-              id={styles.buttonContents}
-              onClick={() => {
-                CreateDriver(isInputElements, setInputElements);
-              }}
-            >
+            <div id={styles.buttonContents} onClick={addMeaning}>
               <div id={styles.button}>
                 <img src={addIcon} alt='' />
               </div>
