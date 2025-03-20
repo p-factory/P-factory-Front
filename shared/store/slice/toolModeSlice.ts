@@ -17,17 +17,17 @@ const toolSlice = createSlice({
 
       if (mode === 'deleted') {
         if (state.tool.includes('deleted')) {
-          state.tool = ['eng', 'kor']; // ✅ 'deleted'을 다시 클릭하면 초기 상태로 복귀
+          state.tool = ['eng', 'kor'];
         } else {
-          state.tool = ['deleted']; // ✅ 처음 선택하면 기존 모드 삭제 후 'deleted'만 유지
+          state.tool = ['deleted'];
         }
       } else {
         if (state.tool.includes('deleted')) {
-          state.tool = [mode]; // ✅ 'deleted' 상태에서 다른 모드를 선택하면 새로운 모드만 유지
+          state.tool = [mode];
         } else if (state.tool.includes(mode)) {
-          state.tool = state.tool.filter((el) => el !== mode); // ✅ 동일한 모드 클릭 시 해제
+          state.tool = state.tool.filter((el) => el !== mode);
         } else {
-          state.tool.push(mode); // ✅ 일반 모드는 다중 선택 가능
+          state.tool.push(mode);
         }
       }
     },
