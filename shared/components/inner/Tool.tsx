@@ -31,19 +31,15 @@ const Tool = ({
       switch (item) {
         case 'eng':
           dispatch(SetMode('eng'));
-
           break;
         case 'kor':
           dispatch(SetMode('kor'));
-
           break;
         case 'highlight':
           dispatch(SetMode('highlight'));
-
           break;
         case 'deleted':
           dispatch(SetMode('deleted'));
-
           break;
       }
     };

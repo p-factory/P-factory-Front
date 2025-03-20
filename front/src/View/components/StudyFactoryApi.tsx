@@ -59,9 +59,10 @@ const StudyFactoryApi = () => {
       )}
       {Array.isArray(data?.data.words) &&
         data.data.words.map((el) => (
-          <div style={{ margin: '10px 0 0 10px' }}>
+          <div key={el.id} style={{ margin: '10px 0 0 10px' }}>
             <Screw
               key={el.id}
+              id={el.id}
               styles={ScrewTypeStyles}
               screwSound={''}
               bolt={el.word}
