@@ -62,6 +62,7 @@ const MyFactoryApi = () => {
             name={el.bookName}
             count={'0'}
             favorite={el.favorite}
+            uri={el.wordbookId}
           />
         ))}
     </div>

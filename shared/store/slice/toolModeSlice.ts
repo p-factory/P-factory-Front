@@ -5,7 +5,7 @@ interface ToolState {
 }
 
 const initialState: ToolState = {
-  tool: ['eng'],
+  tool: ['eng', 'kor'],
 };
 
 const toolSlice = createSlice({
@@ -14,13 +14,17 @@ const toolSlice = createSlice({
   reducers: {
     SetMode: (state, action: PayloadAction<ToolState['tool'][number]>) => {
       const mode = action.payload;
+
       if (mode === 'deleted') {
-        state.tool = ['deleted'];
+        if (state.tool.includes('deleted')) {
+          state.tool = ['eng', 'kor'];
+        } else {
+          state.tool = ['deleted'];
+        }
       } else {
         if (state.tool.includes('deleted')) {
           state.tool = [mode];
         } else if (state.tool.includes(mode)) {
-          //제거되는 코드
           state.tool = state.tool.filter((el) => el !== mode);
         } else {
           state.tool.push(mode);

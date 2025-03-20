@@ -2,12 +2,15 @@ import { Platform, Text } from 'react-native';
 import { DriverStylesLocal } from '../../style';
 import { useEffect, useState } from 'react';
 import { useForm, UseFormRegister } from 'react-hook-form';
-import { CreateDriver, RemoveDriver } from '../../../front/src/Controller';
+import { useParams } from 'react-router-dom';
+// import { CreateDriver, RemoveDriver } from '../../../front/src/Controller';
 import { removeIcon, cancelIcon, addIcon } from '../../../front/src/assets';
+import { useApiMutation } from '../../../front/src/Model';
 
 interface FormData {
+  id: string;
   word: string;
-  meaning: string;
+  meanings: string[];
   pronunciation?: string;
   description?: string;
 }
@@ -17,65 +20,115 @@ export const InputElement = ({
   styles,
   register,
   remove,
-  point,
-  fieldName,
+  // point,
+  index,
 }: {
   styles: string;
   register: UseFormRegister<FormData>;
   remove?: () => void;
-  point: string;
+  // point: string;
   index?: number;
-  fieldName: string;
 }) => {
   return (
     <div id={styles}>
       <input
         placeholder='의미를 입력하세요.(필수)'
         type='text'
-        {...register(`description_${fieldName}` as keyof FormData)}
+        {...register(`meanings.${index}` as keyof FormData)}
       />
-      {point === 'check' ? null : (
-        <div>
-          <img src={removeIcon} alt='' onClick={remove} />
-        </div>
-      )}
+      {/* {point === 'check' ? null : ( */}
+      <div>
+        <img src={removeIcon} alt='' onClick={remove} />
+      </div>
+      {/* )} */}
     </div>
   );
 };
 
-const Driver = ({ styles }: { styles: DriverStylesLocal }) => {
+const Driver = ({
+  styles,
+  onClose,
+}: {
+  styles: DriverStylesLocal;
+  onClose: () => void;
+}) => {
   if (Platform.OS === 'web') {
-    const [isInputElements, setInputElements] = useState<string[]>([]); // 동적 Input 관리
+    // const [isInputElements, setInputElements] = useState<string[]>([]); // 동적 Input 관리
 
     const [isState, setState] = useState<boolean>(false);
 
-    const {
-      register,
-      handleSubmit,
-      // formState: { errors }, // -> errors는 placeholder에서 생성할 수 있도록
-      reset,
-      // setValue,
-      // getValues,
-      // unregister,
-    } = useForm<FormData>();
+    const { register, handleSubmit, reset, setValue, watch } =
+      useForm<FormData>({
+        defaultValues: {
+          id: '',
+          meanings: [''],
+        },
+      });
+    const meanings = watch('meanings');
+
+    const addMeaning = () => {
+      setValue('meanings', [...meanings, '']);
+    };
+
+    const removeMeaning = (index: number) => {
+      setValue(
+        'meanings',
+        meanings.filter((_, i) => i !== index),
+      );
+    };
+    const { uri } = useParams();
+    const { mutation, isLoading, isError, isSuccess, responseData } =
+      useApiMutation('POST');
 
     const onSubmit = (data: FormData) => {
-      console.log('제출된 데이터:', data);
+      const idValue = uri ?? 'error-id'; // id 값을 검증
+      setValue('id', idValue);
+      const meaningsValue = data.meanings.filter((item) => item.trim() !== ''); // 비어있는 meaning 제거하는 필터
       reset();
-      setInputElements([]);
+
+      // setInputElements([]);
+      const updatedData = {
+        ...data,
+        id: idValue,
+        meanings: meaningsValue,
+      };
+      mutation.mutate({
+        mutateUrl: 'https://13.209.113.229.nip.io/api/word/create',
+        mutateNucleus: updatedData,
+      });
+      console.log('제출된 데이터:', updatedData);
     };
 
     useEffect(() => {
       setState(false);
-    }, []);
+      if (uri) {
+        setValue('id', uri);
+        console.log(uri);
+      }
+    }, [uri, setValue]);
+
+    useEffect(() => {
+      // setState(false);
+      if (isSuccess) {
+        console.log('Response:', responseData);
+        window.location.reload();
+      }
+      if (isLoading) {
+        console.log('Response:', responseData);
+      }
+      if (isError) {
+        console.error('Error occurred during mutation');
+      }
+    }, [isSuccess, isLoading, isError, responseData]);
 
     return (
       <form onSubmit={handleSubmit(onSubmit)}>
+        <input type='hidden' {...register('id')} />
         <div id={styles.container}>
           <div id={styles.title}>
             <div>단어생성</div>
             <div id={styles.image}>
-              <img src={cancelIcon} alt='X' height={'24px'} />
+              <img src={cancelIcon} alt='X' height={'24px'} onClick={onClose} />
             </div>
           </div>
           <div id={styles.contents}>
@@ -89,37 +142,29 @@ const Driver = ({ styles }: { styles: DriverStylesLocal }) => {
             </div>
             <div className={styles.inputContents}>
               <span>의미</span>
-              <InputElement
+              {/* <InputElement
                 styles={styles.createInput}
                 register={register}
-                // remove={() => removeInputElement('meaning')}
                 point={'check'}
-                fieldName='meaning'
-              />
-              {isInputElements.map((el, index) => (
+              /> */}
+              {meanings.map((_, index) => (
                 <InputElement
                   key={index}
                   styles={styles.createInput}
                   register={register}
-                  remove={() => {
-                    RemoveDriver(el, isInputElements, setInputElements);
-                  }}
-                  point={''}
-                  fieldName={el}
+                  remove={() => removeMeaning(index)}
+                  // point={''}
+                  index={index}
                 />
               ))}
             </div>
-            <div
-              id={styles.buttonContents}
-              onClick={() => {
-                CreateDriver(isInputElements, setInputElements);
-              }}
-            >
+            <div id={styles.buttonContents} onClick={addMeaning}>
               <div id={styles.button}>
                 <img src={addIcon} alt='' />
               </div>
             </div>
-            <div className={styles.inputContents}>
+            {/* 현재 사용되지 않는 ui */}
+            {/* <div className={styles.inputContents}>
               <span>발음</span>
               <input
                 placeholder='발음을 입력하세요.'
@@ -134,7 +179,7 @@ const Driver = ({ styles }: { styles: DriverStylesLocal }) => {
                 type='text'
                 {...register('description')}
               />
-            </div>
+            </div> */}
           </div>
         </div>
         <div className={isState ? styles.submit : styles.button}>

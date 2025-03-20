@@ -13,9 +13,16 @@ import {
   highlightIcon,
   deleteIconHover,
   deleteIcon,
+  addScrewIcon,
 } from '../../../front/src/assets';
 
-const Tool = ({ styles }: { styles: ToolStylesLocal }) => {
+const Tool = ({
+  styles,
+  onOpenModal,
+}: {
+  styles: ToolStylesLocal;
+  onOpenModal: () => void;
+}) => {
   if (Platform.OS === 'web') {
     const dispatch = useDispatch();
     const mode = useSelector((state: RootState) => state.setToolMode.tool);
@@ -24,19 +31,15 @@ const Tool = ({ styles }: { styles: ToolStylesLocal }) => {
       switch (item) {
         case 'eng':
           dispatch(SetMode('eng'));
-
           break;
         case 'kor':
           dispatch(SetMode('kor'));
-
           break;
         case 'highlight':
           dispatch(SetMode('highlight'));
-
           break;
         case 'deleted':
           dispatch(SetMode('deleted'));
-
           break;
       }
     };
@@ -126,6 +129,19 @@ const Tool = ({ styles }: { styles: ToolStylesLocal }) => {
                 }
                 alt=''
               />
+            </div>
+          </div>
+          <div
+            className={styles.contents}
+            // onMouseEnter={() => handleMouseEnter('add')}
+            // onMouseLeave={() => handleMouseLeave()}
+            onClick={() => {
+              // handleMode('add');
+              onOpenModal();
+            }}
+          >
+            <div className={styles.image}>
+              <img src={addScrewIcon} alt='' />
             </div>
           </div>
         </div>
