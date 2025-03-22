@@ -144,7 +144,8 @@ const Factory = ({
       );
     };
 
-    const handleMoreActive = () => {
+    const handleMoreActive = (event: React.MouseEvent<HTMLDivElement>) => {
+      event.stopPropagation();
       setMoreActive((prev) => !prev);
     };
 
@@ -178,11 +179,11 @@ const Factory = ({
     }, [isSuccess, isLoading, isError, responseData]);
 
     return (
-      <div
-        style={{ marginBottom: '16px' }}
-        onClick={() => navigate(`/StudyFactory/${uri}`)}
-      >
-        <div id={styles.container}>
+      <div style={{ marginBottom: '16px' }}>
+        <div
+          id={styles.container}
+          onClick={() => navigate(`/StudyFactory/${uri}`)}
+        >
           <div className={styles.managerBar}>
             <div ref={managerBarRef}>
               {isMoreActive && <ManagerBar id={id} styles={managerBarStyles} />}
@@ -191,8 +192,8 @@ const Factory = ({
           <div className={styles.image}>
             <img src={moreIcon} alt='' />
           </div>
-          <div id={styles.clickArea} onClick={handleMoreActive}></div>
-          <div id={styles.buttonContents}>
+          <div id={styles.clickArea} onClick={handleMoreActive} />
+          <div id={styles.buttonContents} style={{ backgroundColor: 'tomato' }}>
             <div id={styles.contents}>
               <div id={styles.name}>{name}</div>
               <div id={styles.count}>단어 {count}개</div>
