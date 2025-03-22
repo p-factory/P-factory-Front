@@ -11,9 +11,11 @@ import { StudyFactory as styled } from '../stylesheet';
 import { starIconChecked, backIcon, downloadIcon } from '../../assets';
 import Modal from 'react-modal';
 import { StudyFactoryApi } from '.';
+import { useParams } from 'react-router-dom';
+
 const StudyFactory = () => {
   const [isModalOpen, setModalOpen] = useState(false);
-
+  const { uri } = useParams();
   const openModal = () => setModalOpen(true);
 
   const closeModal = () => setModalOpen(false);
@@ -48,7 +50,7 @@ const StudyFactory = () => {
           nuts={['노동', '일', '출산']}
           screwShape={'명사'}
         /> */}
-        <StudyFactoryApi />
+        <StudyFactoryApi uri={typeof uri === 'string' ? uri : 'undefined'} />
       </div>
       <Tool styles={ToolTypeStyles} onOpenModal={openModal} />
       <Footer styles={FooterTypeStyles} />

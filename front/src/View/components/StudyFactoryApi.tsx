@@ -25,11 +25,11 @@ interface ApiResponse {
   token: string | null;
 }
 
-const StudyFactoryApi = () => {
+const StudyFactoryApi = ({ uri }: { uri: string }) => {
   const [targetId, setTargetId] = useState<number | null>(null);
   const { isLoading, isError, data, isSuccess, refetch } =
     useApiQuery<ApiResponse>(
-      'https://13.209.113.229.nip.io/api/wordbook?id=10&page=0',
+      `https://13.209.113.229.nip.io/api/wordbook?id=${uri}&page=0`,
       '',
       false,
     );
