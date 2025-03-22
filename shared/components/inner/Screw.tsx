@@ -13,6 +13,7 @@ const Screw = ({
   nuts,
   screwShape,
   onDeleteTrigger,
+  isSuccess,
 }: {
   id: number;
   styles: ScrewStylesLocal;
@@ -21,12 +22,15 @@ const Screw = ({
   nuts: string[];
   screwShape: string;
   onDeleteTrigger?: (deleteId: number) => void;
+  isSuccess?: boolean;
 }) => {
   if (Platform.OS === 'web') {
     // nuts를 단어별로 나눠서 배열로 변환
     // const nutArray = nuts.split(','); // 쉼표 기준으로 단어 분리(추후 백에서 받아오는 데이터에 따라 수정 필요)
     const mode = useSelector((state: RootState) => state.setToolMode.tool);
-    const [isHidden, setHidden] = useState(true);
+    const [isHidden, setHidden] = useState<boolean>(
+      typeof isSuccess === 'boolean' ? isSuccess : false,
+    );
     const [isChecked, setChecked] = useState<boolean>(false);
     const [isSelected, setSelected] = useState<boolean>(false);
     // bolt와 각 nut의 highlight 상태 관리
@@ -57,7 +61,7 @@ const Screw = ({
       }));
     };
 
-    if (!isHidden) return null;
+    if (isHidden) return null;
 
     return (
       <div

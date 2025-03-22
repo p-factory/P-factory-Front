@@ -2,7 +2,10 @@ import { useEffect, useState } from 'react';
 import useApiMutation from './useApiMutation';
 import { RootState } from '@shared/store/store';
 import { useSelector } from 'react-redux';
-
+/**
+ * 해당 useGlabalApiState에서는 FactoryMode와 ToolMode 두가지로 나뉘어 있다.
+ * 단, 두 동작 방식은 확연한 차이가 있다.
+ */
 const useGlobalApiState = ({
   id,
   method,
@@ -15,10 +18,7 @@ const useGlobalApiState = ({
   const { mutation, isLoading, isSuccess } = useApiMutation(method);
   const mode = useSelector((state: RootState) => state.setFactoryMode.mode);
   const toolMode = useSelector((state: RootState) => state.setToolMode.tool);
-  const [isState, setState] = useState(false);
-  const trigger = () => {
-    setState(!isState);
-  };
+
   useEffect(() => {
     // foactory mode
     if (!mode) return;
@@ -88,7 +88,7 @@ const useGlobalApiState = ({
     }
   }, [isSuccess]);
 
-  return { isSuccess, isLoading, trigger };
+  return { isSuccess, isLoading };
 };
 
 export default useGlobalApiState;

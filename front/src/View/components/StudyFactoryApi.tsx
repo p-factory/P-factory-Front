@@ -34,14 +34,13 @@ const StudyFactoryApi = () => {
       false,
     );
 
-  const { isSuccess: deletedSuccess, trigger } = useGlobalApiState({
+  const { isSuccess: deletedSuccess } = useGlobalApiState({
     id: targetId ?? undefined,
     method: 'DELETE',
   });
 
   const handleDelete = (id: number) => {
     setTargetId(id);
-    trigger(); // 🔥 해당 id로 삭제 트리거
   };
 
   useEffect(() => {
@@ -79,11 +78,8 @@ const StudyFactoryApi = () => {
               bolt={el.word}
               nuts={el.meanings}
               screwShape={''}
-              onDeleteTrigger={(id) => {
-                if (deletedSuccess) {
-                  handleDelete(id);
-                }
-              }}
+              onDeleteTrigger={(id) => handleDelete(id)}
+              isSuccess={deletedSuccess}
             />
           </div>
         ))}
