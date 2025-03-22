@@ -56,6 +56,18 @@ const useGlobalApiState = ({
     switch (toolMode[0]) {
       case 'highlight':
         console.log(`${toolMode}: ${id}`);
+        if (id !== undefined) {
+          mutation.mutate(
+            {
+              mutateUrl: `https://13.209.113.229.nip.io/api/word/highlight/${id}`,
+            },
+            {
+              onSuccess: () => {
+                console.log(`✅ Screw ${id} 삭제 성공`);
+              },
+            },
+          );
+        }
         break;
       case 'deleted':
         console.log(`${toolMode}: ${id}`);
