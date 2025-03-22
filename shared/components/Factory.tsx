@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { SetMode } from '../store/slice/factoryModeSlice';
@@ -15,6 +15,7 @@ import {
   starIcon,
 } from '../../front/src/assets';
 import { useGlobalApiState } from '../../front/src/Model';
+import { useApiMutation } from '../../front/src/Model';
 
 const managerBarStyles: ManagerBarStyles = {
   container: ManagerBarStyled.container,
@@ -124,10 +125,25 @@ const Factory = ({
     const [isMoreActive, setMoreActive] = useState<boolean>(false);
 
     const managerBarRef = useRef<HTMLDivElement>(null);
+
+    const { mutation, isLoading, isError, isSuccess, responseData } =
+      useApiMutation('POST');
+
     const navigate = useNavigate();
-    const handleIconClick = () => {
-      setClickedItem((prev) => !prev);
-      console.log('즐겨찾기 post 준비중 MyFatoryApi');
+    const handleIconClick = (event: React.MouseEvent<HTMLDivElement>) => {
+      event.stopPropagation();
+      // event.preventDefault();
+      mutation.mutate(
+        {
+          mutateUrl: `https://13.209.113.229.nip.io/api/wordbook/favorite/${id}`,
+        },
+        {
+          onSuccess: () => {
+            setClickedItem((prev) => !prev);
+            console.log(`✅즐겨찾기 post 완료: ${isClickedItem}`);
+          },
+        },
+      );
     };
 
     const handleMoreActive = () => {
@@ -148,6 +164,20 @@ const Factory = ({
         document.removeEventListener('mousedown', handleClcikOutSide);
       };
     }, []);
+
+    useEffect(() => {
+      // setState(false);
+      if (isSuccess) {
+        console.log('Response:', responseData);
+        // window.location.reload();
+      }
+      if (isLoading) {
+        console.log('Response:', responseData);
+      }
+      if (isError) {
+        console.error('Error occurred during mutation');
+      }
+    }, [isSuccess, isLoading, isError, responseData]);
 
     return (
       <div
