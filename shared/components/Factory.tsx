@@ -14,8 +14,7 @@ import {
   starIconChecked,
   starIcon,
 } from '../../front/src/assets';
-import { useGlobalApiState } from '../../front/src/Model';
-import { useApiMutation } from '../../front/src/Model';
+import { useApiMutation, useGlobalApiState } from '../../front/src/Model';
 
 const managerBarStyles: ManagerBarStyles = {
   container: ManagerBarStyled.container,

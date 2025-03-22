@@ -1,7 +1,7 @@
 import { Platform, Text } from 'react-native';
 import { ScrewStylesLocal } from '../../style';
-import { useEffect, useState } from 'react';
-import { useApiMutation } from '../../../front/src/Model';
+import { useState } from 'react';
+// import { useGlobalApiState } from '../../../front/src/Model';
 import { RootState } from '../../store/store';
 import { useSelector } from 'react-redux';
 
@@ -12,6 +12,7 @@ const Screw = ({
   bolt,
   nuts,
   screwShape,
+  onDeleteTrigger,
 }: {
   id: number;
   styles: ScrewStylesLocal;
@@ -19,6 +20,7 @@ const Screw = ({
   bolt: string;
   nuts: string[];
   screwShape: string;
+  onDeleteTrigger?: (deleteId: number) => void;
 }) => {
   if (Platform.OS === 'web') {
     // nuts를 단어별로 나눠서 배열로 변환
@@ -33,25 +35,16 @@ const Screw = ({
       nuts: Array(nuts.length).fill(false),
     });
 
-    const { mutation, isLoading, isSuccess } = useApiMutation('DELETE');
-
     const onCheckboxChange = () => {
       setChecked(!isChecked);
     };
     const onScrewSelected = () => {
       if (mode.includes('deleted')) {
         setSelected(!isSelected);
-        mutation.mutate(
-          {
-            mutateUrl: `https://13.209.113.229.nip.io/api/word/delete/${id}`,
-          },
-          {
-            onSuccess: () => {
-              console.log(`✅ Screw ${id} 삭제 성공`);
-              setHidden(false);
-            },
-          },
-        );
+        if (onDeleteTrigger) {
+          onDeleteTrigger(id);
+          setHidden(!isHidden);
+        }
         console.log(id);
       }
     };
@@ -64,14 +57,6 @@ const Screw = ({
       }));
     };
 
-    useEffect(() => {
-      if (isLoading) {
-        console.log('isLoading..');
-      }
-      if (isSuccess) {
-        console.log('✅Response:', isSuccess);
-      }
-    }, [isLoading, isSuccess]);
     if (!isHidden) return null;
 
     return (

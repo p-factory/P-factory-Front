@@ -1,6 +1,6 @@
 import { Screw } from '@shared/components';
-import { useEffect } from 'react';
-import { useApiQuery } from '../..//Model';
+import { useEffect, useState } from 'react';
+import { useApiQuery, useGlobalApiState } from '../..//Model';
 import { ScrewTypeStyles } from '../..//Model/Mapping';
 
 interface GetData {
@@ -26,12 +26,23 @@ interface ApiResponse {
 }
 
 const StudyFactoryApi = () => {
+  const [targetId, setTargetId] = useState<number | null>(null);
   const { isLoading, isError, data, isSuccess, refetch } =
     useApiQuery<ApiResponse>(
       'https://13.209.113.229.nip.io/api/wordbook?id=10&page=0',
       '',
       false,
     );
+
+  const { isSuccess: deletedSuccess, trigger } = useGlobalApiState({
+    id: targetId ?? undefined,
+    method: 'DELETE',
+  });
+
+  const handleDelete = (id: number) => {
+    setTargetId(id);
+    trigger(); // 🔥 해당 id로 삭제 트리거
+  };
 
   useEffect(() => {
     refetch();
@@ -68,6 +79,11 @@ const StudyFactoryApi = () => {
               bolt={el.word}
               nuts={el.meanings}
               screwShape={''}
+              onDeleteTrigger={(id) => {
+                if (deletedSuccess) {
+                  handleDelete(id);
+                }
+              }}
             />
           </div>
         ))}
