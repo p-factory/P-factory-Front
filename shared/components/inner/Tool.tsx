@@ -46,19 +46,13 @@ const Tool = ({
 
     const [hoveredMode, setHoveredMode] = useState<string | null>(null);
 
-    // Hover 시
     const handleMouseEnter = (item: string) => {
-      setHoveredMode(item); // Hover한 모드 상태 저장
+      setHoveredMode(item);
     };
 
-    // 마우스 떠날 때 (하지만 클릭한 상태는 유지해야 함)
     const handleMouseLeave = () => {
       setHoveredMode('');
     };
-
-    // useEffect(() => {
-    //   console.log('tool mode:', mode);
-    // }, [mode]);
 
     return (
       <div id={styles.container}>
@@ -73,8 +67,8 @@ const Tool = ({
               <img
                 src={
                   hoveredMode === 'eng' || mode.includes('eng')
-                    ? englishIconHover // Hover 이미지
-                    : englishIcon // 기본 이미지
+                    ? englishIconHover
+                    : englishIcon
                 }
                 alt=''
               />
@@ -90,8 +84,8 @@ const Tool = ({
               <img
                 src={
                   hoveredMode === 'kor' || mode.includes('kor')
-                    ? koreanIconHover // Hover 이미지
-                    : koreanIcon // 기본 이미지
+                    ? koreanIconHover
+                    : koreanIcon
                 }
                 alt=''
               />
@@ -107,8 +101,8 @@ const Tool = ({
               <img
                 src={
                   hoveredMode === 'highlight' || mode.includes('highlight')
-                    ? highlightIconHover // Hover 이미지
-                    : highlightIcon // 기본 이미지
+                    ? highlightIconHover
+                    : highlightIcon
                 }
                 alt=''
               />
@@ -124,8 +118,8 @@ const Tool = ({
               <img
                 src={
                   hoveredMode === 'deleted' || mode.includes('deleted')
-                    ? deleteIconHover // Hover 이미지
-                    : deleteIcon // 기본 이미지
+                    ? deleteIconHover
+                    : deleteIcon
                 }
                 alt=''
               />
@@ -133,10 +127,7 @@ const Tool = ({
           </div>
           <div
             className={styles.contents}
-            // onMouseEnter={() => handleMouseEnter('add')}
-            // onMouseLeave={() => handleMouseLeave()}
             onClick={() => {
-              // handleMode('add');
               onOpenModal();
             }}
           >

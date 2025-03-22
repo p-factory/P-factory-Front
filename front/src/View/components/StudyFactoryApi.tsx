@@ -79,7 +79,7 @@ const StudyFactoryApi = () => {
               nuts={el.meanings}
               screwShape={''}
               onDeleteTrigger={(id) => handleDelete(id)}
-              isSuccess={deletedSuccess}
+              isSuccessState={deletedSuccess}
             />
           </div>
         ))}

@@ -1,9 +1,9 @@
 import { Platform, Text } from 'react-native';
 import { ScrewStylesLocal } from '../../style';
-import { useState } from 'react';
-// import { useGlobalApiState } from '../../../front/src/Model';
+import { useEffect, useState } from 'react';
 import { RootState } from '../../store/store';
 import { useSelector } from 'react-redux';
+import { useApiMutation } from '../../../front/src/Model';
 
 const Screw = ({
   id,
@@ -13,7 +13,7 @@ const Screw = ({
   nuts,
   screwShape,
   onDeleteTrigger,
-  isSuccess,
+  isSuccessState,
 }: {
   id: number;
   styles: ScrewStylesLocal;
@@ -22,14 +22,14 @@ const Screw = ({
   nuts: string[];
   screwShape: string;
   onDeleteTrigger?: (deleteId: number) => void;
-  isSuccess?: boolean;
+  isSuccessState?: boolean;
 }) => {
   if (Platform.OS === 'web') {
-    // nuts를 단어별로 나눠서 배열로 변환
-    // const nutArray = nuts.split(','); // 쉼표 기준으로 단어 분리(추후 백에서 받아오는 데이터에 따라 수정 필요)
+    const { mutation, isSuccess, isLoading, isError, responseData } =
+      useApiMutation('POST');
     const mode = useSelector((state: RootState) => state.setToolMode.tool);
     const [isHidden, setHidden] = useState<boolean>(
-      typeof isSuccess === 'boolean' ? isSuccess : false,
+      typeof isSuccessState === 'boolean' ? isSuccessState : false,
     );
     const [isChecked, setChecked] = useState<boolean>(false);
     const [isSelected, setSelected] = useState<boolean>(false);
@@ -42,6 +42,7 @@ const Screw = ({
     const onCheckboxChange = () => {
       setChecked(!isChecked);
     };
+
     const onScrewSelected = () => {
       if (mode.includes('deleted')) {
         setSelected(!isSelected);
@@ -52,6 +53,7 @@ const Screw = ({
         console.log(id);
       }
     };
+
     const onHighlight = (index: number) => {
       setHighlighted((prevState) => ({
         bolt: index === -1 ? !prevState.bolt : prevState.bolt,
@@ -61,7 +63,38 @@ const Screw = ({
       }));
     };
 
+    const temp = false;
+
+    const onChecked = (event: React.MouseEvent<HTMLDivElement>) => {
+      event.stopPropagation();
+      mutation.mutate(
+        {
+          mutateUrl: `https://13.209.113.229.nip.io/api/wordbook/word/check`,
+          mutateNucleus: {
+            word: bolt,
+            check: true,
+          },
+        },
+        {
+          onSuccess: () => {
+            console.log('✅check 완료');
+          },
+        },
+      );
+    };
     if (isHidden) return null;
+
+    useEffect(() => {
+      if (isSuccess) {
+        console.log('✅Response:', responseData);
+      }
+      if (isLoading) {
+        console.log('isLoading..');
+      }
+      if (isError) {
+        console.log('isError');
+      }
+    }, [isSuccess, isLoading, isError]);
 
     return (
       <div
@@ -101,14 +134,16 @@ const Screw = ({
           <span id={styles.screwShape}>{screwShape}</span>
         </div>
         <div id={styles.buttonContents}>
-          <input
-            id={styles.button}
-            className={isChecked ? styles.checked : styles.unchecked}
-            type='checkbox'
-            checked={isChecked}
-            onChange={onCheckboxChange}
-            onClick={(e) => e.stopPropagation()} // 이벤트 전파 중단 (부모로 이벤트 전파 방지)
-          />
+          {temp ? (
+            <input
+              id={styles.button}
+              className={isChecked ? styles.checked : styles.unchecked}
+              type='checkbox'
+              checked={isChecked}
+              onChange={onCheckboxChange}
+              onClick={onChecked}
+            />
+          ) : null}
         </div>
       </div>
     );

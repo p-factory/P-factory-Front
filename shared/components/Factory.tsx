@@ -39,7 +39,6 @@ export const ManagerBar = ({
     id: id,
     method: 'DELETE',
   });
-  // const navigate = useNavigate();
 
   useEffect(() => {
     if (isSuccess) {
