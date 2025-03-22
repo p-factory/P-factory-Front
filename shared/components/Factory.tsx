@@ -193,7 +193,7 @@ const Factory = ({
             <img src={moreIcon} alt='' />
           </div>
           <div id={styles.clickArea} onClick={handleMoreActive} />
-          <div id={styles.buttonContents} style={{ backgroundColor: 'tomato' }}>
+          <div id={styles.buttonContents}>
             <div id={styles.contents}>
               <div id={styles.name}>{name}</div>
               <div id={styles.count}>단어 {count}개</div>
