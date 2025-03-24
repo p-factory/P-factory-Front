@@ -20,6 +20,7 @@
       font-weight: var(--font-weight-medium);
     }
     #bolt{
+      background-color: tomato;
       color: var(--black-color);
       font-size: var(--font-size-medium);
       font-weight: var(--font-weight-bold);
@@ -32,9 +33,10 @@
       margin-bottom: 4px;
       display: flex;
       .nut{
+        background-color: tomato;
         justify-content: center;
         color: var(--gray5-color);
-        background-color: white;
+        // background-color: white;
         font-size: var(--font-size-xsmall);
         font-weight: var(--font-weight-medium);
         border-radius: var(--corner-radius-medium);
