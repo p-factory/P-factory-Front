@@ -57,12 +57,6 @@ const Screw = ({
     };
 
     const onHighlight = () => {
-      // setHighlighted((prevState) => ({
-      //   bolt: index === -1 ? !prevState.bolt : prevState.bolt,
-      //   nuts: prevState.nuts.map((highlighted, i) =>
-      //     i === index ? !highlighted : highlighted,
-      //   ),
-      // }));
       console.log('click');
       setHighlighted(!isHighlighted);
       highlightMutation.mutate(
@@ -128,26 +122,21 @@ const Screw = ({
             <span
               id={styles.bolt}
               className={isHighlighted ? styles.checked : ''}
-              onClick={(e) => {
-                // onHighlight(-1);
-                e.stopPropagation();
-              }} // 이벤트 전파 중단 (부모로 이벤트 전파 방지)
             >
-              {bolt}
+              {mode.includes('eng') ? bolt : null}
             </span>
           </div>
           <div id={styles.nuts}>
             {/* nutArray를 map으로 반복 */}
             {nuts.map((nut, index) => (
-              <span
-                key={index}
-                className={`${styles.nut} ${isHighlighted ? styles.checked : ''}`}
-                onClick={(e) => {
-                  // onHighlight(index);
-                  e.stopPropagation();
-                }} // 이벤트 전파 중단 (부모로 이벤트 전파 방지)
-              >
-                {nut}
+              <span key={index}>
+                {mode.includes('kor') ? (
+                  <span
+                    className={`${styles.nut} ${isHighlighted ? styles.checked : ''}`}
+                  >
+                    {nut}
+                  </span>
+                ) : null}
               </span>
             ))}
           </div>
