@@ -12,6 +12,7 @@ const Screw = ({
   bolt,
   nuts,
   screwShape,
+  highlight,
   onDeleteTrigger,
   isSuccessState,
 }: {
@@ -21,6 +22,7 @@ const Screw = ({
   bolt: string;
   nuts: string[];
   screwShape: string;
+  highlight: boolean;
   onDeleteTrigger?: (deleteId: number) => void;
   isSuccessState?: boolean;
 }) => {
@@ -31,13 +33,13 @@ const Screw = ({
     const [isHidden, setHidden] = useState<boolean>(
       typeof isSuccessState === 'boolean' ? isSuccessState : false,
     );
+
+    const { mutation: highlightMutation } = useApiMutation('POST');
+
     const [isChecked, setChecked] = useState<boolean>(false);
     const [isSelected, setSelected] = useState<boolean>(false);
     // bolt와 각 nut의 highlight 상태 관리
-    const [isHighlighted, setHighlighted] = useState({
-      bolt: false,
-      nuts: Array(nuts.length).fill(false),
-    });
+    const [isHighlighted, setHighlighted] = useState<boolean>(highlight);
 
     const onCheckboxChange = () => {
       setChecked(!isChecked);
@@ -54,13 +56,25 @@ const Screw = ({
       }
     };
 
-    const onHighlight = (index: number) => {
-      setHighlighted((prevState) => ({
-        bolt: index === -1 ? !prevState.bolt : prevState.bolt,
-        nuts: prevState.nuts.map((highlighted, i) =>
-          i === index ? !highlighted : highlighted,
-        ),
-      }));
+    const onHighlight = () => {
+      // setHighlighted((prevState) => ({
+      //   bolt: index === -1 ? !prevState.bolt : prevState.bolt,
+      //   nuts: prevState.nuts.map((highlighted, i) =>
+      //     i === index ? !highlighted : highlighted,
+      //   ),
+      // }));
+      console.log('click');
+      setHighlighted(!isHighlighted);
+      highlightMutation.mutate(
+        {
+          mutateUrl: `https://13.209.113.229.nip.io/api/word/highlight/${id}`,
+        },
+        {
+          onSuccess: () => {
+            console.log(`✅ Screw ${id} 하이라이트 성공`);
+          },
+        },
+      );
     };
 
     const temp = false;
@@ -100,16 +114,22 @@ const Screw = ({
       <div
         id={styles.container}
         className={isSelected ? styles.checked : styles.unchecked}
-        onClick={onScrewSelected}
+        onClick={() => {
+          if (mode.includes('deleted')) {
+            onScrewSelected();
+          } else if (mode.includes('highlight')) {
+            onHighlight();
+          }
+        }}
       >
         <div id={styles.contents}>
           <span id={styles.screwSound}>{screwSound}</span>
           <div>
             <span
               id={styles.bolt}
-              className={isHighlighted.bolt ? styles.checked : ''}
+              className={isHighlighted ? styles.checked : ''}
               onClick={(e) => {
-                onHighlight(-1);
+                // onHighlight(-1);
                 e.stopPropagation();
               }} // 이벤트 전파 중단 (부모로 이벤트 전파 방지)
             >
@@ -121,9 +141,9 @@ const Screw = ({
             {nuts.map((nut, index) => (
               <span
                 key={index}
-                className={`${styles.nut} ${isHighlighted.nuts[index] ? styles.checked : ''}`}
+                className={`${styles.nut} ${isHighlighted ? styles.checked : ''}`}
                 onClick={(e) => {
-                  onHighlight(index);
+                  // onHighlight(index);
                   e.stopPropagation();
                 }} // 이벤트 전파 중단 (부모로 이벤트 전파 방지)
               >

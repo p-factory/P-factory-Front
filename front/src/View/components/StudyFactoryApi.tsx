@@ -78,6 +78,7 @@ const StudyFactoryApi = ({ uri }: { uri: string }) => {
               bolt={el.word}
               nuts={el.meanings}
               screwShape={''}
+              highlight={el.highlight}
               onDeleteTrigger={(id) => handleDelete(id)}
               isSuccessState={deletedSuccess}
             />
