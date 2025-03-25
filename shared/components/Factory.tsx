@@ -188,7 +188,12 @@ const Factory = ({
           onClick={() => navigate(`/StudyFactory/${uri}`)}
         >
           <div className={styles.managerBar}>
-            <div ref={managerBarRef}>
+            <div
+              ref={managerBarRef}
+              onClick={(event) => {
+                event.stopPropagation();
+              }}
+            >
               {isMoreActive && <ManagerBar id={id} styles={managerBarStyles} />}
             </div>
           </div>

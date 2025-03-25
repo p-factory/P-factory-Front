@@ -5,8 +5,8 @@ import { FooterTypeStyles } from '../Model/Mapping';
 const Test = () => {
   const { mutation, isLoading, isError, isSuccess, responseData } =
     useApiMutation('POST', 'https://13.209.113.229.nip.io/api/login', {
-      loginId: 'id@naver.com',
-      password: 'password1',
+      loginId: 'rdwootest',
+      password: 'test1234',
     });
 
   const {

@@ -24,6 +24,7 @@ const StudyFactory = () => {
   const [isFavorite] = useState<string>(
     sessionStorage.getItem('favorite') ?? '0',
   );
+  const isLength = Math.ceil(Number(isTotal) / 10);
   const { uri } = useParams();
   const navigate = useNavigate();
   const openModal = () => setModalOpen(true);
@@ -31,6 +32,7 @@ const StudyFactory = () => {
   const closeModal = () => setModalOpen(false);
 
   useEffect(() => {
+    console.log(isLength);
     sessionStorage.clear();
   });
 
@@ -62,8 +64,17 @@ const StudyFactory = () => {
           </div>
         </div>
       </div>
-      <div id={styled.screws}>
-        <StudyFactoryApi uri={typeof uri === 'string' ? uri : 'undefined'} />
+      <div id={styled.screws} style={{ paddingBottom: '180px' }}>
+        {Array.from({ length: isLength }).map((_, index) => (
+          <StudyFactoryApi
+            uri={typeof uri === 'string' ? uri : 'undefined'}
+            page={index}
+          />
+        ))}
+        {/* <StudyFactoryApi
+          uri={typeof uri === 'string' ? uri : 'undefined'}
+          page={isLength}
+        /> */}
       </div>
       <Tool styles={ToolTypeStyles} onOpenModal={openModal} />
       <Footer styles={FooterTypeStyles} />

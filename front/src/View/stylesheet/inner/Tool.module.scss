@@ -3,6 +3,7 @@
 // 따라서 해당 HTML은 전체 넓이 설정, 박스 중앙정렬, tools 이미지 정렬 이렇게 세가지가 필요하다.
 #container {
   // background-color: aqua;
+  background-color: var(--white-color);
   display: flex;
   justify-content: center;
   
