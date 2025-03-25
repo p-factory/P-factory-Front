@@ -118,11 +118,8 @@ const Screw = ({
       >
         <div id={styles.contents}>
           <span id={styles.screwSound}>{screwSound}</span>
-          <div>
-            <span
-              id={styles.bolt}
-              className={isHighlighted ? styles.checked : ''}
-            >
+          <div id={styles.bolt}>
+            <span className={isHighlighted ? styles.checked : ''}>
               {mode.includes('eng') ? bolt : null}
             </span>
           </div>

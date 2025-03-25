@@ -20,7 +20,7 @@
       font-weight: var(--font-weight-medium);
     }
     #bolt{
-      background-color: tomato;
+      height: 36px;
       color: var(--black-color);
       font-size: var(--font-size-medium);
       font-weight: var(--font-weight-bold);
@@ -32,8 +32,8 @@
     #nuts{
       margin-bottom: 4px;
       display: flex;
+      height: 21px;
       .nut{
-        background-color: tomato;
         justify-content: center;
         color: var(--gray5-color);
         // background-color: white;
