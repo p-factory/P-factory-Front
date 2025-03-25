@@ -1,10 +1,10 @@
-import { SignUp as styles } from '../View/stylesheet';
+import { SignUp as styles } from '../../View/stylesheet';
 import SignUpCheckList from '@shared/components/signup/SignUpCheckList.test';
 import PtoryLogo from '@shared/components/PtoryLogo';
 import {
   SignUpCheckListTypeStyles,
   PtoryLogoTypeStyles,
-} from '../Model/Mapping';
+} from '../../Model/Mapping';
 
 const SignUpPage = () => {
   return (

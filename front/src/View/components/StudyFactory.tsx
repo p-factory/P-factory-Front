@@ -15,7 +15,7 @@ import {
   starIcon,
 } from '../../assets';
 import Modal from 'react-modal';
-import { StudyFactoryApi } from '.';
+import { StudyFactoryApi } from '../../Controller';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const StudyFactory = () => {

@@ -1,20 +1,20 @@
-import { SignUpInput as styles } from '../View/stylesheet';
+import { SignUpInput as styles } from '../../View/stylesheet';
 import Button from '@shared/components/Button';
 import Siren from '@shared/components/Siren';
 import PtoryLogo from '@shared/components/PtoryLogo';
-import { cancelIcon } from '../assets';
+import { cancelIcon } from '../../assets';
 import Modal from 'react-modal';
 import {
   ButtonTypeStyles,
   PtoryLogoTypeStyles,
   SirenTypeStyles,
-} from '../Model/Mapping';
+} from '../../Model/Mapping';
 import { useForm } from 'react-hook-form';
 import { useEffect, useState } from 'react';
-import { useApiMutation } from '../Model';
+import { useApiMutation } from '../../Model';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { SignUpSchema } from '../Model/Dto';
+import { SignUpSchema } from '../../Model/Dto';
 import { useNavigate } from 'react-router-dom';
 
 type FormData = z.infer<typeof SignUpSchema>;

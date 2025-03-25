@@ -1,20 +1,22 @@
 import { useEffect, useState } from 'react';
-import { Login as styles } from '../View/stylesheet';
+import { Login as styles } from '../../View/stylesheet';
 import Button from '@shared/components/Button';
 import PtoryLogo from '@shared/components/PtoryLogo';
-import { ButtonTypeStyles, PtoryLogoTypeStyles } from '../Model/Mapping';
+import { ButtonTypeStyles, PtoryLogoTypeStyles } from '../../Model/Mapping';
 import {
   spannerIcon,
   spannerIconGray,
   openEyeIcon,
   closeEyeIcon,
-} from '../assets';
+  // backgroundMax,
+  // backgroundSmall,
+} from '../../assets';
 import { useForm } from 'react-hook-form';
-import { useApiMutation } from '../Model';
+import { useApiMutation } from '../../Model';
 import { useNavigate } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { LoginSchema } from '../Model/Dto';
+import { LoginSchema } from '../../Model/Dto';
 
 // interface FormData {
 //   loginId: string;
@@ -25,6 +27,7 @@ import { LoginSchema } from '../Model/Dto';
 type FormData = z.infer<typeof LoginSchema>;
 
 const LoginPage = () => {
+  // const isMobile = useDynamicDisplay(800);
   const navigate = useNavigate();
 
   const {
@@ -70,6 +73,15 @@ const LoginPage = () => {
 
   return (
     <div id={styles.container}>
+      {/* <picture>
+        <source srcSet={backgroundSmall} media='(max-width: 500px)' />
+      </picture>
+      <img
+        id={styles.background}
+        src={!isMobile ? backgroundMax : backgroundSmall}
+        alt='ptory-background'
+        // width={1920}
+      /> */}
       <div id={styles.contents}>
         <div id={styles.logo}>
           <PtoryLogo styles={PtoryLogoTypeStyles} />

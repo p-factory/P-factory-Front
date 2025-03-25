@@ -1,30 +1,24 @@
 import { Routes, Route } from 'react-router-dom';
-// import TestPage from './View/dev/TestPage';
-// import TestFlex from './View/dev/Test.flex';
-import { MyFactory, MyFactoryApi, StudyFactory } from './View/components';
-import LoginPage from './Page/Login';
-import SignUpPage from './Page/SignUp';
-import SignUpInputPage from './Page/SignUpInput';
+import {
+  Login,
+  SignUp as SignUpList,
+  SignUpInput as SignUp,
+  MyFactory,
+  StudyFactory,
+} from './Page';
 import Test from './dev/Test';
 // import './App.scss';
 
 const App = () => {
   return (
     <Routes>
-      <Route path='/' element={<div>Main Page</div>} />
+      <Route path='/' element={<Login />} />
       {/* <Route path='/test' element={<TestFlex />} /> */}
-      <Route
-        path='/MyFactory'
-        element={
-          <MyFactory>
-            <MyFactoryApi />
-          </MyFactory>
-        }
-      />
+      <Route path='/MyFactory' element={<MyFactory />} />
       <Route path='/StudyFactory/:uri' element={<StudyFactory />} />
-      <Route path='/login' element={<LoginPage />} />
-      <Route path='/signUp' element={<SignUpPage />} />
-      <Route path='/signUp/input' element={<SignUpInputPage />} />
+      {/* <Route path='/login' element={} /> */}
+      <Route path='/signUp' element={<SignUpList />} />
+      <Route path='/signUp/input' element={<SignUp />} />
       <Route path='/test' element={<Test />} />
     </Routes>
   );

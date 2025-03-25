@@ -39,3 +39,5 @@ export { default as starIcon } from './img/star-icon.svg';
 export { default as spannerIcon } from './img/spanner-icon.svg';
 export { default as backIcon } from './img/back-icon.svg';
 export { default as downloadIcon } from './img/download-icon.svg';
+export { default as backgroundSmall } from './img/Login/background-430.svg';
+export { default as backgroundMax } from './img/Login/background-1920.svg';

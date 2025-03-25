@@ -1,7 +1,7 @@
 import { Screw } from '@shared/components';
 import { useEffect, useState } from 'react';
-import { useApiQuery, useGlobalApiState } from '../..//Model';
-import { ScrewTypeStyles } from '../..//Model/Mapping';
+import { useApiQuery, useGlobalApiState } from '../Model';
+import { ScrewTypeStyles } from '../Model/Mapping';
 
 interface GetData {
   id: number;

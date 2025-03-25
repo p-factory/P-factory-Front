@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import { useApiQuery } from '../../Model';
+import { useApiQuery } from '../Model';
 import { Factory } from '@shared/components';
-import { FactoryTypeStyles } from '../../Model/Mapping';
+import { FactoryTypeStyles } from '../Model/Mapping';
 
 interface GetData {
   bookName: string;
