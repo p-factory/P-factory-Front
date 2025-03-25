@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import {
   Search,
@@ -23,6 +23,10 @@ const MyFactory = ({ children }: { children: ReactNode }) => {
   const openModal = () => setModalOpen(true);
 
   const closeModal = () => setModalOpen(false);
+
+  useEffect(() => {
+    sessionStorage.clear();
+  });
 
   return (
     <div id={styled.debug}>

@@ -107,16 +107,18 @@ const Factory = ({
   id,
   styles,
   name = 'untitle',
-  count = 'null',
   favorite = false,
+  total = '0',
   uri,
+  handlelocal,
 }: {
   id: number;
   styles: FactoryStylesLocal;
   name: string;
-  count: string;
   favorite: boolean;
+  total: string;
   uri: number;
+  handlelocal: () => void;
 }) => {
   if (Platform.OS === 'web') {
     const [isClickedItem, setClickedItem] = useState<boolean>(favorite);
@@ -150,6 +152,7 @@ const Factory = ({
     };
 
     useEffect(() => {
+      // console.log(handlelocal());
       const handleClcikOutSide = (event: MouseEvent) => {
         if (
           managerBarRef.current &&
@@ -179,7 +182,7 @@ const Factory = ({
     }, [isSuccess, isLoading, isError, responseData]);
 
     return (
-      <div style={{ marginBottom: '16px' }}>
+      <div style={{ marginBottom: '16px' }} onClick={handlelocal}>
         <div
           id={styles.container}
           onClick={() => navigate(`/StudyFactory/${uri}`)}
@@ -196,7 +199,7 @@ const Factory = ({
           <div id={styles.buttonContents}>
             <div id={styles.contents}>
               <div id={styles.name}>{name}</div>
-              <div id={styles.count}>단어 {count}개</div>
+              <div id={styles.count}>단어 {total}개</div>
             </div>
             <div id={styles.contents}>
               <div className={styles.image} onClick={handleIconClick}>

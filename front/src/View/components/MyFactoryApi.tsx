@@ -7,6 +7,7 @@ interface GetData {
   bookName: string;
   favorite: boolean;
   wordbookId: number;
+  totalElements: string;
 }
 
 interface ApiResponse {
@@ -23,6 +24,17 @@ const MyFactoryApi = () => {
       '',
       false,
     );
+
+  const handleTotal = ({
+    total,
+    favorite,
+  }: {
+    total: string;
+    favorite: boolean;
+  }): void => {
+    sessionStorage.setItem(`total`, `${total}`);
+    sessionStorage.setItem(`favorite`, `${favorite}`);
+  };
 
   useEffect(() => {
     refetch();
@@ -60,9 +72,12 @@ const MyFactoryApi = () => {
             id={el.wordbookId}
             styles={FactoryTypeStyles}
             name={el.bookName}
-            count={'0'}
             favorite={el.favorite}
+            total={el.totalElements}
             uri={el.wordbookId}
+            handlelocal={() =>
+              handleTotal({ total: el.totalElements, favorite: el.favorite })
+            }
           />
         ))}
     </div>
