@@ -5,8 +5,8 @@ import {
   SignUpInput as SignUp,
   MyFactory,
   StudyFactory,
-} from './Page';
-import Test from './dev/Test';
+} from '@page';
+import Test from './dev';
 // import './App.scss';
 
 const App = () => {

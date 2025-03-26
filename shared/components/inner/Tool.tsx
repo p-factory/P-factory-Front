@@ -1,6 +1,6 @@
 import { Platform, Text } from 'react-native';
 import { ToolStylesLocal } from '../../style';
-import { RootState } from '../../store/store';
+import { RootState } from '../../store';
 import { useDispatch, useSelector } from 'react-redux';
 import { SetMode } from '../../store/slice/toolModeSlice';
 import { useState } from 'react';

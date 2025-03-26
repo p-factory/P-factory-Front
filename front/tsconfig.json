@@ -11,7 +11,20 @@
     // vite에 설정된 alias를 동기화
     "baseUrl": "./",
     "paths": {
-      "@shared/*": ["../shared/*"] // '@shared' 별칭 설정
+      "@/*": ["./src/*"],
+      "@assets": ["./src/assets"],
+      "@shared/*": ["../shared/*"],
+      "@shared/components": ["../shared/components"],
+      "@store":["../shared/store"],
+      "@store/slice":["../shared/store/slice"],
+      "@view": ["./src/View"],
+      "@view/components":["./src/View/components"],
+      "@view/stylesheet":["./src/View/stylesheet"],
+      "@controller":["./src/Controller"],
+      "@model":["./src/Model"],
+      "@mapping":["./src/Model/Mapping"],
+      "@dto":["./src/Model/Dto"],
+      "@page": ["./src/Page"],
     }
   },
   // front 프로젝트에서 컴파일할 파일 경로

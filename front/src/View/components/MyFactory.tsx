@@ -1,21 +1,15 @@
 import { ReactNode, useEffect, useState } from 'react';
 import Modal from 'react-modal';
-import {
-  Search,
-  // Factory,
-  BuildFactory,
-  Footer,
-  // Tool,
-} from '@shared/components';
-import { MyFactory as styled } from '../stylesheet';
-import { searchIcon, createIcon, cancelIconGray } from '../../assets';
+import { Search, BuildFactory, Footer } from '@shared/components';
+import { MyFactory as styled } from '@view/stylesheet';
+import { searchIcon, createIcon, cancelIconGray } from '@assets';
 import {
   SearchTypeStyles,
   // FactoryTypeStyles,
   BuildFactoryTypeStyles,
   FooterTypeStyles,
   // ToolTypeStyles,
-} from '../../Model/Mapping';
+} from '@mapping';
 
 const MyFactory = ({ children }: { children: ReactNode }) => {
   const [isModalOpen, setModalOpen] = useState(false);

@@ -1,7 +1,7 @@
 import { Platform, Text } from 'react-native';
 import { ScrewStylesLocal } from '../../style';
 import { useEffect, useState } from 'react';
-import { RootState } from '../../store/store';
+import { RootState } from '../../store';
 import { useSelector } from 'react-redux';
 import { useApiMutation } from '../../../front/src/Model';
 

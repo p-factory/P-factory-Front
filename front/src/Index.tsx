@@ -5,7 +5,7 @@ import './index.scss';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { Store } from '@shared/store/store';
+import { Store } from '@store';
 import Modal from 'react-modal';
 
 Modal.setAppElement('#root');

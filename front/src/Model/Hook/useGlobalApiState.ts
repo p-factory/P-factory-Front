@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import useApiMutation from './useApiMutation';
-import { RootState } from '@shared/store/store';
+import { RootState } from '@shared/store';
 import { useSelector } from 'react-redux';
 /**
  * 해당 useGlabalApiState에서는 FactoryMode와 ToolMode 두가지로 나뉘어 있다.
