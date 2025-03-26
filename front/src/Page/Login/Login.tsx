@@ -8,11 +8,11 @@ import {
   spannerIconGray,
   openEyeIcon,
   closeEyeIcon,
-  // backgroundMax,
-  // backgroundSmall,
+  backgroundMax,
+  backgroundSmall,
 } from '../../assets';
 import { useForm } from 'react-hook-form';
-import { useApiMutation } from '../../Model';
+import { useApiMutation, useDynamicDisplay } from '../../Model';
 import { useNavigate } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -27,7 +27,7 @@ import { LoginSchema } from '../../Model/Dto';
 type FormData = z.infer<typeof LoginSchema>;
 
 const LoginPage = () => {
-  // const isMobile = useDynamicDisplay(800);
+  const isMobile = useDynamicDisplay(500);
   const navigate = useNavigate();
 
   const {
@@ -73,7 +73,7 @@ const LoginPage = () => {
 
   return (
     <div id={styles.container}>
-      {/* <picture>
+      <picture>
         <source srcSet={backgroundSmall} media='(max-width: 500px)' />
       </picture>
       <img
@@ -81,7 +81,8 @@ const LoginPage = () => {
         src={!isMobile ? backgroundMax : backgroundSmall}
         alt='ptory-background'
         // width={1920}
-      /> */}
+      />
+      {/* <div id={styles.background} /> */}
       <div id={styles.contents}>
         <div id={styles.logo}>
           <PtoryLogo styles={PtoryLogoTypeStyles} />
