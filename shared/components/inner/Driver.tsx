@@ -1,7 +1,7 @@
 import { Platform, Text } from 'react-native';
 import { DriverStylesLocal } from '../../style';
 import { useEffect, useState } from 'react';
-import { useForm, UseFormRegister } from 'react-hook-form';
+import { useForm, UseFormRegister, useWatch } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 // import { CreateDriver, RemoveDriver } from '../../../front/src/Controller';
 import { removeIcon, cancelIcon, addIcon } from '../../../front/src/assets';
@@ -57,15 +57,13 @@ const Driver = ({
 
     const [isState, setState] = useState<boolean>(false);
 
-    const { register, handleSubmit, reset, setValue, watch } =
+    const { register, handleSubmit, reset, setValue, control } =
       useForm<FormData>({
         defaultValues: {
           id: '',
           meanings: [''],
         },
       });
-    const word = watch('word');
-    const meanings = watch('meanings');
 
     const addMeaning = () => {
       setValue('meanings', [...meanings, '']);
@@ -100,9 +98,13 @@ const Driver = ({
       console.log('제출된 데이터:', updatedData);
     };
 
+    const word = useWatch({ name: 'word', control });
+    const meanings = useWatch({ name: 'meanings', control });
+
     useEffect(() => {
       const wordFilled = typeof word === 'string' && word.trim() !== '';
-      const anyMeaningFilled = meanings.some((m) => m.trim() !== '');
+      const anyMeaningFilled =
+        Array.isArray(meanings) && meanings.some((m) => m.trim() !== '');
       setState(wordFilled && anyMeaningFilled);
     }, [word, meanings]);
 
@@ -154,7 +156,7 @@ const Driver = ({
                 register={register}
                 point={'check'}
               /> */}
-              {meanings.map((_, index) => (
+              {meanings.map((_: string, index: number) => (
                 <InputElement
                   key={index}
                   styles={styles.createInput}
@@ -189,7 +191,7 @@ const Driver = ({
             </div> */}
           </div>
         </div>
-        <div className={!isState ? styles.submit : styles.button}>
+        <div className={isState ? styles.submit : styles.button}>
           <button type='submit'>완료</button>
         </div>
       </form>
