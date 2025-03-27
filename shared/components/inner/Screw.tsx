@@ -52,7 +52,7 @@ const Screw = ({
     if (isError) {
       console.log('isError');
     }
-  }, [isSuccess, isLoading, isError]);
+  }, [isSuccess, isLoading, isError, mode]);
 
   if (Platform.OS === 'web') {
     const onCheckboxChange = () => {
@@ -71,7 +71,6 @@ const Screw = ({
     };
 
     const onHighlight = () => {
-      console.log('click');
       setHighlighted(!isHighlighted);
       highlightMutation.mutate(
         {
@@ -85,7 +84,7 @@ const Screw = ({
       );
     };
 
-    const temp = true;
+    // const temp = true;
 
     const onChecked = (event: React.MouseEvent<HTMLDivElement>) => {
       event.stopPropagation();
@@ -99,7 +98,7 @@ const Screw = ({
         },
         {
           onSuccess: () => {
-            console.log('✅check 완료');
+            console.log('✅Check 완료');
           },
         },
       );
@@ -142,7 +141,7 @@ const Screw = ({
           <span id={styles.screwShape}>{screwShape}</span>
         </div>
         <div id={styles.buttonContents}>
-          {temp ? (
+          {!mode.includes('deleted') ? (
             <input
               id={styles.button}
               className={isChecked ? styles.checked : styles.unchecked}

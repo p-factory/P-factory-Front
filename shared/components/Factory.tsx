@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { SetMode } from '../store/slice/factoryModeSlice';
+import { SetMode, ResetMode } from '../store/slice/factoryModeSlice';
 import { Platform, Text } from 'react-native';
 import ManagerBarStyled from '../ManagerBar.module.scss';
 import { FactoryStylesLocal, ManagerBarStyles } from '../style';
@@ -125,7 +125,7 @@ const Factory = ({
     const [isMoreActive, setMoreActive] = useState<boolean>(false);
 
     const managerBarRef = useRef<HTMLDivElement>(null);
-
+    const dispatch = useDispatch();
     const { mutation, isLoading, isError, isSuccess, responseData } =
       useApiMutation('POST');
 
@@ -153,19 +153,23 @@ const Factory = ({
 
     useEffect(() => {
       // console.log(handlelocal());
+      if (isMoreActive) {
+        sessionStorage.setItem('title', name);
+      }
       const handleClcikOutSide = (event: MouseEvent) => {
         if (
           managerBarRef.current &&
           !managerBarRef.current.contains(event.target as Node)
         ) {
           setMoreActive(false);
+          dispatch(ResetMode());
         }
       };
       document.addEventListener('mousedown', handleClcikOutSide);
       return () => {
         document.removeEventListener('mousedown', handleClcikOutSide);
       };
-    }, []);
+    }, [isMoreActive]);
 
     useEffect(() => {
       // setState(false);

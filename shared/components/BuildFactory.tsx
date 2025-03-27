@@ -70,7 +70,13 @@ const BuildFactory = ({
         <div id={styles.container}>
           <div id={styles.titleBar}>
             <div id={styles.title}>{`${title}`}</div>
-            <div id={styles.image} onClick={onClose}>
+            <div
+              id={styles.image}
+              onClick={() => {
+                onClose();
+                sessionStorage.removeItem('title');
+              }}
+            >
               <img src={image} alt='X' />
             </div>
           </div>
