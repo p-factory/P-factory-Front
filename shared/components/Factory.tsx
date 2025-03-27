@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { SetMode, ResetMode } from '../store/slice/factoryModeSlice';
 import { Platform, Text } from 'react-native';
@@ -15,6 +15,7 @@ import {
   starIcon,
 } from '../../front/src/assets';
 import { useApiMutation, useGlobalApiState } from '../../front/src/Model';
+import { RootState } from '../store';
 
 const managerBarStyles: ManagerBarStyles = {
   container: ManagerBarStyled.container,
@@ -67,6 +68,7 @@ export const ManagerBar = ({
           id={styles.contents}
           onClick={() => {
             dispatch(SetMode('edit'));
+            sessionStorage.setItem('mode', 'edit');
           }}
         >
           <div id={styles.button}>
@@ -126,6 +128,7 @@ const Factory = ({
 
     const managerBarRef = useRef<HTMLDivElement>(null);
     const dispatch = useDispatch();
+    const mode = useSelector((state: RootState) => state.setFactoryMode.mode);
     const { mutation, isLoading, isError, isSuccess, responseData } =
       useApiMutation('POST');
 
@@ -155,6 +158,7 @@ const Factory = ({
       // console.log(handlelocal());
       if (isMoreActive) {
         sessionStorage.setItem('title', name);
+        sessionStorage.setItem('fId', id.toString());
       }
       const handleClcikOutSide = (event: MouseEvent) => {
         if (
@@ -169,7 +173,7 @@ const Factory = ({
       return () => {
         document.removeEventListener('mousedown', handleClcikOutSide);
       };
-    }, [isMoreActive]);
+    }, [isMoreActive, mode]);
 
     useEffect(() => {
       // setState(false);

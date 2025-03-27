@@ -8,15 +8,21 @@ import {
   BuildFactoryTypeStyles,
   FooterTypeStyles,
 } from '@mapping';
-import { RootState } from '@shared/store';
 import { useSelector } from 'react-redux';
+import { RootState } from '@shared/store';
 
 const MyFactory = ({ children }: { children: ReactNode }) => {
   const [isModalOpen, setModalOpen] = useState(false);
+
+  const sesscctionMode = sessionStorage.getItem('mode');
   const mode = useSelector((state: RootState) => state.setFactoryMode.mode);
+
   const openModal = () => setModalOpen(true);
 
-  const closeModal = () => setModalOpen(false);
+  const closeModal = () => {
+    setModalOpen(false);
+    sessionStorage.removeItem('mode');
+  };
 
   useEffect(() => {
     if (mode === 'edit') {
@@ -44,14 +50,14 @@ const MyFactory = ({ children }: { children: ReactNode }) => {
       <Modal isOpen={isModalOpen} onRequestClose={closeModal} preventScroll>
         <BuildFactory
           styles={BuildFactoryTypeStyles}
-          title={mode === 'edit' ? '공장 이름 수정' : '새로운 공장'}
+          title={sesscctionMode === 'edit' ? '공장 이름 수정' : '새로운 공장'}
           image={cancelIconGray}
           input={
-            mode === 'edit'
+            sesscctionMode === 'edit'
               ? `${sessionStorage.getItem('title')}`
               : '공장 제목을 입력하세요.'
           }
-          buttonTitle={mode === 'edit' ? '수정하기' : '공장 만들기'}
+          buttonTitle={sesscctionMode === 'edit' ? '수정하기' : '공장 만들기'}
           onClose={closeModal}
         />
       </Modal>

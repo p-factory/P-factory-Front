@@ -36,19 +36,27 @@ const BuildFactory = ({
       mode: 'onChange',
     });
 
+    const sesscctionMode = sessionStorage.getItem('mode');
+
     const inInputLength = watch('bookName', '');
 
     const isButtonActive = inInputLength.trim() !== '';
 
     const { mutation, isLoading, isError, isSuccess, responseData } =
-      useApiMutation('POST');
+      useApiMutation(sesscctionMode !== 'edit' ? 'POST' : 'PUT');
 
     const onSubmit = (data: FormData) => {
       console.log('생성된 Factory:', data.bookName);
-      mutation.mutate({
-        mutateUrl: 'https://13.209.113.229.nip.io/api/wordbook/create',
-        mutateNucleus: data,
-      });
+      mutation.mutate(
+        {
+          mutateUrl:
+            sesscctionMode !== 'edit'
+              ? 'https://13.209.113.229.nip.io/api/wordbook/create'
+              : `https://13.209.113.229.nip.io/api/wordbook/update/${sessionStorage.getItem('fId')}`,
+          mutateNucleus: data,
+        },
+        { onSuccess: () => sessionStorage.removeItem('mode') },
+      );
     };
 
     useEffect(() => {
