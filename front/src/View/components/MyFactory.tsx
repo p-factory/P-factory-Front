@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useState } from 'react';
 import Modal from 'react-modal';
 import { Search, BuildFactory, Footer } from '@shared/components';
 import { MyFactory as styled } from '@view/stylesheet';
@@ -18,9 +18,9 @@ const MyFactory = ({ children }: { children: ReactNode }) => {
 
   const closeModal = () => setModalOpen(false);
 
-  useEffect(() => {
-    sessionStorage.clear();
-  });
+  // useEffect(() => {
+  //   localStorage.clear();
+  // });
 
   return (
     <div id={styled.debug}>

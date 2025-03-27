@@ -64,6 +64,7 @@ const Driver = ({
           meanings: [''],
         },
       });
+    const word = watch('word');
     const meanings = watch('meanings');
 
     const addMeaning = () => {
@@ -98,6 +99,12 @@ const Driver = ({
       });
       console.log('제출된 데이터:', updatedData);
     };
+
+    useEffect(() => {
+      const wordFilled = typeof word === 'string' && word.trim() !== '';
+      const anyMeaningFilled = meanings.some((m) => m.trim() !== '');
+      setState(wordFilled && anyMeaningFilled);
+    }, [word, meanings]);
 
     useEffect(() => {
       setState(false);
@@ -182,7 +189,7 @@ const Driver = ({
             </div> */}
           </div>
         </div>
-        <div className={isState ? styles.submit : styles.button}>
+        <div className={!isState ? styles.submit : styles.button}>
           <button type='submit'>완료</button>
         </div>
       </form>

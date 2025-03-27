@@ -20,9 +20,9 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 const StudyFactory = () => {
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
-  const [isTotal] = useState<string>(sessionStorage.getItem('total') ?? '0');
+  const [isTotal] = useState<string>(localStorage.getItem('total') ?? '0');
   const [isFavorite] = useState<string>(
-    sessionStorage.getItem('favorite') ?? '0',
+    localStorage.getItem('favorite') ?? '0',
   );
   const isLength = Math.ceil(Number(isTotal) / 10);
   const { uri } = useParams();
@@ -33,7 +33,7 @@ const StudyFactory = () => {
 
   useEffect(() => {
     console.log(isLength);
-    sessionStorage.clear();
+    // localStorage.clear();
   });
 
   return (

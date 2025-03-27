@@ -32,8 +32,8 @@ const MyFactoryApi = () => {
     total: string;
     favorite: boolean;
   }): void => {
-    sessionStorage.setItem(`total`, `${total}`);
-    sessionStorage.setItem(`favorite`, `${favorite}`);
+    localStorage.setItem(`total`, `${total}`);
+    localStorage.setItem(`favorite`, `${favorite}`);
   };
 
   useEffect(() => {

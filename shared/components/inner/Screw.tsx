@@ -26,21 +26,33 @@ const Screw = ({
   onDeleteTrigger?: (deleteId: number) => void;
   isSuccessState?: boolean;
 }) => {
+  const { mutation, isSuccess, isLoading, isError, responseData } =
+    useApiMutation('POST');
+  const mode = useSelector((state: RootState) => state.setToolMode.tool);
+  const [isHidden, setHidden] = useState<boolean>(
+    typeof isSuccessState === 'boolean' ? isSuccessState : false,
+  );
+
+  const { mutation: highlightMutation } = useApiMutation('POST');
+
+  const [isChecked, setChecked] = useState<boolean>(false);
+  const [isSelected, setSelected] = useState<boolean>(false);
+  // bolt와 각 nut의 highlight 상태 관리
+  const [isHighlighted, setHighlighted] = useState<boolean>(highlight);
+
+  useEffect(() => {
+    if (isSuccess) {
+      console.log('✅Response:', responseData);
+    }
+    if (isLoading) {
+      console.log('isLoading..');
+    }
+    if (isError) {
+      console.log('isError');
+    }
+  }, [isSuccess, isLoading, isError]);
+
   if (Platform.OS === 'web') {
-    const { mutation, isSuccess, isLoading, isError, responseData } =
-      useApiMutation('POST');
-    const mode = useSelector((state: RootState) => state.setToolMode.tool);
-    const [isHidden, setHidden] = useState<boolean>(
-      typeof isSuccessState === 'boolean' ? isSuccessState : false,
-    );
-
-    const { mutation: highlightMutation } = useApiMutation('POST');
-
-    const [isChecked, setChecked] = useState<boolean>(false);
-    const [isSelected, setSelected] = useState<boolean>(false);
-    // bolt와 각 nut의 highlight 상태 관리
-    const [isHighlighted, setHighlighted] = useState<boolean>(highlight);
-
     const onCheckboxChange = () => {
       setChecked(!isChecked);
     };
@@ -92,18 +104,6 @@ const Screw = ({
     };
     if (isHidden) return null;
 
-    useEffect(() => {
-      if (isSuccess) {
-        console.log('✅Response:', responseData);
-      }
-      if (isLoading) {
-        console.log('isLoading..');
-      }
-      if (isError) {
-        console.log('isError');
-      }
-    }, [isSuccess, isLoading, isError]);
-
     return (
       <div
         id={styles.container}
@@ -120,14 +120,14 @@ const Screw = ({
           <span id={styles.screwSound}>{screwSound}</span>
           <div id={styles.bolt}>
             <span className={isHighlighted ? styles.checked : ''}>
-              {mode.includes('eng') ? bolt : null}
+              {mode.includes('eng') || mode.includes('deleted') ? bolt : null}
             </span>
           </div>
           <div id={styles.nuts}>
             {/* nutArray를 map으로 반복 */}
             {nuts.map((nut, index) => (
               <span key={index}>
-                {mode.includes('kor') ? (
+                {mode.includes('kor') || mode.includes('deleted') ? (
                   <span
                     className={`${styles.nut} ${isHighlighted ? styles.checked : ''}`}
                   >
