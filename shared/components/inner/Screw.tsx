@@ -13,6 +13,7 @@ const Screw = ({
   nuts,
   screwShape,
   highlight,
+  check,
   onDeleteTrigger,
   isSuccessState,
 }: {
@@ -23,6 +24,7 @@ const Screw = ({
   nuts: string[];
   screwShape: string;
   highlight: boolean;
+  check: boolean;
   onDeleteTrigger?: (deleteId: number) => void;
   isSuccessState?: boolean;
 }) => {
@@ -35,7 +37,7 @@ const Screw = ({
 
   const { mutation: highlightMutation } = useApiMutation('POST');
 
-  const [isChecked, setChecked] = useState<boolean>(false);
+  const [isChecked, setChecked] = useState<boolean>(check);
   const [isSelected, setSelected] = useState<boolean>(false);
   // bolt와 각 nut의 highlight 상태 관리
   const [isHighlighted, setHighlighted] = useState<boolean>(highlight);
@@ -83,13 +85,13 @@ const Screw = ({
       );
     };
 
-    const temp = false;
+    const temp = true;
 
     const onChecked = (event: React.MouseEvent<HTMLDivElement>) => {
       event.stopPropagation();
       mutation.mutate(
         {
-          mutateUrl: `https://13.209.113.229.nip.io/api/wordbook/word/check`,
+          mutateUrl: `https://13.209.113.229.nip.io/api/word/check/${id}`,
           mutateNucleus: {
             word: bolt,
             check: true,

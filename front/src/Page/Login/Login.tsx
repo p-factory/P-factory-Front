@@ -61,7 +61,7 @@ const LoginPage = () => {
   useEffect(() => {
     if (isSuccess) {
       console.log('Response:', responseData);
-      navigate('/');
+      navigate('/MyFactory');
     }
     if (isLoading) {
       console.log('Response:', responseData);
