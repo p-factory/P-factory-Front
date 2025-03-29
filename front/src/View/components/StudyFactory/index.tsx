@@ -6,16 +6,11 @@ import {
   ToolTypeStyles,
   FooterTypeStyles,
   DriverTypeStyles,
-} from '../../Model/Mapping';
-import { StudyFactory as styled } from '../stylesheet';
-import {
-  starIconChecked,
-  backIcon,
-  downloadIcon,
-  starIcon,
-} from '../../assets';
+} from '@mapping';
+import { StudyFactory as styled } from '@view/stylesheet';
+import { starIconChecked, backIcon, downloadIcon, starIcon } from '@assets';
 import Modal from 'react-modal';
-import { StudyFactoryApi } from '../../Controller';
+import { StudyFactoryApi } from '@controller';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const StudyFactory = () => {

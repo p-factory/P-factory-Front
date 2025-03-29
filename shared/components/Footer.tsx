@@ -22,9 +22,10 @@ const Footer = ({ styles }: { styles: FooterStyles }) => {
       location.pathname.includes('MyFactory') ||
       location.pathname.includes('StudyFactory')
     ) {
-      setLocation('innerFactory');
+      setLocation('inner');
+      console.log(isLocation);
     }
-  });
+  }, [location]);
   if (Platform.OS === 'web') {
     const navigate = useNavigate();
     const handleMouseEnter = (item: string) => setHoveredItem(item);
@@ -33,14 +34,14 @@ const Footer = ({ styles }: { styles: FooterStyles }) => {
       <div id={styles.container}>
         <div
           className={styles.contents}
-          onMouseEnter={() => handleMouseEnter('innerFactory')}
+          onMouseEnter={() => handleMouseEnter('inner')}
           onMouseLeave={handleMouseLeave}
           onClick={() => navigate('/MyFactory')}
         >
           <div className={styles.image}>
             <img
               src={
-                isHoveredItem || isLocation === 'innerFactory'
+                isHoveredItem === 'inner' || isLocation === 'inner'
                   ? innerFactoryIconHover // Hover 이미지
                   : innerFactoryIcon // 기본 이미지
               }
@@ -51,14 +52,14 @@ const Footer = ({ styles }: { styles: FooterStyles }) => {
         </div>
         <div
           className={styles.contents}
-          onMouseEnter={() => handleMouseEnter('outerFactory')}
+          onMouseEnter={() => handleMouseEnter('outer')}
           onMouseLeave={handleMouseLeave}
           onClick={() => navigate('/error')}
         >
           <div className={styles.image}>
             <img
               src={
-                isHoveredItem === 'outerFactory'
+                isHoveredItem === 'outer' || isLocation === 'outer'
                   ? outerFactoryIconHover // Hover 이미지
                   : outerFactoryIcon // 기본 이미지
               }
@@ -69,14 +70,14 @@ const Footer = ({ styles }: { styles: FooterStyles }) => {
         </div>
         <div
           className={styles.contents}
-          onMouseEnter={() => handleMouseEnter('escapeGame')}
+          onMouseEnter={() => handleMouseEnter('game')}
           onMouseLeave={handleMouseLeave}
           onClick={() => navigate('/error')}
         >
           <div className={styles.image}>
             <img
               src={
-                isHoveredItem === 'escapeGame'
+                isHoveredItem === 'game' || isLocation === 'game'
                   ? escapeGameIconHover // Hover 이미지
                   : escapeGameIcon // 기본 이미지
               }
@@ -94,7 +95,7 @@ const Footer = ({ styles }: { styles: FooterStyles }) => {
           <div className={styles.image}>
             <img
               src={
-                isHoveredItem === 'myPage'
+                isHoveredItem === 'myPage' || isLocation === 'myPage'
                   ? mypageIconHover // Hover 이미지
                   : mypageIcon // 기본 이미지
               }

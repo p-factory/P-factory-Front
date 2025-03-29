@@ -35,12 +35,14 @@ const Search = ({
               onChange={(e) => setValue('searchQuery', e.target.value)}
             />
             <div id={styles.image} onClick={handleSubmit(onSubmit)}>
-              <img src={searchImage} alt='search' />
+              {searchImage !== '' ? (
+                <img src={searchImage} alt='search' />
+              ) : null}
             </div>
           </div>
           <div className={styles.group}>
             <button type='button' id={styles.button} onClick={onOpenModal}>
-              <img src={image} alt='build' />
+              {image !== '' ? <img src={image} alt='build' /> : null}
             </button>
           </div>
         </div>

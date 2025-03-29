@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
-import { useApiMutation, useApiQuery } from '../Model';
-import { Footer } from '@shared/components';
-import { FooterTypeStyles } from '../Model/Mapping';
+import { useApiMutation, useApiQuery } from '@model';
+import { BaseLayout } from '@/View/components';
 const Test = () => {
   const { mutation, isLoading, isError, isSuccess, responseData } =
     useApiMutation('POST', 'https://13.209.113.229.nip.io/api/login', {
@@ -34,40 +33,42 @@ const Test = () => {
   }, [isSuccess, isError, responseData, isGetSuccess, isGetError]);
 
   return (
-    <div style={{ backgroundColor: 'tomato', height: '100%' }}>
-      <div>Test</div>
-      <div>
-        <button
-          onClick={() => {
-            console.log('test');
-            mutation.mutate({});
-          }}
-        >
-          Signup
-        </button>
-        {isLoading && <p>Loading...</p>}
-        {isError && <p style={{ color: 'red' }}>Error occurred</p>}
-        {isSuccess && (
-          <p>Signup Success! Response: {JSON.stringify(responseData)}</p>
-        )}
+    <BaseLayout>
+      <div style={{ backgroundColor: 'tomato', height: '100%' }}>
+        <div>Test</div>
+        <div>
+          <button
+            onClick={() => {
+              console.log('test');
+              mutation.mutate({});
+            }}
+          >
+            Signup
+          </button>
+          {isLoading && <p>Loading...</p>}
+          {isError && <p style={{ color: 'red' }}>Error occurred</p>}
+          {isSuccess && (
+            <p>Signup Success! Response: {JSON.stringify(responseData)}</p>
+          )}
+        </div>
+        <div>
+          <div>Get</div>
+          <button
+            onClick={() => {
+              refetch();
+              console.log('data');
+            }}
+          >
+            Get
+          </button>
+          {isGetLoading && <p>Loading...</p>}
+          {isGetError && <p style={{ color: 'red' }}>Error occurred</p>}
+          {isSuccess && <p>{JSON.stringify(isGetData)}</p>}
+        </div>
+        {/* <Tool styles={ToolTypeStyles} /> */}
+        {/* <Footer styles={FooterTypeStyles} /> */}
       </div>
-      <div>
-        <div>Get</div>
-        <button
-          onClick={() => {
-            refetch();
-            console.log('data');
-          }}
-        >
-          Get
-        </button>
-        {isGetLoading && <p>Loading...</p>}
-        {isGetError && <p style={{ color: 'red' }}>Error occurred</p>}
-        {isSuccess && <p>{JSON.stringify(isGetData)}</p>}
-      </div>
-      {/* <Tool styles={ToolTypeStyles} /> */}
-      <Footer styles={FooterTypeStyles} />
-    </div>
+    </BaseLayout>
   );
 };
 
