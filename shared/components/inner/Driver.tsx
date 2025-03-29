@@ -12,7 +12,7 @@ interface FormData {
   word: string;
   meanings: string[];
   pronunciation?: string;
-  description?: string;
+  explanation?: string;
 }
 
 //props는 항상 객체 형태로 전달
@@ -173,7 +173,7 @@ const Driver = ({
               </div>
             </div>
             {/* 현재 사용되지 않는 ui */}
-            {/* <div className={styles.inputContents}>
+            <div className={styles.inputContents}>
               <span>발음</span>
               <input
                 placeholder='발음을 입력하세요.'
@@ -186,9 +186,9 @@ const Driver = ({
               <input
                 placeholder='설명을 입력하세요.'
                 type='text'
-                {...register('description')}
+                {...register('explanation')}
               />
-            </div> */}
+            </div>
           </div>
         </div>
         <div className={isState ? styles.submit : styles.button}>

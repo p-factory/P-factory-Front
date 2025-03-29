@@ -6,6 +6,8 @@ import { ScrewTypeStyles } from '../Model/Mapping';
 interface GetData {
   id: number;
   word: string;
+  pronunciation: string;
+  explanation: string;
   meanings: string[];
   highlight: boolean;
   check: boolean;
@@ -47,6 +49,10 @@ const StudyFactoryApi = ({ uri, page }: { uri: string; page: number }) => {
     refetch();
     if (isSuccess) {
       console.log('✅Response:', data?.data.words);
+      console.log('✅Response:', data?.data);
+      if (data?.data.totalElements) {
+        localStorage.setItem('total', data?.data.totalElements.toString());
+      }
     }
     if (isLoading) {
       console.log('isLoading..');
@@ -74,10 +80,10 @@ const StudyFactoryApi = ({ uri, page }: { uri: string; page: number }) => {
               key={el.id}
               id={el.id}
               styles={ScrewTypeStyles}
-              screwSound={''}
+              screwSound={el.pronunciation}
               bolt={el.word}
               nuts={el.meanings}
-              screwShape={''}
+              screwShape={el.explanation}
               highlight={el.highlight}
               check={el.check}
               onDeleteTrigger={(id) => handleDelete(id)}
