@@ -97,6 +97,7 @@ export const ManagerBar = ({
             <img src={deleteBarIcon} alt='deleteIcon' />
           </div>
           <span>삭제</span>
+          {/* Alarm 사용 SignUpInput 참고 */}
         </div>
       </div>
     );
