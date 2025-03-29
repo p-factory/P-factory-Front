@@ -24,7 +24,7 @@ const useGlobalApiState = ({
     if (!mode) return;
     switch (mode) {
       case 'deleted':
-        console.log(`${mode}: ${id}`);
+        // console.log(`${mode}: ${id}`);
         if (id !== undefined) {
           mutation.mutate(
             {
@@ -48,14 +48,14 @@ const useGlobalApiState = ({
         console.log(`${mode}: ${id}`);
         break;
       default:
-        console.log('default: ', mode);
+        // console.log('default: ', mode);
         break;
     }
     // tool mode
     if (!toolMode || toolMode.length === 0) return;
     switch (toolMode[0]) {
       case 'highlight':
-        console.log(`${toolMode}: ${id}`);
+        // console.log(`${toolMode}: ${id}`);
         if (id !== undefined) {
           mutation.mutate(
             {
@@ -86,7 +86,7 @@ const useGlobalApiState = ({
         break;
 
       default:
-        console.log('default: ', toolMode);
+        // console.log('default: ', toolMode);
         break;
     }
   }, [toolMode, mode, id]);

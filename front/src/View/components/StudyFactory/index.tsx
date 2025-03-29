@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Sort, Tool, Footer, Driver } from '@shared/components';
 import {
   SortTypeStyles,
@@ -25,11 +25,6 @@ const StudyFactory = () => {
   const openModal = () => setModalOpen(true);
 
   const closeModal = () => setModalOpen(false);
-
-  useEffect(() => {
-    console.log(isLength);
-    // localStorage.clear();
-  });
 
   return (
     <div id={styled.debug}>
@@ -63,6 +58,7 @@ const StudyFactory = () => {
         {localStorage.getItem('total') !== '0' ? (
           Array.from({ length: isLength }).map((_, index) => (
             <StudyFactoryApi
+              key={index}
               uri={typeof uri === 'string' ? uri : 'undefined'}
               page={index}
             />

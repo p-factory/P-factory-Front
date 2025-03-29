@@ -23,7 +23,6 @@ const Footer = ({ styles }: { styles: FooterStyles }) => {
       location.pathname.includes('StudyFactory')
     ) {
       setLocation('inner');
-      console.log(isLocation);
     }
   }, [location]);
   if (Platform.OS === 'web') {
