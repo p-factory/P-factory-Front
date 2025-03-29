@@ -1,6 +1,7 @@
 import { Platform, Text } from 'react-native';
 import { FooterStyles } from '../style';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import {
   innerFactoryIconHover,
   innerFactoryIcon,
@@ -13,23 +14,33 @@ import {
 } from '../../front/src/assets';
 
 const Footer = ({ styles }: { styles: FooterStyles }) => {
+  const location = useLocation();
+  const [isHoveredItem, setHoveredItem] = useState<string>('');
+  const [isLocation, setLocation] = useState<string>('');
+  useEffect(() => {
+    if (
+      location.pathname.includes('MyFactory') ||
+      location.pathname.includes('StudyFactory')
+    ) {
+      setLocation('innerFactory');
+    }
+  });
   if (Platform.OS === 'web') {
-    // Hover 상태 관리
-    const [isHoveredItem, setHoveredItem] = useState<string | null>(null);
-
+    const navigate = useNavigate();
     const handleMouseEnter = (item: string) => setHoveredItem(item);
-    const handleMouseLeave = () => setHoveredItem(null);
+    const handleMouseLeave = () => setHoveredItem('');
     return (
       <div id={styles.container}>
         <div
           className={styles.contents}
           onMouseEnter={() => handleMouseEnter('innerFactory')}
           onMouseLeave={handleMouseLeave}
+          onClick={() => navigate('/MyFactory')}
         >
           <div className={styles.image}>
             <img
               src={
-                isHoveredItem === 'innerFactory'
+                isHoveredItem || isLocation === 'innerFactory'
                   ? innerFactoryIconHover // Hover 이미지
                   : innerFactoryIcon // 기본 이미지
               }
@@ -42,6 +53,7 @@ const Footer = ({ styles }: { styles: FooterStyles }) => {
           className={styles.contents}
           onMouseEnter={() => handleMouseEnter('outerFactory')}
           onMouseLeave={handleMouseLeave}
+          onClick={() => navigate('/error')}
         >
           <div className={styles.image}>
             <img
@@ -59,6 +71,7 @@ const Footer = ({ styles }: { styles: FooterStyles }) => {
           className={styles.contents}
           onMouseEnter={() => handleMouseEnter('escapeGame')}
           onMouseLeave={handleMouseLeave}
+          onClick={() => navigate('/error')}
         >
           <div className={styles.image}>
             <img
@@ -76,6 +89,7 @@ const Footer = ({ styles }: { styles: FooterStyles }) => {
           className={styles.contents}
           onMouseEnter={() => handleMouseEnter('myPage')}
           onMouseLeave={handleMouseLeave}
+          onClick={() => navigate('/error')}
         >
           <div className={styles.image}>
             <img

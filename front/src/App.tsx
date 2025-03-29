@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import { Error } from '@shared/components';
 import {
   Login,
   SignUp as SignUpList,
@@ -20,6 +21,7 @@ const App = () => {
       <Route path='/signUp' element={<SignUpList />} />
       <Route path='/signUp/input' element={<SignUp />} />
       <Route path='/test' element={<Test />} />
+      <Route path='*' element={<Error />} />
     </Routes>
   );
 };

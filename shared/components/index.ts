@@ -11,3 +11,4 @@ export { default as SignUpCheckList } from './signup/SignUpCheckList';
 export { default as Siren } from './Siren';
 export { default as Sort } from './inner/Sort';
 export { default as Tool } from './inner/Tool';
+export { default as Error } from './baselayout/Error';
