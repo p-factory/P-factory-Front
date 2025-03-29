@@ -66,7 +66,7 @@ const MyFactoryApi = () => {
       {/* 데이터가 배열일 경우 map 실행 */}
       {Array.isArray(data?.data) &&
         // data.data.map((el) => <p key={el.wordbookId}>{el.bookName}</p>)}
-        data.data.map((el) => (
+        data?.data.map((el) => (
           <Factory
             key={el.wordbookId}
             id={el.wordbookId}

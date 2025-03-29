@@ -74,7 +74,7 @@ const StudyFactoryApi = ({ uri, page }: { uri: string; page: number }) => {
         <p style={{ color: 'red' }}>데이터가 존재하지 않습니다.</p>
       )}
       {Array.isArray(data?.data.words) &&
-        data.data.words.map((el) => (
+        data?.data.words.map((el) => (
           <div key={el.id} style={{ margin: '10px 0 0 10px' }}>
             <Screw
               key={el.id}
