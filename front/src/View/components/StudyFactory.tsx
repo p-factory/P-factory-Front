@@ -65,12 +65,16 @@ const StudyFactory = () => {
         </div>
       </div>
       <div id={styled.screws} style={{ paddingBottom: '180px' }}>
-        {Array.from({ length: isLength }).map((_, index) => (
-          <StudyFactoryApi
-            uri={typeof uri === 'string' ? uri : 'undefined'}
-            page={index}
-          />
-        ))}
+        {localStorage.getItem('total') !== '0' ? (
+          Array.from({ length: isLength }).map((_, index) => (
+            <StudyFactoryApi
+              uri={typeof uri === 'string' ? uri : 'undefined'}
+              page={index}
+            />
+          ))
+        ) : (
+          <div>null</div>
+        )}
         {/* <StudyFactoryApi
           uri={typeof uri === 'string' ? uri : 'undefined'}
           page={isLength}
