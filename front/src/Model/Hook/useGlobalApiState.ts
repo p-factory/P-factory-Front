@@ -9,11 +9,11 @@ import { useSelector } from 'react-redux';
 const useGlobalApiState = ({
   id,
   method,
-  // trigger = false,
+  toggle = false,
 }: {
   id?: number;
   method: 'POST' | 'PUT' | 'DELETE';
-  // trigger?: boolean;
+  toggle?: boolean;
 }) => {
   const { mutation, isLoading, isSuccess } = useApiMutation(method);
   const mode = useSelector((state: RootState) => state.setFactoryMode.mode);
@@ -21,35 +21,39 @@ const useGlobalApiState = ({
 
   useEffect(() => {
     // foactory mode
-    if (!mode) return;
-    switch (mode) {
-      case 'deleted':
-        // console.log(`${mode}: ${id}`);
-        if (id !== undefined) {
-          mutation.mutate(
-            {
-              mutateUrl: `https://13.209.113.229.nip.io/api/wordbook/delete/${id}`,
-            },
-            {
-              onSuccess: () => {
-                window.location.reload();
+    if (!mode && !toggle) return;
+    if (mode) {
+      console.log('mode: ', mode, 'toggle: ', toggle);
+      switch (mode) {
+        case 'deleted':
+          // console.log(`${mode}: ${id}`);
+          if (id !== undefined) {
+            console.log('chekc');
+            mutation.mutate(
+              {
+                mutateUrl: `https://13.209.113.229.nip.io/api/wordbook/delete/${id}`,
               },
-            },
-          );
-        }
-        break;
-      case 'edit':
-        console.log(`${mode}: ${id}`);
-        break;
-      case 'shared':
-        console.log(`${mode}: ${id}`);
-        break;
-      case 'duplicated':
-        console.log(`${mode}: ${id}`);
-        break;
-      default:
-        // console.log('default: ', mode);
-        break;
+              {
+                onSuccess: () => {
+                  window.location.reload();
+                },
+              },
+            );
+          }
+          break;
+        case 'edit':
+          console.log(`${mode}: ${id}`);
+          break;
+        case 'shared':
+          console.log(`${mode}: ${id}`);
+          break;
+        case 'duplicated':
+          console.log(`${mode}: ${id}`);
+          break;
+        default:
+          // console.log('default: ', mode);
+          break;
+      }
     }
     // tool mode
     if (!toolMode || toolMode.length === 0) return;
@@ -89,7 +93,7 @@ const useGlobalApiState = ({
         // console.log('default: ', toolMode);
         break;
     }
-  }, [toolMode, mode, id]);
+  }, [toggle, toolMode, mode, id]);
 
   useEffect(() => {
     if (isSuccess) {

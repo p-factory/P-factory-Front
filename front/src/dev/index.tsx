@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { useApiMutation, useApiQuery } from '@model';
 import { BaseLayout } from '@/View/components';
+import { Factory } from '@shared/components';
+import { FactoryTypeStyles } from '@/Model/Mapping';
 const Test = () => {
   const { mutation, isLoading, isError, isSuccess, responseData } =
     useApiMutation('POST', 'https://13.209.113.229.nip.io/api/login', {
@@ -68,6 +70,15 @@ const Test = () => {
         {/* <Tool styles={ToolTypeStyles} /> */}
         {/* <Footer styles={FooterTypeStyles} /> */}
       </div>
+      <Factory
+        styles={FactoryTypeStyles}
+        id={1}
+        name='test'
+        favorite
+        total='1'
+        uri={1}
+        handlelocal={() => console.log('test')}
+      />
     </BaseLayout>
   );
 };

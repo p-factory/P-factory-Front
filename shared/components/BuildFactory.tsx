@@ -3,6 +3,9 @@ import { BuildFactoryStylesLocal } from '../style';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useApiMutation } from '../../front/src/Model';
+import { useDispatch } from 'react-redux';
+import { ResetMode } from '../store/slice/factoryModeSlice';
+
 import { z } from 'zod';
 import { BuildFactorySchema } from '../../front/src/Model/Dto';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -35,6 +38,7 @@ const BuildFactory = ({
       resolver: zodResolver(BuildFactorySchema),
       mode: 'onChange',
     });
+    const dispatch = useDispatch();
 
     const sesscctionMode = sessionStorage.getItem('mode');
 
@@ -83,6 +87,7 @@ const BuildFactory = ({
               onClick={() => {
                 onClose();
                 sessionStorage.removeItem('title');
+                dispatch(ResetMode());
               }}
             >
               <img src={image} alt='X' />

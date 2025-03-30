@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { SetMode, ResetMode } from '../store/slice/factoryModeSlice';
+// import { ResetMode } from '../store/slice/factoryModeSlice';
 import { Platform, Text } from 'react-native';
 import ManagerBarStyled from '../ManagerBar.module.scss';
 import { FactoryStylesLocal, ManagerBarStyles } from '../style';
@@ -14,8 +14,9 @@ import {
   starIconChecked,
   starIcon,
 } from '../../front/src/assets';
-import { useApiMutation, useGlobalApiState } from '../../front/src/Model';
+import { useApiMutation } from '../../front/src/Model';
 import { RootState } from '../store';
+import { ModalController } from '../../front/src/View/components';
 
 const managerBarStyles: ManagerBarStyles = {
   container: ManagerBarStyled.container,
@@ -30,33 +31,31 @@ const managerBarStyles: ManagerBarStyles = {
 export const ManagerBar = ({
   id,
   styles,
+  isMoreActive = false,
+  setMoreActive,
 }: {
   id: number;
   styles: ManagerBarStyles;
+  isMoreActive: boolean;
+  setMoreActive: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  const dispatch = useDispatch();
+  const [isModalState, setModalState] = useState<string>('view');
 
-  const { isLoading, isSuccess } = useGlobalApiState({
-    id: id,
-    method: 'DELETE',
-  });
+  const [isModalOpen, setModalOpen] = useState<boolean>(false);
 
-  useEffect(() => {
-    if (isSuccess) {
-      console.log('🟢 삭제 성공:', isSuccess);
-    }
-    if (isLoading) {
-      console.log('🟢 삭제 성공:', isLoading);
-    }
-  }, [isLoading, isSuccess]);
+  const openModal = () => setModalOpen(true);
+  // const closeModal = () => setModalOpen(false);
 
   if (Platform.OS === 'web') {
-    return (
+    return isMoreActive ? (
       <div id={styles.container}>
         <div
           id={styles.contents}
           onClick={() => {
-            dispatch(SetMode('shared'));
+            // dispatch(SetMode('shared'));
+            setModalState('shared');
+            setMoreActive(false);
+            // isMoreActive = false;
           }}
         >
           <div id={styles.button}>
@@ -67,8 +66,10 @@ export const ManagerBar = ({
         <div
           id={styles.contents}
           onClick={() => {
-            dispatch(SetMode('edit'));
+            // dispatch(SetMode('edit'));
+            // 임시 방안
             sessionStorage.setItem('mode', 'edit');
+            setModalState('edit');
           }}
         >
           <div id={styles.button}>
@@ -79,7 +80,8 @@ export const ManagerBar = ({
         <div
           id={styles.contents}
           onClick={() => {
-            dispatch(SetMode('duplicated'));
+            // dispatch(SetMode('duplicated'));
+            setModalState('duplicated');
           }}
         >
           <div id={styles.button}>
@@ -90,7 +92,11 @@ export const ManagerBar = ({
         <div
           id={styles.contents}
           onClick={() => {
-            dispatch(SetMode('deleted'));
+            // dispatch(SetMode('deleted'));
+            // 임시 방안
+            sessionStorage.setItem('mode', 'deleted');
+            setModalState('deleted');
+            openModal();
           }}
         >
           <div id={styles.button}>
@@ -99,8 +105,13 @@ export const ManagerBar = ({
           <span>삭제</span>
           {/* Alarm 사용 SignUpInput 참고 */}
         </div>
+        <ModalController
+          id={id}
+          state={isModalState}
+          isModalOpen={isModalOpen}
+        />
       </div>
-    );
+    ) : null;
   }
 
   return <Text style={{ color: '#fff' }}>This is None!</Text>;
@@ -128,7 +139,7 @@ const Factory = ({
     const [isMoreActive, setMoreActive] = useState<boolean>(false);
 
     const managerBarRef = useRef<HTMLDivElement>(null);
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const mode = useSelector((state: RootState) => state.setFactoryMode.mode);
     const { mutation, isLoading, isError, isSuccess, responseData } =
       useApiMutation('POST');
@@ -167,7 +178,8 @@ const Factory = ({
           !managerBarRef.current.contains(event.target as Node)
         ) {
           setMoreActive(false);
-          dispatch(ResetMode());
+          // console.log('왜 reset이지?');
+          // dispatch(ResetMode());
         }
       };
       document.addEventListener('mousedown', handleClcikOutSide);
@@ -203,7 +215,12 @@ const Factory = ({
                 event.stopPropagation();
               }}
             >
-              {isMoreActive && <ManagerBar id={id} styles={managerBarStyles} />}
+              <ManagerBar
+                id={id}
+                styles={managerBarStyles}
+                isMoreActive={isMoreActive}
+                setMoreActive={setMoreActive}
+              />
             </div>
           </div>
           <div className={styles.image}>
