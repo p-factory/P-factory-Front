@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 // import { ResetMode } from '../store/slice/factoryModeSlice';
 import { Platform, Text } from 'react-native';
@@ -17,7 +17,6 @@ import {
 import { useApiMutation } from '../../front/src/Model';
 import { RootState } from '../store';
 import { ModalController } from '../../front/src/View/components';
-import { ResetMode } from '../store/slice/factoryModeSlice';
 
 const managerBarStyles: ManagerBarStyles = {
   container: ManagerBarStyled.container,
@@ -30,14 +29,12 @@ const managerBarStyles: ManagerBarStyles = {
 };
 
 export const ManagerBar = ({
-  // id,
   styles,
   isMoreActive = false,
   setMoreActive,
   setModalState,
   openModal,
 }: {
-  // id: number;
   styles: ManagerBarStyles;
   isMoreActive: boolean;
   setMoreActive: React.Dispatch<React.SetStateAction<boolean>>;
@@ -52,10 +49,8 @@ export const ManagerBar = ({
         <div
           id={styles.contents}
           onClick={() => {
-            // dispatch(SetMode('shared'));
             setModalState('shared');
             setMoreActive(false);
-            // isMoreActive = false;
           }}
         >
           <div id={styles.button}>
@@ -66,10 +61,10 @@ export const ManagerBar = ({
         <div
           id={styles.contents}
           onClick={() => {
-            // dispatch(SetMode('edit'));
             // 임시 방안
             sessionStorage.setItem('mode', 'edit');
             setModalState('edit');
+            setMoreActive(false);
           }}
         >
           <div id={styles.button}>
@@ -80,8 +75,8 @@ export const ManagerBar = ({
         <div
           id={styles.contents}
           onClick={() => {
-            // dispatch(SetMode('duplicated'));
             setModalState('duplicated');
+            setMoreActive(false);
           }}
         >
           <div id={styles.button}>
@@ -92,10 +87,9 @@ export const ManagerBar = ({
         <div
           id={styles.contents}
           onClick={() => {
-            // dispatch(SetMode('deleted'));
             // 임시 방안
-            // sessionStorage.setItem('mode', 'deleted');
             setModalState('deleted');
+            setMoreActive(false);
             openModal();
           }}
         >
@@ -103,13 +97,7 @@ export const ManagerBar = ({
             <img src={deleteBarIcon} alt='deleteIcon' />
           </div>
           <span>삭제</span>
-          {/* Alarm 사용 SignUpInput 참고 */}
         </div>
-        {/* <ModalController
-          id={id}
-          state={isModalState}
-          isModalOpen={isModalOpen}
-        /> */}
       </div>
     ) : null;
   }
@@ -139,7 +127,7 @@ const Factory = ({
     const [isMoreActive, setMoreActive] = useState<boolean>(false);
 
     const managerBarRef = useRef<HTMLDivElement>(null);
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const mode = useSelector((state: RootState) => state.setFactoryMode.mode);
     const { mutation, isLoading, isError, isSuccess, responseData } =
       useApiMutation('POST');
@@ -170,10 +158,11 @@ const Factory = ({
 
     const [isModalOpen, setModalOpen] = useState<boolean>(false);
 
-    const openModal = () => setModalOpen(true);
+    const openModal = () => {
+      setModalOpen(true);
+    };
 
     useEffect(() => {
-      // console.log(handlelocal());
       if (isMoreActive) {
         sessionStorage.setItem('title', name);
         sessionStorage.setItem('fId', id.toString());
@@ -185,7 +174,7 @@ const Factory = ({
         ) {
           setMoreActive(false);
           // console.log('왜 reset이지?');
-          dispatch(ResetMode());
+          // dispatch(ResetMode());
           console.log('check mode', mode);
           console.log(`moreactive ${isMoreActive}`);
         }
