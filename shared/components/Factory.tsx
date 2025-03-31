@@ -162,6 +162,10 @@ const Factory = ({
       setModalOpen(true);
     };
 
+    const closeModal = () => {
+      setModalOpen(false);
+    };
+
     useEffect(() => {
       if (isMoreActive) {
         sessionStorage.setItem('title', name);
@@ -245,6 +249,8 @@ const Factory = ({
           id={id}
           state={isModalState}
           isModalOpen={isModalOpen}
+          isModalClose={closeModal}
+          title={name}
         />
       </div>
     );

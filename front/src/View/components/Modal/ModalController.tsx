@@ -9,10 +9,14 @@ const ModalController = ({
   id,
   state,
   isModalOpen,
+  isModalClose,
+  title,
 }: {
   id: number;
   state: string;
   isModalOpen: boolean;
+  isModalClose: () => void;
+  title: string;
 }) => {
   const dispatch = useDispatch();
   const [isMethod, setMethod] = useState<'POST' | 'PUT' | 'DELETE'>();
@@ -50,14 +54,15 @@ const ModalController = ({
       // onRequestClose={reDirAction}
       preventScroll
     >
-      <div>
+      <div style={{ width: '350px', height: '200px' }}>
         <Alarm
           id={id}
           styles={AlarmTypeStyles}
-          title='test'
-          alarm={`test`}
-          image=''
+          title={title}
+          alarm={`공장을 삭제하시겠습니까?`}
+          // image=''
           method={isMethod}
+          isModalCloase={isModalClose}
         />
       </div>
     </Modal>

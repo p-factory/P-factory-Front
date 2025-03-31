@@ -1,15 +1,16 @@
 import { Platform, Text } from 'react-native';
 import { SirenStylesLocal } from '../style';
+import { cancelIcon } from '../../front/src/assets';
 
 const Siren = ({
   styles,
-  image,
+  image = cancelIcon,
   title,
   alarm,
   reDirAction,
 }: {
   styles: SirenStylesLocal;
-  image: string;
+  image?: string;
   title: string;
   alarm: string;
   onClose?: () => void;

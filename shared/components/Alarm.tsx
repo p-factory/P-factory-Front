@@ -7,22 +7,25 @@ import { RootState } from '../store';
 import Siren from './Siren';
 import Modal from 'react-modal';
 import { SirenTypeStyles } from '../../front/src/Model/Mapping';
+import { cancelIcon } from '../../front/src/assets';
 
 const Alarm = ({
   id,
   styles,
   title,
   alarm,
-  image,
+  image = cancelIcon,
   method,
+  isModalCloase,
 }: {
   id?: number;
   styles: AlarmStylesLocal;
   title: string;
   alarm: string;
-  image: string;
+  image?: string;
   link?: boolean;
   method?: 'POST' | 'PUT' | 'DELETE';
+  isModalCloase?: () => void;
 }) => {
   // const [isToggle, setToggle] = useState<boolean>(false);
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
@@ -49,7 +52,7 @@ const Alarm = ({
   if (Platform.OS === 'web') {
     return (
       <div id={styles.container}>
-        <div id={styles.image}>
+        <div id={styles.image} onClick={isModalCloase}>
           <img src={image} alt='X' />
         </div>
         <div className={styles.contents}>
@@ -57,7 +60,9 @@ const Alarm = ({
           <div>{alarm}</div>
         </div>
         <div className={styles.buttonContents}>
-          <div id={styles.buttonCancel}>아니요</div>
+          <div id={styles.buttonCancel} onClick={isModalCloase}>
+            아니요
+          </div>
           <div
             id={styles.buttonApprove}
             onClick={() => {
@@ -72,9 +77,8 @@ const Alarm = ({
           <div style={{ width: '350px', height: '200px' }}>
             <Siren
               styles={SirenTypeStyles}
-              image='x'
-              title='test'
-              alarm='test'
+              title={title}
+              alarm='공장 삭제 완료!'
               reDirAction={() => window.location.reload()}
             />
           </div>
