@@ -62,7 +62,9 @@ const MyFactory = ({ children }: { children: ReactNode }) => {
         />
       </Modal>
 
-      <div className={styled.Factory}>{children}</div>
+      <div className={styled.Factory} style={{ paddingBottom: '80px' }}>
+        {children}
+      </div>
       <Footer styles={FooterTypeStyles} />
     </div>
   );
