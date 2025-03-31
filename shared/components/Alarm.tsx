@@ -4,6 +4,9 @@ import { useEffect, useState } from 'react';
 import { useGlobalApiState } from '../../front/src/Model';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store';
+import Siren from './Siren';
+import Modal from 'react-modal';
+import { SirenTypeStyles } from '../../front/src/Model/Mapping';
 
 const Alarm = ({
   id,
@@ -11,7 +14,7 @@ const Alarm = ({
   title,
   alarm,
   image,
-  link = false,
+  method,
 }: {
   id?: number;
   styles: AlarmStylesLocal;
@@ -19,28 +22,29 @@ const Alarm = ({
   alarm: string;
   image: string;
   link?: boolean;
+  method?: 'POST' | 'PUT' | 'DELETE';
 }) => {
-  const [isToggle, setToggle] = useState<boolean>(false);
+  // const [isToggle, setToggle] = useState<boolean>(false);
+  const [isModalOpen, setModalOpen] = useState<boolean>(false);
+
   const mode = useSelector((state: RootState) => state.setFactoryMode.mode);
 
-  if (link) {
-    const { isLoading, isSuccess } = useGlobalApiState({
-      id: id,
-      method: 'DELETE',
-      toggle: isToggle,
-    });
-    useEffect(() => {
-      console.log('Alarm: ', mode, 'Toggle: ', isToggle);
-      if (isSuccess) {
-        console.log('🟢 삭제 성공:', isSuccess);
-        setToggle(false);
-        // 여기서 삭제 와료 모달 실행
-      }
-      if (isLoading) {
-        console.log('🟢 삭제 성공:', isLoading);
-      }
-    }, [isLoading, isSuccess, isToggle]);
-  }
+  const { isLoading, isSuccess, active } = useGlobalApiState({
+    id: id,
+    method: 'DELETE',
+  });
+
+  useEffect(() => {
+    console.log('Alarm: ', mode);
+    if (isSuccess) {
+      console.log('🟢 삭제 성공:', isSuccess);
+      setModalOpen(true);
+    }
+    if (isLoading) {
+      console.log('🟢 삭제 성공:', isLoading);
+    }
+  }, [isLoading, isSuccess]);
+  // }
 
   if (Platform.OS === 'web') {
     return (
@@ -57,12 +61,24 @@ const Alarm = ({
           <div
             id={styles.buttonApprove}
             onClick={() => {
-              setToggle(true);
+              //여기에 매개변수로 전달
+              if (method) active('deleted');
             }}
           >
             예
           </div>
         </div>
+        <Modal isOpen={isModalOpen}>
+          <div style={{ width: '350px', height: '200px' }}>
+            <Siren
+              styles={SirenTypeStyles}
+              image='x'
+              title='test'
+              alarm='test'
+              reDirAction={() => window.location.reload()}
+            />
+          </div>
+        </Modal>
       </div>
     );
   }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 // import { ResetMode } from '../store/slice/factoryModeSlice';
 import { Platform, Text } from 'react-native';
@@ -17,6 +17,7 @@ import {
 import { useApiMutation } from '../../front/src/Model';
 import { RootState } from '../store';
 import { ModalController } from '../../front/src/View/components';
+import { ResetMode } from '../store/slice/factoryModeSlice';
 
 const managerBarStyles: ManagerBarStyles = {
   container: ManagerBarStyled.container,
@@ -29,21 +30,20 @@ const managerBarStyles: ManagerBarStyles = {
 };
 
 export const ManagerBar = ({
-  id,
+  // id,
   styles,
   isMoreActive = false,
   setMoreActive,
+  setModalState,
+  openModal,
 }: {
-  id: number;
+  // id: number;
   styles: ManagerBarStyles;
   isMoreActive: boolean;
   setMoreActive: React.Dispatch<React.SetStateAction<boolean>>;
+  setModalState: React.Dispatch<React.SetStateAction<string>>;
+  openModal: () => void;
 }) => {
-  const [isModalState, setModalState] = useState<string>('view');
-
-  const [isModalOpen, setModalOpen] = useState<boolean>(false);
-
-  const openModal = () => setModalOpen(true);
   // const closeModal = () => setModalOpen(false);
 
   if (Platform.OS === 'web') {
@@ -94,7 +94,7 @@ export const ManagerBar = ({
           onClick={() => {
             // dispatch(SetMode('deleted'));
             // 임시 방안
-            sessionStorage.setItem('mode', 'deleted');
+            // sessionStorage.setItem('mode', 'deleted');
             setModalState('deleted');
             openModal();
           }}
@@ -105,11 +105,11 @@ export const ManagerBar = ({
           <span>삭제</span>
           {/* Alarm 사용 SignUpInput 참고 */}
         </div>
-        <ModalController
+        {/* <ModalController
           id={id}
           state={isModalState}
           isModalOpen={isModalOpen}
-        />
+        /> */}
       </div>
     ) : null;
   }
@@ -139,7 +139,7 @@ const Factory = ({
     const [isMoreActive, setMoreActive] = useState<boolean>(false);
 
     const managerBarRef = useRef<HTMLDivElement>(null);
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
     const mode = useSelector((state: RootState) => state.setFactoryMode.mode);
     const { mutation, isLoading, isError, isSuccess, responseData } =
       useApiMutation('POST');
@@ -166,6 +166,12 @@ const Factory = ({
       setMoreActive((prev) => !prev);
     };
 
+    const [isModalState, setModalState] = useState<string>('view');
+
+    const [isModalOpen, setModalOpen] = useState<boolean>(false);
+
+    const openModal = () => setModalOpen(true);
+
     useEffect(() => {
       // console.log(handlelocal());
       if (isMoreActive) {
@@ -179,7 +185,9 @@ const Factory = ({
         ) {
           setMoreActive(false);
           // console.log('왜 reset이지?');
-          // dispatch(ResetMode());
+          dispatch(ResetMode());
+          console.log('check mode', mode);
+          console.log(`moreactive ${isMoreActive}`);
         }
       };
       document.addEventListener('mousedown', handleClcikOutSide);
@@ -216,10 +224,12 @@ const Factory = ({
               }}
             >
               <ManagerBar
-                id={id}
+                // id={id}
                 styles={managerBarStyles}
                 isMoreActive={isMoreActive}
                 setMoreActive={setMoreActive}
+                setModalState={setModalState}
+                openModal={openModal}
               />
             </div>
           </div>
@@ -242,6 +252,11 @@ const Factory = ({
             </div>
           </div>
         </div>
+        <ModalController
+          id={id}
+          state={isModalState}
+          isModalOpen={isModalOpen}
+        />
       </div>
     );
   }

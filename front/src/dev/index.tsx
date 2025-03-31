@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useApiMutation, useApiQuery } from '@model';
 import { BaseLayout } from '@/View/components';
-import { Factory } from '@shared/components';
-import { FactoryTypeStyles } from '@/Model/Mapping';
+import { Alarm, Factory } from '@shared/components';
+import { AlarmTypeStyles, FactoryTypeStyles } from '@/Model/Mapping';
 const Test = () => {
   const { mutation, isLoading, isError, isSuccess, responseData } =
     useApiMutation('POST', 'https://13.209.113.229.nip.io/api/login', {
@@ -79,6 +79,7 @@ const Test = () => {
         uri={1}
         handlelocal={() => console.log('test')}
       />
+      <Alarm styles={AlarmTypeStyles} title='test' alarm='test' image='x' />
     </BaseLayout>
   );
 };

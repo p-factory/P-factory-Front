@@ -1,5 +1,5 @@
 import { SetMode } from '@shared/store/slice/factoryModeSlice';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Modal from 'react-modal';
 import { Alarm } from '@shared/components';
@@ -15,13 +15,16 @@ const ModalController = ({
   isModalOpen: boolean;
 }) => {
   const dispatch = useDispatch();
+  const [isMethod, setMethod] = useState<'POST' | 'PUT' | 'DELETE'>();
   useEffect(() => {
+    // console.log('현재 ')
     if (state) {
       if (!state) return;
       switch (state) {
         case 'deleted':
           console.log('훅으로 전달된 상태:', state);
           dispatch(SetMode('deleted'));
+          setMethod('DELETE');
           break;
         case 'edit':
           console.log(state, '*edit api running in the BuildFactory');
@@ -54,7 +57,7 @@ const ModalController = ({
           title='test'
           alarm={`test`}
           image=''
-          link={true}
+          method={isMethod}
         />
       </div>
     </Modal>

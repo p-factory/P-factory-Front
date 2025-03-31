@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect } from 'react';
 import useApiMutation from './useApiMutation';
 import { RootState } from '@shared/store';
 import { useSelector } from 'react-redux';
@@ -16,84 +16,81 @@ const useGlobalApiState = ({
   toggle?: boolean;
 }) => {
   const { mutation, isLoading, isSuccess } = useApiMutation(method);
-  const mode = useSelector((state: RootState) => state.setFactoryMode.mode);
+  // 의존성 제거
+  // const mode = useSelector((state: RootState) => state.setFactoryMode.mode);
   const toolMode = useSelector((state: RootState) => state.setToolMode.tool);
 
-  useEffect(() => {
-    // foactory mode
-    if (!mode && !toggle) return;
-    if (mode) {
-      console.log('mode: ', mode, 'toggle: ', toggle);
-      switch (mode) {
-        case 'deleted':
-          // console.log(`${mode}: ${id}`);
+  const active = useCallback(
+    (mode: 'deleted' | 'edit' | 'shared' | 'duplicated') => {
+      // foactory mode
+      if (!mode && !toggle) return;
+      if (mode) {
+        console.log('mode: ', mode, 'toggle: ', toggle);
+        switch (mode) {
+          case 'deleted':
+            // console.log(`${mode}: ${id}`);
+            if (id !== undefined) {
+              console.log('check');
+              mutation.mutate({
+                mutateUrl: `https://13.209.113.229.nip.io/api/wordbook/delete/${id}`,
+              });
+            }
+            break;
+          case 'edit':
+            console.log(`${mode}: ${id}`);
+            break;
+          case 'shared':
+            console.log(`${mode}: ${id}`);
+            break;
+          case 'duplicated':
+            console.log(`${mode}: ${id}`);
+            break;
+          default:
+            // console.log('default: ', mode);
+            break;
+        }
+      }
+      // tool mode
+      if (!toolMode || toolMode.length === 0) return;
+      switch (toolMode[0]) {
+        case 'highlight':
+          // console.log(`${toolMode}: ${id}`);
           if (id !== undefined) {
-            console.log('chekc');
             mutation.mutate(
               {
-                mutateUrl: `https://13.209.113.229.nip.io/api/wordbook/delete/${id}`,
+                mutateUrl: `https://13.209.113.229.nip.io/api/word/highlight/${id}`,
               },
               {
                 onSuccess: () => {
-                  window.location.reload();
+                  console.log(`✅ Screw ${id} 삭제 성공`);
                 },
               },
             );
           }
           break;
-        case 'edit':
-          console.log(`${mode}: ${id}`);
+        case 'deleted':
+          console.log(`${toolMode}: ${id}`);
+          if (id !== undefined) {
+            mutation.mutate(
+              {
+                mutateUrl: `https://13.209.113.229.nip.io/api/word/delete/${id}`,
+              },
+              {
+                onSuccess: () => {
+                  console.log(`✅ Screw ${id} 삭제 성공`);
+                },
+              },
+            );
+          }
           break;
-        case 'shared':
-          console.log(`${mode}: ${id}`);
-          break;
-        case 'duplicated':
-          console.log(`${mode}: ${id}`);
-          break;
+
         default:
-          // console.log('default: ', mode);
+          // console.log('default: ', toolMode);
           break;
       }
-    }
-    // tool mode
-    if (!toolMode || toolMode.length === 0) return;
-    switch (toolMode[0]) {
-      case 'highlight':
-        // console.log(`${toolMode}: ${id}`);
-        if (id !== undefined) {
-          mutation.mutate(
-            {
-              mutateUrl: `https://13.209.113.229.nip.io/api/word/highlight/${id}`,
-            },
-            {
-              onSuccess: () => {
-                console.log(`✅ Screw ${id} 삭제 성공`);
-              },
-            },
-          );
-        }
-        break;
-      case 'deleted':
-        console.log(`${toolMode}: ${id}`);
-        if (id !== undefined) {
-          mutation.mutate(
-            {
-              mutateUrl: `https://13.209.113.229.nip.io/api/word/delete/${id}`,
-            },
-            {
-              onSuccess: () => {
-                console.log(`✅ Screw ${id} 삭제 성공`);
-              },
-            },
-          );
-        }
-        break;
-
-      default:
-        // console.log('default: ', toolMode);
-        break;
-    }
-  }, [toggle, toolMode, mode, id]);
+    },
+    [toggle, toolMode, id],
+  );
 
   useEffect(() => {
     if (isSuccess) {
@@ -104,7 +101,7 @@ const useGlobalApiState = ({
     }
   }, [isSuccess]);
 
-  return { isSuccess, isLoading };
+  return { isSuccess, isLoading, active };
 };
 
 export default useGlobalApiState;
