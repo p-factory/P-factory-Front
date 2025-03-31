@@ -1,0 +1,105 @@
+@use '../../../helpers' as fn;
+#container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    #background{
+        // background-color: rgb(255, 99, 71);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        z-index: -1;
+        object-fit: cover;
+        height: 100vh;
+        width: 100vw;
+    }
+    #contents{
+        width: 100%;
+        #logo{
+            margin-bottom: fn.px-to-percent(88, 512);
+        }
+        form{
+            #inputContainer{
+                display: flex;
+                flex-direction: column;
+                :first-child{
+                    margin-bottom: fn.px-to-percent(36, 512);
+                }
+                .inputContents{
+                    display: flex;
+                    flex-direction: column;
+                    position: relative;
+                        .input{
+                        display: flex;
+                        align-items: center;
+                        background-color: var(--gray1-color);
+                        border-radius: var(--corner-radius-regular);
+                        border: 1px solid var(--gray1-color);
+                        padding: 16px 24px;
+                        margin: 0;
+                            input{
+                                width: 100%;
+                                font-size: var(--font-size-small);
+                                color: var(--gray4-color);
+                                font-weight: var(--font-weight-medium);
+                                background: none;
+                                margin: 0;
+                                height: 24px;
+                                &::placeholder{
+                                    color: var(--gray3-color);
+                                    font-size: var(--font-size-small);
+                                    font-weight: var(--font-weight-light);
+                                }
+                            }
+                        }
+                        .inputError{
+                            display: flex;
+                            align-items: center;
+                            background-color: var(--gray1-color);
+                            border-radius: var(--corner-radius-regular);
+                            border: 1px solid var(--negative-error-cancel);
+                            padding: 16px 24px;
+                            margin: 0;
+                            input{
+                                width: 100%;
+                                font-size: var(--font-size-small);
+                                color: var(--gray4-color);
+                                font-weight: var(--font-weight-medium);
+                                background: none;
+                                margin: 0;
+                                height: 24px;
+                                &::placeholder{
+                                    color: var(--gray3-color);
+                                    font-size: var(--font-size-small);
+                                    font-weight: var(--font-weight-light);
+                                }
+                            }
+                        }
+                        #eyeIcon{
+                            margin: 0px;
+                            cursor: pointer;
+                            color: var(--gray5-color)
+                        }
+                        p{
+                            display: flex;
+                            position: absolute;
+                            text-align: end;
+                            bottom: -20px;
+                            right: 0;
+                            color: var(--negative-error-cancel);
+                            font-size: var(--font-size-xxsmall);
+                            font-weight: var(--font-weight-medium);
+                        }
+                }
+            }
+            button{
+                margin-top: fn.px-to-percent(104, 512);
+                width: 100%;
+            }
+        }
+    }
+}

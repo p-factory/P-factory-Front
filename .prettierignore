@@ -1,0 +1,14 @@
+# 무시할 파일 및 디렉토리
+pnpm-workspace.yaml
+pnpm-lock.yaml
+node_modules
+dist
+.git
+
+# 환경 설정 파일
+.eslintrc
+.prettierrc
+.npmrc
+
+# 특정 파일
+check-pnpm.js

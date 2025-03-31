@@ -1,0 +1,45 @@
+#container{
+  background-color: var(--white-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-width: 366px;
+  max-width: 430px;
+  // width: calc(100% + 80px); /* 루트 padding 고려한 너비 */
+  margin: 0 -40px; /* 루트 padding 무효화 하기 위한 margin */
+  padding: 16px 49px;
+  font-size: var(--font-size-xxsmall);
+  // 아래는 새롭게 추가한 부분입니다. -확인
+  position: fixed;
+  bottom: 0px;
+  border-top: 1px solid var(--gray2-color); /*border-top 추가*/
+
+  .contents {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+    
+    .image {
+      display: flex;
+      justify-content: center;  
+    }
+
+    .title{
+      // font-size: var(--font-size-xxsmall);
+    }
+  }
+  // .contents{
+    
+  // }
+  .contents:hover{
+    font-weight: var(--font-weight-bold);
+  }
+}
+// // (원인2)
+// @media (max-width: 380px) { //iphone 375px에서 반응하게 할지
+//   #footer {
+//     margin: 0;
+//   }
+// }

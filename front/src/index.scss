@@ -1,0 +1,158 @@
+@use './helpers' as fn;
+@use './variable' as var;
+/* 전역 변수 선언 */
+
+// $font-size-large: fn.px-to-rem(30, var.$standard-font-size);
+
+@font-face {
+  font-family: 'Jejudoldam';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-EF@1.0/EF_jejudoldam.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --standard-font-size : 16px;
+  // 색상
+  --primary-color: #97EB0D;
+  --black-color : #1B1B1B;
+  --black-shadow1-color : #00000033;
+  --black-shadow2-color : #00000024;
+  --gray5-color : #3D3D3D;
+  --gray4-color : #636363;
+  --gray3-color : #A1A1A1;
+  --gray2-color : #D6D6D6;
+  --gray1-color : #F1F1F1;
+  --white-color : #FFFFFF;
+  --negative-error-cancel : #FC5959;
+  --positive-success : #61C987;
+
+  // 그림자 blur
+  --effects-style-shadow1 : 16px;
+  --effects-style-shadow2 : 10px;
+  --effects-blur-shadow1 : 0.25;
+  --effects-blur-shadow2 : 14;
+  // 폰트 스타일
+  --font-logo: 'Jejudoldam','Pretendard', sans-serif; /* 폰트 설정 */
+  --font-weight-bold: 700; /* Bold */
+  --font-weight-semibold: 600; /* Semibold */
+  --font-weight-medium: 500; /* Medium */
+  --font-weight-light: 300; /* Light */
+  --letter-spacing: -0.04em; /* letter-spacing */
+
+  // 폰트 사이즈
+  --font-size-large: #{var.$font-size-large};
+  --font-size-medium: #{var.$font-size-medium};
+  --font-size-regular: #{var.$font-size-regular};
+  --font-size-small: #{var.$font-size-small};
+  --font-size-xsmall: #{var.$font-size-xsmall};
+  --font-size-xxsmall: #{var.$font-size-xxsmall};
+
+  // corner-radius
+  --corner-radius-large: #{var.$corner-radius-large};
+  --corner-radius-medium: #{var.$corner-radius-medium};
+  --corner-radius-regular: #{var.$corner-radius-regular};
+  --corner-radius-small: #{var.$corner-radius-small};
+}
+
+// 기본 리셋
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// 태그 기본 리셋
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+input {
+  outline: none;
+  border: none;
+  background: none;
+}
+
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background: none;
+}
+
+textarea {
+  resize: none;
+  outline: none;
+  border: none;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+// 전체 레이아웃 기본 스타일
+body {
+  font-family: var(--font-family), var(--font-logo);
+  line-height: 1.5;
+  letter-spacing: var(--letter-spacing);
+  // color: #333;
+  background-color: #f9f9f9;
+  width: 100%;
+  // height: 100vh;
+  // max-height: 932px;
+  max-width: 430px;
+  min-width: 366px;
+  margin: 0 auto;
+  padding: 0 40px; //padding을 통해서 여백을 만들어낼 수 있다.
+  min-height: 100vh;
+}
+
+// modal scss
+.ReactModal__Overlay {
+  width: 100%;
+  display: flex; /* 🔥 부모 요소에서 flex 적용 */
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5) !important; /* 반투명 배경 */
+}
+
+.ReactModal__Content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  max-width: 430px;
+  min-height: 200px;
+  border: none !important;
+  background: none !important;
+  margin: 0 auto;
+}
+
+
+// 웹에서 최소 일때 꽉찬 화면으로 수정(원인1)
+// @media (max-width: 380px) { //iphone 375px에서 반응하게 할지
+//   body {
+//     padding: 0; /* 특정 구간에서 padding 제거 */
+//     // max-width: 500px;
+//   }
+// }
+
+

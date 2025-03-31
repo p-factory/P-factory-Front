@@ -1,0 +1,84 @@
+@use '../../helpers' as fn;
+
+#container{
+  display: flex;
+  background-color: var(--gray1-color);
+  border-radius: var(--corner-radius-medium);
+  flex-direction: column;
+  width: 350px;
+  padding: 8px 12px 16px 16px;
+  margin-bottom: 24px;
+  #titleBar{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 8px;
+      #title{
+        font-size: var(--font-size-regular);
+        font-weight: var(--font-weight-bold);
+        color: var(--black-color);
+      }
+      #image{
+        cursor: pointer;
+        position: absolute;
+        right: 0;
+      }
+  }
+  #contents{
+    #input{
+      background-color: var(--white-color);
+      padding: 16px;
+      $px-to-width : fn.px-to-percent(318, 322);
+      width: $px-to-width;
+      border: 1px solid var(--gray2-color);
+      border-radius: var(--corner-radius-regular);
+      font-size: var(--font-size-small);
+      font-weight: var(--font-weight-semibold);
+      color: var(--gray5-color);
+      margin-bottom: 4px;
+      &::placeholder{
+        color: var(--gray2-color);
+        font-size: var(--font-size-small);
+        font-weight: var(--font-weight-medium);
+      }
+    }
+    #charCounter{
+      display: flex;
+      justify-content: space-between;
+      font-size: var(--font-size-xxsmall);
+      font-weight: var(--font-weight-medium);
+      color: var(--gray4-color);
+      $px-to-margin : fn.px-to-percent(3, 322);
+      margin-right: $px-to-margin;
+      #error{
+        color: red;
+        font-size: 12px;
+        margin-left: 3px;
+      }
+    }
+  }
+}
+.button, .submit{
+  width: 100%;
+  background-color: var(--gray2-color);
+  border-radius: var(--corner-radius-large);
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  margin-top: 24px;
+  cursor: pointer;
+  color: var(--gray4-color);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-medium);
+}
+
+.submit{
+  color: var(--black-color);
+  background-color: var(--primary-color);
+}
+
+@media(max-width: 380px){
+  #container{
+    width: 270px;
+  }
+}

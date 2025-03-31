@@ -1,0 +1,45 @@
+@use '../../../helpers' as fn;
+  
+  #container{
+    display: flex;
+    width: 88px;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 10px 1px 10px; //22px
+    font-size: var(--font-size-xsmall);
+    white-space: nowrap; /* 줄바꿈 방지 */
+    color: var(--gray4-color);
+    background-color: var(--white-color);
+    border: 1px solid var(--gray2-color);
+    border-radius: var(--corner-radius-small);
+    position: relative;
+    font-weight: var(--font-weight-semibold);
+    white-space: nowrap; /* 줄바꿈 방지 */
+    cursor: pointer;
+    #contents{
+      // background-color: tomato;
+      display: flex;
+      width: 100%;
+      // justify-content: space-between;
+      justify-content: flex-end;
+
+      #title{
+        // background-color: aqua;
+        color: var(--gray5-color);
+        display: flex;
+        line-height: 150%;
+        margin-right: 4px;
+      }
+      #image{
+        padding: 0 0 0 4px;
+      }
+    }
+    #sortOption{
+      position: absolute;
+      top: 100%; /* 버튼 바로 아래에 위치 */
+      left: 50%;
+      transform: translateX(-50%); /* 가로 중앙 정렬 */
+      z-index: 10; /* 다른 요소 위에 배치 */
+      width: max-content;
+    }   
+  }

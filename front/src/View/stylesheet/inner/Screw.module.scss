@@ -1,0 +1,89 @@
+#container{
+  background-color: var(--gray1-color);
+  border-radius: var(--corner-radius-regular);
+  padding: 11px 24px 10px 24px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  &.checked{
+    border: 2px solid var(--primary-color);
+  }
+  &.unchecked{
+    border: 2px solid var(--gray1-color); /* 선택될때 화면 움직임 방지용 */
+  }
+  #contents{
+    display: flex;
+    flex-direction: column;
+    #screwSound{
+      color: var(--gray4-color);
+      font-size: var(--font-size-xxsmall);
+      font-weight: var(--font-weight-medium);
+    }
+    #bolt{
+      height: 36px;
+      color: var(--black-color);
+      font-size: var(--font-size-medium);
+      font-weight: var(--font-weight-bold);
+      margin-bottom: 2px;
+      .checked{
+        background-color: var(--primary-color);
+      }
+    }
+    #nuts{
+      margin-bottom: 4px;
+      display: flex;
+      height: 21px;
+      .nut{
+        justify-content: center;
+        color: var(--gray5-color);
+        // background-color: white;
+        font-size: var(--font-size-xsmall);
+        font-weight: var(--font-weight-medium);
+        border-radius: var(--corner-radius-medium);
+        border: 1px solid var(--gray2-color);
+        padding: 0 8px;
+        margin-right: 4px;
+        &.checked{
+          color: var(--black-color);
+          background-color: var(--primary-color);
+          border: 1px solid var(--primary-color);
+        }
+      }
+      .nut:last-child{
+        margin-right: 0;
+      }
+    }
+    #screwShape{
+      color: var(--gray4-color);
+      font-size: var(--font-size-xxsmall);
+      font-weight: var(--font-weight-medium);
+    }
+  }
+  #buttonContents{
+    display: flex;
+    align-items: center;
+    #button{
+      width: 24px;
+      height: 24px;
+      border-radius: var(--corner-radius-small);
+      background-color: var(--white-color);
+      cursor: pointer;
+      appearance: none; /* 기본 체크 모양 제거 */
+      -webkit-appearance: none; /* Safari 지원 */
+      /* 클릭되었을 때 색상 변경 */
+      &:active,
+      &:focus {
+        outline: none;
+        background-color: var(--primary-color);
+      }
+  
+      /* 클릭된 상태를 유지하기 위한 스타일 */
+      &.checked {
+        background-color: var(--primary-color);
+      }
+      &.unchecked {
+        background-color: var(--white-color);
+      }
+    }
+  }
+}
