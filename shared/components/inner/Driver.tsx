@@ -121,7 +121,7 @@ const Driver = ({
       if (isSuccess) {
         if (responseData !== undefined) {
           console.log('Response:', responseData);
-          // window.location.reload();
+          window.location.reload();
         }
       }
       if (isLoading) {
