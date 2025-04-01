@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Login as styles } from '../../View/stylesheet';
+import { Login as styles } from '@view/stylesheet';
 import Button from '@shared/components/Button';
 import PtoryLogo from '@shared/components/PtoryLogo';
-import { ButtonTypeStyles, PtoryLogoTypeStyles } from '../../Model/Mapping';
+import { ButtonTypeStyles, PtoryLogoTypeStyles } from '@mapping';
 import {
   spannerIcon,
   spannerIconGray,
@@ -10,13 +10,13 @@ import {
   closeEyeIcon,
   backgroundMax,
   backgroundSmall,
-} from '../../assets';
+} from '@assets';
 import { useForm } from 'react-hook-form';
-import { useApiMutation, useDynamicDisplay } from '../../Model';
+import { useApiMutation, useDynamicDisplay } from '@model';
 import { useNavigate } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { LoginSchema } from '../../Model/Dto';
+import { LoginSchema } from '@dto';
 
 // interface FormData {
 //   loginId: string;

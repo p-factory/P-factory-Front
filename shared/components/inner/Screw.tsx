@@ -3,7 +3,7 @@ import { ScrewStylesLocal } from '../../style';
 import { useEffect, useState } from 'react';
 import { RootState } from '../../store';
 import { useSelector } from 'react-redux';
-import { useApiMutation } from '../../../front/src/Model';
+import { useApiMutation, useGlobalApiState } from '../../../front/src/Model';
 
 const Screw = ({
   id,
@@ -36,6 +36,14 @@ const Screw = ({
   );
 
   const { mutation: highlightMutation } = useApiMutation('POST');
+  // const { active: highlightActive } = useGlobalApiState({
+  //   id,
+  //   method: 'POST',
+  // });
+  const { active: deleteActive } = useGlobalApiState({
+    id,
+    method: 'DELETE',
+  });
 
   const [isChecked, setChecked] = useState<boolean>(check);
   const [isSelected, setSelected] = useState<boolean>(false);
@@ -61,8 +69,10 @@ const Screw = ({
 
     const onScrewSelected = () => {
       if (mode.includes('deleted')) {
+        deleteActive('deleted');
         setSelected(!isSelected);
         if (onDeleteTrigger) {
+          console.log('click');
           onDeleteTrigger(id);
           setHidden(!isHidden);
         }
@@ -82,6 +92,7 @@ const Screw = ({
           },
         },
       );
+      // highlightActive('highlight');
     };
 
     // const temp = true;

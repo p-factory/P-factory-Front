@@ -119,8 +119,10 @@ const Driver = ({
     useEffect(() => {
       // setState(false);
       if (isSuccess) {
-        console.log('Response:', responseData);
-        window.location.reload();
+        if (responseData !== undefined) {
+          console.log('Response:', responseData);
+          window.location.reload();
+        }
       }
       if (isLoading) {
         console.log('Response:', responseData);
@@ -131,70 +133,77 @@ const Driver = ({
     }, [isSuccess, isLoading, isError, responseData]);
 
     return (
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input type='hidden' {...register('id')} />
-        <div id={styles.container}>
-          <div id={styles.title}>
-            <div>단어생성</div>
-            <div id={styles.image}>
-              <img src={cancelIcon} alt='X' height={'24px'} onClick={onClose} />
-            </div>
-          </div>
-          <div id={styles.contents}>
-            <div className={styles.inputContents}>
-              <span>단어/문장</span>
-              <input
-                placeholder='단어/문장을 입력하세요.(필수)'
-                type='text'
-                {...register('word', { required: '단어/문장은 필수입니다.' })}
-              />
-            </div>
-            <div className={styles.inputContents}>
-              <span>의미</span>
-              {/* <InputElement
-                styles={styles.createInput}
-                register={register}
-                point={'check'}
-              /> */}
-              {meanings.map((_: string, index: number) => (
-                <InputElement
-                  key={index}
-                  styles={styles.createInput}
-                  register={register}
-                  remove={() => removeMeaning(index)}
-                  // point={''}
-                  index={index}
+      <div style={{ maxWidth: '350px', width: '100%' }}>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <input type='hidden' {...register('id')} />
+          <div id={styles.container}>
+            <div id={styles.title}>
+              <div>단어생성</div>
+              <div id={styles.image}>
+                <img
+                  src={cancelIcon}
+                  alt='X'
+                  height={'24px'}
+                  onClick={onClose}
                 />
-              ))}
-            </div>
-            <div id={styles.buttonContents} onClick={addMeaning}>
-              <div id={styles.button}>
-                <img src={addIcon} alt='' />
               </div>
             </div>
-            {/* 현재 사용되지 않는 ui */}
-            <div className={styles.inputContents}>
-              <span>발음</span>
-              <input
-                placeholder='발음을 입력하세요.'
-                type='text'
-                {...register('pronunciation')}
-              />
-            </div>
-            <div className={styles.inputContents}>
-              <span>설명</span>
-              <input
-                placeholder='설명을 입력하세요.'
-                type='text'
-                {...register('explanation')}
-              />
+            <div id={styles.contents}>
+              <div className={styles.inputContents}>
+                <span>단어/문장</span>
+                <input
+                  placeholder='단어/문장을 입력하세요.(필수)'
+                  type='text'
+                  {...register('word', { required: '단어/문장은 필수입니다.' })}
+                />
+              </div>
+              <div className={styles.inputContents}>
+                <span>의미</span>
+                {/* <InputElement
+                  styles={styles.createInput}
+                  register={register}
+                  point={'check'}
+                /> */}
+                {meanings.map((_: string, index: number) => (
+                  <InputElement
+                    key={index}
+                    styles={styles.createInput}
+                    register={register}
+                    remove={() => removeMeaning(index)}
+                    // point={''}
+                    index={index}
+                  />
+                ))}
+              </div>
+              <div id={styles.buttonContents} onClick={addMeaning}>
+                <div id={styles.button}>
+                  <img src={addIcon} alt='' />
+                </div>
+              </div>
+              {/* 현재 사용되지 않는 ui */}
+              <div className={styles.inputContents}>
+                <span>발음</span>
+                <input
+                  placeholder='발음을 입력하세요.'
+                  type='text'
+                  {...register('pronunciation')}
+                />
+              </div>
+              <div className={styles.inputContents}>
+                <span>설명</span>
+                <input
+                  placeholder='설명을 입력하세요.'
+                  type='text'
+                  {...register('explanation')}
+                />
+              </div>
             </div>
           </div>
-        </div>
-        <div className={isState ? styles.submit : styles.button}>
-          <button type='submit'>완료</button>
-        </div>
-      </form>
+          <div className={isState ? styles.submit : styles.button}>
+            <button type='submit'>완료</button>
+          </div>
+        </form>
+      </div>
     );
   }
 

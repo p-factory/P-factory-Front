@@ -73,9 +73,11 @@ const StudyFactory = () => {
       </div>
       <Tool styles={ToolTypeStyles} onOpenModal={openModal} />
       <Footer styles={FooterTypeStyles} />
-      <Modal isOpen={isModalOpen} onRequestClose={closeModal} preventScroll>
-        <Driver styles={DriverTypeStyles} onClose={closeModal} />
-      </Modal>
+      <div style={{ width: '350px', height: '220px' }}>
+        <Modal isOpen={isModalOpen} onRequestClose={closeModal} preventScroll>
+          <Driver styles={DriverTypeStyles} onClose={closeModal} />
+        </Modal>
+      </div>
     </div>
   );
 };
