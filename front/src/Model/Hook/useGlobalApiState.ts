@@ -19,9 +19,9 @@ const useGlobalApiState = ({
   // 의존성 제거
   // const mode = useSelector((state: RootState) => state.setFactoryMode.mode);
   const toolMode = useSelector((state: RootState) => state.setToolMode.tool);
-
+  //리팩토링 필요
   const active = useCallback(
-    (mode: 'deleted' | 'edit' | 'shared' | 'duplicated') => {
+    (mode?: 'deleted' | 'edit' | 'shared' | 'duplicated' | 'highlight') => {
       // foactory mode
       if (!mode && !toggle) return;
       if (mode) {
@@ -49,6 +49,8 @@ const useGlobalApiState = ({
             // console.log('default: ', mode);
             break;
         }
+      } else {
+        console.log('Not Mode');
       }
       // tool mode
       if (!toolMode || toolMode.length === 0) return;
@@ -66,6 +68,8 @@ const useGlobalApiState = ({
                 },
               },
             );
+          } else {
+            console.log('Not ToolMode');
           }
           break;
         case 'deleted':

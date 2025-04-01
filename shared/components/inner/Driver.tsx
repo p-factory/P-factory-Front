@@ -119,8 +119,10 @@ const Driver = ({
     useEffect(() => {
       // setState(false);
       if (isSuccess) {
-        console.log('Response:', responseData);
-        window.location.reload();
+        if (responseData !== undefined) {
+          console.log('Response:', responseData);
+          // window.location.reload();
+        }
       }
       if (isLoading) {
         console.log('Response:', responseData);
