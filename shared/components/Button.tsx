@@ -1,18 +1,19 @@
 import { Platform, Text } from 'react-native';
 import { Functions } from '../function';
 import { ButtonStyles } from '../style';
+import { spannerIcon } from '../../front/src/assets';
 
 const Button = ({
   styles,
   title,
-  image,
+  image = spannerIcon,
   state,
   functions,
 }: {
   styles: ButtonStyles;
   title: string;
-  image: string;
-  state: boolean;
+  image?: string;
+  state?: boolean | null;
   functions: Functions.GeneralArg;
 }) => {
   if (Platform.OS === 'web') {
@@ -24,7 +25,15 @@ const Button = ({
     };
 
     return (
-      <div id={state ? styles.button : styles.submit} onClick={handleClick}>
+      <div
+        className={state ? styles.button : styles.submit}
+        style={
+          state === null
+            ? { backgroundColor: 'black', color: 'white' }
+            : undefined
+        }
+        onClick={handleClick}
+      >
         <div id={styles.contents}>
           <span id={styles.title}>{title}</span>
           <img id={styles.image} src={image} alt='' />

@@ -6,6 +6,7 @@ import {
   SignUpInput as SignUp,
   MyFactory,
   StudyFactory,
+  Main,
 } from '@page';
 import Test from './dev';
 // import './App.scss';
@@ -13,7 +14,8 @@ import Test from './dev';
 const App = () => {
   return (
     <Routes>
-      <Route path='/' element={<Login />} />
+      <Route path='/' element={<Main />} />
+      <Route path='/login' element={<Login />} />
       {/* <Route path='/test' element={<TestFlex />} /> */}
       <Route path='/MyFactory' element={<MyFactory />} />
       <Route path='/StudyFactory/:uri' element={<StudyFactory />} />

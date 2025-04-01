@@ -48,18 +48,20 @@ const MyFactory = ({ children }: { children: ReactNode }) => {
       </div> */}
 
       <Modal isOpen={isModalOpen} onRequestClose={closeModal} preventScroll>
-        <BuildFactory
-          styles={BuildFactoryTypeStyles}
-          title={sesscctionMode === 'edit' ? '공장 이름 수정' : '새로운 공장'}
-          image={cancelIconGray}
-          input={
-            sesscctionMode === 'edit'
-              ? `${sessionStorage.getItem('title')}`
-              : '공장 제목을 입력하세요.'
-          }
-          buttonTitle={sesscctionMode === 'edit' ? '수정하기' : '공장 만들기'}
-          onClose={closeModal}
-        />
+        <div style={{ width: '350px', height: '220px' }}>
+          <BuildFactory
+            styles={BuildFactoryTypeStyles}
+            title={sesscctionMode === 'edit' ? '공장 이름 수정' : '새로운 공장'}
+            image={cancelIconGray}
+            input={
+              sesscctionMode === 'edit'
+                ? `${sessionStorage.getItem('title')}`
+                : '공장 제목을 입력하세요.'
+            }
+            buttonTitle={sesscctionMode === 'edit' ? '수정하기' : '공장 만들기'}
+            onClose={closeModal}
+          />
+        </div>
       </Modal>
 
       <div className={styled.Factory} style={{ paddingBottom: '80px' }}>
