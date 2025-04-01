@@ -1,0 +1,23 @@
+.debug, .contents{
+    display: flex;
+    flex-direction: column;
+}
+.debug{
+    justify-content: center;
+    height: 100vh; 
+
+    .contents{
+        justify-content: center;
+        align-items: center;
+        color: var(--gray3-color);
+        margin-top: 40px;
+        margin-bottom: 80px;
+        span{
+            color: var(--black-color);
+            font-weight: var(--font-weight-medium);
+        }
+    }
+    .button{
+        margin-bottom: 20px;
+    }
+}
