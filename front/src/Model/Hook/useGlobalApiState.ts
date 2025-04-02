@@ -53,6 +53,7 @@ const useGlobalApiState = ({
         console.log('Not Mode');
       }
       // tool mode
+      // usecallback으로 active 생성
       if (!toolMode || toolMode.length === 0) return;
       switch (toolMode[0]) {
         case 'highlight':
