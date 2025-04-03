@@ -20,7 +20,7 @@ const useGlobalApiState = ({
   // const mode = useSelector((state: RootState) => state.setFactoryMode.mode);
   const toolMode = useSelector((state: RootState) => state.setToolMode.tool);
   //리팩토링 필요
-  const active = useCallback(
+  const modeActive = useCallback(
     (mode?: 'deleted' | 'edit' | 'shared' | 'duplicated' | 'highlight') => {
       // foactory mode
       if (!mode && !toggle) return;
@@ -54,8 +54,13 @@ const useGlobalApiState = ({
       }
       // tool mode
       // usecallback으로 active 생성
-      if (!toolMode || toolMode.length === 0) return;
-      switch (toolMode[0]) {
+    },
+    [toggle, id],
+  );
+  const toolModeActive = useCallback(
+    (toolMode?: 'highlight' | 'deleted') => {
+      if (!toolMode) return;
+      switch (toolMode) {
         case 'highlight':
           // console.log(`${toolMode}: ${id}`);
           if (id !== undefined) {
@@ -65,7 +70,7 @@ const useGlobalApiState = ({
               },
               {
                 onSuccess: () => {
-                  console.log(`✅ Screw ${id} 삭제 성공`);
+                  console.log(`✅ Screw ${id} highlight 성공`);
                 },
               },
             );
@@ -94,9 +99,8 @@ const useGlobalApiState = ({
           break;
       }
     },
-    [toggle, toolMode, id],
+    [toggle, id],
   );
-
   useEffect(() => {
     if (isSuccess) {
       console.log('🟢 삭제 성공:', isSuccess);
@@ -106,7 +110,7 @@ const useGlobalApiState = ({
     }
   }, [isSuccess]);
 
-  return { isSuccess, isLoading, active };
+  return { isSuccess, isLoading, modeActive, toolModeActive };
 };
 
 export default useGlobalApiState;

@@ -32,7 +32,7 @@ const Alarm = ({
 
   const mode = useSelector((state: RootState) => state.setFactoryMode.mode);
 
-  const { isLoading, isSuccess, active } = useGlobalApiState({
+  const { isLoading, isSuccess, modeActive } = useGlobalApiState({
     id: id,
     method: 'DELETE',
   });
@@ -67,7 +67,7 @@ const Alarm = ({
             id={styles.buttonApprove}
             onClick={() => {
               //여기에 매개변수로 전달
-              if (method) active('deleted');
+              if (method) modeActive('deleted');
             }}
           >
             예

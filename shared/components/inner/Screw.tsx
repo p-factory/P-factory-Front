@@ -14,7 +14,7 @@ const Screw = ({
   screwShape,
   highlight,
   check,
-  onDeleteTrigger,
+  // onDeleteTrigger,
   isSuccessState,
 }: {
   id: number;
@@ -25,30 +25,25 @@ const Screw = ({
   screwShape: string;
   highlight: boolean;
   check: boolean;
-  onDeleteTrigger?: (deleteId: number) => void;
+  // onDeleteTrigger?: (deleteId: number) => void;
   isSuccessState?: boolean;
 }) => {
   const { mutation, isSuccess, isLoading, isError, responseData } =
     useApiMutation('POST');
+
   const mode = useSelector((state: RootState) => state.setToolMode.tool);
+  const [isMethod, setMethod] = useState<'POST' | 'PUT' | 'DELETE'>('POST');
   const [isHidden, setHidden] = useState<boolean>(
     typeof isSuccessState === 'boolean' ? isSuccessState : false,
   );
-
-  const { mutation: highlightMutation } = useApiMutation('POST');
-  // const { active: highlightActive } = useGlobalApiState({
-  //   id,
-  //   method: 'POST',
-  // });
-  const { active: deleteActive } = useGlobalApiState({
-    id,
-    method: 'DELETE',
-  });
-
   const [isChecked, setChecked] = useState<boolean>(check);
   const [isSelected, setSelected] = useState<boolean>(false);
-  // bolt와 각 nut의 highlight 상태 관리
   const [isHighlighted, setHighlighted] = useState<boolean>(highlight);
+
+  const { isSuccess: toolSuccess, toolModeActive } = useGlobalApiState({
+    id,
+    method: isMethod,
+  });
 
   useEffect(() => {
     if (isSuccess) {
@@ -60,7 +55,10 @@ const Screw = ({
     if (isError) {
       console.log('isError');
     }
-  }, [isSuccess, isLoading, isError, mode]);
+    if (toolSuccess) {
+      setHidden(!isHidden);
+    }
+  }, [isSuccess, isLoading, isError, toolSuccess, mode]);
 
   if (Platform.OS === 'web') {
     const onCheckboxChange = () => {
@@ -68,31 +66,20 @@ const Screw = ({
     };
 
     const onScrewSelected = () => {
+      setMethod('DELETE');
       if (mode.includes('deleted')) {
-        deleteActive('deleted');
+        toolModeActive('deleted');
         setSelected(!isSelected);
-        if (onDeleteTrigger) {
-          console.log('click');
-          onDeleteTrigger(id);
-          setHidden(!isHidden);
-        }
-        console.log(id);
       }
     };
 
     const onHighlight = () => {
-      setHighlighted(!isHighlighted);
-      highlightMutation.mutate(
-        {
-          mutateUrl: `https://13.209.113.229.nip.io/api/word/highlight/${id}`,
-        },
-        {
-          onSuccess: () => {
-            console.log(`✅ Screw ${id} 하이라이트 성공`);
-          },
-        },
-      );
-      // highlightActive('highlight');
+      setMethod('POST');
+      if (mode.includes('highlight')) {
+        console.log(typeof id);
+        toolModeActive('highlight');
+        setHighlighted(!isHighlighted);
+      }
     };
 
     // const temp = true;
@@ -122,8 +109,10 @@ const Screw = ({
         className={isSelected ? styles.checked : styles.unchecked}
         onClick={() => {
           if (mode.includes('deleted')) {
+            console.log('deleted');
             onScrewSelected();
           } else if (mode.includes('highlight')) {
+            console.log('highlight');
             onHighlight();
           }
         }}

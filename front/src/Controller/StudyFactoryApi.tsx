@@ -28,7 +28,7 @@ interface ApiResponse {
 }
 
 const StudyFactoryApi = ({ uri, page }: { uri: string; page: number }) => {
-  const [targetId, setTargetId] = useState<number | null>(null);
+  const [targetId] = useState<number | null>(null);
   const { isLoading, isError, data, isSuccess, refetch } =
     useApiQuery<ApiResponse>(
       `https://13.209.113.229.nip.io/api/wordbook?id=${uri}&page=${page}`,
@@ -41,9 +41,9 @@ const StudyFactoryApi = ({ uri, page }: { uri: string; page: number }) => {
     method: 'DELETE',
   });
 
-  const handleDelete = (id: number) => {
-    setTargetId(id);
-  };
+  // const handleDelete = (id: number) => {
+  //   setTargetId(id);
+  // };
 
   useEffect(() => {
     refetch();
@@ -86,7 +86,7 @@ const StudyFactoryApi = ({ uri, page }: { uri: string; page: number }) => {
               screwShape={el.explanation}
               highlight={el.highlight}
               check={el.check}
-              onDeleteTrigger={(id) => handleDelete(id)}
+              // onDeleteTrigger={(id) => handleDelete(id)}
               isSuccessState={deletedSuccess}
             />
           </div>
