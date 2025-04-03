@@ -49,6 +49,7 @@ const BuildFactory = ({
     const { mutation, isLoading, isError, isSuccess, responseData } =
       useApiMutation(sesscctionMode !== 'edit' ? 'POST' : 'PUT');
 
+    //다른 전역 상태 API 관리 방식과는 전혀 다른 특이 케이스 어떻게 관리하면 좋을지 고민이 필요하다.
     const onSubmit = (data: FormData) => {
       console.log('생성된 Factory:', data.bookName);
       mutation.mutate(
