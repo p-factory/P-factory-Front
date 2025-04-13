@@ -31,8 +31,9 @@ const toolSlice = createSlice({
         }
       }
     },
+    ResetToolMode: () => initialState,
   },
 });
 
-export const { SetMode } = toolSlice.actions;
+export const { SetMode, ResetToolMode } = toolSlice.actions;
 export default toolSlice.reducer;

@@ -61,7 +61,11 @@ const Tool = ({
             className={styles.contents}
             onMouseEnter={() => handleMouseEnter('eng')}
             onMouseLeave={() => handleMouseLeave()}
-            onClick={() => handleMode('eng')}
+            onClick={() => {
+              if (!mode.includes('highlight')) {
+                handleMode('eng');
+              }
+            }}
           >
             <div className={styles.image}>
               <img
@@ -78,7 +82,11 @@ const Tool = ({
             className={styles.contents}
             onMouseEnter={() => handleMouseEnter('kor')}
             onMouseLeave={() => handleMouseLeave()}
-            onClick={() => handleMode('kor')}
+            onClick={() => {
+              if (!mode.includes('highlight')) {
+                handleMode('kor');
+              }
+            }}
           >
             <div className={styles.image}>
               <img

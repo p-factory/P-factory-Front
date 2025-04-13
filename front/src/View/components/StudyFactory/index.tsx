@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Sort, Tool, Footer, Driver } from '@shared/components';
 import {
   SortTypeStyles,
@@ -12,6 +12,8 @@ import { starIconChecked, backIcon, downloadIcon, starIcon } from '@assets';
 import Modal from 'react-modal';
 import { StudyFactoryApi } from '@controller';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { ResetToolMode } from '@shared/store/slice/toolModeSlice';
 
 const StudyFactory = () => {
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
@@ -22,9 +24,16 @@ const StudyFactory = () => {
   const isLength = Math.ceil(Number(isTotal) / 10);
   const { uri } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const openModal = () => setModalOpen(true);
 
   const closeModal = () => setModalOpen(false);
+
+  useEffect(() => {
+    return () => {
+      dispatch(ResetToolMode());
+    };
+  }, [dispatch]);
 
   return (
     <div id={styled.debug}>

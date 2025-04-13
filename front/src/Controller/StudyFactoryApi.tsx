@@ -87,7 +87,7 @@ const StudyFactoryApi = ({ uri, page }: { uri: string; page: number }) => {
               highlight={el.highlight}
               check={el.check}
               // onDeleteTrigger={(id) => handleDelete(id)}
-              isSuccessState={deletedSuccess}
+              isDeleteState={deletedSuccess}
             />
           </div>
         ))}

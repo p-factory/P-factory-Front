@@ -15,7 +15,7 @@ const Screw = ({
   highlight,
   check,
   // onDeleteTrigger,
-  isSuccessState,
+  isDeleteState,
 }: {
   id: number;
   styles: ScrewStylesLocal;
@@ -26,7 +26,7 @@ const Screw = ({
   highlight: boolean;
   check: boolean;
   // onDeleteTrigger?: (deleteId: number) => void;
-  isSuccessState?: boolean;
+  isDeleteState?: boolean;
 }) => {
   const { mutation, isSuccess, isLoading, isError, responseData } =
     useApiMutation('POST');
@@ -34,7 +34,7 @@ const Screw = ({
   const mode = useSelector((state: RootState) => state.setToolMode.tool);
   const [isMethod, setMethod] = useState<'POST' | 'PUT' | 'DELETE'>('POST');
   const [isHidden, setHidden] = useState<boolean>(
-    typeof isSuccessState === 'boolean' ? isSuccessState : false,
+    typeof isDeleteState === 'boolean' ? isDeleteState : false,
   );
   const [isChecked, setChecked] = useState<boolean>(check);
   const [isSelected, setSelected] = useState<boolean>(false);
@@ -55,10 +55,10 @@ const Screw = ({
     if (isError) {
       console.log('isError');
     }
-    if (toolSuccess) {
+    if (toolSuccess && mode.includes('deleted') && isMethod === 'DELETE') {
       setHidden(!isHidden);
     }
-  }, [isSuccess, isLoading, isError, toolSuccess, mode]);
+  }, [isSuccess, isLoading, isError, toolSuccess, mode, isMethod]);
 
   if (Platform.OS === 'web') {
     const onCheckboxChange = () => {
@@ -76,9 +76,15 @@ const Screw = ({
     const onHighlight = () => {
       setMethod('POST');
       if (mode.includes('highlight')) {
-        console.log(typeof id);
+        console.log('하이라이트 모드 활성화 상태:', mode.includes('highlight'));
         toolModeActive('highlight');
         setHighlighted(!isHighlighted);
+      } else {
+        console.log(
+          '하이라이트 모드 비활성화 상태:',
+          mode.includes('highlight'),
+        );
+        setHighlighted(false);
       }
     };
 
@@ -121,14 +127,19 @@ const Screw = ({
           <span id={styles.screwSound}>{screwSound}</span>
           <div id={styles.bolt}>
             <span className={isHighlighted ? styles.checked : ''}>
-              {mode.includes('eng') || mode.includes('deleted') ? bolt : null}
+              {mode.includes('eng') ||
+              mode.includes('deleted') ||
+              mode.includes('highlight')
+                ? bolt
+                : null}
             </span>
           </div>
           <div id={styles.nuts}>
-            {/* nutArray를 map으로 반복 */}
             {nuts.map((nut, index) => (
               <span key={index}>
-                {mode.includes('kor') || mode.includes('deleted') ? (
+                {mode.includes('kor') ||
+                mode.includes('deleted') ||
+                mode.includes('highlight') ? (
                   <span
                     className={`${styles.nut} ${isHighlighted ? styles.checked : ''}`}
                   >
