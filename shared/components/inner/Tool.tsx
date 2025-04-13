@@ -62,7 +62,7 @@ const Tool = ({
             onMouseEnter={() => handleMouseEnter('eng')}
             onMouseLeave={() => handleMouseLeave()}
             onClick={() => {
-              if (!mode.includes('highlight')) {
+              if (!mode.includes('highlight') && !mode.includes('deleted')) {
                 handleMode('eng');
               }
             }}
@@ -70,9 +70,11 @@ const Tool = ({
             <div className={styles.image}>
               <img
                 src={
-                  hoveredMode === 'eng' || mode.includes('eng')
-                    ? englishIconHover
-                    : englishIcon
+                  mode.includes('highlight') || mode.includes('deleted')
+                    ? englishIcon
+                    : hoveredMode === 'eng' || mode.includes('eng')
+                      ? englishIconHover
+                      : englishIcon
                 }
                 alt=''
               />
@@ -83,7 +85,7 @@ const Tool = ({
             onMouseEnter={() => handleMouseEnter('kor')}
             onMouseLeave={() => handleMouseLeave()}
             onClick={() => {
-              if (!mode.includes('highlight')) {
+              if (!mode.includes('highlight') && !mode.includes('deleted')) {
                 handleMode('kor');
               }
             }}
@@ -91,9 +93,11 @@ const Tool = ({
             <div className={styles.image}>
               <img
                 src={
-                  hoveredMode === 'kor' || mode.includes('kor')
-                    ? koreanIconHover
-                    : koreanIcon
+                  mode.includes('highlight') || mode.includes('deleted')
+                    ? koreanIcon
+                    : hoveredMode === 'kor' || mode.includes('kor')
+                      ? koreanIconHover
+                      : koreanIcon
                 }
                 alt=''
               />

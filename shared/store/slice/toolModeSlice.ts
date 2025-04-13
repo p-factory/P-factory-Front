@@ -21,6 +21,13 @@ const toolSlice = createSlice({
         } else {
           state.tool = ['deleted'];
         }
+      } else if (mode === 'highlight') {
+        //Tool 컴포넌트에서 상태값을 의존하지 않고 Redux에서 의존 할수 있게 일부 수정
+        if (state.tool.includes('highlight')) {
+          state.tool = ['eng', 'kor'];
+        } else {
+          state.tool = ['highlight'];
+        }
       } else {
         if (state.tool.includes('deleted')) {
           state.tool = [mode];
