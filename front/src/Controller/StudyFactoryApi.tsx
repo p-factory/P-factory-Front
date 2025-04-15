@@ -27,7 +27,15 @@ interface ApiResponse {
   token: string | null;
 }
 
-const StudyFactoryApi = ({ uri, page }: { uri: string; page: number }) => {
+const StudyFactoryApi = ({
+  uri,
+  page,
+  onTotalUpdate,
+}: {
+  uri: string;
+  page?: number;
+  onTotalUpdate?: (total: number) => void;
+}) => {
   const [targetId] = useState<number | null>(null);
   const { isLoading, isError, data, isSuccess, refetch } =
     useApiQuery<ApiResponse>(
@@ -51,7 +59,8 @@ const StudyFactoryApi = ({ uri, page }: { uri: string; page: number }) => {
       console.log('✅Response:', data?.data.words);
       console.log('✅Response:', data?.data);
       if (data?.data.totalElements) {
-        localStorage.setItem('total', data?.data.totalElements.toString());
+        // localStorage.setItem('total', data?.data.totalElements.toString());
+        // onTotalUpdate?.(data?.data.totalElements);
       }
     }
     if (isLoading) {
@@ -60,7 +69,7 @@ const StudyFactoryApi = ({ uri, page }: { uri: string; page: number }) => {
     if (isError) {
       console.log('isError');
     }
-  }, [isSuccess, isLoading, isError]);
+  }, [isSuccess, isLoading, isError, data, onTotalUpdate, page]);
 
   return (
     <div>

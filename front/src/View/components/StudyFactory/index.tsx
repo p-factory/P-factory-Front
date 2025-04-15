@@ -17,11 +17,10 @@ import { ResetToolMode } from '@shared/store/slice/toolModeSlice';
 
 const StudyFactory = () => {
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
-  const [isTotal] = useState<string>(localStorage.getItem('total') ?? '0');
   const [isFavorite] = useState<string>(
     localStorage.getItem('favorite') ?? '0',
   );
-  const isLength = Math.ceil(Number(isTotal) / 10);
+  const [isLength] = useState<number>(1); // Redux로 코드 수정
   const { uri } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -30,10 +29,11 @@ const StudyFactory = () => {
   const closeModal = () => setModalOpen(false);
 
   useEffect(() => {
+    console.log('isLength', isLength);
     return () => {
       dispatch(ResetToolMode());
     };
-  }, [dispatch]);
+  }, [dispatch, isLength]);
 
   return (
     <div id={styled.debug}>
@@ -53,7 +53,7 @@ const StudyFactory = () => {
             />
           </div>
         </div>
-        <div id={styled.count}>단어 {isTotal}개</div>
+        <div id={styled.count}>단어 {isLength}개</div>
         <div id={styled.menu}>
           <div>
             <Sort styles={SortTypeStyles} />
@@ -64,21 +64,19 @@ const StudyFactory = () => {
         </div>
       </div>
       <div id={styled.screws} style={{ paddingBottom: '180px' }}>
-        {localStorage.getItem('total') !== '0' ? (
-          Array.from({ length: isLength }).map((_, index) => (
-            <StudyFactoryApi
-              key={index}
-              uri={typeof uri === 'string' ? uri : 'undefined'}
-              page={index}
-            />
-          ))
-        ) : (
-          <div>null</div>
-        )}
-        {/* <StudyFactoryApi
-          uri={typeof uri === 'string' ? uri : 'undefined'}
-          page={isLength}
-        /> */}
+        {/* {isLength > 0 ? ( */}
+        {Array.from({ length: isLength }).map((_, index) => (
+          <StudyFactoryApi
+            key={index}
+            uri={typeof uri === 'string' ? uri : 'undefined'}
+            page={0}
+            // onTotalUpdate={setLength}
+          />
+        ))}
+
+        {/* ) : (
+          <div>!데이터가 없습니다.</div>
+        )} */}
       </div>
       <Tool styles={ToolTypeStyles} onOpenModal={openModal} />
       <Footer styles={FooterTypeStyles} />
