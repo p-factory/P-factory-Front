@@ -1,11 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { factoryReducer, toolReducer } from './slice';
+import { factoryReducer, toolReducer, myFactoryDataReducer } from './slice';
 
 // 스토어 생성
 export const Store = configureStore({
   reducer: {
     setFactoryMode: factoryReducer,
     setToolMode: toolReducer,
+    setMyFactoryData: myFactoryDataReducer,
   },
 });
 
