@@ -32,11 +32,11 @@ interface ApiResponse {
 const StudyFactoryApi = ({
   uri,
   page,
-  // onTotalUpdate,
+  onLoadComplete,
 }: {
   uri: string;
   page?: number;
-  // onTotalUpdate?: (total: number) => void;
+  onLoadComplete?: () => void;
 }) => {
   const [targetId] = useState<number | null>(null);
   const { isLoading, isError, data, isSuccess, refetch } =
@@ -63,6 +63,7 @@ const StudyFactoryApi = ({
       if (data?.data?.totalElements) {
         dispatch(SetTotal(data.data.totalElements));
       }
+      onLoadComplete?.();
     };
     fetchData();
     if (isSuccess) {
@@ -80,7 +81,7 @@ const StudyFactoryApi = ({
     if (isError) {
       console.log('isError');
     }
-  }, [isSuccess, isLoading, isError, data, page]);
+  }, [isSuccess, isLoading, isError, data, page, refetch, dispatch]);
 
   return (
     <div>
