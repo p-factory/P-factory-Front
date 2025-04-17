@@ -2,8 +2,9 @@ import { Platform, Text } from 'react-native';
 import { ScrewStylesLocal } from '../../style';
 import { useEffect, useState } from 'react';
 import { RootState } from '../../store';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useApiMutation, useGlobalApiState } from '../../../front/src/Model';
+import { SetTotal } from '../../store/slice/myFactoryData';
 
 const Screw = ({
   id,
@@ -14,7 +15,6 @@ const Screw = ({
   screwShape,
   highlight,
   check,
-  // onDeleteTrigger,
   isDeleteState,
 }: {
   id: number;
@@ -25,7 +25,6 @@ const Screw = ({
   screwShape: string;
   highlight: boolean;
   check: boolean;
-  // onDeleteTrigger?: (deleteId: number) => void;
   isDeleteState?: boolean;
 }) => {
   const { mutation, isSuccess, isLoading, isError, responseData } =
@@ -45,6 +44,8 @@ const Screw = ({
     method: isMethod,
   });
 
+  const dispatch = useDispatch();
+  const total = useSelector((state: RootState) => state.setMyFactoryData.total);
   useEffect(() => {
     if (isSuccess) {
       console.log('✅Response:', responseData);
@@ -56,6 +57,7 @@ const Screw = ({
       console.log('isError');
     }
     if (toolSuccess && mode.includes('deleted') && isMethod === 'DELETE') {
+      dispatch(SetTotal(total - 1));
       setHidden(!isHidden);
     }
   }, [isSuccess, isLoading, isError, toolSuccess, mode, isMethod]);
@@ -87,8 +89,6 @@ const Screw = ({
         setHighlighted(false);
       }
     };
-
-    // const temp = true;
 
     const onChecked = (event: React.MouseEvent<HTMLDivElement>) => {
       event.stopPropagation();
