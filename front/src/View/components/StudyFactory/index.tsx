@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { Sort, Tool, Footer, Driver } from '@shared/components';
 import {
   SortTypeStyles,
-  // ScrewTypeStyles,
   ToolTypeStyles,
   FooterTypeStyles,
   DriverTypeStyles,
@@ -45,7 +44,7 @@ const StudyFactory = () => {
           setCurrentPage((prev) => prev.slice(0, totalPages));
         }
       }
-    }, 300); // 300ms 디바운스
+    }, 300);
 
     return () => clearTimeout(timer);
   }, [total]);

@@ -1,7 +1,7 @@
 import { Screw } from '@shared/components';
 import { useEffect, useState } from 'react';
-import { useApiQuery, useGlobalApiState } from '../Model';
-import { ScrewTypeStyles } from '../Model/Mapping';
+import { useApiQuery, useGlobalApiState } from '@model';
+import { ScrewTypeStyles } from '@mapping';
 import { useDispatch } from 'react-redux';
 import { SetTotal } from '@shared/store/slice/myFactoryData';
 
@@ -53,10 +53,6 @@ const StudyFactoryApi = ({
 
   const dispatch = useDispatch();
 
-  // const handleDelete = (id: number) => {
-  //   setTargetId(id);
-  // };
-
   useEffect(() => {
     const fetchData = async () => {
       await refetch();
@@ -70,8 +66,6 @@ const StudyFactoryApi = ({
       console.log('✅Response:', data?.data.words);
       console.log('✅Response:', data?.data);
       if (data?.data.totalElements) {
-        // localStorage.setItem('total', data?.data.totalElements.toString());
-        // onTotalUpdate?.(data?.data.totalElements);
         dispatch(SetTotal(data?.data.totalElements));
       }
     }
@@ -107,7 +101,6 @@ const StudyFactoryApi = ({
               screwShape={el.explanation}
               highlight={el.highlight}
               check={el.check}
-              // onDeleteTrigger={(id) => handleDelete(id)}
               isDeleteState={deletedSuccess}
             />
           </div>

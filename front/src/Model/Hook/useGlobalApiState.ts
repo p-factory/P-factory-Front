@@ -1,7 +1,6 @@
 import { useCallback, useEffect } from 'react';
 import useApiMutation from './useApiMutation';
-import { RootState } from '@shared/store';
-import { useSelector } from 'react-redux';
+
 /**
  * 해당 useGlabalApiState에서는 FactoryMode와 ToolMode 두가지로 나뉘어 있다.
  * 단, 두 동작 방식은 확연한 차이가 있다.
@@ -17,9 +16,7 @@ const useGlobalApiState = ({
 }) => {
   const { mutation, isLoading, isSuccess } = useApiMutation(method);
   // 의존성 제거
-  // const mode = useSelector((state: RootState) => state.setFactoryMode.mode);
-  const toolMode = useSelector((state: RootState) => state.setToolMode.tool);
-  //리팩토링 필요
+
   const modeActive = useCallback(
     (mode?: 'deleted' | 'edit' | 'shared' | 'duplicated' | 'highlight') => {
       // foactory mode
@@ -52,8 +49,6 @@ const useGlobalApiState = ({
       } else {
         console.log('Not Mode');
       }
-      // tool mode
-      // usecallback으로 active 생성
     },
     [toggle, id],
   );
