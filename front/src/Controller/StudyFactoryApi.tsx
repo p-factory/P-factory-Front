@@ -2,6 +2,8 @@ import { Screw } from '@shared/components';
 import { useEffect, useState } from 'react';
 import { useApiQuery, useGlobalApiState } from '../Model';
 import { ScrewTypeStyles } from '../Model/Mapping';
+import { useDispatch } from 'react-redux';
+import { SetTotal } from '@shared/store/slice/myFactoryData';
 
 interface GetData {
   id: number;
@@ -30,11 +32,11 @@ interface ApiResponse {
 const StudyFactoryApi = ({
   uri,
   page,
-  onTotalUpdate,
+  // onTotalUpdate,
 }: {
   uri: string;
   page?: number;
-  onTotalUpdate?: (total: number) => void;
+  // onTotalUpdate?: (total: number) => void;
 }) => {
   const [targetId] = useState<number | null>(null);
   const { isLoading, isError, data, isSuccess, refetch } =
@@ -49,18 +51,27 @@ const StudyFactoryApi = ({
     method: 'DELETE',
   });
 
+  const dispatch = useDispatch();
+
   // const handleDelete = (id: number) => {
   //   setTargetId(id);
   // };
 
   useEffect(() => {
-    refetch();
+    const fetchData = async () => {
+      await refetch();
+      if (data?.data?.totalElements) {
+        dispatch(SetTotal(data.data.totalElements));
+      }
+    };
+    fetchData();
     if (isSuccess) {
       console.log('✅Response:', data?.data.words);
       console.log('✅Response:', data?.data);
       if (data?.data.totalElements) {
         // localStorage.setItem('total', data?.data.totalElements.toString());
         // onTotalUpdate?.(data?.data.totalElements);
+        dispatch(SetTotal(data?.data.totalElements));
       }
     }
     if (isLoading) {
@@ -69,7 +80,7 @@ const StudyFactoryApi = ({
     if (isError) {
       console.log('isError');
     }
-  }, [isSuccess, isLoading, isError, data, onTotalUpdate, page]);
+  }, [isSuccess, isLoading, isError, data, page]);
 
   return (
     <div>

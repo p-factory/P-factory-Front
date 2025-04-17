@@ -12,28 +12,35 @@ import { starIconChecked, backIcon, downloadIcon, starIcon } from '@assets';
 import Modal from 'react-modal';
 import { StudyFactoryApi } from '@controller';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { ResetToolMode } from '@shared/store/slice/toolModeSlice';
+import { RootState } from '@shared/store';
 
 const StudyFactory = () => {
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
   const [isFavorite] = useState<string>(
     localStorage.getItem('favorite') ?? '0',
   );
-  const [isLength] = useState<number>(1); // Redux로 코드 수정
+  // const [isLength] = useState<number>(1); // Redux로 코드 수정
   const { uri } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const total = useSelector((state: RootState) => state.setMyFactoryData.total);
+  const [currentPage] = useState<number>(0);
+
   const openModal = () => setModalOpen(true);
 
   const closeModal = () => setModalOpen(false);
 
   useEffect(() => {
-    console.log('isLength', isLength);
+    // console.log('isLength', isLength);
+    if (total === 0) {
+      return;
+    }
     return () => {
       dispatch(ResetToolMode());
     };
-  }, [dispatch, isLength]);
+  }, [dispatch, total]);
 
   return (
     <div id={styled.debug}>
@@ -53,7 +60,7 @@ const StudyFactory = () => {
             />
           </div>
         </div>
-        <div id={styled.count}>단어 {isLength}개</div>
+        <div id={styled.count}>단어 {total}개</div>
         <div id={styled.menu}>
           <div>
             <Sort styles={SortTypeStyles} />
@@ -65,14 +72,14 @@ const StudyFactory = () => {
       </div>
       <div id={styled.screws} style={{ paddingBottom: '180px' }}>
         {/* {isLength > 0 ? ( */}
-        {Array.from({ length: isLength }).map((_, index) => (
-          <StudyFactoryApi
-            key={index}
-            uri={typeof uri === 'string' ? uri : 'undefined'}
-            page={0}
-            // onTotalUpdate={setLength}
-          />
-        ))}
+        {/* {Array.from({ length: Math.ceil(total / 10) }).map((_, index) => ( */}
+        <StudyFactoryApi
+          key={`${uri}-${currentPage}`}
+          uri={typeof uri === 'string' ? uri : 'undefined'}
+          page={currentPage}
+          // onTotalUpdate={setLength}
+        />
+        {/* ))} */}
 
         {/* ) : (
           <div>!데이터가 없습니다.</div>
