@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import { useApiQuery } from '../Model';
 import { Factory } from '@shared/components';
 import { FactoryTypeStyles } from '../Model/Mapping';
+import { useDispatch } from 'react-redux';
+import { SetTotal } from '@shared/store/slice/myFactoryData';
 
 interface GetData {
   bookName: string;
@@ -25,6 +27,8 @@ const MyFactoryApi = () => {
       false,
     );
 
+  const dispatch = useDispatch();
+
   const handleTotal = ({
     total,
     favorite,
@@ -32,7 +36,8 @@ const MyFactoryApi = () => {
     total: string;
     favorite: boolean;
   }): void => {
-    localStorage.setItem(`total`, `${total}`);
+    // localStorage.setItem(`total`, `${total}`);
+    dispatch(SetTotal(Number(total)));
     localStorage.setItem(`favorite`, `${favorite}`);
   };
 

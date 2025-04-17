@@ -1,7 +1,9 @@
 import { Screw } from '@shared/components';
 import { useEffect, useState } from 'react';
-import { useApiQuery, useGlobalApiState } from '../Model';
-import { ScrewTypeStyles } from '../Model/Mapping';
+import { useApiQuery, useGlobalApiState } from '@model';
+import { ScrewTypeStyles } from '@mapping';
+import { useDispatch } from 'react-redux';
+import { SetTotal } from '@shared/store/slice/myFactoryData';
 
 interface GetData {
   id: number;
@@ -30,11 +32,11 @@ interface ApiResponse {
 const StudyFactoryApi = ({
   uri,
   page,
-  onTotalUpdate,
+  onLoadComplete,
 }: {
   uri: string;
   page?: number;
-  onTotalUpdate?: (total: number) => void;
+  onLoadComplete?: () => void;
 }) => {
   const [targetId] = useState<number | null>(null);
   const { isLoading, isError, data, isSuccess, refetch } =
@@ -49,18 +51,22 @@ const StudyFactoryApi = ({
     method: 'DELETE',
   });
 
-  // const handleDelete = (id: number) => {
-  //   setTargetId(id);
-  // };
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    refetch();
+    const fetchData = async () => {
+      await refetch();
+      if (data?.data?.totalElements) {
+        dispatch(SetTotal(data.data.totalElements));
+      }
+      onLoadComplete?.();
+    };
+    fetchData();
     if (isSuccess) {
       console.log('✅Response:', data?.data.words);
       console.log('✅Response:', data?.data);
       if (data?.data.totalElements) {
-        // localStorage.setItem('total', data?.data.totalElements.toString());
-        // onTotalUpdate?.(data?.data.totalElements);
+        dispatch(SetTotal(data?.data.totalElements));
       }
     }
     if (isLoading) {
@@ -69,7 +75,7 @@ const StudyFactoryApi = ({
     if (isError) {
       console.log('isError');
     }
-  }, [isSuccess, isLoading, isError, data, onTotalUpdate, page]);
+  }, [isSuccess, isLoading, isError, data, page, refetch, dispatch]);
 
   return (
     <div>
@@ -95,7 +101,6 @@ const StudyFactoryApi = ({
               screwShape={el.explanation}
               highlight={el.highlight}
               check={el.check}
-              // onDeleteTrigger={(id) => handleDelete(id)}
               isDeleteState={deletedSuccess}
             />
           </div>

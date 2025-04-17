@@ -3,7 +3,6 @@ import { DriverStylesLocal } from '../../style';
 import { useEffect, useState } from 'react';
 import { useForm, UseFormRegister, useWatch } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
-// import { CreateDriver, RemoveDriver } from '../../../front/src/Controller';
 import { removeIcon, cancelIcon, addIcon } from '../../../front/src/assets';
 import { useApiMutation } from '../../../front/src/Model';
 

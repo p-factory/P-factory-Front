@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { Sort, Tool, Footer, Driver } from '@shared/components';
 import {
   SortTypeStyles,
-  // ScrewTypeStyles,
   ToolTypeStyles,
   FooterTypeStyles,
   DriverTypeStyles,
@@ -12,28 +11,93 @@ import { starIconChecked, backIcon, downloadIcon, starIcon } from '@assets';
 import Modal from 'react-modal';
 import { StudyFactoryApi } from '@controller';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { ResetToolMode } from '@shared/store/slice/toolModeSlice';
+import { RootState } from '@shared/store';
 
 const StudyFactory = () => {
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
   const [isFavorite] = useState<string>(
     localStorage.getItem('favorite') ?? '0',
   );
-  const [isLength] = useState<number>(1); // Redux로 코드 수정
   const { uri } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const total = useSelector((state: RootState) => state.setMyFactoryData.total);
+  const itemsPerPage = 10; // 페이지당 아이템 수를 상수로 정의
+  const [currentPage, setCurrentPage] = useState<number[]>([0]);
+  const [hasMore, setHasMore] = useState<boolean>(true);
+  // 로딩 상태 관리에 대한 의문점
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const observerRef = useRef<HTMLDivElement>(null);
+
   const openModal = () => setModalOpen(true);
 
   const closeModal = () => setModalOpen(false);
 
+  // 디바운스된 페이지 업데이트
   useEffect(() => {
-    console.log('isLength', isLength);
+    const timer = setTimeout(() => {
+      if (total > 0) {
+        const totalPages = Math.ceil(total / itemsPerPage);
+        if (currentPage.length > totalPages) {
+          setCurrentPage((prev) => prev.slice(0, totalPages));
+        }
+      }
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [total]);
+
+  // Intersection Observer 콜백 수정
+  const handleObserver = useCallback(
+    (entries: IntersectionObserverEntry[]) => {
+      const [target] = entries;
+      const totalPages = Math.ceil(total / itemsPerPage);
+
+      if (
+        target.isIntersecting &&
+        hasMore &&
+        !isLoading &&
+        currentPage.length < totalPages
+      ) {
+        setIsLoading(true);
+        setCurrentPage((prev) => [...prev, prev[prev.length - 1] + 1]);
+      }
+    },
+    [hasMore, isLoading, total, currentPage.length],
+  );
+
+  // Observer 설정
+  useEffect(() => {
+    const element = observerRef.current;
+    if (!element) return;
+
+    const option = {
+      root: null,
+      rootMargin: '20px',
+      threshold: 0,
+    };
+
+    const observer = new IntersectionObserver(handleObserver, option);
+    observer.observe(element);
+
+    return () => observer.disconnect();
+  }, [handleObserver]);
+
+  // Driver에서 새 항목 추가 후 리셋
+  const handleDriverClose = useCallback(() => {
+    setCurrentPage([0]); // 첫 페이지로 리셋
+    setHasMore(true);
+    setIsLoading(false);
+    closeModal();
+  }, []);
+
+  useEffect(() => {
     return () => {
       dispatch(ResetToolMode());
     };
-  }, [dispatch, isLength]);
+  }, [dispatch]);
 
   return (
     <div id={styled.debug}>
@@ -53,7 +117,7 @@ const StudyFactory = () => {
             />
           </div>
         </div>
-        <div id={styled.count}>단어 {isLength}개</div>
+        <div id={styled.count}>단어 {total}개</div>
         <div id={styled.menu}>
           <div>
             <Sort styles={SortTypeStyles} />
@@ -64,25 +128,27 @@ const StudyFactory = () => {
         </div>
       </div>
       <div id={styled.screws} style={{ paddingBottom: '180px' }}>
-        {/* {isLength > 0 ? ( */}
-        {Array.from({ length: isLength }).map((_, index) => (
+        {currentPage.map((page) => (
           <StudyFactoryApi
-            key={index}
+            key={`${uri}-${page}`}
             uri={typeof uri === 'string' ? uri : 'undefined'}
-            page={0}
-            // onTotalUpdate={setLength}
+            page={page}
+            onLoadComplete={() => setIsLoading(false)}
           />
         ))}
 
-        {/* ) : (
-          <div>!데이터가 없습니다.</div>
-        )} */}
+        {/* Observer 타겟 요소 - 조건 수정 */}
+        {hasMore && currentPage.length < Math.ceil(total / itemsPerPage) && (
+          <div ref={observerRef} style={{ height: '20px', margin: '10px 0' }}>
+            {isLoading && <div>로딩 중...</div>}
+          </div>
+        )}
       </div>
       <Tool styles={ToolTypeStyles} onOpenModal={openModal} />
       <Footer styles={FooterTypeStyles} />
       <div style={{ width: '350px', height: '220px' }}>
         <Modal isOpen={isModalOpen} onRequestClose={closeModal} preventScroll>
-          <Driver styles={DriverTypeStyles} onClose={closeModal} />
+          <Driver styles={DriverTypeStyles} onClose={handleDriverClose} />
         </Modal>
       </div>
     </div>
