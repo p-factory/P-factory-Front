@@ -6,6 +6,7 @@
   background-color: var(--white-color);
   display: flex;
   justify-content: center;
+  border-radius: var(--corner-radius-regular);
   
   position: fixed;
   $px-to-width : fn.px-to-percent(390, 430);

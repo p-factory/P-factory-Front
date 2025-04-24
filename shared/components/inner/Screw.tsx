@@ -138,7 +138,10 @@ const Screw = ({
           </div>
           <div id={styles.nuts}>
             {nuts.map((nut, index) => (
-              <span key={index}>
+              <span
+                key={index}
+                style={{ display: 'flex', alignItems: 'center' }}
+              >
                 {mode.includes('kor') ||
                 mode.includes('deleted') ||
                 mode.includes('highlight') ? (

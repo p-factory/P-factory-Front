@@ -47,7 +47,9 @@ const Footer = ({ styles }: { styles: FooterStyles }) => {
               alt=''
             />
           </div>
-          <span className={styles.title}>내부공장</span>
+          <span className={isLocation === 'inner' ? styles.title : ''}>
+            내부공장
+          </span>
         </div>
         <div
           className={styles.contents}
@@ -65,7 +67,9 @@ const Footer = ({ styles }: { styles: FooterStyles }) => {
               alt=''
             />
           </div>
-          <span className={styles.title}>외부공장</span>
+          <span className={isLocation === 'otuer' ? styles.title : ''}>
+            외부공장
+          </span>
         </div>
         <div
           className={styles.contents}
@@ -83,7 +87,9 @@ const Footer = ({ styles }: { styles: FooterStyles }) => {
               alt=''
             />
           </div>
-          <span className={styles.title}>대탈출</span>
+          <span className={isLocation === 'game' ? styles.title : ''}>
+            대탈출
+          </span>
         </div>
         <div
           className={styles.contents}
@@ -101,7 +107,9 @@ const Footer = ({ styles }: { styles: FooterStyles }) => {
               alt=''
             />
           </div>
-          <span className={styles.title}>마이페이지</span>
+          <span className={isLocation === 'myPage' ? styles.title : ''}>
+            마이페이지
+          </span>
         </div>
       </div>
     );
