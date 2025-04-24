@@ -2,10 +2,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface MyFactoryDataState {
   total: number;
+  favorite: boolean;
 }
 
 const initialState: MyFactoryDataState = {
   total: 0,
+  favorite: false,
 };
 
 const totalSlice = createSlice({
@@ -15,9 +17,18 @@ const totalSlice = createSlice({
     SetTotal: (state, action: PayloadAction<number>) => {
       state.total = action.payload;
     },
+    SetFavorite: (state, action: PayloadAction<boolean>) => {
+      state.favorite = action.payload;
+    },
     ResetTotal: () => initialState,
+    ResetFavorite: () => {
+      return {
+        ...initialState,
+        favorite: true,
+      };
+    },
   },
 });
 
-export const { SetTotal, ResetTotal } = totalSlice.actions;
+export const { SetTotal, SetFavorite, ResetTotal } = totalSlice.actions;
 export default totalSlice.reducer;

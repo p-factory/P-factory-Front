@@ -17,8 +17,9 @@ import { RootState } from '@shared/store';
 
 const StudyFactory = () => {
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
-  const [isFavorite] = useState<string>(
-    localStorage.getItem('favorite') ?? '0',
+  const [isFavorite] = useState<boolean>(
+    // localStorage.getItem('favorite') ?? '0',
+    useSelector((state: RootState) => state.setMyFactoryData.favorite),
   );
   const { uri } = useParams();
   const navigate = useNavigate();
@@ -112,7 +113,7 @@ const StudyFactory = () => {
           <span id={styled.title}>토익 공부</span>
           <div className={styled.imageGroup}>
             <img
-              src={isFavorite === 'true' ? starIconChecked : starIcon}
+              src={isFavorite === true ? starIconChecked : starIcon}
               alt='starIcon'
             />
           </div>
