@@ -153,6 +153,16 @@ body {
   background: none !important;
   margin: 0 auto;
   padding: 0;
+  /* 인라인 스타일 무효화 */
+  position: relative !important;
+  inset: auto !important;
+  border: none !important;
+  background: none !important;
+  overflow: visible !important;
+  border-radius: 0 !important;
+  outline: none !important;
+  padding: 0 !important;
+  margin: 0 auto !important;
 }
 
 
