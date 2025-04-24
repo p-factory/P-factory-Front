@@ -47,6 +47,7 @@ const Screw = ({
 
   const dispatch = useDispatch();
   const total = useSelector((state: RootState) => state.setMyFactoryData.total);
+
   useEffect(() => {
     if (isSuccess) {
       console.log('✅Response:', responseData);

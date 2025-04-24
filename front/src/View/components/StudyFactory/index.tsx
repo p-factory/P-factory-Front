@@ -127,7 +127,7 @@ const StudyFactory = () => {
           </div>
         </div>
       </div>
-      <div id={styled.screws} style={{ paddingBottom: '180px' }}>
+      <div id={styled.screws}>
         {currentPage.map((page) => (
           <StudyFactoryApi
             key={`${uri}-${page}`}

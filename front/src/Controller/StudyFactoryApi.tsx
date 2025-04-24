@@ -2,8 +2,9 @@ import { Screw } from '@shared/components';
 import { useEffect, useState } from 'react';
 import { useApiQuery, useGlobalApiState } from '@model';
 import { ScrewTypeStyles } from '@mapping';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { SetTotal } from '@shared/store/slice/myFactoryData';
+import { RootState } from '@shared/store';
 
 interface GetData {
   id: number;
@@ -52,7 +53,7 @@ const StudyFactoryApi = ({
   });
 
   const dispatch = useDispatch();
-
+  const total = useSelector((state: RootState) => state.setMyFactoryData.total);
   /**
    * isSuccess가 불명확해서 해당 코드에서 예외처리하는 방식으로 변경
    * useEffect의 안정성을 위해서 둘을 구분해야한다. 하지만 아직 로직의 복잡성이 높아 섵부르게 나누면 안된다.
@@ -89,25 +90,52 @@ const StudyFactoryApi = ({
     /* 이전 데이터 UI가 깜빡이는 현상을 막기 위해 Screw에서도 예외처리를 할 수 있는 로직 대비 및 구현 구상 필요 */
   }
   return (
-    <div>
+    <div style={{ paddingBottom: '180px' }}>
       {isLoading && <p>데이터를 불러오는 중...</p>}
       {isError && (
-        <p style={{ color: 'red' }}>
-          데이터를 가져오는 중 오류가 발생했습니다.
-          {data?.status === 404 ? ' 요청한 단어장을 찾을 수 없습니다.' : ''}
-        </p>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            height: '100%',
+            paddingTop: '180px',
+          }}
+        >
+          <p style={{ color: 'red' }}>
+            데이터를 가져오는 중 오류가 발생했습니다. IMAGE
+            {data?.status === 404 ? ' 요청한 단어장을 찾을 수 없습니다.' : ''}
+          </p>
+        </div>
       )}
       {!isLoading &&
         !isError &&
-        (!data?.data?.words || !Array.isArray(data?.data?.words)) && (
-          <p style={{ color: 'red' }}>데이터가 존재하지 않습니다.</p>
+        (!data?.data?.words ||
+          !Array.isArray(data?.data?.words) ||
+          total === 0) && (
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              height: '100%',
+              paddingTop: '180px',
+            }}
+          >
+            <p
+              style={{
+                color: 'red',
+              }}
+            >
+              데이터가 존재하지 않습니다. IMAGE
+            </p>
+          </div>
         )}
       {!isLoading &&
         !isError &&
         data?.data?.words &&
         Array.isArray(data.data.words) &&
         data.data.words.map((el) => (
-          <div key={el.id} style={{ margin: '10px 0 0 10px' }}>
+          /**margin: '10px 0 0 10px', */
+          <div key={el.id} style={{ paddingBottom: '180px' }}>
             <Screw
               key={el.id}
               id={el.id}
