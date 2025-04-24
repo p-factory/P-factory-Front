@@ -1,6 +1,13 @@
 import { useMutation } from '@tanstack/react-query';
 import AxiosInstance from '../axiosInstance';
 
+interface ErrorResponse {
+  isError: boolean;
+  status: number;
+  message: string;
+  data: any;
+}
+
 const useApiMutation = <InjectNucleus = any, CulturedNucleus = any>(
   method: 'POST' | 'PUT' | 'DELETE',
   url: string = 'api/test',
@@ -11,7 +18,7 @@ const useApiMutation = <InjectNucleus = any, CulturedNucleus = any>(
   const ApiMutation = async (
     mutateUrl?: string,
     mutateNucleus?: InjectNucleus,
-  ): Promise<CulturedNucleus> => {
+  ): Promise<CulturedNucleus | ErrorResponse> => {
     const codeUrl = mutateUrl || url;
     const codeData = mutateNucleus || nucleus;
     try {
@@ -45,10 +52,26 @@ const useApiMutation = <InjectNucleus = any, CulturedNucleus = any>(
       }
       return dna.data;
     } catch (error: any) {
-      console.error(
-        `Error!: Mutant has escaped from the System.\nErrorMessage:${error.message || error}`,
-      );
-      throw error;
+      const status = error.response?.status || 500;
+      const message = error.response?.data?.message || error.message;
+
+      /** 상태 값에 따른 에러 처리 */
+      if (status === 404) {
+        return {
+          isError: true,
+          status: status,
+          message: message,
+          data: null,
+        } as ErrorResponse;
+      }
+
+      /** default error */
+      return {
+        isError: true,
+        status: status,
+        message: message,
+        data: null,
+      } as ErrorResponse;
     }
   };
 
