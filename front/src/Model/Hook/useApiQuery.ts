@@ -20,7 +20,13 @@ const useApiQuery = <Organism>(
     } catch (error: any) {
       console.error(`Error: Failed to Analysis System. Need inspect System.`);
       console.error(error.message);
-      throw error;
+      return {
+        isError: true,
+        status: error.response?.status || 500,
+        message: error.message,
+        data: null,
+      };
+      // throw error;
     }
   };
 

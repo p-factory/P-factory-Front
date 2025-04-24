@@ -53,21 +53,30 @@ const StudyFactoryApi = ({
 
   const dispatch = useDispatch();
 
+  /**
+   * isSuccess가 불명확해서 해당 코드에서 예외처리하는 방식으로 변경
+   * useEffect의 안정성을 위해서 둘을 구분해야한다. 하지만 아직 로직의 복잡성이 높아 섵부르게 나누면 안된다.
+   */
   useEffect(() => {
     const fetchData = async () => {
       await refetch();
       if (data?.data?.totalElements) {
         dispatch(SetTotal(data.data.totalElements));
+      } else {
+        dispatch(SetTotal(0));
       }
       onLoadComplete?.();
     };
     fetchData();
-    if (isSuccess) {
-      console.log('✅Response:', data?.data.words);
+    if (isSuccess && data?.data) {
+      console.log('✅Response:', data?.data?.words);
       console.log('✅Response:', data?.data);
-      if (data?.data.totalElements) {
+      /** 404인 상태에서 response를 받으면 안되기 때문에 해당 코드 주석 처리 -> 삭제예정 */
+      /**
+       if (data?.data.totalElements) {
         dispatch(SetTotal(data?.data.totalElements));
       }
+       */
     }
     if (isLoading) {
       console.log('isLoading..');
@@ -83,13 +92,19 @@ const StudyFactoryApi = ({
       {isError && (
         <p style={{ color: 'red' }}>
           데이터를 가져오는 중 오류가 발생했습니다.
+          {data?.status === 404 ? ' 요청한 단어장을 찾을 수 없습니다.' : ''}
         </p>
       )}
-      {!isLoading && (!data?.data.words || !Array.isArray(data.data.words)) && (
-        <p style={{ color: 'red' }}>데이터가 존재하지 않습니다.</p>
-      )}
-      {Array.isArray(data?.data.words) &&
-        data?.data.words.map((el) => (
+      {!isLoading &&
+        !isError &&
+        (!data?.data?.words || !Array.isArray(data?.data?.words)) && (
+          <p style={{ color: 'red' }}>데이터가 존재하지 않습니다.</p>
+        )}
+      {!isLoading &&
+        !isError &&
+        data?.data?.words &&
+        Array.isArray(data.data.words) &&
+        data.data.words.map((el) => (
           <div key={el.id} style={{ margin: '10px 0 0 10px' }}>
             <Screw
               key={el.id}
