@@ -12,6 +12,13 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
 :root {
   --standard-font-size : 16px;
   // 색상
@@ -34,6 +41,7 @@
   --effects-blur-shadow1 : 0.25;
   --effects-blur-shadow2 : 14;
   // 폰트 스타일
+  --font-family: 'Pretendard', sans-serif;
   --font-logo: 'Jejudoldam','Pretendard', sans-serif; /* 폰트 설정 */
   --font-weight-bold: 700; /* Bold */
   --font-weight-semibold: 600; /* Semibold */
