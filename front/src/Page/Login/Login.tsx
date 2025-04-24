@@ -94,8 +94,8 @@ const LoginPage = () => {
                 className={errors.loginId ? styles.inputError : styles.input}
               >
                 <input
-                  type='text'
-                  placeholder='아이디를 입력하세요.'
+                  type='email'
+                  placeholder='example@ptory.com'
                   {...register('loginId')}
                 />
               </div>

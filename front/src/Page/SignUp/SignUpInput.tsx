@@ -109,8 +109,8 @@ const LoginPage = () => {
                 className={errors.memberId ? styles.inputError : styles.input}
               >
                 <input
-                  type='text'
-                  placeholder='영문 12자 이내'
+                  type='email'
+                  placeholder='example@ptory.com'
                   {...register('memberId')}
                 />
               </div>

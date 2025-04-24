@@ -3,9 +3,10 @@ import { z } from 'zod';
 const LoginSchema = z.object({
   loginId: z
     .string()
-    .min(1, { message: '*아이디는 필수입니다.' })
-    .max(12, { message: '*아이디는 최대 12자까지 가능합니다.' })
-    .regex(/^[a-zA-Z]+$/, { message: '*영문만 입력 가능합니다.' }),
+    .email({ message: '*유효한 이메일 주소를 입력해주세요.' })
+    .min(8, { message: '*아이디는 필수입니다.' })
+    .max(20, { message: '*아이디는 최대 20자까지 가능합니다.' }),
+  // .regex(/^[a-zA-Z]+$/, { message: '*영문만 입력 가능합니다.' }),
 
   password: z
     .string()
