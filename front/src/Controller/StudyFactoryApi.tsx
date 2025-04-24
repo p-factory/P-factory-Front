@@ -85,7 +85,9 @@ const StudyFactoryApi = ({
       console.log('isError');
     }
   }, [isSuccess, isLoading, isError, data, page, refetch, dispatch]);
-
+  {
+    /* 이전 데이터 UI가 깜빡이는 현상을 막기 위해 Screw에서도 예외처리를 할 수 있는 로직 대비 및 구현 구상 필요 */
+  }
   return (
     <div>
       {isLoading && <p>데이터를 불러오는 중...</p>}

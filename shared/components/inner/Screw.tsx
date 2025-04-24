@@ -32,6 +32,7 @@ const Screw = ({
 
   const mode = useSelector((state: RootState) => state.setToolMode.tool);
   const [isMethod, setMethod] = useState<'POST' | 'PUT' | 'DELETE'>('POST');
+  /**isHidden의 상태 값은 초기 렌더링이 될 시에 초기화 되는 문제가 있다 따라서 이를 참조하는 useRef로 렌더링을 최적화하는 방법을 고안할 필요가 있다. */
   const [isHidden, setHidden] = useState<boolean>(
     typeof isDeleteState === 'boolean' ? isDeleteState : false,
   );
