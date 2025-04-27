@@ -5,6 +5,7 @@ import {
   SignUpCheckListTypeStyles,
   PtoryLogoTypeStyles,
 } from '../../Model/Mapping';
+import { Link } from 'react-router-dom';
 
 const SignUpPage = () => {
   return (
@@ -19,6 +20,21 @@ const SignUpPage = () => {
         </div>
         <div id={styles.signUpCheckList}>
           <SignUpCheckList styles={SignUpCheckListTypeStyles} />
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginTop: '24px',
+          }}
+        >
+          <span>
+            이미 회원이신가요?&nbsp;
+            <Link style={{ fontWeight: 'bold' }} to='/login'>
+              로그인
+            </Link>
+          </span>
         </div>
       </div>
     </div>

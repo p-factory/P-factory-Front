@@ -13,7 +13,7 @@ import {
 } from '@assets';
 import { useForm } from 'react-hook-form';
 import { useApiMutation, useDynamicDisplay } from '@model';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { LoginSchema } from '@dto';
@@ -27,6 +27,7 @@ import { LoginSchema } from '@dto';
 type FormData = z.infer<typeof LoginSchema>;
 
 const LoginPage = () => {
+  const [isLoginState, setIsLoginState] = useState(false);
   const isMobile = useDynamicDisplay(500);
   const navigate = useNavigate();
 
@@ -59,9 +60,15 @@ const LoginPage = () => {
   const isButtonActive = idValue.trim() !== '' && passwordValue.trim() !== '';
 
   useEffect(() => {
+    if (isLoginState) {
+      navigate('/MyFactory');
+    }
+  }, [isLoginState]);
+
+  useEffect(() => {
     if (isSuccess) {
       console.log('Response:', responseData);
-      navigate('/MyFactory');
+      setIsLoginState(true);
     }
     if (isLoading) {
       console.log('Response:', responseData);
@@ -94,8 +101,8 @@ const LoginPage = () => {
                 className={errors.loginId ? styles.inputError : styles.input}
               >
                 <input
-                  type='text'
-                  placeholder='아이디를 입력하세요.'
+                  type='email'
+                  placeholder='ptory@example.com'
                   {...register('loginId')}
                 />
               </div>
@@ -126,10 +133,25 @@ const LoginPage = () => {
               image={isButtonActive ? spannerIcon : spannerIconGray}
               state={isButtonActive}
               functions={() => {
-                console.log('test');
+                console.log('Loading is Login');
               }}
             />
           </button>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              marginTop: '24px',
+            }}
+          >
+            <span>
+              회원이 아니신가요?&nbsp;
+              <Link style={{ fontWeight: 'bold' }} to='/signUp'>
+                회원가입
+              </Link>
+            </span>
+          </div>
         </form>
       </div>
     </div>

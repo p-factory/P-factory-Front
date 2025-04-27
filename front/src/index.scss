@@ -12,6 +12,13 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
 :root {
   --standard-font-size : 16px;
   // 색상
@@ -34,6 +41,7 @@
   --effects-blur-shadow1 : 0.25;
   --effects-blur-shadow2 : 14;
   // 폰트 스타일
+  --font-family: 'Pretendard', sans-serif;
   --font-logo: 'Jejudoldam','Pretendard', sans-serif; /* 폰트 설정 */
   --font-weight-bold: 700; /* Bold */
   --font-weight-semibold: 600; /* Semibold */
@@ -145,8 +153,21 @@ body {
   background: none !important;
   margin: 0 auto;
   padding: 0;
+  /* 인라인 스타일 무효화 */
+  position: relative !important;
+  inset: auto !important;
+  border: none !important;
+  background: none !important;
+  overflow: visible !important;
+  border-radius: 0 !important;
+  outline: none !important;
+  padding: 0 20px !important;
+  margin: 0 !important;
+  margin: 0 auto !important;
 }
-
+.ReactModal__Content--after-open{
+  margin: 0 !important;
+}
 
 // 웹에서 최소 일때 꽉찬 화면으로 수정(원인1)
 // @media (max-width: 380px) { //iphone 375px에서 반응하게 할지

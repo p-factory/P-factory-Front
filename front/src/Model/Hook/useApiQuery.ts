@@ -18,9 +18,22 @@ const useApiQuery = <Organism>(
       }
       return dna.data;
     } catch (error: any) {
-      console.error(`Error: Failed to Analysis System. Need inspect System.`);
-      console.error(error.message);
-      throw error;
+      const status = error.response?.status || 500;
+      const message = error.response?.data?.message || error.message;
+      // console.error(`Error: Failed to Analysis System. Need inspect System.`);
+      // console.error(error.message);
+      /**
+       * 일반 적으로, 직무에서는 throw error를 사용하는 것이 관례적이지만 현재와 같은 환경에서는 직접
+       * error status에 따라 동작할 수 있게 해야한다.
+       */
+      if (status === 404) {
+        return {
+          isError: true,
+          status: status,
+          message: message,
+          data: null,
+        };
+      }
     }
   };
 

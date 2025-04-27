@@ -32,11 +32,15 @@
     #nuts{
       margin-bottom: 4px;
       display: flex;
+      align-items: center;
+      // justify-content: center;
       height: 21px;
       .nut{
-        justify-content: center;
+        // display: flex;
+        // align-items: center;
+        // justify-content: center;
+        background-color: var(--white-color);
         color: var(--gray5-color);
-        // background-color: white;
         font-size: var(--font-size-xsmall);
         font-weight: var(--font-weight-medium);
         border-radius: var(--corner-radius-medium);

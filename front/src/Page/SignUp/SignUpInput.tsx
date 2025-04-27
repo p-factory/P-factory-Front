@@ -10,7 +10,7 @@ import {
   SirenTypeStyles,
 } from '../../Model/Mapping';
 import { useForm } from 'react-hook-form';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useApiMutation } from '../../Model';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -74,7 +74,10 @@ const LoginPage = () => {
   const passwordValue = watch('password', '');
   const passwordCheckValue = watch('passwordCheck', '');
   const nameValue = watch('name', '');
-
+  const name = useRef(nameValue);
+  useEffect(() => {
+    name.current = watch('name', '');
+  }, [watch('name', '')]);
   const isButtonActive =
     memberIdValue.trim() !== '' &&
     passwordValue.trim() !== '' &&
@@ -109,8 +112,8 @@ const LoginPage = () => {
                 className={errors.memberId ? styles.inputError : styles.input}
               >
                 <input
-                  type='text'
-                  placeholder='영문 12자 이내'
+                  type='email'
+                  placeholder='ptory@example.com'
                   {...register('memberId')}
                 />
               </div>
@@ -176,12 +179,26 @@ const LoginPage = () => {
         </form>
       </div>
       {
-        <Modal isOpen={isModalOpen} onRequestClose={reDirAction} preventScroll>
+        <Modal
+          style={{
+            content: {
+              maxWidth: '350px',
+              minWidth: '150px',
+              width: '100%',
+              maxHeight: '200px',
+              minHeight: '100px',
+              height: '100%',
+            },
+          }}
+          isOpen={isModalOpen}
+          onRequestClose={reDirAction}
+          preventScroll
+        >
           <div id={styles.siren}>
             <Siren
               styles={SirenTypeStyles}
               image={cancelIcon}
-              title={'토리님'}
+              title={name.current}
               alarm={'환영합니다!'}
               reDirAction={reDirAction}
             />

@@ -3,7 +3,7 @@ import { useApiQuery } from '../Model';
 import { Factory } from '@shared/components';
 import { FactoryTypeStyles } from '../Model/Mapping';
 import { useDispatch } from 'react-redux';
-import { SetTotal } from '@shared/store/slice/myFactoryData';
+import { SetTotal, SetFavorite } from '@shared/store/slice/myFactoryData';
 
 interface GetData {
   bookName: string;
@@ -38,7 +38,7 @@ const MyFactoryApi = () => {
   }): void => {
     // localStorage.setItem(`total`, `${total}`);
     dispatch(SetTotal(Number(total)));
-    localStorage.setItem(`favorite`, `${favorite}`);
+    dispatch(SetFavorite(favorite));
   };
 
   useEffect(() => {
@@ -58,14 +58,34 @@ const MyFactoryApi = () => {
     <div>
       {isLoading && <p>데이터를 불러오는 중...</p>}
       {isError && (
-        <p style={{ color: 'red' }}>
-          데이터를 가져오는 중 오류가 발생했습니다.
-        </p>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            minHeight: '60vh',
+            width: '100%',
+          }}
+        >
+          <p style={{ color: 'red' }}>
+            데이터를 가져오는 중 오류가 발생했습니다. IMAGE
+          </p>
+        </div>
       )}
 
       {/* 데이터가 없을 경우 경고 메시지 표시 */}
       {!isLoading && (!data?.data || !Array.isArray(data.data)) && (
-        <p style={{ color: 'red' }}>데이터가 존재하지 않습니다.</p>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            minHeight: '60vh',
+            width: '100%',
+          }}
+        >
+          <p style={{ color: 'red' }}>데이터가 존재하지 않습니다. IMAGE</p>
+        </div>
       )}
 
       {/* 데이터가 배열일 경우 map 실행 */}
@@ -77,7 +97,7 @@ const MyFactoryApi = () => {
             id={el.wordbookId}
             styles={FactoryTypeStyles}
             name={el.bookName}
-            favorite={el.favorite}
+            // favorite={el.favorite}
             total={el.totalElements}
             uri={el.wordbookId}
             handlelocal={() =>

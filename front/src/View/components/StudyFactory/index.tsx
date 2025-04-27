@@ -17,8 +17,8 @@ import { RootState } from '@shared/store';
 
 const StudyFactory = () => {
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
-  const [isFavorite] = useState<string>(
-    localStorage.getItem('favorite') ?? '0',
+  const favorite = useSelector(
+    (state: RootState) => state.setMyFactoryData.favorite,
   );
   const { uri } = useParams();
   const navigate = useNavigate();
@@ -112,7 +112,7 @@ const StudyFactory = () => {
           <span id={styled.title}>토익 공부</span>
           <div className={styled.imageGroup}>
             <img
-              src={isFavorite === 'true' ? starIconChecked : starIcon}
+              src={favorite === true ? starIconChecked : starIcon}
               alt='starIcon'
             />
           </div>
@@ -127,7 +127,7 @@ const StudyFactory = () => {
           </div>
         </div>
       </div>
-      <div id={styled.screws} style={{ paddingBottom: '180px' }}>
+      <div id={styled.screws}>
         {currentPage.map((page) => (
           <StudyFactoryApi
             key={`${uri}-${page}`}
@@ -144,7 +144,9 @@ const StudyFactory = () => {
           </div>
         )}
       </div>
-      <Tool styles={ToolTypeStyles} onOpenModal={openModal} />
+      <div>
+        <Tool styles={ToolTypeStyles} onOpenModal={openModal} />
+      </div>
       <Footer styles={FooterTypeStyles} />
       <div style={{ width: '350px', height: '220px' }}>
         <Modal isOpen={isModalOpen} onRequestClose={closeModal} preventScroll>
