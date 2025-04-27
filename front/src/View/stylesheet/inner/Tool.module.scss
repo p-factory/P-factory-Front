@@ -16,17 +16,24 @@
   width: 100%;
   left: 50%;
   transform: translateX(-50%);
+  padding: 0 20px;
+  border: 2px solid var(--gray2-color);
+  border-radius: var(--corner-radius-regular);
+
+  @media (max-width: 390px) {
+    max-width: 340px;
+  }
   #tools{
     // background-color: var(--white-color);
+    // background-color: red;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 340px;
     width: 100%;
     // width: calc(100% + 80px); /* 루트 padding 고려한 너비 */
-    margin: 0 -20px; /* 루트 padding 무효화 하기 위한 margin */
-    padding: 8px 31px;
-    border: 2px solid var(--gray2-color);
-    border-radius: var(--corner-radius-regular);
+    // margin: 0 -20px; /* 루트 padding 무효화 하기 위한 margin */
+    padding: 8px 0;
   
     .contents {
       display: flex;

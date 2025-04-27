@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 // import { ResetMode } from '../store/slice/factoryModeSlice';
 import { Platform, Text } from 'react-native';
@@ -110,7 +110,7 @@ const Factory = ({
   id,
   styles,
   name = 'untitle',
-  favorite = false,
+  // favorite,
   total = '0',
   uri,
   handlelocal,
@@ -118,23 +118,32 @@ const Factory = ({
   id: number;
   styles: FactoryStylesLocal;
   name: string;
-  favorite: boolean;
+  // favorite: boolean;
   total: string;
   uri: number;
   handlelocal: () => void;
 }) => {
   if (Platform.OS === 'web') {
-    const [isClickedItem, setClickedItem] = useState<boolean>(favorite);
+    const [, setIsFavorite] = useState<boolean>(false);
     const [isMoreActive, setMoreActive] = useState<boolean>(false);
 
     const managerBarRef = useRef<HTMLDivElement>(null);
     // const dispatch = useDispatch();
     const mode = useSelector((state: RootState) => state.setFactoryMode.mode);
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
+
     const { mutation, isLoading, isError, isSuccess, responseData } =
       useApiMutation('POST');
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const favorite = useSelector(
+      (state: RootState) => state.setMyFactoryData.favorite,
+    );
+    // useEffect(() => {
+    //   setClickedItem(favorite);
+    // }, [favorite]);
+
     const handleIconClick = (event: React.MouseEvent<HTMLDivElement>) => {
       event.stopPropagation();
       // event.preventDefault();
@@ -142,13 +151,15 @@ const Factory = ({
         {
           mutateUrl: `https://13.209.113.229.nip.io/api/wordbook/favorite/${id}`,
         },
-        {
-          onSuccess: () => {
-            setClickedItem((prev) => !prev);
-            console.log(`✅즐겨찾기 post 완료: ${isClickedItem}`);
-            dispatch(SetFavorite(!isClickedItem));
-          },
-        },
+        // {
+        //   onSuccess: () => {
+        //     setClickedItem((prev) => {
+        //       console.log(`✅즐겨찾기 post 완료: ${!prev}`);
+        //       dispatch(SetFavorite(!prev));
+        //       return !prev;
+        //     });
+        //   },
+        // },
       );
     };
 
@@ -193,9 +204,11 @@ const Factory = ({
     }, [isMoreActive, mode]);
 
     useEffect(() => {
-      // setState(false);
-      if (isSuccess) {
+      // console.log('isFavorite', isFavorite);
+      if (isSuccess && responseData) {
         console.log('Response:', responseData);
+        setIsFavorite(responseData?.data?.favorite);
+        dispatch(SetFavorite(responseData?.data?.favorite));
         // window.location.reload();
       }
       if (isLoading) {
@@ -241,7 +254,7 @@ const Factory = ({
             <div id={styles.contents}>
               <div className={styles.image} onClick={handleIconClick}>
                 <img
-                  src={isClickedItem ? starIconChecked : starIcon}
+                  src={favorite ? starIconChecked : starIcon}
                   alt='StarIcon'
                 />
               </div>

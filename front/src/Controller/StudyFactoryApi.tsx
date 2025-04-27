@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useApiQuery, useGlobalApiState } from '@model';
 import { ScrewTypeStyles } from '@mapping';
 import { useDispatch, useSelector } from 'react-redux';
-import { SetTotal } from '@shared/store/slice/myFactoryData';
+import { SetTotal, SetFavorite } from '@shared/store/slice/myFactoryData';
 import { RootState } from '@shared/store';
 
 interface GetData {
@@ -63,6 +63,7 @@ const StudyFactoryApi = ({
       await refetch();
       if (data?.data?.totalElements) {
         dispatch(SetTotal(data.data.totalElements));
+        dispatch(SetFavorite(data.data.favorite));
       } else {
         dispatch(SetTotal(0));
       }
@@ -70,7 +71,7 @@ const StudyFactoryApi = ({
     };
     fetchData();
     if (isSuccess && data?.data) {
-      console.log('✅Response:', data?.data?.words);
+      // console.log('✅Response:', data?.data?.words);
       console.log('✅Response:', data?.data);
       /** 404인 상태에서 response를 받으면 안되기 때문에 해당 코드 주석 처리 -> 삭제예정 */
       /**
@@ -97,8 +98,9 @@ const StudyFactoryApi = ({
           style={{
             display: 'flex',
             justifyContent: 'center',
-            height: '100%',
-            paddingTop: '180px',
+            alignItems: 'center',
+            minHeight: '50vh',
+            width: '100%',
           }}
         >
           <p style={{ color: 'red' }}>
@@ -116,8 +118,9 @@ const StudyFactoryApi = ({
             style={{
               display: 'flex',
               justifyContent: 'center',
-              height: '100%',
-              paddingTop: '180px',
+              alignItems: 'center',
+              minHeight: '50vh',
+              width: '100%',
             }}
           >
             <p

@@ -60,6 +60,12 @@ const LoginPage = () => {
   const isButtonActive = idValue.trim() !== '' && passwordValue.trim() !== '';
 
   useEffect(() => {
+    if (isLoginState) {
+      navigate('/MyFactory');
+    }
+  }, [isLoginState]);
+
+  useEffect(() => {
     if (isSuccess) {
       console.log('Response:', responseData);
       setIsLoginState(true);
@@ -127,9 +133,7 @@ const LoginPage = () => {
               image={isButtonActive ? spannerIcon : spannerIconGray}
               state={isButtonActive}
               functions={() => {
-                if (isLoginState) {
-                  navigate('/MyFactory');
-                }
+                console.log('Loading is Login');
               }}
             />
           </button>
