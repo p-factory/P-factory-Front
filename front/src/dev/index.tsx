@@ -74,7 +74,7 @@ const Dev = () => {
         styles={FactoryTypeStyles}
         id={1}
         name='test'
-        favorite
+        // favorite
         total='1'
         uri={1}
         handlelocal={() => console.log('test')}
