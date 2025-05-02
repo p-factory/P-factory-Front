@@ -14,5 +14,6 @@ export { default as Tool } from './inner/Tool';
 export { default as Error } from './baselayout/Error';
 export { default as Bestter } from './outer/Bestter';
 export { default as Rank } from './outer/Rank';
+export { default as SharedFactory } from './outer/SharedFactory';
 //Game
 export { default as Test } from './game/Test';

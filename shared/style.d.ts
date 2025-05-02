@@ -122,3 +122,13 @@ export interface RankStyles {
   name: string;
   rate: string;
 }
+
+export interface SharedFactoryStyles {
+  container: string;
+  contents: string;
+  name: string;
+  date: string;
+  title: string;
+  shared: string;
+  count: string;
+}

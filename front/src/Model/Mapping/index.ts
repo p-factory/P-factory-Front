@@ -14,6 +14,7 @@ import {
   SortStyled,
   BestterStyled,
   RankStyled,
+  SharedFactoryStyled,
 } from '../../View/stylesheet';
 
 import {
@@ -33,6 +34,7 @@ import {
   PtoryLogoStyles,
   BestterStyles,
   RankStyles,
+  SharedFactoryStyles,
 } from '@shared/style';
 
 //객체 매핑(Object Mapping)
@@ -194,4 +196,14 @@ export const RankTypeStyles: RankStyles = {
   rank: RankStyled.rank,
   name: RankStyled.name,
   rate: RankStyled.rate,
+};
+
+export const SharedFactoryTypeStyles: SharedFactoryStyles = {
+  container: SharedFactoryStyled.container,
+  contents: SharedFactoryStyled.contents,
+  name: SharedFactoryStyled.name,
+  date: SharedFactoryStyled.date,
+  title: SharedFactoryStyled.title,
+  shared: SharedFactoryStyled.shared,
+  count: SharedFactoryStyled.count,
 };

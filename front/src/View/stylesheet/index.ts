@@ -14,6 +14,7 @@ export { default as ToolStyled } from './inner/Tool.module.scss';
 export { default as SortStyled } from './inner/Sort.module.scss';
 export { default as BestterStyled } from './outer/Bestter.module.scss';
 export { default as RankStyled } from './outer/Rank.module.scss';
+export { default as SharedFactoryStyled } from './outer/SharedFactory.module.scss';
 export { default as StudyFactory } from './StudyFactory.Layout.module.scss';
 export { default as MyFactory } from './MyFactory.Layout.module.scss';
 
