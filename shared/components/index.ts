@@ -12,5 +12,6 @@ export { default as Siren } from './Siren';
 export { default as Sort } from './inner/Sort';
 export { default as Tool } from './inner/Tool';
 export { default as Error } from './baselayout/Error';
+export { default as Bestter } from './outer/Bestter';
 //Game
 export { default as Test } from './game/Test';

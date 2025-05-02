@@ -107,3 +107,10 @@ export interface DriverStylesLocal extends DriverStyles {
   submit: string;
   createInput: string;
 }
+
+export interface BestterStyles {
+  container: string;
+  number: string;
+  contents: string;
+  image: string;
+}

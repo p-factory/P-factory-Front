@@ -3,6 +3,8 @@ import { useApiMutation, useApiQuery } from '@model';
 import { BaseLayout } from '@/View/components';
 import { Alarm, Factory, Test } from '@shared/components';
 import { AlarmTypeStyles, FactoryTypeStyles } from '@/Model/Mapping';
+import Bestter from '@shared/components/outer/Bestter';
+import { BestterTypeStyles } from '@mapping';
 const Dev = () => {
   const { mutation, isLoading, isError, isSuccess, responseData } =
     useApiMutation('POST', 'https://13.209.113.229.nip.io/api/login', {
@@ -69,6 +71,9 @@ const Dev = () => {
         </div>
         {/* <Tool styles={ToolTypeStyles} /> */}
         {/* <Footer styles={FooterTypeStyles} /> */}
+      </div>
+      <div>
+        <Bestter styles={BestterTypeStyles} />
       </div>
       <Factory
         styles={FactoryTypeStyles}

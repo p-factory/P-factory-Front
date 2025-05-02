@@ -12,6 +12,7 @@ import {
   DriverStyled,
   ToolStyled,
   SortStyled,
+  BestterStyled,
 } from '../../View/stylesheet';
 
 import {
@@ -29,6 +30,7 @@ import {
   BuildFactoryStylesLocal,
   DriverStylesLocal,
   PtoryLogoStyles,
+  BestterStyles,
 } from '@shared/style';
 
 //객체 매핑(Object Mapping)
@@ -175,4 +177,11 @@ export const PtoryLogoTypeStyles: PtoryLogoStyles = {
   container: PtoryLogoStyled.container,
   contents: PtoryLogoStyled.contents,
   title: PtoryLogoStyled.title,
+};
+
+export const BestterTypeStyles: BestterStyles = {
+  container: BestterStyled.container,
+  number: BestterStyled.number,
+  contents: BestterStyled.contents,
+  image: BestterStyled.image,
 };
