@@ -4,7 +4,8 @@ import { BaseLayout } from '@/View/components';
 import { Alarm, Factory, Test } from '@shared/components';
 import { AlarmTypeStyles, FactoryTypeStyles } from '@/Model/Mapping';
 import Bestter from '@shared/components/outer/Bestter';
-import { BestterTypeStyles } from '@mapping';
+import { BestterTypeStyles, RankTypeStyles } from '@mapping';
+import Rank from '@shared/components/outer/Rank';
 const Dev = () => {
   const { mutation, isLoading, isError, isSuccess, responseData } =
     useApiMutation('POST', 'https://13.209.113.229.nip.io/api/login', {
@@ -74,6 +75,7 @@ const Dev = () => {
       </div>
       <div>
         <Bestter styles={BestterTypeStyles} />
+        <Rank styles={RankTypeStyles} />
       </div>
       <Factory
         styles={FactoryTypeStyles}

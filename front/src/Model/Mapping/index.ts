@@ -13,6 +13,7 @@ import {
   ToolStyled,
   SortStyled,
   BestterStyled,
+  RankStyled,
 } from '../../View/stylesheet';
 
 import {
@@ -31,6 +32,7 @@ import {
   DriverStylesLocal,
   PtoryLogoStyles,
   BestterStyles,
+  RankStyles,
 } from '@shared/style';
 
 //객체 매핑(Object Mapping)
@@ -184,4 +186,12 @@ export const BestterTypeStyles: BestterStyles = {
   number: BestterStyled.number,
   contents: BestterStyled.contents,
   image: BestterStyled.image,
+};
+
+export const RankTypeStyles: RankStyles = {
+  container: RankStyled.container,
+  contents: RankStyled.contents,
+  rank: RankStyled.rank,
+  name: RankStyled.name,
+  rate: RankStyled.rate,
 };

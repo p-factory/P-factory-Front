@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: solid 1px var(--gray2-color);
+  padding: 19px 15px 18px 16px;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: var(--font-weight-bold);
+
+  .contents {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    #rank {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 27px;
+      height: 27px;
+      border-radius: 50%;
+      background-color: var(--gray2-color);
+      font-size: 16px;
+    }
+    #name {
+        font-size: 16px;
+        }
+  }
+  #rate {
+    font-size: 12px;
+    font-weight: var(--font-weight-light);
+    color: var(--negative-error-cancel);
+  }
+}

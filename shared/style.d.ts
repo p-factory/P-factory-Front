@@ -114,3 +114,11 @@ export interface BestterStyles {
   contents: string;
   image: string;
 }
+
+export interface RankStyles {
+  container: string;
+  contents: string;
+  rank: string;
+  name: string;
+  rate: string;
+}
