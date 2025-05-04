@@ -17,6 +17,7 @@ import { RootState } from '@shared/store';
 
 const StudyFactory = () => {
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
+  const title = useRef<string>(localStorage.getItem('title') || '');
   const favorite = useSelector(
     (state: RootState) => state.setMyFactoryData.favorite,
   );
@@ -99,6 +100,10 @@ const StudyFactory = () => {
     };
   }, [dispatch]);
 
+  // useEffect(() => {
+  //   title.current = localStorage.getItem('title') || '';
+  // }, []);
+
   return (
     <div id={styled.debug}>
       <div id={styled.header}>
@@ -109,7 +114,7 @@ const StudyFactory = () => {
           >
             <img src={backIcon} alt='backIcon' />
           </div>
-          <span id={styled.title}>토익 공부</span>
+          <span id={styled.title}>{title.current}</span>
           <div className={styled.imageGroup}>
             <img
               src={favorite === true ? starIconChecked : starIcon}

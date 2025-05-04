@@ -33,13 +33,16 @@ const MyFactoryApi = () => {
   const handleTotal = ({
     total,
     favorite,
+    title,
   }: {
     total: string;
     favorite: boolean;
+    title: string;
   }): void => {
     // localStorage.setItem(`total`, `${total}`);
     dispatch(SetTotal(Number(total)));
     dispatch(SetFavorite(favorite));
+    localStorage.setItem('title', `${title}`);
   };
 
   useEffect(() => {
@@ -107,7 +110,11 @@ const MyFactoryApi = () => {
             total={el.totalElements}
             uri={el.wordbookId}
             handlelocal={() =>
-              handleTotal({ total: el.totalElements, favorite: el.favorite })
+              handleTotal({
+                total: el.totalElements,
+                favorite: el.favorite,
+                title: el.bookName,
+              })
             }
           />
         ))}
