@@ -107,3 +107,28 @@ export interface DriverStylesLocal extends DriverStyles {
   submit: string;
   createInput: string;
 }
+
+export interface BestterStyles {
+  container: string;
+  number: string;
+  contents: string;
+  image: string;
+}
+
+export interface RankStyles {
+  container: string;
+  contents: string;
+  rank: string;
+  name: string;
+  rate: string;
+}
+
+export interface SharedFactoryStyles {
+  container: string;
+  contents: string;
+  name: string;
+  date: string;
+  title: string;
+  shared: string;
+  count: string;
+}

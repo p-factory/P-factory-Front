@@ -11,14 +11,23 @@ import {
   MyFactory,
   StudyFactory,
   Main,
+  FactoryExploration,
+  FactoryUpLoader,
+  CurrentFactory,
+  HotFactory,
+  DownLoadFactory,
+  BestUser,
+  BestUserShared,
 } from '@page';
 import Test from './dev';
+import { ScrollToTop } from '@view/components';
 // import './App.scss';
 
 const App = () => {
   return (
     <Provider store={Store}>
       <PersistGate loading={null} persistor={Persistor}>
+        <ScrollToTop />
         <Routes>
           <Route path='/' element={<Main />} />
           <Route path='/login' element={<Login />} />
@@ -29,6 +38,13 @@ const App = () => {
           <Route path='/signUp' element={<SignUpList />} />
           <Route path='/signUp/input' element={<SignUp />} />
           <Route path='/test' element={<Test />} />
+          <Route path='/outer' element={<FactoryExploration />} />
+          <Route path='/outer/upload' element={<FactoryUpLoader />} />
+          <Route path='/outer/current' element={<CurrentFactory />} />
+          <Route path='/outer/hot' element={<HotFactory />} />
+          <Route path='/outer/download' element={<DownLoadFactory />} />
+          <Route path='/outer/best' element={<BestUser />} />
+          <Route path='/outer/best/shared' element={<BestUserShared />} />
           <Route path='*' element={<Error />} />
         </Routes>
       </PersistGate>

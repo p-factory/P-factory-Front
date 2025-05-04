@@ -107,6 +107,7 @@ export const ManagerBar = ({
 };
 
 const Factory = ({
+  outer = false,
   id,
   styles,
   name = 'untitle',
@@ -115,6 +116,7 @@ const Factory = ({
   uri,
   handlelocal,
 }: {
+  outer?: boolean;
   id: number;
   styles: FactoryStylesLocal;
   name: string;
@@ -223,7 +225,13 @@ const Factory = ({
       <div style={{ marginBottom: '16px' }} onClick={handlelocal}>
         <div
           id={styles.container}
-          onClick={() => navigate(`/StudyFactory/${uri}`)}
+          onClick={() => {
+            if (outer) {
+              navigate(`/outer/current`);
+            } else {
+              navigate(`/StudyFactory/${uri}`);
+            }
+          }}
         >
           <div className={styles.managerBar}>
             <div

@@ -11,7 +11,6 @@
       border-radius: var(--corner-radius-large);
       display: flex;
       width: 100%;
-      margin-right: 16px;
       padding: 16px 16px 16px 24px;
       input{
         width: 100%;
@@ -26,10 +25,12 @@
     }
     .group:last-child{
       display: flex;
+      
       #button{
         display: flex;
         align-items: center;
         cursor: pointer;
+        margin-left: 16px;
       }
     }
   }

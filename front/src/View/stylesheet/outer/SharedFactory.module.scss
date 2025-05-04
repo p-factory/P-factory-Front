@@ -1,0 +1,33 @@
+.container {
+  border: solid 2px var(--gray2-color);
+  padding: 12px 24px;
+  border-radius: 20px;
+  .contents {
+    display: flex;
+    justify-content: space-between;
+    color: var(--gray3-color);
+    font-size: 12px;
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: 1px;
+    #name {
+      font-size: 16px;
+      font-weight: 600;
+    }
+    #date {
+      font-size: 14px;
+    }
+  }
+  #title {
+    font-size: 24px;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 4px;
+  }
+  .shared {
+    font-size: 12px;
+    #count {
+      color: var(--negative-error-cancel);
+      font-weight: var(--font-weight-bold);
+    }
+  }
+}
+

@@ -12,6 +12,9 @@ import {
   DriverStyled,
   ToolStyled,
   SortStyled,
+  BestterStyled,
+  RankStyled,
+  SharedFactoryStyled,
 } from '../../View/stylesheet';
 
 import {
@@ -29,6 +32,9 @@ import {
   BuildFactoryStylesLocal,
   DriverStylesLocal,
   PtoryLogoStyles,
+  BestterStyles,
+  RankStyles,
+  SharedFactoryStyles,
 } from '@shared/style';
 
 //객체 매핑(Object Mapping)
@@ -175,4 +181,29 @@ export const PtoryLogoTypeStyles: PtoryLogoStyles = {
   container: PtoryLogoStyled.container,
   contents: PtoryLogoStyled.contents,
   title: PtoryLogoStyled.title,
+};
+
+export const BestterTypeStyles: BestterStyles = {
+  container: BestterStyled.container,
+  number: BestterStyled.number,
+  contents: BestterStyled.contents,
+  image: BestterStyled.image,
+};
+
+export const RankTypeStyles: RankStyles = {
+  container: RankStyled.container,
+  contents: RankStyled.contents,
+  rank: RankStyled.rank,
+  name: RankStyled.name,
+  rate: RankStyled.rate,
+};
+
+export const SharedFactoryTypeStyles: SharedFactoryStyles = {
+  container: SharedFactoryStyled.container,
+  contents: SharedFactoryStyled.contents,
+  name: SharedFactoryStyled.name,
+  date: SharedFactoryStyled.date,
+  title: SharedFactoryStyled.title,
+  shared: SharedFactoryStyled.shared,
+  count: SharedFactoryStyled.count,
 };

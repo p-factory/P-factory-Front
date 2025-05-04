@@ -25,6 +25,7 @@ const MyFactoryApi = () => {
       'https://13.209.113.229.nip.io/api/wordbook/all',
       '',
       false,
+      /** 현재 refetch를 사용함으로 세번쪠 인자가 false로 되어 있다. 즉, 수동으로 데이터를 불러오는 것이다. */
     );
 
   const dispatch = useDispatch();
@@ -32,17 +33,25 @@ const MyFactoryApi = () => {
   const handleTotal = ({
     total,
     favorite,
+    title,
   }: {
     total: string;
     favorite: boolean;
+    title: string;
   }): void => {
     // localStorage.setItem(`total`, `${total}`);
     dispatch(SetTotal(Number(total)));
     dispatch(SetFavorite(favorite));
+    localStorage.setItem('title', `${title}`);
   };
 
   useEffect(() => {
     refetch();
+  }, []);
+
+  useEffect(() => {
+    /** 현재 refetch가 비효율 적으로 useEffect에 있다. 이를 어떻게 해결 해야할지 대안을 생각해볼 필요가 있다.*/
+    // refetch();
     if (isSuccess) {
       console.log('✅Response:', data?.data);
     }
@@ -101,7 +110,11 @@ const MyFactoryApi = () => {
             total={el.totalElements}
             uri={el.wordbookId}
             handlelocal={() =>
-              handleTotal({ total: el.totalElements, favorite: el.favorite })
+              handleTotal({
+                total: el.totalElements,
+                favorite: el.favorite,
+                title: el.bookName,
+              })
             }
           />
         ))}
