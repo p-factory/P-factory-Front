@@ -10,11 +10,13 @@ const Search = ({
   styles,
   searchImage,
   image,
+  backImage = '',
   onOpenModal,
 }: {
   styles: SearchStylesLocal;
-  searchImage: string;
-  image: string;
+  searchImage?: string;
+  image?: string;
+  backImage?: string;
   onOpenModal: () => void;
 }) => {
   const { register, handleSubmit, setValue } = useForm<SearchFormData>();
@@ -27,6 +29,11 @@ const Search = ({
     return (
       <form id={styles.container} onSubmit={handleSubmit(onSubmit)}>
         <div id={styles.contents}>
+          {backImage !== '' ? (
+            <div className={styles.group}>
+              <img src={backImage} alt='back' />
+            </div>
+          ) : null}
           <div className={styles.group}>
             <input
               placeholder='공장 검색'
@@ -40,11 +47,13 @@ const Search = ({
               ) : null}
             </div>
           </div>
-          <div className={styles.group}>
-            <button type='button' id={styles.button} onClick={onOpenModal}>
-              {image !== '' ? <img src={image} alt='build' /> : null}
-            </button>
-          </div>
+          {image !== '' ? (
+            <div className={styles.group}>
+              <button type='button' id={styles.button} onClick={onOpenModal}>
+                {image !== '' ? <img src={image} alt='build' /> : null}
+              </button>
+            </div>
+          ) : null}
         </div>
       </form>
     );
