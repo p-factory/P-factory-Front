@@ -64,6 +64,24 @@ const StudyFactoryApi = ({
   // }, []);
 
   /**현재 방식으론 구조적으로 안정적이지만 데이터가 생성되 었을 경우 데이터가 존재하지 않는다는 메시지가 사라지지 않는다. */
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     await refetch();
+  //     if (data?.data?.totalElements) {
+  //       dispatch(SetTotal(data.data.totalElements));
+  //       dispatch(SetFavorite(data.data.favorite));
+  //     } else {
+  //       dispatch(SetTotal(0));
+  //     }
+  //     onLoadComplete?.();
+  //   };
+  //   fetchData();
+  //   // 로그는 필요에 따라 남겨도 무방
+  // }, [page, uri, dispatch, refetch]);
+
+  /** 현재 방식으로 구현하면 데이터가 생성되었을 경우 데이터가 존재하지 않는다는 메시지가 사라지지 않는다.
+   * 현재 코드는 매우 비효율적이지만 데이터가 생성되었을 경우 데이터가 존재하지 않는다는 메시지가 사라지지 않는 문제를 해결하기 위해 사용
+   */
   useEffect(() => {
     const fetchData = async () => {
       await refetch();
@@ -76,21 +94,6 @@ const StudyFactoryApi = ({
       onLoadComplete?.();
     };
     fetchData();
-    // 로그는 필요에 따라 남겨도 무방
-  }, [page, uri, dispatch, refetch]);
-
-  useEffect(() => {
-    // const fetchData = async () => {
-    //   await refetch();
-    //   if (data?.data?.totalElements) {
-    //     dispatch(SetTotal(data.data.totalElements));
-    //     dispatch(SetFavorite(data.data.favorite));
-    //   } else {
-    //     dispatch(SetTotal(0));
-    //   }
-    //   onLoadComplete?.();
-    // };
-    // fetchData();
     if (isSuccess && data?.data) {
       // console.log('✅Response:', data?.data?.words);
       console.log('✅Response:', data?.data);
@@ -107,7 +110,7 @@ const StudyFactoryApi = ({
     if (isError) {
       console.log('isError');
     }
-  }, [isSuccess, isLoading, isError, data]);
+  }, [isSuccess, isLoading, isError, data, page, uri, dispatch, refetch]);
   {
     /* 이전 데이터 UI가 깜빡이는 현상을 막기 위해 Screw에서도 예외처리를 할 수 있는 로직 대비 및 구현 구상 필요 */
   }
