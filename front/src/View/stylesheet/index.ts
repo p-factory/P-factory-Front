@@ -17,6 +17,7 @@ export { default as RankStyled } from './outer/Rank.module.scss';
 export { default as SharedFactoryStyled } from './outer/SharedFactory.module.scss';
 export { default as StudyFactory } from './StudyFactory.Layout.module.scss';
 export { default as MyFactory } from './MyFactory.Layout.module.scss';
+export { default as FactoryExploration } from './outer/FactoryExploration.Layout.module.scss';
 
 export { default as SignUp } from './signup/SignUp.page.module.scss';
 export { default as SignUpCheckList } from './signup/SignUpCheckList.module.scss';

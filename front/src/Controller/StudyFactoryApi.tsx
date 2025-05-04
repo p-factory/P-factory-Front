@@ -58,6 +58,12 @@ const StudyFactoryApi = ({
    * isSuccess가 불명확해서 해당 코드에서 예외처리하는 방식으로 변경
    * useEffect의 안정성을 위해서 둘을 구분해야한다. 하지만 아직 로직의 복잡성이 높아 섵부르게 나누면 안된다.
    */
+
+  // useEffect(() => {
+  //   refetch();
+  // }, []);
+
+  /**현재 방식으론 구조적으로 안정적이지만 데이터가 생성되 었을 경우 데이터가 존재하지 않는다는 메시지가 사라지지 않는다. */
   useEffect(() => {
     const fetchData = async () => {
       await refetch();
@@ -70,6 +76,21 @@ const StudyFactoryApi = ({
       onLoadComplete?.();
     };
     fetchData();
+    // 로그는 필요에 따라 남겨도 무방
+  }, [page, uri, dispatch, refetch]);
+
+  useEffect(() => {
+    // const fetchData = async () => {
+    //   await refetch();
+    //   if (data?.data?.totalElements) {
+    //     dispatch(SetTotal(data.data.totalElements));
+    //     dispatch(SetFavorite(data.data.favorite));
+    //   } else {
+    //     dispatch(SetTotal(0));
+    //   }
+    //   onLoadComplete?.();
+    // };
+    // fetchData();
     if (isSuccess && data?.data) {
       // console.log('✅Response:', data?.data?.words);
       console.log('✅Response:', data?.data);
@@ -86,7 +107,7 @@ const StudyFactoryApi = ({
     if (isError) {
       console.log('isError');
     }
-  }, [isSuccess, isLoading, isError, data, page, refetch, dispatch]);
+  }, [isSuccess, isLoading, isError, data]);
   {
     /* 이전 데이터 UI가 깜빡이는 현상을 막기 위해 Screw에서도 예외처리를 할 수 있는 로직 대비 및 구현 구상 필요 */
   }

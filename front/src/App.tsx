@@ -11,6 +11,7 @@ import {
   MyFactory,
   StudyFactory,
   Main,
+  FactoryExploration,
 } from '@page';
 import Test from './dev';
 // import './App.scss';
@@ -29,6 +30,7 @@ const App = () => {
           <Route path='/signUp' element={<SignUpList />} />
           <Route path='/signUp/input' element={<SignUp />} />
           <Route path='/test' element={<Test />} />
+          <Route path='/outer' element={<FactoryExploration />} />
           <Route path='*' element={<Error />} />
         </Routes>
       </PersistGate>
