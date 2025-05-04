@@ -41,6 +41,10 @@ const useApiQuery = <Organism>(
     queryKey: [url, params],
     queryFn: ApiQuery,
     enabled,
+    staleTime: 0, // 즉시 데이터를 오래된 것으로 간주
+    gcTime: 0, // 캐시를 즉시 제거
+    refetchOnWindowFocus: false, // 윈도우 포커스 시 자동 리페치 비활성화
+    refetchOnMount: true, // 컴포넌트 마운트 시 항상 새로운 데이터 가져오기
   });
 
   return {

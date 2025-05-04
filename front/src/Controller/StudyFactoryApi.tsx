@@ -40,12 +40,11 @@ const StudyFactoryApi = ({
   onLoadComplete?: () => void;
 }) => {
   const [targetId] = useState<number | null>(null);
-  const { isLoading, isError, data, isSuccess, refetch } =
-    useApiQuery<ApiResponse>(
-      `https://13.209.113.229.nip.io/api/wordbook?id=${uri}&page=${page}`,
-      '',
-      false,
-    );
+  const { isLoading, isError, data, isSuccess } = useApiQuery<ApiResponse>(
+    `https://13.209.113.229.nip.io/api/wordbook?id=${uri}&page=${page}`,
+    '',
+    true,
+  );
 
   const { isSuccess: deletedSuccess } = useGlobalApiState({
     id: targetId ?? undefined,
@@ -84,7 +83,7 @@ const StudyFactoryApi = ({
    */
   useEffect(() => {
     const fetchData = async () => {
-      await refetch();
+      // await refetch();
       if (data?.data?.totalElements) {
         dispatch(SetTotal(data.data.totalElements));
         dispatch(SetFavorite(data.data.favorite));
@@ -110,7 +109,7 @@ const StudyFactoryApi = ({
     if (isError) {
       console.log('isError');
     }
-  }, [isSuccess, isLoading, isError, data, page, uri, dispatch, refetch]);
+  }, [isSuccess, isLoading, isError, data, page, uri, dispatch]);
   {
     /* 이전 데이터 UI가 깜빡이는 현상을 막기 위해 Screw에서도 예외처리를 할 수 있는 로직 대비 및 구현 구상 필요 */
   }
