@@ -12,6 +12,10 @@ import {
   StudyFactory,
   Main,
   FactoryExploration,
+  FactoryUpLoader,
+  CurrentFactory,
+  HotFactory,
+  DownLoadFactory,
 } from '@page';
 import Test from './dev';
 // import './App.scss';
@@ -31,6 +35,10 @@ const App = () => {
           <Route path='/signUp/input' element={<SignUp />} />
           <Route path='/test' element={<Test />} />
           <Route path='/outer' element={<FactoryExploration />} />
+          <Route path='/outer/upload' element={<FactoryUpLoader />} />
+          <Route path='/outer/current' element={<CurrentFactory />} />
+          <Route path='/outer/hot' element={<HotFactory />} />
+          <Route path='/outer/download' element={<DownLoadFactory />} />
           <Route path='*' element={<Error />} />
         </Routes>
       </PersistGate>

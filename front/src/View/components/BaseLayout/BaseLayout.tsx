@@ -6,10 +6,12 @@ const BaseLayout = ({
   children,
   image = '',
   searchImage = '',
+  placeholder = '공장 검색',
 }: {
   children: ReactNode;
   image?: string;
   searchImage?: string;
+  placeholder?: string;
 }) => {
   return (
     <>
@@ -19,6 +21,7 @@ const BaseLayout = ({
           image={image}
           searchImage={searchImage}
           onOpenModal={() => null}
+          placeholder={placeholder}
         />
       </div>
       {children}

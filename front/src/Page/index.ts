@@ -5,3 +5,7 @@ export { default as Login } from './Login/Login';
 export { default as MyFactory } from './MyFatory/MyFactory';
 export { default as StudyFactory } from './StudyFactory/StudyFactory';
 export { default as FactoryExploration } from './Outer/FactoryExploration';
+export { default as FactoryUpLoader } from './Outer/FactoryUpLoader';
+export { default as CurrentFactory } from './Outer/CurrentFactory';
+export { default as HotFactory } from './Outer/HotFactory';
+export { default as DownLoadFactory } from './Outer/DownLoadFactory';

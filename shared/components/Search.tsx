@@ -11,12 +11,14 @@ const Search = ({
   searchImage,
   image,
   backImage = '',
+  placeholder = '공장 검색',
   onOpenModal,
 }: {
   styles: SearchStylesLocal;
   searchImage?: string;
   image?: string;
   backImage?: string;
+  placeholder?: string;
   onOpenModal: () => void;
 }) => {
   const { register, handleSubmit, setValue } = useForm<SearchFormData>();
@@ -36,7 +38,7 @@ const Search = ({
           ) : null}
           <div className={styles.group}>
             <input
-              placeholder='공장 검색'
+              placeholder={placeholder}
               type='text'
               {...register('searchQuery', { required: true })}
               onChange={(e) => setValue('searchQuery', e.target.value)}

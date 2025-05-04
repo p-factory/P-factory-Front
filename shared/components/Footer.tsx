@@ -19,10 +19,14 @@ const Footer = ({ styles }: { styles: FooterStyles }) => {
   const [isLocation, setLocation] = useState<string>('');
   useEffect(() => {
     if (
+      /**inner로 변경 필요 */
       location.pathname.includes('MyFactory') ||
       location.pathname.includes('StudyFactory')
     ) {
       setLocation('inner');
+    }
+    if (location.pathname.includes('outer')) {
+      setLocation('outer');
     }
   }, [location]);
   if (Platform.OS === 'web') {
@@ -55,7 +59,7 @@ const Footer = ({ styles }: { styles: FooterStyles }) => {
           className={styles.contents}
           onMouseEnter={() => handleMouseEnter('outer')}
           onMouseLeave={handleMouseLeave}
-          onClick={() => navigate('/error')}
+          onClick={() => navigate('/outer')}
         >
           <div className={styles.image}>
             <img
