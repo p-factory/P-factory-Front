@@ -10,3 +10,4 @@ export { default as CurrentFactory } from './Outer/CurrentFactory';
 export { default as HotFactory } from './Outer/HotFactory';
 export { default as DownLoadFactory } from './Outer/DownLoadFactory';
 export { default as BestUser } from './Outer/BestUser';
+export { default as BestUserShared } from './Outer/BestUserShared';
