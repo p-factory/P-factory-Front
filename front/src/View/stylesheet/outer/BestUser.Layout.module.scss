@@ -1,0 +1,33 @@
+.container{
+    .header{
+      margin-top: 72px;
+      margin-bottom: 32px;
+  
+      .imageGroup{
+        display: flex;
+        cursor: pointer;
+      }
+      .navigate{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        #title{
+          font-size: var(--font-size-regular);
+          font-weight: var(--font-weight-bold);
+        }
+      }
+    }
+    .ranker{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 23px;
+      margin-bottom: 32px;
+    }
+    .user{
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+  }

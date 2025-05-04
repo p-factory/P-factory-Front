@@ -16,6 +16,7 @@ import {
   CurrentFactory,
   HotFactory,
   DownLoadFactory,
+  BestUser,
 } from '@page';
 import Test from './dev';
 // import './App.scss';
@@ -39,6 +40,7 @@ const App = () => {
           <Route path='/outer/current' element={<CurrentFactory />} />
           <Route path='/outer/hot' element={<HotFactory />} />
           <Route path='/outer/download' element={<DownLoadFactory />} />
+          <Route path='/outer/best' element={<BestUser />} />
           <Route path='*' element={<Error />} />
         </Routes>
       </PersistGate>

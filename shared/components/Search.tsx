@@ -10,14 +10,12 @@ const Search = ({
   styles,
   searchImage,
   image,
-  backImage = '',
   placeholder = '공장 검색',
   onOpenModal,
 }: {
   styles: SearchStylesLocal;
   searchImage?: string;
   image?: string;
-  backImage?: string;
   placeholder?: string;
   onOpenModal: () => void;
 }) => {
@@ -31,11 +29,6 @@ const Search = ({
     return (
       <form id={styles.container} onSubmit={handleSubmit(onSubmit)}>
         <div id={styles.contents}>
-          {backImage !== '' ? (
-            <div className={styles.group}>
-              <img src={backImage} alt='back' />
-            </div>
-          ) : null}
           <div className={styles.group}>
             <input
               placeholder={placeholder}

@@ -4,7 +4,7 @@ import { BaseLayout } from '@view/components';
 
 const HotFactory = () => {
   return (
-    <BaseLayout>
+    <BaseLayout backImage={true} backUrl={'/outer'}>
       <div>
         <div
           style={{

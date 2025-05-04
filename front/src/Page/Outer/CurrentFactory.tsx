@@ -4,7 +4,7 @@ import { SharedFactoryTypeStyles } from '@mapping';
 
 const CurrentFactory = () => {
   return (
-    <BaseLayout>
+    <BaseLayout backImage={true} backUrl={'/outer'}>
       <div>
         <div
           style={{
