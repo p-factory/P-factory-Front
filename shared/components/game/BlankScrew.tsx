@@ -1,7 +1,7 @@
 import { Platform, Text } from 'react-native';
 import { BlankScrewStyles } from '../../style';
 
-const Test = ({ styles }: { styles: BlankScrewStyles }) => {
+const BlankScrew = ({ styles }: { styles: BlankScrewStyles }) => {
   if (Platform.OS === 'web') {
     {
       return (
@@ -17,4 +17,4 @@ const Test = ({ styles }: { styles: BlankScrewStyles }) => {
   return <Text style={{ color: '#fff' }}>This is None!</Text>;
 };
 
-export default Test;
+export default BlankScrew;

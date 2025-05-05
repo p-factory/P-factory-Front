@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useApiMutation, useApiQuery } from '@model';
 import { BaseLayout } from '@/View/components';
-import { Alarm, Factory, Test } from '@shared/components';
+import { Alarm, BlankScrew, Factory } from '@shared/components';
 import { AlarmTypeStyles, FactoryTypeStyles } from '@/Model/Mapping';
 import Bestter from '@shared/components/outer/Bestter';
 import {
@@ -95,7 +95,7 @@ const Dev = () => {
         handlelocal={() => console.log('test')}
       />
       <Alarm styles={AlarmTypeStyles} title='test' alarm='test' image='x' />
-      <Test styles={BlankScrewTypeStyles} />
+      <BlankScrew styles={BlankScrewTypeStyles} />
     </BaseLayout>
   );
 };

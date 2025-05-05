@@ -16,4 +16,4 @@ export { default as Bestter } from './outer/Bestter';
 export { default as Rank } from './outer/Rank';
 export { default as SharedFactory } from './outer/SharedFactory';
 //Game
-export { default as Test } from './game/Test';
+export { default as BlankScrew } from './game/BlankScrew';
