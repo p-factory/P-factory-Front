@@ -15,6 +15,7 @@ import {
   BestterStyled,
   RankStyled,
   SharedFactoryStyled,
+  BlankScrewStyled,
 } from '../../View/stylesheet';
 
 import {
@@ -35,6 +36,7 @@ import {
   BestterStyles,
   RankStyles,
   SharedFactoryStyles,
+  BlankScrewStyles,
 } from '@shared/style';
 
 //객체 매핑(Object Mapping)
@@ -206,4 +208,9 @@ export const SharedFactoryTypeStyles: SharedFactoryStyles = {
   title: SharedFactoryStyled.title,
   shared: SharedFactoryStyled.shared,
   count: SharedFactoryStyled.count,
+};
+
+export const BlankScrewTypeStyles: BlankScrewStyles = {
+  container: BlankScrewStyled.container,
+  contents: BlankScrewStyled.contents,
 };

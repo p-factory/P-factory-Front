@@ -8,6 +8,7 @@ import {
   BestterTypeStyles,
   RankTypeStyles,
   SharedFactoryTypeStyles,
+  BlankScrewTypeStyles,
 } from '@/Model/Mapping';
 import Rank from '@shared/components/outer/Rank';
 import SharedFactory from '@shared/components/outer/SharedFactory';
@@ -94,7 +95,7 @@ const Dev = () => {
         handlelocal={() => console.log('test')}
       />
       <Alarm styles={AlarmTypeStyles} title='test' alarm='test' image='x' />
-      <Test />
+      <Test styles={BlankScrewTypeStyles} />
     </BaseLayout>
   );
 };

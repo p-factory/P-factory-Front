@@ -132,3 +132,8 @@ export interface SharedFactoryStyles {
   shared: string;
   count: string;
 }
+
+export interface BlankScrewStyles {
+  container: string;
+  contents: string;
+}
