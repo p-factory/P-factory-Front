@@ -145,3 +145,9 @@ export interface BoltsPadStyles {
   contents: string;
   bolts: string;
 }
+
+export interface ExitDoorStyles {
+  container: string;
+  image: string;
+  bolt: string;
+}

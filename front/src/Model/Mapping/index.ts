@@ -17,6 +17,7 @@ import {
   SharedFactoryStyled,
   BlankScrewStyled,
   BoltsPadStyled,
+  ExitDoorStyled,
 } from '../../View/stylesheet';
 
 import {
@@ -39,6 +40,7 @@ import {
   SharedFactoryStyles,
   BlankScrewStyles,
   BoltsPadStyles,
+  ExitDoorStyles,
 } from '@shared/style';
 
 //객체 매핑(Object Mapping)
@@ -223,4 +225,10 @@ export const BoltsPadTypeStyles: BoltsPadStyles = {
   container: BoltsPadStyled.container,
   contents: BoltsPadStyled.contents,
   bolts: BoltsPadStyled.bolts,
+};
+
+export const ExitDoorTypeStyles: ExitDoorStyles = {
+  container: ExitDoorStyled.container,
+  image: ExitDoorStyled.image,
+  bolt: ExitDoorStyled.bolt,
 };
