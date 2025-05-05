@@ -17,3 +17,4 @@ export { default as Rank } from './outer/Rank';
 export { default as SharedFactory } from './outer/SharedFactory';
 //Game
 export { default as BlankScrew } from './game/BlankScrew';
+export { default as BoltsPad } from './game/BoltsPad';

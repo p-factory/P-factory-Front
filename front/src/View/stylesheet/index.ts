@@ -21,6 +21,7 @@ export { default as FactoryExploration } from './outer/FactoryExploration.Layout
 export { default as BestUser } from './outer/BestUser.Layout.module.scss';
 export { default as BestUserShared } from './outer/BestUserShared.Layout.module.scss';
 export { default as BlankScrewStyled } from './game/BlankScrew.module.scss';
+export { default as BoltsPadStyled } from './game/BoltsPad.module.scss';
 
 export { default as SignUp } from './signup/SignUp.page.module.scss';
 export { default as SignUpCheckList } from './signup/SignUpCheckList.module.scss';

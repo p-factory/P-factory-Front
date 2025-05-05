@@ -139,3 +139,9 @@ export interface BlankScrewStyles {
   bolt: string;
   nut: string;
 }
+
+export interface BoltsPadStyles {
+  container: string;
+  contents: string;
+  bolts: string;
+}

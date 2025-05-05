@@ -16,6 +16,7 @@ import {
   RankStyled,
   SharedFactoryStyled,
   BlankScrewStyled,
+  BoltsPadStyled,
 } from '../../View/stylesheet';
 
 import {
@@ -37,6 +38,7 @@ import {
   RankStyles,
   SharedFactoryStyles,
   BlankScrewStyles,
+  BoltsPadStyles,
 } from '@shared/style';
 
 //객체 매핑(Object Mapping)
@@ -215,4 +217,10 @@ export const BlankScrewTypeStyles: BlankScrewStyles = {
   contents: BlankScrewStyled.contents,
   bolt: BlankScrewStyled.bolt,
   nut: BlankScrewStyled.nut,
+};
+
+export const BoltsPadTypeStyles: BoltsPadStyles = {
+  container: BoltsPadStyled.container,
+  contents: BoltsPadStyled.contents,
+  bolts: BoltsPadStyled.bolt,
 };
