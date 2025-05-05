@@ -1,8 +1,12 @@
 import { useEffect } from 'react';
 import { useApiMutation, useApiQuery } from '@model';
 import { BaseLayout } from '@/View/components';
-import { Alarm, BlankScrew, Factory } from '@shared/components';
-import { AlarmTypeStyles, FactoryTypeStyles } from '@/Model/Mapping';
+import { Alarm, BlankScrew, BoltsPad, Factory } from '@shared/components';
+import {
+  AlarmTypeStyles,
+  BoltsPadTypeStyles,
+  FactoryTypeStyles,
+} from '@/Model/Mapping';
 import Bestter from '@shared/components/outer/Bestter';
 import {
   BestterTypeStyles,
@@ -96,6 +100,7 @@ const Dev = () => {
       />
       <Alarm styles={AlarmTypeStyles} title='test' alarm='test' image='x' />
       <BlankScrew styles={BlankScrewTypeStyles} />
+      <BoltsPad styles={BoltsPadTypeStyles} />
     </BaseLayout>
   );
 };
