@@ -4,9 +4,11 @@ import { doorIcon } from '../../../front/src/assets';
 const ExitDoor = ({
   styles,
   image = doorIcon,
+  bolt,
 }: {
   styles: ExitDoorStyles;
   image?: string;
+  bolt: string;
 }) => {
   if (Platform.OS === 'web') {
     {
@@ -15,7 +17,7 @@ const ExitDoor = ({
           <div className={styles.image}>
             <img src={image} alt='' />
           </div>
-          <div className={styles.bolt}>recognize</div>
+          <div className={styles.bolt}>{bolt}</div>
         </div>
       );
     }

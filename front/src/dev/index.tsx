@@ -109,9 +109,9 @@ const Dev = () => {
       {/* <BlankScrew styles={BlankScrewTypeStyles} />
       <BoltsPad styles={BoltsPadTypeStyles} /> */}
       <div style={{ display: 'flex', justifyContent: 'center', gap: '9px' }}>
-        <ExitDoor styles={ExitDoorTypeStyles} />
-        <ExitDoor styles={ExitDoorTypeStyles} />
-        <ExitDoor styles={ExitDoorTypeStyles} />
+        <ExitDoor styles={ExitDoorTypeStyles} bolt='recognize' />
+        <ExitDoor styles={ExitDoorTypeStyles} bolt='allow' />
+        <ExitDoor styles={ExitDoorTypeStyles} bolt='record' />
       </div>
     </BaseLayout>
   );
