@@ -136,4 +136,6 @@ export interface SharedFactoryStyles {
 export interface BlankScrewStyles {
   container: string;
   contents: string;
+  bolt: string;
+  nut: string;
 }

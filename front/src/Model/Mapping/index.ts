@@ -213,4 +213,6 @@ export const SharedFactoryTypeStyles: SharedFactoryStyles = {
 export const BlankScrewTypeStyles: BlankScrewStyles = {
   container: BlankScrewStyled.container,
   contents: BlankScrewStyled.contents,
+  bolt: BlankScrewStyled.bolt,
+  nut: BlankScrewStyled.nut,
 };

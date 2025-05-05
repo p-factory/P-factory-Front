@@ -7,8 +7,8 @@ const Test = ({ styles }: { styles: BlankScrewStyles }) => {
       return (
         <div className={styles.container}>
           <div className={styles.contents}>
-            <span id='bolt'>in_i_de</span>
-            <span id='nut'>포함하다</span>
+            <span id={styles.bolt}>in_i_de</span>
+            <span id={styles.nut}>포함하다</span>
           </div>
         </div>
       );
