@@ -19,3 +19,4 @@ export { default as SharedFactory } from './outer/SharedFactory';
 export { default as BlankScrew } from './game/BlankScrew';
 export { default as BoltsPad } from './game/BoltsPad';
 export { default as ExitDoor } from './game/ExitDoor';
+export { default as StageBanner } from './game/StageBanner';

@@ -151,3 +151,12 @@ export interface ExitDoorStyles {
   image: string;
   bolt: string;
 }
+
+export interface StageBannerStyles {
+  container: string;
+  image: string;
+  contents: string;
+  stage: string;
+  description: string;
+  title: string;
+}

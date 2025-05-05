@@ -18,6 +18,7 @@ import {
   BlankScrewStyled,
   BoltsPadStyled,
   ExitDoorStyled,
+  StageBannerStyled,
 } from '../../View/stylesheet';
 
 import {
@@ -41,6 +42,7 @@ import {
   BlankScrewStyles,
   BoltsPadStyles,
   ExitDoorStyles,
+  StageBannerStyles,
 } from '@shared/style';
 
 //객체 매핑(Object Mapping)
@@ -231,4 +233,13 @@ export const ExitDoorTypeStyles: ExitDoorStyles = {
   container: ExitDoorStyled.container,
   image: ExitDoorStyled.image,
   bolt: ExitDoorStyled.bolt,
+};
+
+export const StageBannerTypeStyles: StageBannerStyles = {
+  container: StageBannerStyled.container,
+  image: StageBannerStyled.image,
+  contents: StageBannerStyled.contents,
+  stage: StageBannerStyled.stage,
+  title: StageBannerStyled.title,
+  description: StageBannerStyled.description,
 };

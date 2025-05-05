@@ -23,6 +23,7 @@ export { default as BestUserShared } from './outer/BestUserShared.Layout.module.
 export { default as BlankScrewStyled } from './game/BlankScrew.module.scss';
 export { default as BoltsPadStyled } from './game/BoltsPad.module.scss';
 export { default as ExitDoorStyled } from './game/ExitDoor.module.scss';
+export { default as StageBannerStyled } from './game/StageBanner.module.scss';
 
 export { default as SignUp } from './signup/SignUp.page.module.scss';
 export { default as SignUpCheckList } from './signup/SignUpCheckList.module.scss';
