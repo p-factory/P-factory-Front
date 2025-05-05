@@ -7,12 +7,14 @@ import {
   BoltsPad,
   ExitDoor,
   Factory,
+  StageBanner,
 } from '@shared/components';
 import {
   AlarmTypeStyles,
   BoltsPadTypeStyles,
   ExitDoorTypeStyles,
   FactoryTypeStyles,
+  StageBannerTypeStyles,
 } from '@/Model/Mapping';
 import Bestter from '@shared/components/outer/Bestter';
 import {
@@ -113,6 +115,10 @@ const Dev = () => {
         <ExitDoor styles={ExitDoorTypeStyles} bolt='allow' />
         <ExitDoor styles={ExitDoorTypeStyles} bolt='record' />
       </div>
+      <StageBanner
+        styles={StageBannerTypeStyles}
+        stage={{ round: 1, title: '기계 고치기' }}
+      />
     </BaseLayout>
   );
 };
