@@ -222,5 +222,5 @@ export const BlankScrewTypeStyles: BlankScrewStyles = {
 export const BoltsPadTypeStyles: BoltsPadStyles = {
   container: BoltsPadStyled.container,
   contents: BoltsPadStyled.contents,
-  bolts: BoltsPadStyled.bolt,
+  bolts: BoltsPadStyled.bolts,
 };
