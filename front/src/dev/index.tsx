@@ -1,10 +1,17 @@
 import { useEffect } from 'react';
 import { useApiMutation, useApiQuery } from '@model';
 import { BaseLayout } from '@/View/components';
-import { Alarm, BlankScrew, BoltsPad, Factory } from '@shared/components';
+import {
+  Alarm,
+  BlankScrew,
+  BoltsPad,
+  ExitDoor,
+  Factory,
+} from '@shared/components';
 import {
   AlarmTypeStyles,
   BoltsPadTypeStyles,
+  ExitDoorTypeStyles,
   FactoryTypeStyles,
 } from '@/Model/Mapping';
 import Bestter from '@shared/components/outer/Bestter';
@@ -99,8 +106,13 @@ const Dev = () => {
         handlelocal={() => console.log('test')}
       />
       <Alarm styles={AlarmTypeStyles} title='test' alarm='test' image='x' />
-      <BlankScrew styles={BlankScrewTypeStyles} />
-      <BoltsPad styles={BoltsPadTypeStyles} />
+      {/* <BlankScrew styles={BlankScrewTypeStyles} />
+      <BoltsPad styles={BoltsPadTypeStyles} /> */}
+      <div style={{ display: 'flex', justifyContent: 'center', gap: '9px' }}>
+        <ExitDoor styles={ExitDoorTypeStyles} />
+        <ExitDoor styles={ExitDoorTypeStyles} />
+        <ExitDoor styles={ExitDoorTypeStyles} />
+      </div>
     </BaseLayout>
   );
 };
