@@ -111,8 +111,8 @@ const Factory = ({
   id,
   styles,
   name = 'untitle',
-  // favorite,
-  total = '0',
+  favorite,
+  total = 0,
   uri,
   handlelocal,
 }: {
@@ -120,13 +120,13 @@ const Factory = ({
   id: number;
   styles: FactoryStylesLocal;
   name: string;
-  // favorite: boolean;
-  total: string;
+  favorite: boolean;
+  total: number;
   uri: number;
   handlelocal: () => void;
 }) => {
   if (Platform.OS === 'web') {
-    const [, setIsFavorite] = useState<boolean>(false);
+    const [isFavorite, setIsFavorite] = useState<boolean>(favorite);
     const [isMoreActive, setMoreActive] = useState<boolean>(false);
 
     const managerBarRef = useRef<HTMLDivElement>(null);
@@ -139,9 +139,9 @@ const Factory = ({
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const favorite = useSelector(
-      (state: RootState) => state.setMyFactoryData.favorite,
-    );
+    // const favorite = useSelector(
+    //   (state: RootState) => state.setMyFactoryData.favorite,
+    // );
     // useEffect(() => {
     //   setClickedItem(favorite);
     // }, [favorite]);
@@ -149,6 +149,11 @@ const Factory = ({
     const handleIconClick = (event: React.MouseEvent<HTMLDivElement>) => {
       event.stopPropagation();
       // event.preventDefault();
+      console.log('total type:', typeof total, 'value:', total);
+      if (Number(total) === 0) {
+        console.log('데이터가 없어 즐겨찾기를 할 수 없습니다.');
+        return;
+      }
       mutation.mutate(
         {
           mutateUrl: `https://13.209.113.229.nip.io/api/wordbook/favorite/${id}`,
@@ -262,7 +267,7 @@ const Factory = ({
             <div id={styles.contents}>
               <div className={styles.image} onClick={handleIconClick}>
                 <img
-                  src={favorite ? starIconChecked : starIcon}
+                  src={isFavorite ? starIconChecked : starIcon}
                   alt='StarIcon'
                 />
               </div>

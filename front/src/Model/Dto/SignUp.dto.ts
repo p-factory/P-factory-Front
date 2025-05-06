@@ -27,7 +27,7 @@ const SignUpSchema = z
       .string()
       .min(1, { message: '*닉네임은 필수입니다.' })
       .max(20, { message: '*닉네임은 최대 20자까지 가능합니다.' })
-      .regex(/^[a-zA-Z0-9]+$/, {
+      .regex(/^[a-zA-Z0-9가-힣]+$/, {
         message: '*올바르게 작성해주세요.',
       }),
   })

@@ -1,4 +1,4 @@
-import { ButtonTypeStyles, PtoryLogoTypeStyles } from '@/Model/Mapping';
+import { ButtonTypeStyles, PtoryLogoTypeStyles } from '@mapping';
 import { Button, PtoryLogo } from '@shared/components';
 import { spannerIconWhite } from '@/assets';
 import { useNavigate } from 'react-router-dom';
@@ -30,6 +30,7 @@ const Main = () => {
           title='회원가입'
           state={false}
           functions={() => navigate('/signUp')}
+          style={{ color: 'var(--black-color)' }}
         />
       </div>
       <div className={styles.button}>

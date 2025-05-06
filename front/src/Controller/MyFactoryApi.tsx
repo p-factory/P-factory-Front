@@ -106,8 +106,8 @@ const MyFactoryApi = () => {
             id={el.wordbookId}
             styles={FactoryTypeStyles}
             name={el.bookName}
-            // favorite={el.favorite}
-            total={el.totalElements}
+            favorite={el.favorite}
+            total={Number(el.totalElements)}
             uri={el.wordbookId}
             handlelocal={() =>
               handleTotal({

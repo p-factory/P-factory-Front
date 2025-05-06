@@ -9,12 +9,14 @@ const Button = ({
   image = spannerIcon,
   state,
   functions,
+  style,
 }: {
   styles: ButtonStyles;
   title: string;
   image?: string;
   state?: boolean | null;
   functions: Functions.GeneralArg;
+  style?: React.CSSProperties;
 }) => {
   if (Platform.OS === 'web') {
     const handleClick = () => {
@@ -35,7 +37,9 @@ const Button = ({
         onClick={handleClick}
       >
         <div id={styles.contents}>
-          <span id={styles.title}>{title}</span>
+          <span id={styles.title} style={style}>
+            {title}
+          </span>
           <img id={styles.image} src={image} alt='' />
         </div>
       </div>
