@@ -88,8 +88,8 @@ const Dev = () => {
         styles={FactoryTypeStyles}
         id={1}
         name='test'
-        // favorite
-        total='1'
+        favorite={true}
+        total={1}
         uri={1}
         handlelocal={() => console.log('test')}
       />

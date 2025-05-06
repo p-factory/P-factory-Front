@@ -11,7 +11,8 @@ const FactoryUpLoader = () => {
             styles={FactoryTypeStyles}
             outer={true}
             name={'테스트'}
-            total={'0'}
+            favorite={true}
+            total={0}
             uri={0}
             handlelocal={() => {
               console.log('handlelocal');
@@ -24,7 +25,8 @@ const FactoryUpLoader = () => {
             styles={FactoryTypeStyles}
             outer={true}
             name={'테스트'}
-            total={'0'}
+            favorite={false}
+            total={0}
             uri={0}
             handlelocal={() => {
               console.log('handlelocal');
