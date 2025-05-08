@@ -1,11 +1,9 @@
 .container{
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
   .contents{
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    flex-wrap: wrap;          // 줄바꿈
+    row-gap: 40px;
     .bolt{
       font-size: var(--font-size-large);
       font-weight: var(--font-weight-bold);
