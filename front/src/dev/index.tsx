@@ -1,13 +1,27 @@
 import { useEffect } from 'react';
 import { useApiMutation, useApiQuery } from '@model';
 import { BaseLayout } from '@/View/components';
-import { Alarm, Factory, Test } from '@shared/components';
-import { AlarmTypeStyles, FactoryTypeStyles } from '@/Model/Mapping';
+import {
+  Alarm,
+  BlankScrew,
+  BoltsPad,
+  ExitDoor,
+  Factory,
+  StageBanner,
+} from '@shared/components';
+import {
+  AlarmTypeStyles,
+  BoltsPadTypeStyles,
+  ExitDoorTypeStyles,
+  FactoryTypeStyles,
+  StageBannerTypeStyles,
+} from '@/Model/Mapping';
 import Bestter from '@shared/components/outer/Bestter';
 import {
   BestterTypeStyles,
   RankTypeStyles,
   SharedFactoryTypeStyles,
+  BlankScrewTypeStyles,
 } from '@/Model/Mapping';
 import Rank from '@shared/components/outer/Rank';
 import SharedFactory from '@shared/components/outer/SharedFactory';
@@ -94,7 +108,17 @@ const Dev = () => {
         handlelocal={() => console.log('test')}
       />
       <Alarm styles={AlarmTypeStyles} title='test' alarm='test' image='x' />
-      <Test />
+      {/* <BlankScrew styles={BlankScrewTypeStyles} />
+      <BoltsPad styles={BoltsPadTypeStyles} /> */}
+      <div style={{ display: 'flex', justifyContent: 'center', gap: '9px' }}>
+        <ExitDoor styles={ExitDoorTypeStyles} bolt='recognize' />
+        <ExitDoor styles={ExitDoorTypeStyles} bolt='allow' />
+        <ExitDoor styles={ExitDoorTypeStyles} bolt='record' />
+      </div>
+      <StageBanner
+        styles={StageBannerTypeStyles}
+        stage={{ round: 1, title: '기계 고치기' }}
+      />
     </BaseLayout>
   );
 };

@@ -1,0 +1,35 @@
+.container {
+  border-bottom: 2px solid var(--gray2-color);
+  padding-bottom: 20px;
+  .contents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    #stage{
+      font-size: var(--font-size-large);
+      color: var(--black-color);
+      font-weight: var(--font-weight-bold);
+      height: 36px;
+    }
+    .description {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      #title {
+        font-size: var(--font-size-medium);
+        color: var(--gray5-color);
+        font-weight: var(--font-weight-medium);
+      }
+      .image {
+        display: flex;
+        width: 36px;
+        height: 36px;
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

@@ -15,6 +15,10 @@ import {
   BestterStyled,
   RankStyled,
   SharedFactoryStyled,
+  BlankScrewStyled,
+  BoltsPadStyled,
+  ExitDoorStyled,
+  StageBannerStyled,
 } from '../../View/stylesheet';
 
 import {
@@ -35,6 +39,10 @@ import {
   BestterStyles,
   RankStyles,
   SharedFactoryStyles,
+  BlankScrewStyles,
+  BoltsPadStyles,
+  ExitDoorStyles,
+  StageBannerStyles,
 } from '@shared/style';
 
 //객체 매핑(Object Mapping)
@@ -206,4 +214,32 @@ export const SharedFactoryTypeStyles: SharedFactoryStyles = {
   title: SharedFactoryStyled.title,
   shared: SharedFactoryStyled.shared,
   count: SharedFactoryStyled.count,
+};
+
+export const BlankScrewTypeStyles: BlankScrewStyles = {
+  container: BlankScrewStyled.container,
+  contents: BlankScrewStyled.contents,
+  bolt: BlankScrewStyled.bolt,
+  nut: BlankScrewStyled.nut,
+};
+
+export const BoltsPadTypeStyles: BoltsPadStyles = {
+  container: BoltsPadStyled.container,
+  contents: BoltsPadStyled.contents,
+  bolts: BoltsPadStyled.bolts,
+};
+
+export const ExitDoorTypeStyles: ExitDoorStyles = {
+  container: ExitDoorStyled.container,
+  image: ExitDoorStyled.image,
+  bolt: ExitDoorStyled.bolt,
+};
+
+export const StageBannerTypeStyles: StageBannerStyles = {
+  container: StageBannerStyled.container,
+  image: StageBannerStyled.image,
+  contents: StageBannerStyled.contents,
+  stage: StageBannerStyled.stage,
+  title: StageBannerStyled.title,
+  description: StageBannerStyled.description,
 };

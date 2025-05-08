@@ -132,3 +132,31 @@ export interface SharedFactoryStyles {
   shared: string;
   count: string;
 }
+
+export interface BlankScrewStyles {
+  container: string;
+  contents: string;
+  bolt: string;
+  nut: string;
+}
+
+export interface BoltsPadStyles {
+  container: string;
+  contents: string;
+  bolts: string;
+}
+
+export interface ExitDoorStyles {
+  container: string;
+  image: string;
+  bolt: string;
+}
+
+export interface StageBannerStyles {
+  container: string;
+  image: string;
+  contents: string;
+  stage: string;
+  description: string;
+  title: string;
+}

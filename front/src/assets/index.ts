@@ -44,3 +44,5 @@ export { default as backgroundSmall } from './img/Login/background-430.svg';
 export { default as backgroundMax } from './img/Login/background-1920.svg';
 export { default as rightArrowIcon } from './img/right-arrow-icon.svg';
 export { default as exportIcon } from './img/export-icon.svg';
+export { default as doorIcon } from './img/escape-door-icon.svg';
+export { default as keyIcon } from './img/escape-key-icon.svg';
