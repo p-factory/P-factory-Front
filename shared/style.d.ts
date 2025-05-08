@@ -27,6 +27,11 @@ export namespace Styles {
   export interface Image {
     image: string;
   }
+
+  export interface BoltNut {
+    bolt: string;
+    nut: string;
+  }
 }
 
 // Custom type
@@ -45,6 +50,7 @@ type BuildFactoryStyles = Styles.Common & Styles.Image & Styles.Button;
 type DriverStyles = Styles.Common & Styles.Image & Styles.Button;
 type PtoryLogoStyles = Styles.Common;
 type SortOptionStyles = Styles.Button;
+type BoltNutStyles = Styles.BoltNut;
 
 export interface ToolStylesLocal extends ToolStyles {
   tools: string;
@@ -74,11 +80,9 @@ export interface SearchStylesLocal extends SearchStyles {
   group: string;
 }
 
-export interface ScrewStylesLocal extends ScrewStyles {
+export interface ScrewStylesLocal extends ScrewStyles, BoltNutStyles {
   screwSound: string;
-  bolt: string;
   nuts: string;
-  nut: string;
   screwShape: string;
   checked: string;
   unchecked: string;
@@ -133,12 +137,9 @@ export interface SharedFactoryStyles {
   count: string;
 }
 
-// 여기서 bolt와 nut는 위 interface에서도 사용되다 보니 이걸 extends나 custom type으로 묶어서 재활용할 수 있지 않을까요?
-export interface BlankScrewStyles {
+export interface BlankScrewStyles extends BoltNutStyles {
   container: string;
   contents: string;
-  bolt: string;
-  nut: string;
 }
 
 export interface BoltsPadStyles {
