@@ -110,7 +110,7 @@ const Dev = () => {
       <Alarm styles={AlarmTypeStyles} title='test' alarm='test' image='x' />
       {/** 여기에서 bolt 값을 받아서 위에서 아래로 순차적으로 bolt를 props로 넘겨 줘야합니다. */}
       <BlankScrew styles={BlankScrewTypeStyles} />
-      <BoltsPad styles={BoltsPadTypeStyles} bolt='recognize' />
+      <BoltsPad styles={BoltsPadTypeStyles} bolt='recogn' />
       <div style={{ display: 'flex', justifyContent: 'center', gap: '9px' }}>
         <ExitDoor styles={ExitDoorTypeStyles} bolt='recognize' />
         <ExitDoor styles={ExitDoorTypeStyles} bolt='allow' />

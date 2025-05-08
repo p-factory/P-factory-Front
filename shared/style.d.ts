@@ -144,7 +144,7 @@ export interface BlankScrewStyles {
 export interface BoltsPadStyles {
   container: string;
   contents: string;
-  bolts: string;
+  bolt: string;
 }
 
 export interface ExitDoorStyles {
