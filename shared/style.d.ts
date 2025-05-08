@@ -133,6 +133,7 @@ export interface SharedFactoryStyles {
   count: string;
 }
 
+// 여기서 bolt와 nut는 위 interface에서도 사용되다 보니 이걸 extends나 custom type으로 묶어서 재활용할 수 있지 않을까요?
 export interface BlankScrewStyles {
   container: string;
   contents: string;

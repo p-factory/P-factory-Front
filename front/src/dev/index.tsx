@@ -108,8 +108,9 @@ const Dev = () => {
         handlelocal={() => console.log('test')}
       />
       <Alarm styles={AlarmTypeStyles} title='test' alarm='test' image='x' />
-      {/* <BlankScrew styles={BlankScrewTypeStyles} />
-      <BoltsPad styles={BoltsPadTypeStyles} /> */}
+      {/** 여기에서 bolt 값을 받아서 위에서 아래로 순차적으로 bolt를 props로 넘겨 줘야합니다. */}
+      <BlankScrew styles={BlankScrewTypeStyles} />
+      <BoltsPad styles={BoltsPadTypeStyles} bolt='recognize' />
       <div style={{ display: 'flex', justifyContent: 'center', gap: '9px' }}>
         <ExitDoor styles={ExitDoorTypeStyles} bolt='recognize' />
         <ExitDoor styles={ExitDoorTypeStyles} bolt='allow' />
@@ -119,6 +120,7 @@ const Dev = () => {
         styles={StageBannerTypeStyles}
         stage={{ round: 1, title: '기계 고치기' }}
       />
+      <div style={{ marginBottom: '100px' }} />
     </BaseLayout>
   );
 };
