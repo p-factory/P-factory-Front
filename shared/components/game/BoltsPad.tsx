@@ -1,11 +1,11 @@
 import { Platform, Text } from 'react-native';
-import { BoltsPadStyles } from '../../style';
+import { BoltsPadStylesLocal } from '../../style';
 import { useEffect, useRef } from 'react';
 const BoltsPad = ({
   styles,
   bolt,
 }: {
-  styles: BoltsPadStyles;
+  styles: BoltsPadStylesLocal;
   bolt: string;
 }) => {
   if (Platform.OS === 'web') {

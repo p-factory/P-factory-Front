@@ -142,16 +142,14 @@ export interface BlankScrewStyles extends BoltNutStyles {
   contents: string;
 }
 
-export interface BoltsPadStyles {
+type BoltsPadStylesLocal = BoltsPadStyles & BoltNutStyles;
+
+export interface ExitDoorStyles extends BoltsPadStylesLocal {
   container: string;
   contents: string;
-  bolt: string;
-}
-
-export interface ExitDoorStyles {
-  container: string;
   image: string;
   bolt: string;
+  nut?: string;
 }
 
 export interface StageBannerStyles {

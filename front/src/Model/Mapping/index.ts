@@ -40,7 +40,7 @@ import {
   RankStyles,
   SharedFactoryStyles,
   BlankScrewStyles,
-  BoltsPadStyles,
+  BoltsPadStylesLocal,
   ExitDoorStyles,
   StageBannerStyles,
 } from '@shared/style';
@@ -223,7 +223,7 @@ export const BlankScrewTypeStyles: BlankScrewStyles = {
   nut: BlankScrewStyled.nut,
 };
 
-export const BoltsPadTypeStyles: BoltsPadStyles = {
+export const BoltsPadTypeStyles: BoltsPadStylesLocal = {
   container: BoltsPadStyled.container,
   contents: BoltsPadStyled.contents,
   bolt: BoltsPadStyled.bolt,
@@ -231,6 +231,7 @@ export const BoltsPadTypeStyles: BoltsPadStyles = {
 
 export const ExitDoorTypeStyles: ExitDoorStyles = {
   container: ExitDoorStyled.container,
+  contents: ExitDoorStyled.contents,
   image: ExitDoorStyled.image,
   bolt: ExitDoorStyled.bolt,
 };

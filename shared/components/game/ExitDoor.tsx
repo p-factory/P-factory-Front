@@ -17,7 +17,9 @@ const ExitDoor = ({
           <div className={styles.image}>
             <img src={image} alt='' />
           </div>
-          <div className={styles.bolt}>{bolt}</div>
+          <div className={styles.contents}>
+            <span id={styles.bolt}>{bolt}</span>
+          </div>
         </div>
       );
     }
