@@ -108,9 +108,11 @@ const Dev = () => {
         handlelocal={() => console.log('test')}
       />
       <Alarm styles={AlarmTypeStyles} title='test' alarm='test' image='x' />
-      {/** 여기에서 bolt 값을 받아서 위에서 아래로 순차적으로 bolt를 props로 넘겨 줘야합니다. */}
       <BlankScrew styles={BlankScrewTypeStyles} />
-      <BoltsPad styles={BoltsPadTypeStyles} bolt='recogn' />
+      {/** 여기에서 include 값을 전달하는게 맞는지 고민해볼 필요가 있다. 이유는 렌덤한 단어가 나와야 하기 때문에 렌덤한 bolt 값을 생성하는 로직, 함수가 필요하다.
+       * 또한 패드의 6개 이상의 글자가 생성되면 디자인에서 요구되는 패드 개수가 오버된다는 점도 인지 해야한다.
+       */}
+      <BoltsPad styles={BoltsPadTypeStyles} bolt='include' />
       <div style={{ display: 'flex', justifyContent: 'center', gap: '9px' }}>
         <ExitDoor styles={ExitDoorTypeStyles} bolt='recognize' />
         <ExitDoor styles={ExitDoorTypeStyles} bolt='allow' />

@@ -23,7 +23,7 @@ const BoltsPad = ({
             {/* props로 받은 bolt를 split으로 펼쳐 맵으로 배치  */}
             {bolt.split('').map((a, index) => (
               <div className={styles.bolt} key={index}>
-                {a}
+                <span>{a}</span>
               </div>
             ))}
           </div>
