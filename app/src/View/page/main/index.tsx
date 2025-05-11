@@ -22,9 +22,15 @@ const Main = () => {
       </View>
       <View style={styles.buttonContainer}>
         <Button
-          // styles={Styles}
-          rnStyles={ButtonStyles}
-          title='단어 공장 작업 시작하기!'
+          rnStyle={{ backgroundColor: 'black' }}
+          rnStyles={{
+            ...ButtonStyles,
+            title: {
+              ...ButtonStyles.title,
+              color: 'white', // Text 스타일에 color 적용
+            },
+          }}
+          title='튜토리얼 보기'
           state={true}
           image='https://p-tory-cdn-807801802.imgix.net/img/png/global/spanner-icon.png'
           functions={() => {
@@ -35,7 +41,7 @@ const Main = () => {
           // styles={Styles}
           rnStyles={ButtonStyles}
           title='단어 공장 작업 시작하기!'
-          state={true}
+          state={false}
           image='https://p-tory-cdn-807801802.imgix.net/img/png/global/spanner-icon.png'
           functions={() => {
             console.log('단어 공장 작업 시작하기');
@@ -81,10 +87,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   buttonContainer: {
-    display: 'flex',
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
+    gap: 10,
   },
 });
 

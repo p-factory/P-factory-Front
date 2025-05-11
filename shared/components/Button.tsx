@@ -88,9 +88,20 @@ const Button = ({
       }}
     >
       <View style={rnStyles?.contents}>
-        <Text style={rnStyles?.title}>{title}</Text>
+        <Text style={[rnStyles?.title, state ? rnStyle : null]}>{title}</Text>
       </View>
-      {image && <Image source={{ uri: image }} style={rnStyles?.image} />}
+      {image && (
+        <Image
+          source={
+            state && rnStyle?.backgroundColor === 'black'
+              ? {
+                  uri: 'https://p-tory-cdn-807801802.imgix.net/img/png/front/page/main/spanner-icon-white.png',
+                }
+              : { uri: image }
+          }
+          style={rnStyles?.image}
+        />
+      )}
     </TouchableOpacity>
   );
 };
