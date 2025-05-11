@@ -5,6 +5,8 @@ import {
   TouchableOpacity,
   View,
   ViewStyle,
+  Image,
+  ImageStyle,
 } from 'react-native';
 import { Functions } from '../function';
 import { ButtonStyles } from '../style';
@@ -35,7 +37,7 @@ const Button = ({
     contents: ViewStyle;
     title: TextStyle;
     container: ViewStyle;
-    image: ViewStyle;
+    image: ImageStyle;
     buttonContents: ViewStyle;
   };
 }) => {
@@ -88,6 +90,7 @@ const Button = ({
       <View style={rnStyles?.contents}>
         <Text style={rnStyles?.title}>{title}</Text>
       </View>
+      {image && <Image source={{ uri: image }} style={rnStyles?.image} />}
     </TouchableOpacity>
   );
 };

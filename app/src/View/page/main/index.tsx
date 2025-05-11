@@ -1,24 +1,52 @@
 import Button from '../../../../../shared/components/Button';
+import PtoryLogo from '../../../../../shared/components/PtoryLogo';
 import { StyleSheet, View, Text } from 'react-native';
-import { Button as ButtonStyles } from '../../stylesheet';
+import {
+  Button as ButtonStyles,
+  PtoryLogo as PtoryLogoStyles,
+} from '../../stylesheet';
 
 const Main = () => {
   return (
     <View style={styles.container}>
       <View style={styles.contentContainer}>
-        <Text style={styles.text}>토리와 함께 내 만들어가는</Text>
-        <View style={styles.titleContainer}>
-          <Text style={styles.text}>
-            나만의 <Text style={styles.highlight}>단어공장</Text>
-          </Text>
+        <PtoryLogo rnStyles={PtoryLogoStyles} />
+        <View style={styles.textContainer}>
+          <Text style={styles.text}>토리와 함께 내 만들어가는</Text>
+          <View style={styles.titleContainer}>
+            <Text style={styles.text}>
+              나만의 <Text style={styles.highlight}>단어공장</Text>
+            </Text>
+          </View>
         </View>
       </View>
       <View style={styles.buttonContainer}>
         <Button
           // styles={Styles}
           rnStyles={ButtonStyles}
-          title='단어 공장 작업 시작하기'
-          state={false}
+          title='단어 공장 작업 시작하기!'
+          state={true}
+          image='https://p-tory-cdn-807801802.imgix.net/img/png/global/spanner-icon.png'
+          functions={() => {
+            console.log('단어 공장 작업 시작하기');
+          }}
+        />
+        <Button
+          // styles={Styles}
+          rnStyles={ButtonStyles}
+          title='단어 공장 작업 시작하기!'
+          state={true}
+          image='https://p-tory-cdn-807801802.imgix.net/img/png/global/spanner-icon.png'
+          functions={() => {
+            console.log('단어 공장 작업 시작하기');
+          }}
+        />
+        <Button
+          // styles={Styles}
+          rnStyles={ButtonStyles}
+          title='단어 공장 작업 시작하기!'
+          state={true}
+          image='https://p-tory-cdn-807801802.imgix.net/img/png/global/spanner-icon.png'
           functions={() => {
             console.log('단어 공장 작업 시작하기');
           }}
@@ -38,6 +66,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  textContainer: {
+    marginTop: 40,
+  },
   titleContainer: {
     marginTop: 10,
   },
@@ -50,6 +81,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   buttonContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     padding: 20,
   },
 });

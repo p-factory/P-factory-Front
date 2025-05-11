@@ -1,15 +1,24 @@
 import { StyleSheet } from 'react-native';
 
 const Button = StyleSheet.create({
+  body: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   // 공통 버튼 스타일
   button: {
     display: 'flex',
+    flexDirection: 'row',
     justifyContent: 'center',
-    backgroundColor: '#007AFF', // var(--primary-color)
+    alignItems: 'center',
+    maxWidth: 350,
+    width: '100%',
+    height: 56,
+    backgroundColor: '#97EB0D', // var(--primary-color)
     padding: 10,
-    borderRadius: 12, // var(--corner-radius-large)
-    fontSize: 16, // var(--font-size-medium)
-    fontWeight: 'bold', // var(--font-weight-bold)
+    borderRadius: 80, // var(--corner-radius-large)
   },
   // submit 버튼 스타일
   submit: {
@@ -27,6 +36,8 @@ const Button = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     marginRight: 5,
+    fontSize: 24, // var(--font-size-medium)
+    fontWeight: 'bold', // var(--font-weight-bold)
   },
   // 버튼 이미지
   image: {
@@ -44,4 +55,4 @@ const Button = StyleSheet.create({
   },
 });
 
-export { Button };
+export default Button;
