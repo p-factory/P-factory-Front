@@ -1,1 +1,1 @@
-export { Button, Styles } from './ui/Button.ui';
+export { Button } from './ui/Button.style';

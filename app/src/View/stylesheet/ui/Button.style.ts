@@ -1,15 +1,5 @@
 import { StyleSheet } from 'react-native';
 
-const Styles = {
-  button: 'button',
-  container: 'container',
-  submit: 'submit',
-  contents: 'contents',
-  title: 'title',
-  image: 'image',
-  buttonContents: 'buttonContents',
-};
-
 const Button = StyleSheet.create({
   // 공통 버튼 스타일
   button: {
@@ -54,4 +44,4 @@ const Button = StyleSheet.create({
   },
 });
 
-export { Button, Styles };
+export { Button };

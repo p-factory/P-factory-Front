@@ -1,6 +1,6 @@
 import Button from '../../../../../shared/components/Button';
 import { StyleSheet, View, Text } from 'react-native';
-import { Button as ButtonStyles, Styles } from '../../stylesheet';
+import { Button as ButtonStyles } from '../../stylesheet';
 
 const Main = () => {
   return (
@@ -15,7 +15,7 @@ const Main = () => {
       </View>
       <View style={styles.buttonContainer}>
         <Button
-          styles={Styles}
+          // styles={Styles}
           rnStyles={ButtonStyles}
           title='단어 공장 작업 시작하기'
           state={false}

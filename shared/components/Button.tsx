@@ -9,41 +9,6 @@ import {
 import { Functions } from '../function';
 import { ButtonStyles } from '../style';
 
-// const rnStyles = {
-//   button: {
-//     backgroundColor: '#007AFF',
-//     padding: 15,
-//     borderRadius: 8,
-//     flexDirection: 'row' as const,
-//     alignItems: 'center' as const,
-//     justifyContent: 'center' as const,
-//   },
-//   submit: {
-//     backgroundColor: '#4CAF50',
-//   },
-//   contents: {
-//     flexDirection: 'row' as const,
-//     alignItems: 'center' as const,
-//   },
-//   title: {
-//     color: '#fff',
-//     fontSize: 16,
-//     fontWeight: 'bold' as const, // 'bold'를 const로 타입 단언
-//   } as TextStyle, // TextStyle로 타입 단언
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//   },
-//   image: {
-//     width: 20,
-//     height: 20,
-//   },
-//   buttonContents: {
-//     flexDirection: 'row' as const,
-//     alignItems: 'center' as const,
-//   },
-// };
-
 const Button = ({
   styles,
   title,
@@ -54,13 +19,16 @@ const Button = ({
   rnStyle,
   rnStyles,
 }: {
-  styles: ButtonStyles;
+  styles?: ButtonStyles;
   title: string;
   image?: string;
   state?: boolean | null;
+  /**해당 function은 모바일에서는 확인이 불가능하지만 web에서 확인이 가능하다. */
   functions: Functions.GeneralArg;
   style?: React.CSSProperties;
+  /** rn inline style 객체 */
   rnStyle?: ViewStyle;
+  /** rn에서 props로 전달 받는 스타일 객체 */
   rnStyles?: {
     button: ViewStyle;
     submit: ViewStyle;
@@ -72,6 +40,11 @@ const Button = ({
   };
 }) => {
   if (Platform.OS === 'web') {
+    if (!styles) {
+      console.warn('Button: styles prop is required for web platform');
+      return null;
+    }
+
     const handleClick = () => {
       // 타입 가드 추가: 함수인지 객체인지 구분
       if (typeof functions === 'function') {
