@@ -1,15 +1,26 @@
-import { FooterTypeStyles, BestterTypeStyles } from '@mapping';
-import { Footer, Bestter } from '@shared/components';
+import { FooterTypeStyles } from '@mapping';
+import { Footer } from '@shared/components';
 import { MyPage as styled } from '@view/stylesheet';
+import { cameraIcon } from '@assets';
 
 const MyPage = () => {
   return (
     <div className={styled.container}>
-      <div className={styled.ranker}>
+      <div className={styled.user}>
         <div
           style={{ display: 'flex', justifyContent: 'center', width: '100%' }}
         >
-          <Bestter styles={BestterTypeStyles} />
+          <div className={styled.userContainer}>
+            <div className={styled.userImage}>
+              <div id={styled.image}>
+                <img src='' alt='' />
+              </div>
+              <button id={styled.cameraButton}>
+                <img src={cameraIcon} alt='camera' />
+              </button>
+            </div>
+            <div className={styled.userName}>아기사자</div>
+          </div>
         </div>
         <div className={styled.info}>
           <div className={styled.item}>
