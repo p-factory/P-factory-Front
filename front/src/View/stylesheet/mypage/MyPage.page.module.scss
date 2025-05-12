@@ -1,0 +1,46 @@
+@use '../../../helpers' as fn;
+.container{
+    .ranker{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 23px;
+      margin-bottom: 32px;
+      .info{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        border-bottom: 1px solid var(--gray2-color);
+        padding: 0 fn.px-to-percent(16, 430);;
+        padding-bottom: 8px;
+        .item{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            span:first-child{
+              background-color: var(--gray2-color);
+              padding: 0 8px;
+              border-radius: var(--corner-radius-medium);
+              font-size: var(--font-size-xsmall);
+              font-weight: var(--font-weight-bold);
+            }
+            span:last-child{
+                font-size: var(--font-size-xxsmall);
+
+            }
+        }
+      } 
+    }
+    .category{
+        .categoryContent{
+            .categoryTitle{
+                color: var(--gray3-color);
+            }
+            .categoryList{
+            }
+        }
+    }
+  }

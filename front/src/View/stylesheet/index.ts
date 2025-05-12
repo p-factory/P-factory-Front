@@ -25,6 +25,7 @@ export { default as SignUp } from './signup/SignUp.page.module.scss';
 export { default as SignUpCheckList } from './signup/SignUpCheckList.module.scss';
 export { default as SignUpInput } from './signup/SignUpInput.page.module.scss';
 export { default as Login } from './login/Login.page.module.scss';
+export { default as MyPage } from './mypage/MyPage.page.module.scss';
 export { default as Main } from './Main.Layout.module.scss';
 export { default as DownLoadFactory } from './outer/DownLoadFactory.Loayout.module.scss';
 // components
