@@ -1,6 +1,6 @@
 import { FooterTypeStyles, BestterTypeStyles } from '@mapping';
 import { Footer, Bestter } from '@shared/components';
-import { BestUserShared as styled } from '@view/stylesheet';
+import { MyPage as styled } from '@view/stylesheet';
 
 const MyPage = () => {
   return (
@@ -25,19 +25,21 @@ const MyPage = () => {
             <span>1,385,205</span>
           </div>
         </div>
-        <div>
-          <div>업로드</div>
-          <div>외부 공장 업로드 내역</div>
+      </div>
+      <div className={styled.category}>
+        <div className={styled.categoryContent}>
+          <div className={styled.categoryTitle}>업로드</div>
+          <div className={styled.categoryList}>외부 공장 업로드 내역</div>
         </div>
-        <div>
-          <div>문의</div>
-          <div>개발자에게 메일 보내기</div>
+        <div className={styled.categoryContent}>
+          <div className={styled.categoryTitle}>문의</div>
+          <div className={styled.categoryList}>개발자에게 메일 보내기</div>
         </div>
-        <div>
-          <div>계정</div>
-          <div>정보 수정</div>
-          <div>로그아웃</div>
-          <div>탈퇴</div>
+        <div className={styled.categoryContent}>
+          <div className={styled.categoryTitle}>계정</div>
+          <div className={styled.categoryList}>정보 수정</div>
+          <div className={styled.categoryList}>로그아웃</div>
+          <div className={styled.categoryList}>탈퇴</div>
         </div>
       </div>
       <Footer styles={FooterTypeStyles} />
