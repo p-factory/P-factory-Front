@@ -28,7 +28,7 @@ const Footer = ({ styles }: { styles: FooterStyles }) => {
     if (location.pathname.includes('outer')) {
       setLocation('outer');
     }
-    if (location.pathname.includes('MyPage')) {
+    if (location.pathname.includes('myPage')) {
       setLocation('myPage');
     }
   }, [location]);
@@ -102,7 +102,7 @@ const Footer = ({ styles }: { styles: FooterStyles }) => {
           className={styles.contents}
           onMouseEnter={() => handleMouseEnter('myPage')}
           onMouseLeave={handleMouseLeave}
-          onClick={() => navigate('/MyPage')}
+          onClick={() => navigate('/myPage')}
         >
           <div className={styles.image}>
             <img

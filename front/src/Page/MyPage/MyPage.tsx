@@ -2,8 +2,10 @@ import { FooterTypeStyles } from '@mapping';
 import { Footer } from '@shared/components';
 import { MyPage as styled } from '@view/stylesheet';
 import { cameraIcon } from '@assets';
+import { useNavigate } from 'react-router-dom';
 
 const MyPage = () => {
+  const navigate = useNavigate();
   return (
     <div className={styled.container}>
       <div className={styled.user}>
@@ -40,7 +42,12 @@ const MyPage = () => {
       <div className={styled.category}>
         <div className={styled.categoryContent}>
           <div className={styled.categoryTitle}>업로드</div>
-          <div className={styled.categoryList}>외부 공장 업로드 내역</div>
+          <div
+            className={styled.categoryList}
+            onClick={() => navigate('./upload')}
+          >
+            외부 공장 업로드 내역
+          </div>
         </div>
         <div className={styled.categoryContent}>
           <div className={styled.categoryTitle}>문의</div>

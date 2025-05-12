@@ -19,6 +19,7 @@ import {
   BestUser,
   BestUserShared,
   MyPage,
+  Upload,
 } from '@page';
 import Test from './dev';
 import { ScrollToTop } from '@view/components';
@@ -47,6 +48,7 @@ const App = () => {
           <Route path='/outer/best' element={<BestUser />} />
           <Route path='/outer/best/shared' element={<BestUserShared />} />
           <Route path='/mypage' element={<MyPage />} />
+          <Route path='/mypage/upload' element={<Upload />} />
           <Route path='*' element={<Error />} />
         </Routes>
       </PersistGate>
