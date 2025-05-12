@@ -14,7 +14,7 @@ import { ButtonStyles } from '../style';
 const Button = ({
   styles,
   title,
-  image,
+  image = 'https://p-tory-cdn-807801802.imgix.net/img/png/global/spanner-icon.png',
   state,
   functions,
   style,

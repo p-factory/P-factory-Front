@@ -5,8 +5,17 @@ import {
   Button as ButtonStyles,
   PtoryLogo as PtoryLogoStyles,
 } from '../../stylesheet';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+type RootStackParamList = {
+  home: undefined;
+  dev: undefined;
+};
+
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 const Main = () => {
+  const navigation = useNavigation<NavigationProp>();
   return (
     <View style={styles.container}>
       <View style={styles.contentContainer}>
@@ -34,7 +43,7 @@ const Main = () => {
           state={true}
           image='https://p-tory-cdn-807801802.imgix.net/img/png/global/spanner-icon.png'
           functions={() => {
-            console.log('단어 공장 작업 시작하기');
+            navigation.navigate('dev');
           }}
         />
         <Button

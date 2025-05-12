@@ -1,12 +1,12 @@
 import { StyleSheet } from 'react-native';
 
 const Button = StyleSheet.create({
-  body: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+  // body: {
+  //   display: 'flex',
+  //   flexDirection: 'row',
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  // },
   // 공통 버튼 스타일
   button: {
     display: 'flex',
