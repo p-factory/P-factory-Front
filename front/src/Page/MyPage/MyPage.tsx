@@ -42,6 +42,7 @@ const MyPage = () => {
           <div className={styled.categoryList}>탈퇴</div>
         </div>
       </div>
+      <div className={styled.version}>ver 1.0</div>
       <Footer styles={FooterTypeStyles} />
     </div>
   );
