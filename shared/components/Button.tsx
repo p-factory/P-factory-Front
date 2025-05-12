@@ -76,6 +76,7 @@ const Button = ({
 
   return (
     <TouchableOpacity
+      activeOpacity={0.7}
       style={[
         rnStyles?.button,
         state ? rnStyles?.button : rnStyles?.submit,
@@ -88,7 +89,7 @@ const Button = ({
       }}
     >
       <View style={rnStyles?.contents}>
-        <Text style={[rnStyles?.title, state ? rnStyle : null]}>{title}</Text>
+        <Text style={rnStyles?.title}>{title}</Text>
       </View>
       {image && (
         <Image

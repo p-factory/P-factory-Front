@@ -5,28 +5,28 @@ import {
   Button as ButtonStyles,
   PtoryLogo as PtoryLogoStyles,
 } from '../../stylesheet';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-type RootStackParamList = {
-  home: undefined;
-  dev: undefined;
-};
+// import { useNavigation } from '@react-navigation/native';
+// import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+// type RootStackParamList = {
+//   home: undefined;
+//   dev: undefined;
+// };
 
-type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
+// type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 const Main = () => {
-  const navigation = useNavigation<NavigationProp>();
+  // const navigation = useNavigation<NavigationProp>();
   return (
     <View style={styles.container}>
-      <View style={styles.contentContainer}>
+      <View style={styles.logoContainer}>
         <PtoryLogo rnStyles={PtoryLogoStyles} />
-        <View style={styles.textContainer}>
-          <Text style={styles.text}>토리와 함께 내 만들어가는</Text>
-          <View style={styles.titleContainer}>
-            <Text style={styles.text}>
-              나만의 <Text style={styles.highlight}>단어공장</Text>
-            </Text>
-          </View>
+      </View>
+      <View style={styles.contentContainer}>
+        <Text style={styles.text}>토리와 함께 내 만들어가는</Text>
+        <View style={styles.titleContainer}>
+          <Text style={styles.text}>
+            나만의 <Text style={styles.highlight}>단어공장</Text>
+          </Text>
         </View>
       </View>
       <View style={styles.buttonContainer}>
@@ -43,7 +43,8 @@ const Main = () => {
           state={true}
           image='https://p-tory-cdn-807801802.imgix.net/img/png/global/spanner-icon.png'
           functions={() => {
-            navigation.navigate('dev');
+            // navigation.navigate('dev');
+            console.log('튜토리얼 보기');
           }}
         />
         <Button
@@ -75,6 +76,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+  },
+  logoContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   contentContainer: {
     flex: 1,
