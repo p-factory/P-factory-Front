@@ -79,7 +79,7 @@ const Footer = ({ styles }: { styles: FooterStyles }) => {
           className={styles.contents}
           onMouseEnter={() => handleMouseEnter('game')}
           onMouseLeave={handleMouseLeave}
-          onClick={() => navigate('/error')}
+          onClick={() => navigate('/game')}
         >
           <div className={styles.image}>
             <img

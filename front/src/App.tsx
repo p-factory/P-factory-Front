@@ -21,6 +21,7 @@ import {
 } from '@page';
 import Test from './dev';
 import { ScrollToTop } from '@view/components';
+import Game from './Page/Game/Game';
 // import './App.scss';
 
 const App = () => {
@@ -45,6 +46,7 @@ const App = () => {
           <Route path='/outer/download' element={<DownLoadFactory />} />
           <Route path='/outer/best' element={<BestUser />} />
           <Route path='/outer/best/shared' element={<BestUserShared />} />
+          <Route path='/game' element={<Game />} />
           <Route path='*' element={<Error />} />
         </Routes>
       </PersistGate>
