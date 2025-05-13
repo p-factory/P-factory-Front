@@ -46,3 +46,4 @@ export { default as rightArrowIcon } from './img/right-arrow-icon.svg';
 export { default as exportIcon } from './img/export-icon.svg';
 export { default as doorIcon } from './img/escape-door-icon.svg';
 export { default as keyIcon } from './img/escape-key-icon.svg';
+export { default as gameBanner } from './img/game-start-banner.svg';

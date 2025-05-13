@@ -1,13 +1,15 @@
 import { FooterTypeStyles } from '@/Model/Mapping';
 import { Footer } from '@shared/components';
-
+import { gameBanner, rightArrowIcon } from '@/assets';
 const Game = () => {
   return (
     <div>
       <div>
-        <span>눌러서 토리와 함께 공장을 탈출해주세요!</span>
         <div>
-          <img src='' alt='GameStartBanner' />
+          <span>↓</span> 눌러서 토리와 함께 공장을 탈출해주세요!
+        </div>
+        <div>
+          <img src={gameBanner} alt='GameStartBanner' />
         </div>
       </div>
       <div>
@@ -17,7 +19,7 @@ const Game = () => {
           <div>
             <span>미선택</span>
             <div>
-              <img src='' alt='RightArrow' />
+              <img src={rightArrowIcon} alt='RightArrow' />
             </div>
           </div>
         </div>
@@ -26,7 +28,7 @@ const Game = () => {
           <div>
             <span>미선택</span>
             <div>
-              <img src='' alt='RightArrow' />
+              <img src={rightArrowIcon} alt='RightArrow' />
             </div>
           </div>
         </div>
