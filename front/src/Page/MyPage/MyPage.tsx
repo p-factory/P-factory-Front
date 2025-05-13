@@ -55,7 +55,12 @@ const MyPage = () => {
         </div>
         <div className={styled.categoryContent}>
           <div className={styled.categoryTitle}>계정</div>
-          <div className={styled.categoryList}>정보 수정</div>
+          <div
+            className={styled.categoryList}
+            onClick={() => navigate('./account')}
+          >
+            정보 수정
+          </div>
           <div className={styled.categoryList}>로그아웃</div>
           <div className={styled.categoryList}>탈퇴</div>
         </div>

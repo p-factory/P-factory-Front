@@ -1,0 +1,126 @@
+@use '../../../helpers' as fn;
+
+.container{
+  margin-bottom: 138px;
+  .header{
+    margin-top: 72px;
+    margin-bottom: 93px;
+    .navigate{
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+      .imageGroup{
+        display: flex;
+        cursor: pointer;
+      }
+      #title{
+        font-size: var(--font-size-regular);
+        font-weight: var(--font-weight-bold);      
+      }
+    }
+  }
+  #contents{
+    width: 100%;
+    form{
+        .inputContainer{
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+            .inputContents{
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 16px;
+                position: relative;
+                :last-child{
+                margin-bottom: 0;
+                }
+                .inputText{
+                  color: var(--black-color);
+                  font-size: var(--font-size-regular);
+                  font-weight: var(--font-weight-medium);
+                  margin-bottom: 8px;
+                  span{
+                    color: var(--negative-error-cancel);
+                  }
+                }
+                    .input{
+                    display: flex;
+                    align-items: center;
+                    background-color: var(--gray1-color);
+                    border-radius: var(--corner-radius-regular);
+                    border: 1px solid var(--gray1-color);
+                    padding: 16px 24px;
+                    margin: 0;
+                        input{
+                            width: 100%;
+                            font-size: var(--font-size-small);
+                            color: var(--gray4-color);
+                            font-weight: var(--font-weight-medium);
+                            background: none;
+                            margin: 0;
+                            &::placeholder{
+                                color: var(--gray3-color);
+                                font-size: var(--font-size-small);
+                                font-weight: var(--font-weight-light);
+                            }
+                        }
+                    }
+                    .inputError{
+                        display: flex;
+                        align-items: center;
+                        background-color: var(--gray1-color);
+                        border-radius: var(--corner-radius-regular);
+                        border: 1px solid var(--negative-error-cancel);
+                        padding: 16px 24px;
+                        margin: 0;
+                        input{
+                            width: 100%;
+                            font-size: var(--font-size-small);
+                            color: var(--gray4-color);
+                            font-weight: var(--font-weight-medium);
+                            background: none;
+                            margin: 0;
+                            &::placeholder{
+                                color: var(--gray3-color);
+                                font-size: var(--font-size-small);
+                                font-weight: var(--font-weight-light);
+                            }
+                        }
+                    }
+                p{
+                    display: flex;
+                    position: absolute;
+                    text-align: end;
+                    bottom: -20px;
+                    right: 0;
+                    color: var(--negative-error-cancel);
+                    font-size: var(--font-size-xxsmall);
+                    font-weight: var(--font-weight-medium);
+                }
+            }
+        }
+        .buttonContainer{
+          width: 100%;
+          display: flex;
+          justify-content: end;
+          margin-bottom: 16px;
+          button{
+            // height: 38px;
+            // width: fn.px-to-percent(82, 430);
+            padding: 9px 24px;
+            background-color: var(--gray2-color);
+            border-radius: var(--corner-radius-regular);
+            font-size: var(--font-size-regular);
+            font-weight: var(--font-weight-semibold);
+        }
+        }
+    }
+    #nickname{
+      border-top: 1px solid var(--gray2-color);
+      padding: 16px 0;
+      color: var(--gray3-color);
+      font-size: var(--font-size-xsmall);
+      font-weight: var(--font-weight-medium);
+    }
+}}

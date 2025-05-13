@@ -13,3 +13,4 @@ export { default as BestUser } from './Outer/BestUser';
 export { default as BestUserShared } from './Outer/BestUserShared';
 export { default as MyPage } from './MyPage/MyPage';
 export { default as Upload } from './MyPage/Upload';
+export { default as Account } from './MyPage/Account';
