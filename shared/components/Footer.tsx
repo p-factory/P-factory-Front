@@ -28,6 +28,9 @@ const Footer = ({ styles }: { styles: FooterStyles }) => {
     if (location.pathname.includes('outer')) {
       setLocation('outer');
     }
+    if (location.pathname.includes('myPage')) {
+      setLocation('myPage');
+    }
   }, [location]);
   if (Platform.OS === 'web') {
     const navigate = useNavigate();
@@ -99,7 +102,7 @@ const Footer = ({ styles }: { styles: FooterStyles }) => {
           className={styles.contents}
           onMouseEnter={() => handleMouseEnter('myPage')}
           onMouseLeave={handleMouseLeave}
-          onClick={() => navigate('/error')}
+          onClick={() => navigate('/myPage')}
         >
           <div className={styles.image}>
             <img
