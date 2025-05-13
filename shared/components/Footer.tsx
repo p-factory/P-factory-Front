@@ -28,6 +28,9 @@ const Footer = ({ styles }: { styles: FooterStyles }) => {
     if (location.pathname.includes('outer')) {
       setLocation('outer');
     }
+    if (location.pathname.includes('game')) {
+      setLocation('game');
+    }
   }, [location]);
   if (Platform.OS === 'web') {
     const navigate = useNavigate();
