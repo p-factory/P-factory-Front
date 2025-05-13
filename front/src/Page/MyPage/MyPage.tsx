@@ -2,7 +2,7 @@ import { FooterTypeStyles } from '@mapping';
 import { Footer } from '@shared/components';
 import { MyPage as styled } from '@view/stylesheet';
 import { cameraIcon } from '@assets';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const MyPage = () => {
   const navigate = useNavigate();
@@ -51,7 +51,11 @@ const MyPage = () => {
         </div>
         <div className={styled.categoryContent}>
           <div className={styled.categoryTitle}>문의</div>
-          <div className={styled.categoryList}>개발자에게 메일 보내기</div>
+          <div className={styled.categoryList}>
+            <Link to='mailto:pfactory0615@gmail.com'>
+              개발자에게 메일 보내기
+            </Link>
+          </div>
         </div>
         <div className={styled.categoryContent}>
           <div className={styled.categoryTitle}>계정</div>
