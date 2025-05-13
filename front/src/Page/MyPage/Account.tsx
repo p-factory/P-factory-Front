@@ -34,6 +34,7 @@ const Account = () => {
                   // {...register('password')}
                 />
               </div>
+              {/* <p>*올바르게 작성해주세요.</p> */}
               {/* {errors.password && <p>{errors.password.message}</p>} */}
             </div>
             <div className={styled.inputContents}>
@@ -47,6 +48,7 @@ const Account = () => {
                   // {...register('password')}
                 />
               </div>
+              {/* <p>*올바르게 작성해주세요.</p> */}
               {/* {errors.password && <p>{errors.password.message}</p>} */}
             </div>
             <div className={styled.inputContents}>
@@ -60,6 +62,7 @@ const Account = () => {
                   // {...register('passwordCheck')}
                 />
               </div>
+              {/* <p>*올바르게 작성해주세요.</p> */}
               {/* {errors.passwordCheck && <p>{errors.passwordCheck.message}</p>} */}
             </div>
           </div>
@@ -79,6 +82,7 @@ const Account = () => {
               <div className={styled.inputText}>
                 변경 닉네임<span>*</span>
               </div>
+              {/* <div className={errors.name ? styled.inputError : styled.input}> */}
               <div className={styled.input}>
                 <input
                   type='text'
@@ -86,12 +90,14 @@ const Account = () => {
                   // {...register('name')}
                 />
               </div>
+              {/* <p>*올바르게 작성해주세요.</p> */}
               {/* {errors.name && <p>{errors.name.message}</p>} */}
             </div>
           </div>
           <div className={styled.buttonContainer}>
             <button
               type='submit'
+              // style={{ backgroundColor: 'var(--primary-color)' }} // 추후 조건 부여
               // onClick={handleSubmit(onSubmit)}
             >
               확인
