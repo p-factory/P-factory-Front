@@ -1,0 +1,35 @@
+.container {
+  .header {
+    .text {}
+
+    .banner {
+      .bannerTitle {
+        #start {}
+      }
+
+      .bannerGradation {}
+
+      .bannerImg {}
+    }
+  }
+
+  .contents {
+    .text {}
+
+    .setting {
+      .settingTitle {}
+
+      .settingSelectBox {
+        #settingSelect {}
+
+        .rightImg {}
+      }
+    }
+
+    .description {
+      .text {
+        .bolder {}
+      }
+    }
+  }
+}

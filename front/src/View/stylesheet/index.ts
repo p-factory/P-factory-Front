@@ -31,5 +31,6 @@ export { default as SignUpInput } from './signup/SignUpInput.page.module.scss';
 export { default as Login } from './login/Login.page.module.scss';
 export { default as Main } from './Main.Layout.module.scss';
 export { default as DownLoadFactory } from './outer/DownLoadFactory.Loayout.module.scss';
+export { default as Game } from './game/Game.page.module.scss';
 // components
 // export {default as MyFactory} from
