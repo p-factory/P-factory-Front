@@ -15,6 +15,7 @@ const SettingFactory = () => {
           <img src={backIcon} alt='back' />
         </div>
         <div className={styles.title}>공장 선택</div>
+        <div className={styles.img}></div>
       </div>
       <div className={styles.contents}>
         <span className={styles.description}>
@@ -93,9 +94,34 @@ const SettingFactory = () => {
               console.log('handlelocal');
             }}
           />
+          <Factory
+            id={0}
+            styles={FactoryTypeStyles}
+            outer={true}
+            name={'토익 공부'}
+            favorite={true}
+            total={0}
+            uri={0}
+            handlelocal={() => {
+              console.log('handlelocal');
+            }}
+          />
+          <Factory
+            id={0}
+            styles={FactoryTypeStyles}
+            outer={true}
+            name={'토익 공부'}
+            favorite={true}
+            total={0}
+            uri={0}
+            handlelocal={() => {
+              console.log('handlelocal');
+            }}
+          />
         </div>
       </div>
       <div className={styles.choiceContainer}>
+        {/* 버튼 컴포넌트의 title에 기본적으로 margin-right가 들어가 있음. */}
         <Button
           styles={ButtonTypeStyles}
           state={true}

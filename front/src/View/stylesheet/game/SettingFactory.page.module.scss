@@ -1,0 +1,60 @@
+@mixin flex($direction: row, $align-items: center, $justify-content: center, $gap: null){
+  display: flex;
+  align-items: $align-items;
+  justify-content: $justify-content;
+  flex-direction: $direction;
+  gap: $gap;
+}
+
+.container {
+  @include flex(column);
+  padding-top: 72px;
+  .header {
+    @include flex($justify-content: space-between);
+    width: 100%;
+    .img {
+      display: flex;
+      flex: 1;
+    }
+    .title {
+      flex: 1;
+      text-align: center;
+      font-size: var(--font-size-regular);
+      font-weight: var(--font-weight-bold);
+      color: var(--black-color);
+    }
+  }
+  .contents {
+    @include flex(column, $gap: 10px);
+    width: 100%;
+    .description {
+      font-size: var(--font-size-xsmall);
+      font-weight: var(--font-weight-light);
+      color: var(--gray3-color);
+    }
+    .factoryContainer {
+      width: 100%;
+    }
+  }
+  .choiceContainer {
+    @include flex($align-items: flex-end, $gap: 48px);
+    position: fixed;
+    bottom: 82px;
+    max-width: 430px;
+    width: 100%;
+    max-height: 173px;
+    height: 100%;
+    background: linear-gradient(
+      to top,
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0),
+    );
+    padding: 0px 51px 40px 51px;
+    div {
+      @include flex();
+      font-size: var(--font-size-small);
+      border-radius: var(--corner-radius-regular);
+      width: 100%;
+    }
+  }
+}
