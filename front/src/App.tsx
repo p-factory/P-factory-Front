@@ -18,10 +18,10 @@ import {
   DownLoadFactory,
   BestUser,
   BestUserShared,
+  Game,
 } from '@page';
 import Test from './dev';
 import { ScrollToTop } from '@view/components';
-import Game from './Page/Game/Game';
 // import './App.scss';
 
 const App = () => {
