@@ -11,11 +11,11 @@ const Game = () => {
           <span>↓</span> 눌러서 토리와 함께 공장을 탈출해주세요!
         </div>
         <div className={styles.banner}>
+          <div className={styles.bannerGradation} />
           <div className={styles.bannerTitle}>
             <span>토리의 공장 탈출 게임</span>
             <span id={styles.start}>START!</span>
           </div>
-          <div className={styles.bannerGradation} />
           <div className={styles.bannerImg}>
             <img src={gameBanner} alt='GameStartBanner' />
           </div>
