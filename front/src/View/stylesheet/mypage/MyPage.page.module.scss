@@ -1,0 +1,105 @@
+@use '../../../helpers' as fn;
+.container{
+    .user{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 72px;
+      margin-bottom: 16px;
+      .userContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .userImage{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 72px;
+            height: 72px;
+            margin-bottom: 8px;
+            position: relative;
+          #image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: gray;
+            border-radius: 50%;
+            width: 64.8px;
+            height: 64.8px;
+          }
+          #cameraButton{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary-color);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+          }
+        }
+        .userName{
+          font-size: var(--font-size-medium);
+          font-weight: var(--font-weight-bold);
+        }
+      }
+      .info{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--gray2-color);
+        padding: 0 fn.px-to-percent(16, 350);;
+        padding-bottom: 8px;
+        .item{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            span:first-child{
+              background-color: var(--gray2-color);
+              padding: 0 8px;
+              border-radius: var(--corner-radius-medium);
+              font-size: var(--font-size-xsmall);
+              font-weight: var(--font-weight-bold);
+            }
+            span:last-child{
+                font-size: var(--font-size-xxsmall);
+
+            }
+        }
+      } 
+    }
+    .category{
+        .categoryContent{
+            border-bottom: 1px solid var(--gray2-color);
+            margin-bottom: 16px;
+            .categoryTitle{
+                color: var(--gray3-color);
+                font-size: var(--font-size-xsmall);
+                font-weight: var(--font-weight-medium);
+                padding: 0 fn.px-to-percent(8, 350);
+                margin-bottom: 16px;
+            }
+            .categoryList{
+                font-size: var(--font-size-small);
+                font-weight: var(--font-weight-bold);
+                padding: 0 fn.px-to-percent(8, 350);
+                margin-bottom: 16px;
+                cursor: pointer;
+            }
+        }
+    }
+    .version{
+        color: var(--gray3-color);
+        font-size: var(--font-size-xsmall);
+        font-weight: var(--font-weight-semibold);
+        padding: 0 fn.px-to-percent(8, 350);
+        padding-bottom: 150px;
+    }
+  }
