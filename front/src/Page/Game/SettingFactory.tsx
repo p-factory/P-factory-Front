@@ -11,16 +11,19 @@ const SettingFactory = () => {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <div className={styles.img}>
-          <img src={backIcon} alt='back' />
+        <div className={styles.top}>
+          <div className={styles.img}>
+            <img src={backIcon} alt='back' />
+          </div>
+          <div className={styles.title}>공장 선택</div>
+          <div className={styles.img}></div>
         </div>
-        <div className={styles.title}>공장 선택</div>
-        <div className={styles.img}></div>
-      </div>
-      <div className={styles.contents}>
         <span className={styles.description}>
           대탈출에 나올 공장을 선택해주세요!
         </span>
+      </div>
+
+      <div className={styles.contents}>
         <div className={styles.factoryContainer}>
           <Factory
             id={0}

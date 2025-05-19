@@ -10,28 +10,33 @@
   @include flex(column);
   padding-top: 72px;
   .header {
-    @include flex($justify-content: space-between);
+    @include flex(column);
     width: 100%;
-    .img {
-      display: flex;
-      flex: 1;
+    margin-bottom: 18px;
+    .top{
+      @include flex($justify-content: space-between);
+      width: 100%;
+      .img {
+        display: flex;
+        flex: 1;
+      }
+      .title {
+        flex: 1;
+        text-align: center;
+        font-size: var(--font-size-regular);
+        font-weight: var(--font-weight-bold);
+        color: var(--black-color);
+      }
     }
-    .title {
-      flex: 1;
-      text-align: center;
-      font-size: var(--font-size-regular);
-      font-weight: var(--font-weight-bold);
-      color: var(--black-color);
-    }
-  }
-  .contents {
-    @include flex(column, $gap: 10px);
-    width: 100%;
     .description {
       font-size: var(--font-size-xsmall);
       font-weight: var(--font-weight-light);
       color: var(--gray3-color);
     }
+  }
+  .contents {
+    @include flex(column, $gap: 10px);
+    width: 100%;
     .factoryContainer {
       width: 100%;
     }
