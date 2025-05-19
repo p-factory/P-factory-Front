@@ -28,15 +28,15 @@ const SettingFilter = () => {
           </div>
         </div>
         <div className={styles.filterContainer}>
+          <span className={styles.filterTitle}>형광펜 여부</span>
           <div className={styles.optionContainer}>
-            <span className={styles.filterTitle}>형광펜 여부</span>
             <div className={styles.option}>형광펜 칠한 단어만</div>
             <div className={styles.option}>형광펜 안 칠한 단어만</div>
           </div>
         </div>
         <div className={styles.filterContainer}>
+          <span className={styles.filterTitle}>순서</span>
           <div className={styles.optionContainer}>
-            <span className={styles.filterTitle}>순서</span>
             <div className={styles.option}>랜덤</div>
             <div className={styles.option}>최신순</div>
             <div className={styles.option}>오래된 순</div>
