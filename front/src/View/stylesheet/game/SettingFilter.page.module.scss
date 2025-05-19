@@ -12,7 +12,7 @@
   .header {
     @include flex(column);
     width: 100%;
-    margin-bottom: 18px;
+    margin-bottom: 40px;
     .top{
       @include flex($justify-content: space-between);
       width: 100%;
@@ -38,14 +38,37 @@
     @include flex(column, $gap: 10px);
     width: 100%;
     .filterContainer {
+      width: 100%;
+      @include flex(column, $align-items: flex-start, $gap: 12px);
+      border-bottom: 1px solid var(--gray2-color);
+      &:last-of-type {
+        border-bottom: none;
+      }
       .filterTitle {
-
+        font-size: var(--font-size-small);
+        font-weight: var(--font-weight-bold);
+        color: var(--gray5-color);
       }
       .optionContainer {
+        width: 100%;
+        @include flex(column,$align-items: flex-start, $gap: 16px);
+        padding-bottom: 16px;
         .option {
-          
+          padding: 4px 10px;
+          border: 2px solid var(--gray2-color);
+          border-radius: var(--corner-radius-large);
+          font-size: var(--font-size-regular);
+          font-weight: var(--font-weight-medium);
+          color: var(--gray4-color);
+          cursor: pointer;
         }
       }
     }
   }
+}
+
+.click {
+  color: var(--black-color);
+  background-color: var(--primary-color);
+  border: 2px solid var(--primary-color);
 }
