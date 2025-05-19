@@ -41,19 +41,19 @@ const SettingFilter = () => {
               className={`${styles.option} ${isCheck === 'all' ? styles.click : ''}`}
               onClick={() => buttonClick({ setFn: setIsCheck, value: 'all' })}
             >
-              전체
+              <span>전체</span>
             </div>
             <div
               className={`${styles.option} ${isCheck === 'check' ? styles.click : ''}`}
               onClick={() => buttonClick({ setFn: setIsCheck, value: 'check' })}
             >
-              체크한 단어만
+              <span>체크한 단어만</span>
             </div>
             <div
               className={`${styles.option} ${isCheck === 'none' ? styles.click : ''}`}
               onClick={() => buttonClick({ setFn: setIsCheck, value: 'none' })}
             >
-              미체크한 단어만
+              <span>미체크한 단어만</span>
             </div>
           </div>
         </div>
@@ -66,7 +66,7 @@ const SettingFilter = () => {
                 buttonClick({ setFn: setIsHighlight, value: 'paint' })
               }
             >
-              형광펜 칠한 단어만
+              <span>형광펜 칠한 단어만</span>
             </div>
             <div
               className={`${styles.option} ${isHighlight === 'none' ? styles.click : ''}`}
@@ -74,7 +74,7 @@ const SettingFilter = () => {
                 buttonClick({ setFn: setIsHighlight, value: 'none' })
               }
             >
-              형광펜 안 칠한 단어만
+              <span>형광펜 안 칠한 단어만</span>
             </div>
           </div>
         </div>
@@ -85,19 +85,19 @@ const SettingFilter = () => {
               className={`${styles.option} ${isSort === 'random' ? styles.click : ''}`}
               onClick={() => buttonClick({ setFn: setIsSort, value: 'random' })}
             >
-              랜덤
+              <span>랜덤</span>
             </div>
             <div
               className={`${styles.option} ${isSort === 'recent' ? styles.click : ''}`}
               onClick={() => buttonClick({ setFn: setIsSort, value: 'recent' })}
             >
-              최신순
+              <span>최신순</span>
             </div>
             <div
               className={`${styles.option} ${isSort === 'old' ? styles.click : ''}`}
               onClick={() => buttonClick({ setFn: setIsSort, value: 'old' })}
             >
-              오래된 순
+              <span>오래된 순</span>
             </div>
           </div>
         </div>
