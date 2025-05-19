@@ -33,5 +33,6 @@ export { default as Main } from './Main.Layout.module.scss';
 export { default as DownLoadFactory } from './outer/DownLoadFactory.Loayout.module.scss';
 export { default as Game } from './game/Game.page.module.scss';
 export { default as SettingFactory } from './game/SettingFactory.page.module.scss';
+export { default as SettingFilter } from './game/SettingFilter.page.module.scss';
 // components
 // export {default as MyFactory} from
