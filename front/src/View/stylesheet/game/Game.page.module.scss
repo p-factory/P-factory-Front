@@ -26,6 +26,9 @@
     }
     .banner {
       position: relative;
+      &:hover {
+        cursor: pointer;
+      }
       .bannerTitle {
         position: absolute;
         display: flex;
@@ -94,6 +97,9 @@
         }
         .rightImg {
           display: flex; // div의 크기를 이미지의 크기로 설정
+          &:hover {
+            cursor: pointer;
+          }
         }
       }
     }
