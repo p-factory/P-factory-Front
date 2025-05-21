@@ -47,3 +47,6 @@ export { default as exportIcon } from './img/export-icon.svg';
 export { default as doorIcon } from './img/escape-door-icon.svg';
 export { default as keyIcon } from './img/escape-key-icon.svg';
 export { default as gameBanner } from './img/game-start-banner.svg';
+export { default as alertIcon } from './img/alert-icon.svg';
+export { default as toryComputer } from './img/tory-icon-computer.svg';
+export { default as toryLook } from './img/tory-icon-look.svg';
