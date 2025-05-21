@@ -6,13 +6,16 @@ import {
 } from '@/Model/Mapping';
 import { SettingFactory as styles } from '@/View/stylesheet';
 import { Button, Factory, Footer } from '@shared/components';
+import { useNavigate } from 'react-router-dom';
 
 const SettingFactory = () => {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
         <div className={styles.top}>
-          <div className={styles.img}>
+          <div className={styles.img} onClick={() => navigate('/game')}>
             <img src={backIcon} alt='back' />
           </div>
           <div className={styles.title}>공장 선택</div>

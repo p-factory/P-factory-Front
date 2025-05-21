@@ -2,15 +2,21 @@ import { FooterTypeStyles } from '@/Model/Mapping';
 import { Footer } from '@shared/components';
 import { gameBanner, rightArrowIcon } from '@/assets';
 import { Game as styles } from '@/View/stylesheet';
+import { useNavigate } from 'react-router-dom';
 
 const Game = () => {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
         <div className={styles.text}>
           <span>↓</span> 눌러서 토리와 함께 공장을 탈출해주세요!
         </div>
-        <div className={styles.banner}>
+        <div
+          className={styles.banner}
+          onClick={() => navigate('/game/stage/1')}
+        >
           <div className={styles.bannerGradation} />
           <div className={styles.bannerTitle}>
             <span>토리의 공장 탈출 게임</span>
@@ -27,7 +33,10 @@ const Game = () => {
           <span className={styles.settingTitle}>공장</span>
           <div className={styles.settingSelectBox}>
             <span id={styles.settingSelect}>미선택</span>
-            <div className={styles.rightImg}>
+            <div
+              className={styles.rightImg}
+              onClick={() => navigate('/game/setting/factory')}
+            >
               <img src={rightArrowIcon} alt='RightArrow' />
             </div>
           </div>
@@ -36,7 +45,10 @@ const Game = () => {
           <span className={styles.settingTitle}>제시 형태</span>
           <div className={styles.settingSelectBox}>
             <span id={styles.settingSelect}>미선택</span>
-            <div className={styles.rightImg}>
+            <div
+              className={styles.rightImg}
+              onClick={() => navigate('/game/setting/filter')}
+            >
               <img src={rightArrowIcon} alt='RightArrow' />
             </div>
           </div>

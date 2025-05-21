@@ -3,11 +3,13 @@ import { FooterTypeStyles } from '@/Model/Mapping';
 import { Footer } from '@shared/components';
 import { SettingFilter as styles } from '@/View/stylesheet';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const SettingFilter = () => {
   const [isCheck, setIsCheck] = useState<string>('');
   const [isHighlight, setIsHighlight] = useState<string>('');
   const [isSort, setIsSort] = useState<string>('');
+  const navigate = useNavigate();
 
   const buttonClick = ({
     setFn,
@@ -24,7 +26,7 @@ const SettingFilter = () => {
       <div className={styles.header}>
         <div className={styles.top}>
           <div className={styles.img}>
-            <img src={backIcon} alt='back' />
+            <img src={backIcon} alt='back' onClick={() => navigate('/game')} />
           </div>
           <div className={styles.title}>제시 형태 선택</div>
           <div className={styles.img}></div>
