@@ -19,6 +19,7 @@ import {
   BoltsPadStyled,
   ExitDoorStyled,
   StageBannerStyled,
+  StageLayoutStyled,
 } from '../../View/stylesheet';
 
 import {
@@ -43,6 +44,7 @@ import {
   BoltsPadStylesLocal,
   ExitDoorStyles,
   StageBannerStyles,
+  StageLayoutStyles,
 } from '@shared/style';
 
 //객체 매핑(Object Mapping)
@@ -243,4 +245,17 @@ export const StageBannerTypeStyles: StageBannerStyles = {
   stage: StageBannerStyled.stage,
   title: StageBannerStyled.title,
   description: StageBannerStyled.description,
+};
+
+export const StageLayoutTypeStyles: StageLayoutStyles = {
+  container: StageLayoutStyled.container,
+  contents: StageLayoutStyled.contents,
+  close: StageLayoutStyled.close,
+  touchContainer: StageLayoutStyled.touchContainer,
+  alertContainer: StageLayoutStyled.alertContainer,
+  alertText: StageLayoutStyled.alertText,
+  toryContainer: StageLayoutStyled.toryContainer,
+  image: StageLayoutStyled.image,
+  toryText: StageLayoutStyled.toryText,
+  touchText: StageLayoutStyled.touchText,
 };

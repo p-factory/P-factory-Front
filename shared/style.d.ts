@@ -160,3 +160,16 @@ export interface StageBannerStyles {
   description: string;
   title: string;
 }
+
+export interface StageLayoutStyles {
+  container: string;
+  contents: string;
+  close: string;
+  touchContainer: string;
+  alertContainer: string;
+  alertText: string;
+  toryContainer: string;
+  image: string;
+  toryText: string;
+  touchText: string;
+}
