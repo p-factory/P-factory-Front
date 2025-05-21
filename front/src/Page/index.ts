@@ -13,3 +13,5 @@ export { default as BestUser } from './Outer/BestUser';
 export { default as BestUserShared } from './Outer/BestUserShared';
 export { default as Game } from './Game/Game';
 export { default as SettingFactory } from './Game/SettingFactory';
+export { default as SettingFilter } from './Game/SettingFilter';
+export { default as GameStage } from './Game/GameStage';

@@ -20,6 +20,7 @@ import {
   BestUserShared,
   Game,
   SettingFactory,
+  GameStage,
 } from '@page';
 import Test from './dev';
 import { ScrollToTop } from '@view/components';
@@ -51,6 +52,7 @@ const App = () => {
           <Route path='/game' element={<Game />} />
           <Route path='/game/setting/factory' element={<SettingFactory />} />
           <Route path='/game/setting/filter' element={<SettingFilter />} />
+          <Route path='/game/stage/1' element={<GameStage />} />
           <Route path='*' element={<Error />} />
         </Routes>
       </PersistGate>
