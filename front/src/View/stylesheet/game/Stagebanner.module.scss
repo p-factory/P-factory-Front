@@ -1,6 +1,7 @@
 .container {
   border-bottom: 2px solid var(--gray2-color);
   padding-bottom: 20px;
+  width: 100%;
   .contents {
     display: flex;
     flex-direction: column;

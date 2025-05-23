@@ -1,23 +1,76 @@
-.container {
-  .contents {
-    .close {
-    }
+@mixin flex($direction: row, $align-items: center, $justify-content: center, $gap: null){
+  display: flex;
+  align-items: $align-items;
+  justify-content: $justify-content;
+  flex-direction: $direction;
+  gap: $gap;
+}
 
+.container {
+  height: 100vh;
+  .contents {
+    position: relative;
+    height: 100%;
+    .close {
+      position: absolute;
+      top: 72px;
+      right: 0;
+      cursor: pointer;
+    }
     .touchContainer {
+      @include flex(column, $justify-content: flex-start);
+      position: relative;
+      height: 100%;
+      padding-top: 357px;
       .alertContainer {
+        position: relative;
+        @include flex(column);
+        .image {
+          display: flex;
+          flex: 1;
+          position: absolute;
+          top: -9px;
+        }
         .alertText {
+          text-align: center;
+          font-size: var(--font-size-regular);
+          font-weight: var(--font-weight-bold);
+          color: var(--gray5-color);
+          line-height: 175%;
+          @include flex(column);
+          background: radial-gradient(ellipse at center, rgba(252, 89, 89, 0.3) 0%, rgb(255, 255, 255) 72%);
+          min-height: 167px;
+          min-width: 390px;
+          border-radius: 50%;
+          span {
+            color: var(--negative-error-cancel);
+          }
         }
       }
 
       .toryContainer {
+        @include flex(column, $gap: 20px);
         .image {
+          display: flex;
+          flex: 1;
         }
 
         .toryText {
+          text-align: center;
+          color: var(--gray5-color);
+          font-weight: var(--font-weight-light);
+          span {
+            font-weight: var(--font-weight-bold);
+          }
         }
       }
 
       .touchText {
+        position: absolute;
+        color: var(--gray3-color);
+        font-size: var(--font-size-xsmall);
+        font-weight: var(--font-weight-light);
+        bottom: 166px;
       }
     }
   }
