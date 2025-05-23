@@ -1,10 +1,16 @@
-import { spannerIconGray, toryComputer, toryLook } from '@/assets';
+import { keyIcon, spannerIconGray, toryComputer, toryLook } from '@/assets';
 import {
   BlankScrewTypeStyles,
   BoltsPadTypeStyles,
+  ExitDoorTypeStyles,
   StageLayoutTypeStyles,
 } from '@/Model/Mapping';
-import { BlankScrew, BoltsPad, StageLayout } from '@shared/components';
+import {
+  BlankScrew,
+  BoltsPad,
+  ExitDoor,
+  StageLayout,
+} from '@shared/components';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { GameStage as styles } from '@/View/stylesheet';
@@ -151,6 +157,31 @@ const GameStage = () => {
               <img src={toryComputer} />
             </div>
             <div className={styles.toryText}>"뜻 좀 얼른 찾아줘"</div>
+          </div>
+        </div>
+      )}
+      {stage === 2 && (
+        <div className={`${styles.container} ${styles.third}`}>
+          <div className={`${styles.contents}`}>
+            <div className={styles.doorContainer}>
+              <ExitDoor styles={ExitDoorTypeStyles} bolt='recongnize' />
+              <ExitDoor styles={ExitDoorTypeStyles} bolt='allow' />
+              <ExitDoor styles={ExitDoorTypeStyles} bolt='record' />
+            </div>
+            <ExitDoor
+              styles={ExitDoorTypeStyles}
+              bolt='인정하다'
+              image={keyIcon}
+            />
+          </div>
+          <div className={`${styles.toryContainer} ${styles.bottom}`}>
+            <div className={styles.image}>
+              <img src={toryLook} />
+            </div>
+            <div className={styles.toryText}>
+              "어떤 문이
+              <br />이 열쇠랑 맞냐?"
+            </div>
           </div>
         </div>
       )}

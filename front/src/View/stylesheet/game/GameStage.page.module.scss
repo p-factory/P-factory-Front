@@ -86,9 +86,14 @@
       color: var(--gray5-color);
     }
   }
+  
+  .bottom {
+    position: absolute;
+    bottom: 121px;
+  }
 }
 
-// stage 2 css
+// stage2 스타일
 .second {
   justify-content: flex-start;
   padding-top: 240px;
@@ -125,8 +130,19 @@
       color: var(--black-color);
     }
   }
-  .bottom {
-    position: absolute;
-    bottom: 121px;
+}
+
+// stage3 스타일
+.third {
+  justify-content: flex-start;
+  padding-top: 234px;
+  .contents {
+    gap: 36px;
+  }
+  .doorContainer {
+    @include flex($gap: 9px);
+    border-bottom: 1px solid var(--gray2-color);
+    padding-bottom: 36px;
   }
 }
+
