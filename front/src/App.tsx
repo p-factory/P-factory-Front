@@ -20,11 +20,11 @@ import {
   BestUserShared,
   Game,
   SettingFactory,
+  SettingFilter,
   GameStage,
 } from '@page';
 import Test from './dev';
 import { ScrollToTop } from '@view/components';
-import SettingFilter from './Page/Game/SettingFilter';
 // import './App.scss';
 
 const App = () => {
@@ -52,7 +52,7 @@ const App = () => {
           <Route path='/game' element={<Game />} />
           <Route path='/game/setting/factory' element={<SettingFactory />} />
           <Route path='/game/setting/filter' element={<SettingFilter />} />
-          <Route path='/game/stage/1' element={<GameStage />} />
+          <Route path='/game/stage/:id' element={<GameStage />} />
           <Route path='*' element={<Error />} />
         </Routes>
       </PersistGate>
