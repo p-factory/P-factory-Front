@@ -40,7 +40,7 @@
           @include flex(column);
           background: radial-gradient(ellipse at center, rgba(252, 89, 89, 0.3) 0%, rgb(255, 255, 255) 72%);
           min-height: 167px;
-          min-width: 390px;
+          min-width: 400px;
           border-radius: 50%;
           span {
             color: var(--negative-error-cancel);
