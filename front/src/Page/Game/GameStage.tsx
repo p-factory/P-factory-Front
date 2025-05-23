@@ -1,5 +1,9 @@
 import { spannerIconGray, toryComputer, toryLook } from '@/assets';
-import { BlankScrewTypeStyles, BoltsPadTypeStyles, StageLayoutTypeStyles } from '@/Model/Mapping';
+import {
+  BlankScrewTypeStyles,
+  BoltsPadTypeStyles,
+  StageLayoutTypeStyles,
+} from '@/Model/Mapping';
 import { BlankScrew, BoltsPad, StageLayout } from '@shared/components';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
@@ -87,43 +91,69 @@ const GameStage = () => {
       toryImg={toryAlerts[stage].img}
       toryAlertText={toryAlerts[stage].text}
     >
-      <div className={styles.container}>
-        <div className={styles.contents}>
-          <span>철자를 클릭해 단어를 완성하세요.</span>
-          <div className={styles.gameContainer}>
-            <BlankScrew styles={BlankScrewTypeStyles} />
-            <BoltsPad styles={BoltsPadTypeStyles} bolt='bcdupi' />
-          </div>
-          <div className={styles.selectContainer}>
-            <div className={styles.select}>
-              <div className={styles.number}>
-                <span>1</span>
+      {stage === 0 && (
+        <div className={styles.container}>
+          <div className={styles.contents}>
+            <span>철자를 클릭해 단어를 완성하세요.</span>
+            <div className={styles.gameContainer}>
+              <BlankScrew styles={BlankScrewTypeStyles} />
+              <BoltsPad styles={BoltsPadTypeStyles} bolt='bcdupi' />
+            </div>
+            <div className={styles.selectContainer}>
+              <div className={styles.select}>
+                <div className={styles.number}>
+                  <span>1</span>
+                </div>
+                <div className={styles.bolt}>
+                  <span>c</span>
+                </div>
               </div>
-              <div className={styles.bolt}>
-                <span>c</span>
+              <div className={styles.select}>
+                <div className={styles.number}>
+                  <span>2</span>
+                </div>
+                <div className={styles.bolt}>
+                  <span>u</span>
+                </div>
               </div>
             </div>
-            <div className={styles.select}>
-              <div className={styles.number}>
-                <span>2</span>
-              </div>
-              <div className={styles.bolt}>
-                <span>u</span>
-              </div>
+          </div>
+          <div className={styles.toryContainer}>
+            <div className={styles.image}>
+              <img src={toryLook} />
+            </div>
+            <div className={styles.toryText}>
+              "들어갈 철자를
+              <br />
+              순서대로 클릭하라고!"
             </div>
           </div>
         </div>
-        <div className={styles.toryContainer}>
-          <div className={styles.image}>
-            <img src={toryLook} />
+      )}
+      {stage === 1 && (
+        <div className={`${styles.container} ${styles.second}`}>
+          <div className={`${styles.contents}`}>
+            <div className={`${styles.screw} ${styles.correct}`}>
+              <span>include</span>
+            </div>
+            <div className={`${styles.screw}`}>
+              <span>제외하다</span>
+            </div>
+            <div className={`${styles.screw} ${styles.correct}`}>
+              <span>포함하다</span>
+            </div>
+            <div className={`${styles.screw} ${styles.wrong}`}>
+              <span>도입하다</span>
+            </div>
           </div>
-          <div className={styles.toryText}>
-            "들어갈 철자를
-            <br />
-            순서대로 클릭하라고!"
+          <div className={`${styles.toryContainer} ${styles.bottom}`}>
+            <div className={styles.image}>
+              <img src={toryComputer} />
+            </div>
+            <div className={styles.toryText}>"뜻 좀 얼른 찾아줘"</div>
           </div>
         </div>
-      </div>
+      )}
     </StageLayout>
   );
 };

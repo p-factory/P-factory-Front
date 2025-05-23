@@ -76,16 +76,57 @@
   }
 
   .toryContainer {
-    @include flex($align-items: flex-end, $gap: 24px);
+    @include flex($gap: 24px);
     .image {
       display: flex;
       flex: 1;
     }
-
     .toryText {
       font-family: 'S-CoreDream-3Light';
       color: var(--gray5-color);
-      margin-bottom: 17px;
     }
+  }
+}
+
+// stage 2 css
+.second {
+  justify-content: flex-start;
+  padding-top: 240px;
+  .screw {
+    @include flex();
+    box-sizing: border-box;
+    width: 100%;
+    height: 56px;
+    border-radius: var(--corner-radius-large);
+    border: 2px solid var(--gray2-color);
+    margin-bottom: 20px;
+    cursor: pointer;
+    span {
+      color: var(--gray4-color);
+      font-size: var(--font-size-large);
+      font-weight: var(--font-weight-bold);
+    }
+    &:first-child {
+      margin-bottom: 40px;
+      cursor: auto;
+    }
+  }
+  .correct {
+    border: none;
+    background-color: var(--primary-color);
+    span {
+      color: var(--black-color);
+    }
+  }
+  .wrong {
+    border: none;
+    background-color: var(--negative-error-cancel);
+    span {
+      color: var(--black-color);
+    }
+  }
+  .bottom {
+    position: absolute;
+    bottom: 121px;
   }
 }
