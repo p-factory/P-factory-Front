@@ -1,11 +1,11 @@
 import { spannerIconGray, toryComputer, toryLook } from '@/assets';
-import { StageBannerTypeStyles } from '@/Model/Mapping';
+import { StageLayoutTypeStyles } from '@/Model/Mapping';
 import { StageLayout } from '@shared/components';
 
 const stage = [
-  { stage: 1, img: { spannerIconGray }, title: '기계 고치기' },
-  { stage: 2, img: { spannerIconGray }, title: '감시 시스템 탈출하기' },
-  { stage: 3, img: { spannerIconGray }, title: '탈출구 찾기' },
+  { stage: 1, img: spannerIconGray, title: '기계 고치기' },
+  { stage: 2, img: spannerIconGray, title: '감시 시스템 탈출하기' },
+  { stage: 3, img: spannerIconGray, title: '탈출구 찾기' },
 ];
 
 const alert = [
@@ -36,7 +36,7 @@ const alert = [
 
 const toryAlert = [
   {
-    img: { toryLook },
+    img: toryLook,
     text: (
       <>
         "이대로면 들키고 말 거야!
@@ -46,7 +46,7 @@ const toryAlert = [
     ),
   },
   {
-    img: { toryComputer },
+    img: toryComputer,
     text: (
       <>
         "빨리 <span>뜻을 풀어서</span>
@@ -56,7 +56,7 @@ const toryAlert = [
     ),
   },
   {
-    img: { toryLook },
+    img: toryLook,
     text: (
       <>
         "이 문들 중에서 <span>열쇠와 맞는</span>
@@ -70,7 +70,7 @@ const toryAlert = [
 const GameStage = () => {
   return (
     <StageLayout
-      styles={StageBannerTypeStyles}
+      styles={StageLayoutTypeStyles}
       stage={stage[0]}
       alertText={alert[0]}
       toryImg={toryAlert[0].img}

@@ -1,19 +1,25 @@
 import { Platform, Text } from 'react-native';
 import { FooterTypeStyles, StageBannerTypeStyles } from '@/Model/Mapping';
 import { Footer, StageBanner } from '@shared/components';
-import { cancelIconGray } from '../../../front/src/assets';
+import { alertIcon, cancelIconGray } from '../../../front/src/assets';
 import { useState } from 'react';
+import { StageLayoutStyles } from '../../style';
 
-const StageLayout = (
-  { styles, stage, alertText, toryImg, toryAlertText, children },
-  // : {
-  //   styles: StageLayoutStyles;
-  //   stage: { stage: number, img: String, title: String };
-  //   alertText: String;
-  //   toryImg: String;
-  //   toryAlertText: String;
-  //   children?: React.ReactNode;
-) => {
+const StageLayout = ({
+  styles,
+  stage,
+  alertText,
+  toryImg,
+  toryAlertText,
+  children,
+}: {
+  styles: StageLayoutStyles;
+  stage: { stage: number; img: string; title: string };
+  alertText: React.ReactNode;
+  toryImg: string;
+  toryAlertText: React.ReactNode;
+  children?: React.ReactNode;
+}) => {
   const [isOpenBanner, setIsOpenBanner] = useState<boolean>(true);
   const [isOpenAlert, setIsOpenAlert] = useState<boolean>(false);
   const [isOpenToryAlert, setIsOpenToryAlert] = useState<boolean>(false);
@@ -35,7 +41,7 @@ const StageLayout = (
             <div className={styles.close}>
               <img src={cancelIconGray} alt='닫기' />
             </div>
-            {(isOpenBanner || isOpenAlert || isOpenToryAlert) && (
+            {isOpenBanner || isOpenAlert || isOpenToryAlert ? (
               <div className={styles.touchContainer} onClick={touchHandle}>
                 {isOpenBanner && (
                   <StageBanner
@@ -49,6 +55,9 @@ const StageLayout = (
                 )}
                 {isOpenAlert && (
                   <div className={styles.alertContainer}>
+                    <div className={styles.image}>
+                      <img src={alertIcon} />
+                    </div>
                     <div className={styles.alertText}>{alertText}</div>
                   </div>
                 )}
@@ -62,8 +71,9 @@ const StageLayout = (
                 )}
                 <div className={styles.touchText}>화면을 터치하세요</div>
               </div>
+            ) : (
+              children
             )}
-            {children}
           </div>
           <Footer styles={FooterTypeStyles} />
         </div>
