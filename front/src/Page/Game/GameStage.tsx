@@ -1,14 +1,17 @@
 import { spannerIconGray, toryComputer, toryLook } from '@/assets';
-import { StageLayoutTypeStyles } from '@/Model/Mapping';
-import { StageLayout } from '@shared/components';
+import { BlankScrewTypeStyles, BoltsPadTypeStyles, StageLayoutTypeStyles } from '@/Model/Mapping';
+import { BlankScrew, BoltsPad, StageLayout } from '@shared/components';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { GameStage as styles } from '@/View/stylesheet';
 
-const stage = [
+const stages = [
   { stage: 1, img: spannerIconGray, title: '기계 고치기' },
   { stage: 2, img: spannerIconGray, title: '감시 시스템 탈출하기' },
   { stage: 3, img: spannerIconGray, title: '탈출구 찾기' },
 ];
 
-const alert = [
+const alerts = [
   <>
     탈출 도중, 토리가 단어 생산 기계를 고장 냈다!
     <br />
@@ -18,7 +21,6 @@ const alert = [
   </>,
   <>
     <span>공장의 감시 시스템이 토리를 추적 중이다!</span>
-    <br />
     토리가 탈출하는 모습을 보지 못하게
     <br />
     감시 시스템을 해킹해야 한다.
@@ -34,7 +36,7 @@ const alert = [
   </>,
 ];
 
-const toryAlert = [
+const toryAlerts = [
   {
     img: toryLook,
     text: (
@@ -68,15 +70,60 @@ const toryAlert = [
 ];
 
 const GameStage = () => {
+  const [stage, setStage] = useState(0);
+  const { id } = useParams();
+  useEffect(() => {
+    const stageId = Number(id);
+    if (stageId) {
+      setStage(stageId - 1);
+    }
+  }, []);
+
   return (
     <StageLayout
       styles={StageLayoutTypeStyles}
-      stage={stage[0]}
-      alertText={alert[0]}
-      toryImg={toryAlert[0].img}
-      toryAlertText={toryAlert[0].text}
+      stage={stages[stage]}
+      alertText={alerts[stage]}
+      toryImg={toryAlerts[stage].img}
+      toryAlertText={toryAlerts[stage].text}
     >
-      <div>hello</div>
+      <div className={styles.container}>
+        <div className={styles.contents}>
+          <span>철자를 클릭해 단어를 완성하세요.</span>
+          <div className={styles.gameContainer}>
+            <BlankScrew styles={BlankScrewTypeStyles} />
+            <BoltsPad styles={BoltsPadTypeStyles} bolt='bcdupi' />
+          </div>
+          <div className={styles.selectContainer}>
+            <div className={styles.select}>
+              <div className={styles.number}>
+                <span>1</span>
+              </div>
+              <div className={styles.bolt}>
+                <span>c</span>
+              </div>
+            </div>
+            <div className={styles.select}>
+              <div className={styles.number}>
+                <span>2</span>
+              </div>
+              <div className={styles.bolt}>
+                <span>u</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={styles.toryContainer}>
+          <div className={styles.image}>
+            <img src={toryLook} />
+          </div>
+          <div className={styles.toryText}>
+            "들어갈 철자를
+            <br />
+            순서대로 클릭하라고!"
+          </div>
+        </div>
+      </div>
     </StageLayout>
   );
 };
