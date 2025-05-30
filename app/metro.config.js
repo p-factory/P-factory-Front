@@ -8,4 +8,8 @@ config.watchFolders = [
   path.resolve(__dirname, '../shared'), // shared 디렉토리의 절대 경로
 ];
 
+config.resolver.extraNodeModules = {
+  react: path.resolve(__dirname, 'node_modules/react'),
+};
+
 module.exports = config;
