@@ -11,7 +11,7 @@ import {
   ExitDoor,
   StageLayout,
 } from '@shared/components';
-import { useEffect, useState } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { GameStage as styles } from '@/View/stylesheet';
 
@@ -79,8 +79,100 @@ const toryAlerts = [
   },
 ];
 
+// 스테이지 1
+const stageOne = (
+  <div className={styles.container}>
+    <div className={styles.contents}>
+      <span>철자를 클릭해 단어를 완성하세요.</span>
+      <div className={styles.gameContainer}>
+        <BlankScrew styles={BlankScrewTypeStyles} />
+        <BoltsPad styles={BoltsPadTypeStyles} bolt='bcdupi' />
+      </div>
+      <div className={styles.selectContainer}>
+        <div className={styles.select}>
+          <div className={styles.number}>
+            <span>1</span>
+          </div>
+          <div className={styles.bolt}>
+            <span>c</span>
+          </div>
+        </div>
+        <div className={styles.select}>
+          <div className={styles.number}>
+            <span>2</span>
+          </div>
+          <div className={styles.bolt}>
+            <span>u</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div className={styles.toryContainer}>
+      <div className={styles.image}>
+        <img src={toryLook} />
+      </div>
+      <div className={styles.toryText}>
+        "들어갈 철자를
+        <br />
+        순서대로 클릭하라고!"
+      </div>
+    </div>
+  </div>
+);
+
+// 스테이지 2
+const stageTwo = (
+  <div className={`${styles.container} ${styles.second}`}>
+    <div className={`${styles.contents}`}>
+      <div className={`${styles.screw} ${styles.correct}`}>
+        <span>include</span>
+      </div>
+      <div className={`${styles.screw}`}>
+        <span>제외하다</span>
+      </div>
+      <div className={`${styles.screw} ${styles.correct}`}>
+        <span>포함하다</span>
+      </div>
+      <div className={`${styles.screw} ${styles.wrong}`}>
+        <span>도입하다</span>
+      </div>
+    </div>
+    <div className={`${styles.toryContainer} ${styles.bottom}`}>
+      <div className={styles.image}>
+        <img src={toryComputer} />
+      </div>
+      <div className={styles.toryText}>"뜻 좀 얼른 찾아줘"</div>
+    </div>
+  </div>
+);
+
+// 스테이지 3
+const stageThree = (
+  <div className={`${styles.container} ${styles.third}`}>
+    <div className={`${styles.contents}`}>
+      <div className={styles.doorContainer}>
+        <ExitDoor styles={ExitDoorTypeStyles} bolt='recongnize' />
+        <ExitDoor styles={ExitDoorTypeStyles} bolt='allow' />
+        <ExitDoor styles={ExitDoorTypeStyles} bolt='record' />
+      </div>
+      <ExitDoor styles={ExitDoorTypeStyles} bolt='인정하다' image={keyIcon} />
+    </div>
+    <div className={`${styles.toryContainer} ${styles.bottom}`}>
+      <div className={styles.image}>
+        <img src={toryLook} />
+      </div>
+      <div className={styles.toryText}>
+        "어떤 문이
+        <br />이 열쇠랑 맞냐?"
+      </div>
+    </div>
+  </div>
+);
+
 const GameStage = () => {
   const [stage, setStage] = useState(0);
+  const [stageData, setStageData] = useState<ReactElement>();
+
   const { id } = useParams();
   useEffect(() => {
     const stageId = Number(id);
@@ -88,6 +180,22 @@ const GameStage = () => {
       setStage(stageId - 1);
     }
   }, []);
+
+  useEffect(() => {
+    switch (stage) {
+      case 0:
+        setStageData(stageOne);
+        break;
+      case 1:
+        setStageData(stageTwo);
+        break;
+      case 2:
+        setStageData(stageThree);
+        break;
+      default:
+        setStageData(<></>);
+    }
+  }, [stage]);
 
   return (
     <StageLayout
@@ -97,94 +205,7 @@ const GameStage = () => {
       toryImg={toryAlerts[stage].img}
       toryAlertText={toryAlerts[stage].text}
     >
-      {stage === 0 && (
-        <div className={styles.container}>
-          <div className={styles.contents}>
-            <span>철자를 클릭해 단어를 완성하세요.</span>
-            <div className={styles.gameContainer}>
-              <BlankScrew styles={BlankScrewTypeStyles} />
-              <BoltsPad styles={BoltsPadTypeStyles} bolt='bcdupi' />
-            </div>
-            <div className={styles.selectContainer}>
-              <div className={styles.select}>
-                <div className={styles.number}>
-                  <span>1</span>
-                </div>
-                <div className={styles.bolt}>
-                  <span>c</span>
-                </div>
-              </div>
-              <div className={styles.select}>
-                <div className={styles.number}>
-                  <span>2</span>
-                </div>
-                <div className={styles.bolt}>
-                  <span>u</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className={styles.toryContainer}>
-            <div className={styles.image}>
-              <img src={toryLook} />
-            </div>
-            <div className={styles.toryText}>
-              "들어갈 철자를
-              <br />
-              순서대로 클릭하라고!"
-            </div>
-          </div>
-        </div>
-      )}
-      {stage === 1 && (
-        <div className={`${styles.container} ${styles.second}`}>
-          <div className={`${styles.contents}`}>
-            <div className={`${styles.screw} ${styles.correct}`}>
-              <span>include</span>
-            </div>
-            <div className={`${styles.screw}`}>
-              <span>제외하다</span>
-            </div>
-            <div className={`${styles.screw} ${styles.correct}`}>
-              <span>포함하다</span>
-            </div>
-            <div className={`${styles.screw} ${styles.wrong}`}>
-              <span>도입하다</span>
-            </div>
-          </div>
-          <div className={`${styles.toryContainer} ${styles.bottom}`}>
-            <div className={styles.image}>
-              <img src={toryComputer} />
-            </div>
-            <div className={styles.toryText}>"뜻 좀 얼른 찾아줘"</div>
-          </div>
-        </div>
-      )}
-      {stage === 2 && (
-        <div className={`${styles.container} ${styles.third}`}>
-          <div className={`${styles.contents}`}>
-            <div className={styles.doorContainer}>
-              <ExitDoor styles={ExitDoorTypeStyles} bolt='recongnize' />
-              <ExitDoor styles={ExitDoorTypeStyles} bolt='allow' />
-              <ExitDoor styles={ExitDoorTypeStyles} bolt='record' />
-            </div>
-            <ExitDoor
-              styles={ExitDoorTypeStyles}
-              bolt='인정하다'
-              image={keyIcon}
-            />
-          </div>
-          <div className={`${styles.toryContainer} ${styles.bottom}`}>
-            <div className={styles.image}>
-              <img src={toryLook} />
-            </div>
-            <div className={styles.toryText}>
-              "어떤 문이
-              <br />이 열쇠랑 맞냐?"
-            </div>
-          </div>
-        </div>
-      )}
+      {stageData}
     </StageLayout>
   );
 };
