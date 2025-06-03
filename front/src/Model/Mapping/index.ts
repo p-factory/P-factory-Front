@@ -258,4 +258,11 @@ export const StageLayoutTypeStyles: StageLayoutStyles = {
   image: StageLayoutStyled.image,
   toryText: StageLayoutStyled.toryText,
   touchText: StageLayoutStyled.touchText,
+  closeModal: StageLayoutStyled.closeModal,
+  modalContents: StageLayoutStyled.modalContents,
+  closeIcon: StageLayoutStyled.closeIcon,
+  closeModalContainer: StageLayoutStyled.closeModalContainer,
+  closeText: StageLayoutStyled.closeText,
+  closeButtonContainer: StageLayoutStyled.closeButtonContainer,
+  closeButton: StageLayoutStyled.closeButton,
 };

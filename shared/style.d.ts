@@ -172,4 +172,11 @@ export interface StageLayoutStyles {
   image: string;
   toryText: string;
   touchText: string;
+  closeModal: string;
+  modalContents: string;
+  closeIcon: string;
+  closeModalContainer: string;
+  closeText: string;
+  closeButtonContainer: string;
+  closeButton: string;
 }

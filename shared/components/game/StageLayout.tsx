@@ -1,9 +1,14 @@
 import { Platform, Text } from 'react-native';
 import { FooterTypeStyles, StageBannerTypeStyles } from '@/Model/Mapping';
 import { Footer, StageBanner } from '@shared/components';
-import { alertIcon, cancelIconGray } from '../../../front/src/assets';
+import {
+  alertIcon,
+  cancelIcon,
+  cancelIconGray,
+} from '../../../front/src/assets';
 import { useState } from 'react';
 import { StageLayoutStyles } from '../../style';
+import { useNavigate } from 'react-router-dom';
 
 const StageLayout = ({
   styles,
@@ -23,6 +28,8 @@ const StageLayout = ({
   const [isOpenBanner, setIsOpenBanner] = useState<boolean>(true);
   const [isOpenAlert, setIsOpenAlert] = useState<boolean>(false);
   const [isOpenToryAlert, setIsOpenToryAlert] = useState<boolean>(false);
+  const [isOpenClose, setIsOpenClose] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const touchHandle = () => {
     if (isOpenBanner) {
@@ -33,12 +40,45 @@ const StageLayout = ({
       setIsOpenToryAlert(true);
     } else setIsOpenToryAlert(false);
   };
+
   if (Platform.OS === 'web') {
     {
       return (
         <div className={styles.container}>
+          {isOpenClose && (
+            <div className={styles.closeModal}>
+              <div className={styles.modalContents}>
+                <div
+                  className={styles.closeIcon}
+                  onClick={() => setIsOpenClose(false)}
+                >
+                  <img src={cancelIcon} alt='닫기' />
+                </div>
+                <div className={styles.closeModalContainer}>
+                  <div className={styles.closeText}>탈출을 멈추시겠습니까?</div>
+                  <div className={styles.closeButtonContainer}>
+                    <button
+                      className={styles.closeButton}
+                      onClick={() => setIsOpenClose(false)}
+                    >
+                      아니오
+                    </button>
+                    <button
+                      className={styles.closeButton}
+                      onClick={() => {
+                        setIsOpenClose(false);
+                        navigate('/game');
+                      }}
+                    >
+                      네
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
           <div className={styles.contents}>
-            <div className={styles.close}>
+            <div className={styles.close} onClick={() => setIsOpenClose(true)}>
               <img src={cancelIconGray} alt='닫기' />
             </div>
             {isOpenBanner || isOpenAlert || isOpenToryAlert ? (
