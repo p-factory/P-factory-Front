@@ -1,4 +1,11 @@
-import { keyIcon, spannerIconGray, toryComputer, toryLook } from '@/assets';
+import {
+  computerIconGray,
+  doorIconGray,
+  keyIcon,
+  spannerIconGray,
+  toryComputer,
+  toryLook,
+} from '@/assets';
 import {
   BlankScrewTypeStyles,
   BoltsPadTypeStyles,
@@ -16,34 +23,49 @@ import { useParams } from 'react-router-dom';
 import { GameStage as styles } from '@/View/stylesheet';
 
 const stages = [
-  { stage: 1, img: spannerIconGray, title: '기계 고치기' },
-  { stage: 2, img: spannerIconGray, title: '감시 시스템 탈출하기' },
-  { stage: 3, img: spannerIconGray, title: '탈출구 찾기' },
-];
-
-const alerts = [
-  <>
-    탈출 도중, 토리가 단어 생산 기계를 고장 냈다!
-    <br />
-    기계에서 알파벳이 튀어나와 엉망이 되었다.
-    <br />
-    <span>이 상태로는 공장이 멈추고 경보가 울리게 된다.</span>
-  </>,
-  <>
-    <span>공장의 감시 시스템이 토리를 추적 중이다!</span>
-    토리가 탈출하는 모습을 보지 못하게
-    <br />
-    감시 시스템을 해킹해야 한다.
-  </>,
-  <>
-    토리가 겨우 도착한 탈출구 앞은
-    <br />
-    수많은 문들로 가득하다.
-    <br />
-    문 옆에는 하나의 열쇠가 있는데
-    <br />
-    <span>열쇠엔 뜻이 적혀 있고, 문에는 영어 단어가 적혀 있다.</span>
-  </>,
+  {
+    stage: 1,
+    image: spannerIconGray,
+    title: '기계 고치기',
+    alert: (
+      <>
+        탈출 도중, 토리가 단어 생산 기계를 고장 냈다!
+        <br />
+        기계에서 알파벳이 튀어나와 엉망이 되었다.
+        <br />
+        <span>이 상태로는 공장이 멈추고 경보가 울리게 된다.</span>
+      </>
+    ),
+  },
+  {
+    stage: 2,
+    image: computerIconGray,
+    title: '감시 시스템 탈출하기',
+    alert: (
+      <>
+        <span>공장의 감시 시스템이 토리를 추적 중이다!</span>
+        토리가 탈출하는 모습을 보지 못하게
+        <br />
+        감시 시스템을 해킹해야 한다.
+      </>
+    ),
+  },
+  {
+    stage: 3,
+    image: doorIconGray,
+    title: '탈출구 찾기',
+    alert: (
+      <>
+        토리가 겨우 도착한 탈출구 앞은
+        <br />
+        수많은 문들로 가득하다.
+        <br />
+        문 옆에는 하나의 열쇠가 있는데
+        <br />
+        <span>열쇠엔 뜻이 적혀 있고, 문에는 영어 단어가 적혀 있다.</span>
+      </>
+    ),
+  },
 ];
 
 const toryAlerts = [
@@ -201,9 +223,7 @@ const GameStage = () => {
     <StageLayout
       styles={StageLayoutTypeStyles}
       stage={stages[stage]}
-      alertText={alerts[stage]}
-      toryImg={toryAlerts[stage].img}
-      toryAlertText={toryAlerts[stage].text}
+      tory={toryAlerts[stage]}
     >
       {stageData}
     </StageLayout>

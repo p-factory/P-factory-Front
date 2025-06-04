@@ -13,16 +13,17 @@ import { useNavigate } from 'react-router-dom';
 const StageLayout = ({
   styles,
   stage,
-  alertText,
-  toryImg,
-  toryAlertText,
+  tory,
   children,
 }: {
   styles: StageLayoutStyles;
-  stage: { stage: number; img: string; title: string };
-  alertText: React.ReactNode;
-  toryImg: string;
-  toryAlertText: React.ReactNode;
+  stage: {
+    stage: number;
+    image: string;
+    title: string;
+    alert: React.ReactNode;
+  };
+  tory: { img: string; text: React.ReactNode };
   children?: React.ReactNode;
 }) => {
   const [isOpenBanner, setIsOpenBanner] = useState<boolean>(true);
@@ -88,7 +89,7 @@ const StageLayout = ({
                     styles={StageBannerTypeStyles}
                     stage={{
                       round: stage.stage,
-                      image: stage.img,
+                      image: stage.image,
                       title: stage.title,
                     }}
                   />
@@ -98,15 +99,15 @@ const StageLayout = ({
                     <div className={styles.image}>
                       <img src={alertIcon} />
                     </div>
-                    <div className={styles.alertText}>{alertText}</div>
+                    <div className={styles.alertText}>{stage.alert}</div>
                   </div>
                 )}
                 {isOpenToryAlert && (
                   <div className={styles.toryContainer}>
                     <div className={styles.image}>
-                      <img src={toryImg} alt='토리' />
+                      <img src={tory.img} alt='토리' />
                     </div>
-                    <div className={styles.toryText}>{toryAlertText}</div>
+                    <div className={styles.toryText}>{tory.text}</div>
                   </div>
                 )}
                 <div className={styles.touchText}>화면을 터치하세요</div>
