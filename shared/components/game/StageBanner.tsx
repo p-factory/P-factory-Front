@@ -1,15 +1,13 @@
 import { Platform, Text } from 'react-native';
 import { StageBannerStyles } from '../../style';
-import { spannerIconGray } from '../../../front/src/assets';
 const StageBanner = ({
   styles,
-  image = spannerIconGray,
   stage,
 }: {
   styles: StageBannerStyles;
-  image?: string;
   stage: {
     round: number;
+    image: string;
     title: string;
   };
 }) => {
@@ -22,7 +20,7 @@ const StageBanner = ({
             <div className={styles.description}>
               <span id={styles.title}>{stage.title}</span>
               <div className={styles.image}>
-                <img src={image} alt='' />
+                <img src={stage.image} alt='' />
               </div>
             </div>
           </div>
