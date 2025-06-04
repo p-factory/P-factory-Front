@@ -50,3 +50,5 @@ export { default as gameBanner } from './img/game-start-banner.svg';
 export { default as alertIcon } from './img/alert-icon.svg';
 export { default as toryComputer } from './img/tory-icon-computer.svg';
 export { default as toryLook } from './img/tory-icon-look.svg';
+export { default as doorIconGray } from './img/door-icon-gray.svg';
+export { default as computerIconGray } from './img/computer-icon-gray.svg';
