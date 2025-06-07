@@ -113,6 +113,9 @@
           font-weight: var(--font-weight-bold);
         }
       }
+      @media (max-height: 700px) {
+        margin-top: 10px;
+      }
     }
   }
 }
