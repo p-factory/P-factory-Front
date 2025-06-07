@@ -1,27 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import Button from './View/Button';
-import ButtonChain from '../../shared/components/Test.Button.js';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Main } from './View/page';
+import Dev from './View/dev';
+const stack = createNativeStackNavigator();
 
 const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <Text>This is my app!!</Text>
-      <StatusBar style='auto' />
-      <Button label='Press Me' onPress={() => alert('Pressed!')} />
-      <ButtonChain label='Press Me' onPress={() => alert('Pressed!')} />
-    </View>
+    <NavigationContainer>
+      <stack.Navigator
+        screenOptions={{
+          headerShown: true,
+        }}
+      >
+        <stack.Screen
+          name='home'
+          component={Main}
+          options={{
+            title: '홈',
+          }}
+        />
+        <stack.Screen
+          name='dev'
+          component={Dev}
+          options={{
+            title: '개발',
+          }}
+        />
+      </stack.Navigator>
+    </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 export default App;

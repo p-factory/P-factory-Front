@@ -3,6 +3,7 @@ import { Button, PtoryLogo } from '@shared/components';
 import { spannerIconWhite } from '@/assets';
 import { useNavigate } from 'react-router-dom';
 import { Main as styles } from '@/View/stylesheet';
+import { spannerIcon } from '../../assets';
 
 const Main = () => {
   const navigate = useNavigate();
@@ -29,6 +30,7 @@ const Main = () => {
           styles={ButtonTypeStyles}
           title='회원가입'
           state={false}
+          image={spannerIcon}
           functions={() => navigate('/signUp')}
           style={{ color: 'var(--black-color)' }}
         />
@@ -38,6 +40,7 @@ const Main = () => {
           styles={ButtonTypeStyles}
           title='단어 공장 작업 시작하기'
           state={true}
+          image={spannerIcon}
           functions={() => navigate('/login')}
         />
       </div>
