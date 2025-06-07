@@ -145,7 +145,7 @@ const stageOne = (
 // 스테이지 2
 const stageTwo = (
   <div className={`${styles.container} ${styles.second}`}>
-    <div className={`${styles.contents}`}>
+    <div className={styles.contents}>
       <div className={`${styles.screw} ${styles.correct}`}>
         <span>include</span>
       </div>
@@ -159,7 +159,7 @@ const stageTwo = (
         <span>도입하다</span>
       </div>
     </div>
-    <div className={`${styles.toryContainer} ${styles.bottom}`}>
+    <div className={styles.toryContainer}>
       <div className={styles.image}>
         <img src={toryComputer} />
       </div>
@@ -171,7 +171,7 @@ const stageTwo = (
 // 스테이지 3
 const stageThree = (
   <div className={`${styles.container} ${styles.third}`}>
-    <div className={`${styles.contents}`}>
+    <div className={styles.contents}>
       <div className={styles.doorContainer}>
         <ExitDoor styles={ExitDoorTypeStyles} bolt='recongnize' />
         <ExitDoor styles={ExitDoorTypeStyles} bolt='allow' />
@@ -179,7 +179,7 @@ const stageThree = (
       </div>
       <ExitDoor styles={ExitDoorTypeStyles} bolt='인정하다' image={keyIcon} />
     </div>
-    <div className={`${styles.toryContainer} ${styles.bottom}`}>
+    <div className={styles.toryContainer}>
       <div className={styles.image}>
         <img src={toryLook} />
       </div>

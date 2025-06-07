@@ -16,6 +16,7 @@
 .container {
   @include flex(column, $gap: 71px);
   height: 100%;
+  min-height: 932px;
   width: 100%;
   .contents {
     width: 100%;
@@ -74,7 +75,6 @@
       }
     }
   }
-
   .toryContainer {
     @include flex($gap: 24px);
     .image {
@@ -86,17 +86,12 @@
       color: var(--gray5-color);
     }
   }
-  
-  .bottom {
-    position: absolute;
-    bottom: 121px;
-  }
 }
 
 // stage2 스타일
 .second {
-  justify-content: flex-start;
-  padding-top: 240px;
+  min-height: 800px;
+  padding-top: 100px;
   .screw {
     @include flex();
     box-sizing: border-box;
@@ -130,12 +125,18 @@
       color: var(--black-color);
     }
   }
+  @media (max-width: 400px) {
+    padding-top: 0px;
+    .doorContainer {
+      gap: 0;
+    }
+  }
 }
 
 // stage3 스타일
 .third {
-  justify-content: flex-start;
-  padding-top: 234px;
+  min-height: 800px;
+  padding-top: 100px;
   .contents {
     gap: 36px;
   }
@@ -143,6 +144,14 @@
     @include flex($gap: 9px);
     border-bottom: 1px solid var(--gray2-color);
     padding-bottom: 36px;
+    
+  }
+
+  @media (max-width: 400px) {
+    padding-top: 0px;
+    .doorContainer {
+      gap: 0;
+    }
   }
 }
 

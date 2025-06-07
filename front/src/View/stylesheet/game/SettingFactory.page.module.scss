@@ -9,6 +9,7 @@
 .container {
   @include flex(column);
   padding-top: 72px;
+  margin-bottom: 183px; // 스크롤 시 맨 아래 공장이 보이게
   .header {
     @include flex(column);
     width: 100%;

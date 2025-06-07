@@ -19,33 +19,34 @@
       z-index: 1;
     }
     .touchContainer {
-      @include flex(column, $justify-content: flex-start);
+      @include flex(column);
       position: relative;
       height: 100%;
-      padding-top: 357px;
+      padding-bottom: 83px; // footer만큼 떨어뜨려놓기
       .alertContainer {
         position: relative;
-        @include flex(column);
+        @include flex(column, $gap: 16px);    
+        background: radial-gradient(ellipse at center, rgba(252, 89, 89, 0.3) 0%, rgb(255, 255, 255) 72%);
+        width: 100vw;
+        max-width: 400px;
+        border-radius: 50%;      
         .image {
           display: flex;
           flex: 1;
-          position: absolute;
-          top: -9px;
         }
         .alertText {
+          @include flex(column);          
           text-align: center;
           font-size: var(--font-size-regular);
           font-weight: var(--font-weight-bold);
           color: var(--gray5-color);
           line-height: 175%;
-          @include flex(column);
-          background: radial-gradient(ellipse at center, rgba(252, 89, 89, 0.3) 0%, rgb(255, 255, 255) 72%);
-          min-height: 167px;
-          min-width: 400px;
-          border-radius: 50%;
+          
           span {
             color: var(--negative-error-cancel);
           }
+          
+
         }
       }
 

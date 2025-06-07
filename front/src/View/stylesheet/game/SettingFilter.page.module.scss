@@ -9,6 +9,7 @@
 .container {
   @include flex(column);
   padding-top: 72px;
+  margin-bottom: 83px; // footer에 가려지지 않도록 설정
   .header {
     @include flex(column);
     width: 100%;
@@ -22,7 +23,7 @@
         cursor: pointer;
       }
       .title {
-        flex: 1;
+        flex: 2;
         text-align: center;
         font-size: var(--font-size-regular);
         font-weight: var(--font-weight-bold);
