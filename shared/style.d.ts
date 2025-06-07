@@ -27,6 +27,11 @@ export namespace Styles {
   export interface Image {
     image: string;
   }
+
+  export interface BoltNut {
+    bolt: string;
+    nut: string;
+  }
 }
 
 // Custom type
@@ -45,6 +50,7 @@ type BuildFactoryStyles = Styles.Common & Styles.Image & Styles.Button;
 type DriverStyles = Styles.Common & Styles.Image & Styles.Button;
 type PtoryLogoStyles = Styles.Common;
 type SortOptionStyles = Styles.Button;
+type BoltNutStyles = Styles.BoltNut;
 
 export interface ToolStylesLocal extends ToolStyles {
   tools: string;
@@ -74,11 +80,9 @@ export interface SearchStylesLocal extends SearchStyles {
   group: string;
 }
 
-export interface ScrewStylesLocal extends ScrewStyles {
+export interface ScrewStylesLocal extends ScrewStyles, BoltNutStyles {
   screwSound: string;
-  bolt: string;
   nuts: string;
-  nut: string;
   screwShape: string;
   checked: string;
   unchecked: string;
@@ -131,4 +135,48 @@ export interface SharedFactoryStyles {
   title: string;
   shared: string;
   count: string;
+}
+
+export interface BlankScrewStyles extends BoltNutStyles {
+  container: string;
+  contents: string;
+}
+
+type BoltsPadStylesLocal = BoltsPadStyles & BoltNutStyles;
+
+export interface ExitDoorStyles extends BoltsPadStylesLocal {
+  container: string;
+  contents: string;
+  image: string;
+  bolt: string;
+  nut?: string;
+}
+
+export interface StageBannerStyles {
+  container: string;
+  image: string;
+  contents: string;
+  stage: string;
+  description: string;
+  title: string;
+}
+
+export interface StageLayoutStyles {
+  container: string;
+  contents: string;
+  close: string;
+  touchContainer: string;
+  alertContainer: string;
+  alertText: string;
+  toryContainer: string;
+  image: string;
+  toryText: string;
+  touchText: string;
+  closeModal: string;
+  modalContents: string;
+  closeIcon: string;
+  closeModalContainer: string;
+  closeText: string;
+  closeButtonContainer: string;
+  closeButton: string;
 }

@@ -28,6 +28,9 @@ const Footer = ({ styles }: { styles: FooterStyles }) => {
     if (location.pathname.includes('outer')) {
       setLocation('outer');
     }
+    if (location.pathname.includes('game')) {
+      setLocation('game');
+    }
     if (location.pathname.includes('myPage')) {
       setLocation('myPage');
     }
@@ -82,7 +85,7 @@ const Footer = ({ styles }: { styles: FooterStyles }) => {
           className={styles.contents}
           onMouseEnter={() => handleMouseEnter('game')}
           onMouseLeave={handleMouseLeave}
-          onClick={() => navigate('/error')}
+          onClick={() => navigate('/game')}
         >
           <div className={styles.image}>
             <img

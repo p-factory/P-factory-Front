@@ -1,13 +1,27 @@
 import { useEffect } from 'react';
 import { useApiMutation, useApiQuery } from '@model';
 import { BaseLayout } from '@/View/components';
-import { Alarm, Factory, Test } from '@shared/components';
-import { AlarmTypeStyles, FactoryTypeStyles } from '@/Model/Mapping';
+import {
+  Alarm,
+  BlankScrew,
+  BoltsPad,
+  ExitDoor,
+  Factory,
+  StageBanner,
+} from '@shared/components';
+import {
+  AlarmTypeStyles,
+  BoltsPadTypeStyles,
+  ExitDoorTypeStyles,
+  FactoryTypeStyles,
+  StageBannerTypeStyles,
+} from '@/Model/Mapping';
 import Bestter from '@shared/components/outer/Bestter';
 import {
   BestterTypeStyles,
   RankTypeStyles,
   SharedFactoryTypeStyles,
+  BlankScrewTypeStyles,
 } from '@/Model/Mapping';
 import Rank from '@shared/components/outer/Rank';
 import SharedFactory from '@shared/components/outer/SharedFactory';
@@ -94,7 +108,21 @@ const Dev = () => {
         handlelocal={() => console.log('test')}
       />
       <Alarm styles={AlarmTypeStyles} title='test' alarm='test' image='x' />
-      <Test />
+      <BlankScrew styles={BlankScrewTypeStyles} />
+      {/** 여기에서 include 값을 전달하는게 맞는지 고민해볼 필요가 있다. 이유는 렌덤한 단어가 나와야 하기 때문에 렌덤한 bolt 값을 생성하는 로직, 함수가 필요하다.
+       * 또한 패드의 6개 이상의 글자가 생성되면 디자인에서 요구되는 패드 개수가 오버된다는 점도 인지 해야한다.
+       */}
+      <BoltsPad styles={BoltsPadTypeStyles} bolt='include' />
+      <div style={{ display: 'flex', justifyContent: 'center', gap: '9px' }}>
+        <ExitDoor styles={ExitDoorTypeStyles} bolt='recognize' />
+        <ExitDoor styles={ExitDoorTypeStyles} bolt='allow' />
+        <ExitDoor styles={ExitDoorTypeStyles} bolt='record' />
+      </div>
+      <StageBanner
+        styles={StageBannerTypeStyles}
+        stage={{ round: 1, title: '기계 고치기' }}
+      />
+      <div style={{ marginBottom: '100px' }} />
     </BaseLayout>
   );
 };

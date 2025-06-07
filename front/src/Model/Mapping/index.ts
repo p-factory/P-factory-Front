@@ -15,6 +15,11 @@ import {
   BestterStyled,
   RankStyled,
   SharedFactoryStyled,
+  BlankScrewStyled,
+  BoltsPadStyled,
+  ExitDoorStyled,
+  StageBannerStyled,
+  StageLayoutStyled,
 } from '../../View/stylesheet';
 
 import {
@@ -35,6 +40,11 @@ import {
   BestterStyles,
   RankStyles,
   SharedFactoryStyles,
+  BlankScrewStyles,
+  BoltsPadStylesLocal,
+  ExitDoorStyles,
+  StageBannerStyles,
+  StageLayoutStyles,
 } from '@shared/style';
 
 //객체 매핑(Object Mapping)
@@ -206,4 +216,53 @@ export const SharedFactoryTypeStyles: SharedFactoryStyles = {
   title: SharedFactoryStyled.title,
   shared: SharedFactoryStyled.shared,
   count: SharedFactoryStyled.count,
+};
+
+export const BlankScrewTypeStyles: BlankScrewStyles = {
+  container: BlankScrewStyled.container,
+  contents: BlankScrewStyled.contents,
+  bolt: BlankScrewStyled.bolt,
+  nut: BlankScrewStyled.nut,
+};
+
+export const BoltsPadTypeStyles: BoltsPadStylesLocal = {
+  container: BoltsPadStyled.container,
+  contents: BoltsPadStyled.contents,
+  bolt: BoltsPadStyled.bolt,
+};
+
+export const ExitDoorTypeStyles: ExitDoorStyles = {
+  container: ExitDoorStyled.container,
+  contents: ExitDoorStyled.contents,
+  image: ExitDoorStyled.image,
+  bolt: ExitDoorStyled.bolt,
+};
+
+export const StageBannerTypeStyles: StageBannerStyles = {
+  container: StageBannerStyled.container,
+  image: StageBannerStyled.image,
+  contents: StageBannerStyled.contents,
+  stage: StageBannerStyled.stage,
+  title: StageBannerStyled.title,
+  description: StageBannerStyled.description,
+};
+
+export const StageLayoutTypeStyles: StageLayoutStyles = {
+  container: StageLayoutStyled.container,
+  contents: StageLayoutStyled.contents,
+  close: StageLayoutStyled.close,
+  touchContainer: StageLayoutStyled.touchContainer,
+  alertContainer: StageLayoutStyled.alertContainer,
+  alertText: StageLayoutStyled.alertText,
+  toryContainer: StageLayoutStyled.toryContainer,
+  image: StageLayoutStyled.image,
+  toryText: StageLayoutStyled.toryText,
+  touchText: StageLayoutStyled.touchText,
+  closeModal: StageLayoutStyled.closeModal,
+  modalContents: StageLayoutStyled.modalContents,
+  closeIcon: StageLayoutStyled.closeIcon,
+  closeModalContainer: StageLayoutStyled.closeModalContainer,
+  closeText: StageLayoutStyled.closeText,
+  closeButtonContainer: StageLayoutStyled.closeButtonContainer,
+  closeButton: StageLayoutStyled.closeButton,
 };

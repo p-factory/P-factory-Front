@@ -1,0 +1,83 @@
+@mixin flex($direction: row, $align-items: center, $justify-content: center, $gap: null){
+  display: flex;
+  align-items: $align-items;
+  justify-content: $justify-content;
+  flex-direction: $direction;
+  gap: $gap;
+}
+
+.container {
+  @include flex(column);
+  padding-top: 72px;
+  margin-bottom: 83px; // footer에 가려지지 않도록 설정
+  .header {
+    @include flex(column);
+    width: 100%;
+    margin-bottom: 40px;
+    .top{
+      @include flex($justify-content: space-between);
+      width: 100%;
+      .img {
+        display: flex;
+        flex: 1;
+        cursor: pointer;
+      }
+      .title {
+        flex: 2;
+        text-align: center;
+        font-size: var(--font-size-regular);
+        font-weight: var(--font-weight-bold);
+        color: var(--black-color);
+      }
+    }
+    .description {
+      font-size: var(--font-size-xsmall);
+      font-weight: var(--font-weight-light);
+      color: var(--gray3-color);
+    }
+  }
+  .contents {
+    @include flex(column, $gap: 10px);
+    width: 100%;
+    .filterContainer {
+      width: 100%;
+      @include flex(column, $align-items: flex-start, $gap: 12px);
+      border-bottom: 1px solid var(--gray2-color);
+      &:last-of-type {
+        border-bottom: none;
+      }
+      .filterTitle {
+        font-size: var(--font-size-small);
+        font-weight: var(--font-weight-bold);
+        color: var(--gray5-color);
+      }
+      .optionContainer {
+        width: 100%;
+        @include flex(column,$align-items: flex-start, $gap: 16px);
+        padding-bottom: 16px;
+        .option {
+          // border로 테두리를 설정하면 외부에 추가되어 높이가 달라짐
+          // box-shadow: inset으로 안쪽에 그림자를 줘서 테두리처럼 설정
+          @include flex();
+          padding: 4px 10px;
+          box-shadow: inset 0 0 0 2px var(--gray2-color);
+          border-radius: var(--corner-radius-large);
+          font-weight: var(--font-weight-medium);
+          color: var(--gray4-color);
+          cursor: pointer;
+          span {
+            @include flex();
+            font-size: var(--font-size-regular);
+          }
+        }
+        .click {
+          color: var(--black-color);
+          background-color: var(--primary-color);
+          font-weight: var(--font-weight-semibold);
+          box-shadow: inset 0 0 0 2px var(--primary-color);
+        }
+      }
+    }
+  }
+}
+

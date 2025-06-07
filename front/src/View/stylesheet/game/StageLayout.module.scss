@@ -1,0 +1,140 @@
+@mixin flex($direction: row, $align-items: center, $justify-content: center, $gap: null){
+  display: flex;
+  align-items: $align-items;
+  justify-content: $justify-content;
+  flex-direction: $direction;
+  gap: $gap;
+}
+
+.container {
+  height: 100vh;
+  .contents {
+    position: relative;
+    height: 100%;
+    .close {
+      position: absolute;
+      top: 72px;
+      right: 0;
+      cursor: pointer;
+      z-index: 1;
+    }
+    .touchContainer {
+      @include flex(column);
+      position: relative;
+      height: 100%;
+      padding-bottom: 83px; // footer만큼 떨어뜨려놓기
+      .alertContainer {
+        position: relative;
+        @include flex(column, $gap: 16px);    
+        background: radial-gradient(ellipse at center, rgba(252, 89, 89, 0.3) 0%, rgb(255, 255, 255) 72%);
+        width: 100vw;
+        max-width: 400px;
+        border-radius: 50%;      
+        .image {
+          display: flex;
+          flex: 1;
+        }
+        .alertText {
+          @include flex(column);          
+          text-align: center;
+          font-size: var(--font-size-regular);
+          font-weight: var(--font-weight-bold);
+          color: var(--gray5-color);
+          line-height: 175%;
+          
+          span {
+            color: var(--negative-error-cancel);
+          }
+        }
+      }
+
+      .toryContainer {
+        @include flex(column, $gap: 20px);
+        .image {
+          display: flex;
+          flex: 1;
+        }
+
+        .toryText {
+          text-align: center;
+          color: var(--gray5-color);
+          font-weight: var(--font-weight-light);
+          span {
+            font-weight: var(--font-weight-bold);
+          }
+        }
+      }
+
+      .touchText {
+        position: absolute;
+        color: var(--gray3-color);
+        font-size: var(--font-size-xsmall);
+        font-weight: var(--font-weight-light);
+        bottom: 166px;
+      }
+    }
+  }
+  .closeModal {
+    @include flex();
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 40%);
+    z-index: 2;
+    .modalContents {
+      @include flex(column, flex-end, space-between);
+      position: relative;
+      max-width: 350px;
+      max-height: 200px;
+      width: 100%;
+      height: 100%;
+      background-color: var(--primary-color);
+      border-radius: var(--corner-radius-regular);
+      padding-top: 10px;
+      .closeIcon {
+        display: flex;
+        margin-right: 12px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      .closeModalContainer {
+        @include flex(column);
+        width: 100%;
+        max-height: 160px;
+        height: 100%;
+        background-color: white;
+        border-radius: var(--corner-radius-regular);
+        .closeText {
+          @include flex();
+          flex: 1;
+          color: var(--gray5-color);
+          font-size: var(--font-size-regular);
+        }
+        .closeButtonContainer {
+          @include flex();
+          width: 100%;
+          border-top: 1px solid var(--gray2-color);
+
+          .closeButton {
+            @include flex();
+            flex: 1;
+            font-size: var(--font-size-regular);
+            color: var(--gray3-color);
+            font-weight: 600;
+            width: 100%;
+            padding: 8px 0px;
+            &:hover {
+              color: var(--gray5-color);
+            }
+            &:first-child {
+              border-right: 1px solid var(--gray2-color);
+            }
+          }
+        }
+      }
+    }
+  }
+}

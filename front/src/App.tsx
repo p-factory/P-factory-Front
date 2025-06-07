@@ -18,6 +18,10 @@ import {
   DownLoadFactory,
   BestUser,
   BestUserShared,
+  Game,
+  SettingFactory,
+  SettingFilter,
+  GameStage,
   MyPage,
   Upload,
   Account,
@@ -48,6 +52,10 @@ const App = () => {
           <Route path='/outer/download' element={<DownLoadFactory />} />
           <Route path='/outer/best' element={<BestUser />} />
           <Route path='/outer/best/shared' element={<BestUserShared />} />
+          <Route path='/game' element={<Game />} />
+          <Route path='/game/setting/factory' element={<SettingFactory />} />
+          <Route path='/game/setting/filter' element={<SettingFilter />} />
+          <Route path='/game/stage/:id' element={<GameStage />} />
           <Route path='/mypage' element={<MyPage />} />
           <Route path='/mypage/upload' element={<Upload />} />
           <Route path='/mypage/account' element={<Account />} />

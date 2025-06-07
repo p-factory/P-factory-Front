@@ -20,6 +20,11 @@ export { default as MyFactory } from './MyFactory.Layout.module.scss';
 export { default as FactoryExploration } from './outer/FactoryExploration.Layout.module.scss';
 export { default as BestUser } from './outer/BestUser.Layout.module.scss';
 export { default as BestUserShared } from './outer/BestUserShared.Layout.module.scss';
+export { default as BlankScrewStyled } from './game/BlankScrew.module.scss';
+export { default as BoltsPadStyled } from './game/BoltsPad.module.scss';
+export { default as ExitDoorStyled } from './game/ExitDoor.module.scss';
+export { default as StageBannerStyled } from './game/StageBanner.module.scss';
+export { default as StageLayoutStyled } from './game/StageLayout.module.scss';
 
 export { default as SignUp } from './signup/SignUp.page.module.scss';
 export { default as SignUpCheckList } from './signup/SignUpCheckList.module.scss';
@@ -30,5 +35,9 @@ export { default as Upload } from './mypage/Upload.page.module.scss';
 export { default as Account } from './mypage/Account.page.module.scss';
 export { default as Main } from './Main.Layout.module.scss';
 export { default as DownLoadFactory } from './outer/DownLoadFactory.Loayout.module.scss';
+export { default as Game } from './game/Game.page.module.scss';
+export { default as SettingFactory } from './game/SettingFactory.page.module.scss';
+export { default as SettingFilter } from './game/SettingFilter.page.module.scss';
+export { default as GameStage } from './game/GameStage.page.module.scss';
 // components
 // export {default as MyFactory} from

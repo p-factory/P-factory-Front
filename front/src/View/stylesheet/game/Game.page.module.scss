@@ -1,0 +1,121 @@
+@mixin flex($align-items: center, $justify-content: center, $gap: null){
+  display: flex;
+  align-items: $align-items;
+  justify-content: $justify-content;
+  gap: $gap;
+}
+
+.text {
+  color: var(--gray3-color);
+  font-weight: var(--font-weight-light);
+  font-size: var(--font-size-xsmall);
+}
+
+.container {
+  @include flex(center, center, 36px);
+  flex-direction: column;
+  .header {
+    @include flex(center, center, 4px);
+    flex-direction: column;
+    padding-top: 106px;
+    .text {
+      font-weight: var(--font-weight-medium);
+      span {
+        color: var(--primary-color);
+      }
+    }
+    .banner {
+      position: relative;
+      &:hover {
+        cursor: pointer;
+      }
+      .bannerTitle {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        top: 20px;
+        left: 24px;
+        font-size: var(--font-size-medium);
+        font-weight: var(--font-weight-bold);
+        #start {
+          // 시작 버튼 제목과 START의 갭을 줄여야 하는데 transfromY로 올리는 방법과 포지션 변경과 고민..
+          // START 버튼의 굵기가 BLACK로 되어있던데, 적용 방법을 모르겠습니다..
+          position: absolute; 
+          top: 27px;
+          font-size: var(--font-size-large);
+          font-weight: var(--font-weight-bold);
+          color: var(--white-color);
+          text-shadow: var(--effects-style-shadow1) var(--effects-style-shadow1) var(--effects-blur-shadow1) var(--black-shadow1-color);
+        }
+      }
+      .bannerGradation {
+        position: absolute;
+        max-width: 91px;
+        width: 100%;
+        max-height: 200px;
+        height: 100%;
+        border-radius: var(--corner-radius-medium);
+        background: linear-gradient(
+          to right,
+          var(--primary-color) 44%, 
+          rgba(0, 0, 0, 0)
+        ); // 배경 그라데이션(왼쪽에서 오른쪽으로, 프라이머리색(44%부터)에서 투명하게
+      }
+      .bannerImg {
+        max-height: 200px;
+        background-color: var(--primary-color);
+        border-radius: var(--corner-radius-medium);
+      }
+    }
+  }
+
+  .contents {
+    @include flex(flex-start);
+    flex-direction: column;
+    width: 100%;
+    .text {
+      font-weight: var(--font-weight-light);
+    }
+    >:nth-child(2) { // 공장 선택 부분 아래에 구분선 넣기
+      border-bottom: 1px solid var(--gray2-color); 
+    }
+    .setting {
+      @include flex(center, space-between);
+      padding: 16px 0;
+      width: 100%;
+      .settingTitle {
+        font-size: var(--font-size-regular);
+        font-weight: var(--font-weight-bold);
+        color: var(--gray5-color);
+      }
+      .settingSelectBox {
+        @include flex(center, center, 4px);
+        #settingSelect {
+          font-size: var(--font-size-xxsmall);
+          font-weight: var(--font-weight-medium);
+          color: var(--negative-error-cancel);
+        }
+        .rightImg {
+          display: flex; // div의 크기를 이미지의 크기로 설정
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    .description {
+      width: 100%;
+      margin-top: 151px;
+      .text {
+        text-align: center;
+        .bolder {
+          color: var(--gray4-color);
+          font-weight: var(--font-weight-bold);
+        }
+      }
+      @media (max-height: 700px) {
+        margin-top: 10px;
+      }
+    }
+  }
+}
