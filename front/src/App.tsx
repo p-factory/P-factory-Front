@@ -22,6 +22,9 @@ import {
   SettingFactory,
   SettingFilter,
   GameStage,
+  MyPage,
+  Upload,
+  Account,
 } from '@page';
 import Test from './dev';
 import { ScrollToTop } from '@view/components';
@@ -53,6 +56,9 @@ const App = () => {
           <Route path='/game/setting/factory' element={<SettingFactory />} />
           <Route path='/game/setting/filter' element={<SettingFilter />} />
           <Route path='/game/stage/:id' element={<GameStage />} />
+          <Route path='/mypage' element={<MyPage />} />
+          <Route path='/mypage/upload' element={<Upload />} />
+          <Route path='/mypage/account' element={<Account />} />
           <Route path='*' element={<Error />} />
         </Routes>
       </PersistGate>

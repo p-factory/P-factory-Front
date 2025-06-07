@@ -15,3 +15,6 @@ export { default as Game } from './Game/Game';
 export { default as SettingFactory } from './Game/SettingFactory';
 export { default as SettingFilter } from './Game/SettingFilter';
 export { default as GameStage } from './Game/GameStage';
+export { default as MyPage } from './MyPage/MyPage';
+export { default as Upload } from './MyPage/Upload';
+export { default as Account } from './MyPage/Account';

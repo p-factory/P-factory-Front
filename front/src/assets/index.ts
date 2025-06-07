@@ -52,3 +52,4 @@ export { default as toryComputer } from './img/tory-icon-computer.svg';
 export { default as toryLook } from './img/tory-icon-look.svg';
 export { default as doorIconGray } from './img/door-icon-gray.svg';
 export { default as computerIconGray } from './img/computer-icon-gray.svg';
+export { default as cameraIcon } from './img/camera-icon.svg';
